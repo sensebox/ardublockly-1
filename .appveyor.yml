@@ -99,7 +99,7 @@ before_deploy:
 
 deploy:
   name: ardublockly-github-release
-  release: myproduct-v$(appveyor_build_version)
+  release: blockly-for-sensebox-v$(appveyor_build_version)
   description: 'Windows Release'
   provider: GitHub
   auth_token:

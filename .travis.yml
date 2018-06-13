@@ -16,12 +16,12 @@ before_install:
   - sudo python get-pip.py
   - rm get-pip.py
   - sudo pip install --upgrade pip setuptools wheel
+  # https://github.com/pypa/pip/issues/3165
+  - sudo -H pip install --ignore-installed six
+  - sudo -H pip install --ignore-installed mock
   # Original problem is old version of "six" package lingering around
   # https://github.com/testing-cabal/mock/issues/337
   - export PYTHONPATH=/Library/Python/2.7/site-packages:$PYTHONPATH
-  - ls -la /usr/lib/python2.7/dist-packages/
-  - ls -la /usr/local/lib/python2.7/dist-packages/
-  - rm /usr/lib/python2.7/dist-packages/*six*
   - python -c "import sys; print(sys.path)"
   - python -c "from six import wraps"
 
