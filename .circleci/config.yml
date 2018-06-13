@@ -84,13 +84,13 @@ test:
     - python3 -m coverage report
     #- pydocstyle ardublocklyserver --match-dir='ardublocklyserver'
 
-general:
-  artifacts:
-    - "releases/*"
+# general:
+#   artifacts:
+#     - "releases/*"
 
 # Get the releases files into the AWS S3 bucket
-deployment:
-  master:
-    branch: /.*/
-    commands:
-      - export AWS_DEFAULT_REGION=us-west-2 && cd releases && for entry in *; do aws s3 cp $entry s3://ardublockly-builds/linux/$entry; done
+# deployment:
+#   master:
+#     branch: /.*/
+#     commands:
+#       - export AWS_DEFAULT_REGION=us-west-2 && cd releases && for entry in *; do aws s3 cp $entry s3://ardublockly-builds/linux/$entry; done
