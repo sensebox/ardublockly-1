@@ -62,7 +62,7 @@ before_install:
 
   # Travis make takes > 10 minutes, so need to increase wait
   - brew unlink node
-  - travis_wait brew install node
+  - brew install node
   - node --version
   - node -p "process.arch"
   - npm --version
