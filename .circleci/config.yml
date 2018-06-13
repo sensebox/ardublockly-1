@@ -1,3 +1,5 @@
+version: 2
+
 # Customize the test machine
 machine:
   timezone:
@@ -83,7 +85,10 @@ test:
     - python3 -m coverage run ardublocklyserver/tests/run_all.py
     - python3 -m coverage report
     #- pydocstyle ardublocklyserver --match-dir='ardublocklyserver'
-
+general:
+  branches:
+    only:
+     - appveyor
 # general:
 #   artifacts:
 #     - "releases/*"
