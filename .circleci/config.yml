@@ -1,5 +1,3 @@
-version: 2
-
 # Customize the test machine
 machine:
   timezone:
