@@ -16,6 +16,9 @@ before_install:
   - sudo python get-pip.py
   - rm get-pip.py
   - sudo pip install --upgrade pip setuptools wheel
+  # https://stackoverflow.com/questions/31417964/importerror-cannot-import-name-wraps
+  - sudo pip install mock --upgrade
+  - sudo pip install six --upgrade
   # Original problem is old version of "six" package lingering around
   # https://github.com/testing-cabal/mock/issues/337
   - export PYTHONPATH=/Library/Python/2.7/site-packages:$PYTHONPATH
