@@ -83,13 +83,13 @@ test:
     - python3 -m coverage run ardublocklyserver/tests/run_all.py
     - python3 -m coverage report
     #- pydocstyle ardublocklyserver --match-dir='ardublocklyserver'
+
 general:
   branches:
-    only:
-     - appveyor
-# general:
-#   artifacts:
-#     - "releases/*"
+    only: 
+      - appveyor
+  # artifacts:
+  #   - "releases/*"
 
 # Get the releases files into the AWS S3 bucket
 # deployment:
