@@ -2,7 +2,7 @@
 os: osx
 osx_image: xcode6.4
 language: node_js
-node_js: '6'
+node_js: '8'
 
 before_install:
   # OS extra info
@@ -61,8 +61,6 @@ before_install:
   - pyinstaller --version
 
   # Travis make takes > 10 minutes, so need to increase wait
-  - brew unlink node
-  - brew install node
   - node --version
   - node -p "process.arch"
   - npm --version
