@@ -35,7 +35,8 @@ before_install:
   - echo $PATH
 
   # Install Python packages (built with Python 3, tests for 2 and 3)
-  - sudo python -m pip install mock
+  - sudo python -m pip install --ignore-installed six
+  - sudo python -m pip install --ignore-installed mock
   - sudo python -m pip install coverage
   - sudo python -m pip install requests
   - pip3 install coverage
