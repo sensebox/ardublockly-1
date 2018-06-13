@@ -27,9 +27,7 @@ before_install:
 
   # Install Python 3.5 with pip, and check versions
   - brew update
-  - brew tap zoidbergwill/python
-  - brew install python35
-  - cp -R /usr/local/bin/pip3.5 /usr/local/bin/pip3
+  - brew install python
   - sudo pip3 install --upgrade pip
 
   - brew install libcouchbase
