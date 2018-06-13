@@ -17,6 +17,9 @@ before_install:
   - rm get-pip.py
   - sudo pip install --upgrade pip setuptools wheel
   # https://stackoverflow.com/questions/31417964/importerror-cannot-import-name-wraps
+  - sudo pip freeze | grep -e six -e mock
+  - easy_install --version
+  - wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
   - sudo pip install mock --upgrade
   - sudo pip install six --upgrade
   # Original problem is old version of "six" package lingering around
