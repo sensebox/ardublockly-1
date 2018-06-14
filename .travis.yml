@@ -13,7 +13,9 @@ before_install:
   # OS extra info
   - sw_vers
   - uname -a
+  - ls -la
   - go version
+  - mkdir $HOME/go
   - export GOPATH=$HOME/go
   - echo $GOAPTH
   - export PATH=$PATH:$(go env GOPATH)/bin
