@@ -15,10 +15,15 @@ before_install:
   - uname -a
   - ls -la
   - go version
-  - mkdir $HOME/go
-  - export GOPATH=$HOME/go
-  - echo $GOAPTH
-  - export PATH=$PATH:$(go env GOPATH)/bin
+  - which go
+  - export GOPATH="${HOME}/.go"
+  - export GOROOT="$(brew --prefix golang)/libexec"
+  - export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+  - test -d "${GOPATH}" || mkdir "${GOPATH}"
+  - test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+  - brew install go
+  - go version
+  - which go
   - go get github.com/itchio/gothub
   - gothub --version
   # Install Python 2 pip, ensure pip installed packages are found first
