@@ -22,7 +22,7 @@ before_install:
   - test -d "${GOPATH}" || mkdir "${GOPATH}"
   - test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
   - brew update
-  - brew install go
+  - brew upgrade go
   - go version
   - which go
   - go get github.com/itchio/gothub
