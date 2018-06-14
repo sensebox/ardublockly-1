@@ -2,12 +2,18 @@
 os: osx
 osx_image: xcode6.4
 language: node_js
-node_js: '8'
+node_js:
+  - '8'
+
+branches:
+  only:
+    - appveyor
 
 before_install:
   # OS extra info
   - sw_vers
   - uname -a
+  - go --version
 
   # Install Python 2 pip, ensure pip installed packages are found first
   # Python 2 installation and path priority in Travis OS X is a bit of a mess
