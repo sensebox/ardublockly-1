@@ -13,8 +13,9 @@ before_install:
   # OS extra info
   - sw_vers
   - uname -a
-  - go --version
-
+  - go version
+  - go get github.com/aktau/github-release
+  - github-release --version
   # Install Python 2 pip, ensure pip installed packages are found first
   # Python 2 installation and path priority in Travis OS X is a bit of a mess
   # https://github.com/travis-ci/travis-ci/issues/4194 
