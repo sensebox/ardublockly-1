@@ -21,6 +21,7 @@ before_install:
   - export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
   - test -d "${GOPATH}" || mkdir "${GOPATH}"
   - test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+  - brew update
   - brew install go
   - go version
   - which go
@@ -43,7 +44,6 @@ before_install:
   - python -c "from six import wraps"
 
   # Install Python 3.5 with pip, and check versions
-  - brew update
   - brew install python
   - sudo pip3 install --upgrade pip
 
