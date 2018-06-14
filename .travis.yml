@@ -19,8 +19,8 @@ before_install:
   - export GOPATH=$HOME/go
   - echo $GOAPTH
   - export PATH=$PATH:$(go env GOPATH)/bin
-  - go get github.com/aktau/github-release
-  - github-release --version
+  - go get github.com/itchio/gothub
+  - gothub --version
   # Install Python 2 pip, ensure pip installed packages are found first
   # Python 2 installation and path priority in Travis OS X is a bit of a mess
   # https://github.com/travis-ci/travis-ci/issues/4194 
