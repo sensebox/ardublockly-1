@@ -91,6 +91,7 @@ install:
   - cd package/electron && npm run release && cd ../../
   - python3 package/pack_ardublockly.py
   - du -sk releases/
+  - ls -la releases/
 
 # Run the tests in both Python 2 and 3
 script:
