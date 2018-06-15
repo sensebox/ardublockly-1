@@ -24,7 +24,7 @@ before_install:
   - curl -O https://bootstrap.pypa.io/get-pip.py
   - sudo python get-pip.py
   - rm get-pip.py
-  - sudo pip install --upgrade pip setuptools wheel
+  # - sudo pip install --upgrade pip setuptools wheel
   # https://github.com/pypa/pip/issues/3165
   - sudo -H pip install --ignore-installed six
   - sudo -H pip install --ignore-installed mock
