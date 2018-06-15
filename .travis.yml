@@ -36,7 +36,7 @@ before_install:
 
   # Install Python 3.5 with pip, and check versions
   - pyenv install 3.5.0
-  - sudo pip3 install --upgrade pip
+  - sudo pip3.5 install --upgrade pip
 
   - brew install libcouchbase
   - PATH=/usr/local/bin:$PATH
@@ -47,13 +47,13 @@ before_install:
   - sudo python -m pip install --ignore-installed mock
   - sudo python -m pip install coverage
   - sudo python -m pip install requests
-  - pip3 install coverage
-  - pip3 install requests
-  - pip3 install coveralls
+  - pip3.5 install coverage
+  - pip3.5 install requests
+  - pip3.5 install coveralls
   #- pip3 install pydocstyle
-  - pip3 install mkdocs
+  - pip3.5 install mkdocs
   # We need a newer unreleased version of PyInstaller for Python 3.5
-  - pip3 install https://github.com/pyinstaller/pyinstaller/archive/964547cd92cabe28150d52c2ca809de74a5ddbaa.zip
+  - pip3.5 install https://github.com/pyinstaller/pyinstaller/archive/964547cd92cabe28150d52c2ca809de74a5ddbaa.zip
 
   # Check Python, pip and package versions
   - python -c "import sys; print(sys.executable)"
@@ -61,11 +61,11 @@ before_install:
   - python -c "import struct; print(struct.calcsize('P') * 8)"
   - python -m pip --version
   - python -m pip freeze
-  - python3 -c "import sys; print(sys.executable)"
-  - python3 --version
-  - python3 -c "import struct; print(struct.calcsize('P') * 8)"
-  - pip3 --version
-  - pip3 freeze
+  - python3.5 -c "import sys; print(sys.executable)"
+  - python3.5 --version
+  - python3.5 -c "import struct; print(struct.calcsize('P') * 8)"
+  - pip3.5 --version
+  - pip3.5 freeze
   - pyinstaller --version
 
   # Travis make takes > 10 minutes, so need to increase wait
@@ -76,11 +76,11 @@ before_install:
 # Build and pack Ardublockly
 install:
   - cd blockly && python build.py && cd ../
-  - python3 package/build_docs.py
-  - python3 package/build_pyinstaller.py mac
+  - python3.5 package/build_docs.py
+  - python3.5 package/build_pyinstaller.py mac
   - cd package/electron && npm install && cd ../../
   - cd package/electron && npm run release && cd ../../
-  - python3 package/pack_ardublockly.py
+  - python3.5 package/pack_ardublockly.py
   - du -sk releases/
   - ls -la releases/
   - mv releases/*.zip blockly-for-sensebox_v${TRAVIS_TAG}_osx.zip
