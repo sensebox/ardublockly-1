@@ -1,6 +1,6 @@
 # Oldest OS X image in TravisCi at the moment is 10.10
 os: osx
-osx_image: xcode6.4
+osx_image: xcode9.3
 language: node_js
 node_js:
   - '8'
@@ -9,6 +9,8 @@ before_install:
   # OS extra info
   - sw_vers
   - uname -a
+  - go version
+  - node --version
   - export GOPATH="${HOME}/.go"
   - export GOROOT="$(brew --prefix golang)/libexec"
   - export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
@@ -16,7 +18,7 @@ before_install:
   - test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
   - brew update
   - brew upgrade go
-  - brew upgrade node
+  - travis_wait brew upgrade node
   - go get github.com/itchio/gothub
   - gothub --version
   # Install Python 2 pip, ensure pip installed packages are found first
