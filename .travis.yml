@@ -36,6 +36,7 @@ before_install:
 
   # Install Python 3.5 with pip, and check versions
   - pyenv install 3.5.0
+  - pyenv global 3.5.0
   - sudo pip3.5 install --upgrade pip
 
   - brew install libcouchbase
@@ -43,10 +44,12 @@ before_install:
   - echo $PATH
 
   # Install Python packages (built with Python 3, tests for 2 and 3)
+  - pyenv global system
   - sudo python -m pip install --ignore-installed six
   - sudo python -m pip install --ignore-installed mock
   - sudo python -m pip install coverage
   - sudo python -m pip install requests
+  - pyenv global 3.5.0
   - pip3.5 install coverage
   - pip3.5 install requests
   - pip3.5 install coveralls
@@ -56,11 +59,13 @@ before_install:
   - pip3.5 install https://github.com/pyinstaller/pyinstaller/archive/964547cd92cabe28150d52c2ca809de74a5ddbaa.zip
 
   # Check Python, pip and package versions
+  - pyenv global system
   - python -c "import sys; print(sys.executable)"
   - python --version
   - python -c "import struct; print(struct.calcsize('P') * 8)"
   - python -m pip --version
   - python -m pip freeze
+  - pyenv global 3.5.0
   - python3.5 -c "import sys; print(sys.executable)"
   - python3.5 --version
   - python3.5 -c "import struct; print(struct.calcsize('P') * 8)"
@@ -75,7 +80,9 @@ before_install:
 
 # Build and pack Ardublockly
 install:
+  - pyenv global system
   - cd blockly && python build.py && cd ../
+  - pyenv global 3.5.0
   - python3.5 package/build_docs.py
   - python3.5 package/build_pyinstaller.py mac
   - cd package/electron && npm install && cd ../../
