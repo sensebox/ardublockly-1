@@ -26,7 +26,6 @@ configuration: Release
 skip_tags: true
 
 init:
-  - ps: Get-ChildItem -Path Env:* | Sort-Object Name
   - cmd: ECHO Processor architecture - %PROCESSOR_ARCHITECTURE%
   - cmd: wmic OS get OSArchitecture
 

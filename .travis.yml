@@ -69,7 +69,6 @@ before_install:
   - pyinstaller --version
 
   # Travis make takes > 10 minutes, so need to increase wait
-  - nvm use default
   - node --version
   - node -p "process.arch"
   - npm --version
