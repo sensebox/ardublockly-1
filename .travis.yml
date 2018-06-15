@@ -16,6 +16,7 @@ before_install:
   - test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
   - brew update
   - brew upgrade go
+  - brew upgrade node
   - go get github.com/itchio/gothub
   - gothub --version
   # Install Python 2 pip, ensure pip installed packages are found first
@@ -69,7 +70,6 @@ before_install:
   - pyinstaller --version
 
   # Travis make takes > 10 minutes, so need to increase wait
-  - brew upgrade node
   - node --version
   - node -p "process.arch"
   - npm --version
