@@ -102,6 +102,7 @@ before_deploy:
 
 deploy:
   name: ardublockly-github-release
+  tag: v$(appveyor_build_version)
   release: blockly-for-sensebox-v$(appveyor_build_version)
   description: 'Windows Release'
   provider: GitHub

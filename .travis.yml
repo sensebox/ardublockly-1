@@ -13,9 +13,6 @@ before_install:
   # OS extra info
   - sw_vers
   - uname -a
-  - ls -la
-  - go version
-  - which go
   - export GOPATH="${HOME}/.go"
   - export GOROOT="$(brew --prefix golang)/libexec"
   - export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
@@ -23,8 +20,6 @@ before_install:
   - test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
   - brew update
   - brew upgrade go
-  - go version
-  - which go
   - go get github.com/itchio/gothub
   - gothub --version
   # Install Python 2 pip, ensure pip installed packages are found first
@@ -78,6 +73,7 @@ before_install:
   - pyinstaller --version
 
   # Travis make takes > 10 minutes, so need to increase wait
+  - nvm use default
   - node --version
   - node -p "process.arch"
   - npm --version
@@ -92,6 +88,7 @@ install:
   - python3 package/pack_ardublockly.py
   - du -sk releases/
   - ls -la releases/
+  - mv releases/*.zip blockly-for-sensebox_v${TRAVIS_TAG}_osx.zip
 
 # Run the tests in both Python 2 and 3
 script:
@@ -101,5 +98,13 @@ script:
   - python3 -m coverage report
   #- pydocstyle ardublocklyserver --match-dir='ardublocklyserver'
 
-# after_success:
-#   - coveralls
+after_success:
+  - if [[ ! -z "$TRAVIS_TAG" ]]; then
+      echo "Build triggered by a tag";
+      gothub upload \
+        -u sensebox \
+        -r ardublockly-1 \
+        -t $TRAVIS_TAG \
+        -n blockly-for-sensebox_v${TRAVIS_TAG}_osx.zip \
+        -f releases/blockly-for-sensebox_v${TRAVIS_TAG}_osx.zip
+    fi
