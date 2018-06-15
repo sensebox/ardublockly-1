@@ -35,7 +35,7 @@ before_install:
   - python -c "from six import wraps"
 
   # Install Python 3.5 with pip, and check versions
-  - brew install python
+  - brew install python3
   - sudo pip3 install --upgrade pip
 
   - brew install libcouchbase
