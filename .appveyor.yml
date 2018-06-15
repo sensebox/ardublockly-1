@@ -94,8 +94,7 @@ test_script:
 
 # Push artefact to S3 bucket and list all
 before_deploy:
-  - ps: Set-AppveyorBuildVariable -Name 'ReleaseName' -Value 'blockly_for_sensebox_v$(appveyor_build_version)_windows'
-  - ps: Get-ChildItem .\releases\*.zip | % { Push-AppveyorArtifact $_.FullName -FileName $_.ReleaseName -DeploymentName ardublockly-github-release }
+  - ps: Get-ChildItem .\releases\*.zip | % { Push-AppveyorArtifact $_.FullName -FileName "blockly-for-sensebox_v$(appveyor_build_version)_windows.zip" -DeploymentName ardublockly-github-release }
   - ps: foreach($artifactName in $artifacts.keys) { $artifacts[$artifactName] }
 
 deploy:
