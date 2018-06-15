@@ -5,10 +5,6 @@ language: node_js
 node_js:
   - '8'
 
-branches:
-  only:
-    - appveyor
-
 before_install:
   # OS extra info
   - sw_vers
