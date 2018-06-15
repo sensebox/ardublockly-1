@@ -69,6 +69,7 @@ before_install:
   - pyinstaller --version
 
   # Travis make takes > 10 minutes, so need to increase wait
+  - brew upgrade node
   - node --version
   - node -p "process.arch"
   - npm --version
@@ -86,11 +87,11 @@ install:
   - mv releases/*.zip blockly-for-sensebox_v${TRAVIS_TAG}_osx.zip
 
 # Run the tests in both Python 2 and 3
-script:
-  - python -m coverage run ardublocklyserver/tests/run_all.py
-  - python -m coverage report
-  - python3 -m coverage run ardublocklyserver/tests/run_all.py
-  - python3 -m coverage report
+# script:
+#   - python -m coverage run ardublocklyserver/tests/run_all.py
+#   - python -m coverage report
+#   - python3 -m coverage run ardublocklyserver/tests/run_all.py
+#   - python3 -m coverage report
   #- pydocstyle ardublocklyserver --match-dir='ardublocklyserver'
 
 after_success:
