@@ -95,7 +95,7 @@ install:
   - python3.5 package/pack_ardublockly.py
   - du -sk releases/
   - ls -la releases/
-  - mv releases/*.zip blockly-for-sensebox_v1.0.0_osx.zip
+  - mv releases/*.zip releases/blockly-for-sensebox_v1.0.0_osx.zip
 
 # Run the tests in both Python 2 and 3
 script:
