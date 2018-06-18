@@ -12,9 +12,6 @@ before_install:
   - go version
   - node --version
   - python --version
-  - export PATH="$PATH:${HOME}/.pyenv/shims"
-  - pyenv versions
-  - ls -la $HOME/.pyenv/shims
   - export GOPATH="${HOME}/.go"
   - export GOROOT="$(brew --prefix golang)/libexec"
   - export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
@@ -40,6 +37,7 @@ before_install:
 
   # Install Python 3.5 with pip, and check versions
   - pyenv install 3.5.0
+  - export PATH="$PATH:${HOME}/.pyenv/shims"
   - pyenv global 3.5.0
   - sudo pip3.5 install --upgrade pip
 
