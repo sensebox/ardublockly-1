@@ -36,7 +36,7 @@ before_install:
   - python -c "from six import wraps"
 
   # Install Python 3.5 with pip, and check versions
-  - pyenv install 3.5.0
+  - env PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install 3.5.0
   - export PATH="$PATH:${HOME}/.pyenv/shims"
   - pyenv global 3.5.0
   - sudo pip3.5 install --upgrade pip
