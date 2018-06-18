@@ -37,7 +37,7 @@ before_install:
 
   # Install Python 3.5 with pip, and check versions
   - pyenv install 3.5.0
-  - export PATH="$PATH:${HOME}/.pyenv/shims:${HOME}/.pyenv/versions/3.5.0/lib/python3.5/site-packages"
+  - export PATH="$PATH:${HOME}/.pyenv/shims"
   - pyenv global 3.5.0
   - sudo pip3.5 install --upgrade pip
 
@@ -59,6 +59,7 @@ before_install:
   - pip3.5 install mkdocs
   # We need a newer unreleased version of PyInstaller for Python 3.5
   - pip3.5 install https://github.com/pyinstaller/pyinstaller/archive/964547cd92cabe28150d52c2ca809de74a5ddbaa.zip
+  - ls -la ${HOME}/.pyenv/shims
 
   # Check Python, pip and package versions
   - pyenv global system
@@ -73,6 +74,9 @@ before_install:
   - python3.5 -c "import struct; print(struct.calcsize('P') * 8)"
   - pip3.5 --version
   - pip3.5 freeze
+  - python --version
+  - which python
+  - pyenv local 3.5.0
   - pyinstaller --version
 
   # Travis make takes > 10 minutes, so need to increase wait
@@ -103,12 +107,12 @@ install:
   #- pydocstyle ardublocklyserver --match-dir='ardublocklyserver'
 
 after_success:
-  - if [[ ! -z "$TRAVIS_TAG" ]]; then
-      echo "Build triggered by a tag";
-      gothub upload \
-        -u sensebox \
-        -r ardublockly-1 \
-        -t $TRAVIS_TAG \
-        -n blockly-for-sensebox_v${TRAVIS_TAG}_osx.zip \
-        -f releases/blockly-for-sensebox_v${TRAVIS_TAG}_osx.zip
-    fi
+  # - if [[ ! -z "$TRAVIS_TAG" ]]; then
+  - echo "Build triggered by a tag";
+  - gothub upload \
+      -u sensebox \
+      -r ardublockly-1 \
+      -t "v1.0.0" \
+      -n blockly-for-sensebox_v${TRAVIS_TAG}_osx.zip \
+      -f releases/blockly-for-sensebox_v${TRAVIS_TAG}_osx.zip
+    # fi
