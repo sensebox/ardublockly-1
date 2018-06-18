@@ -99,9 +99,9 @@ install:
 
 # Run the tests in both Python 2 and 3
 script:
-  -pyenv global system
-  - python -m coverage run ardublocklyserver/tests/run_all.py
-  - python -m coverage report
+  # -pyenv global system
+  # - python -m coverage run ardublocklyserver/tests/run_all.py
+  # - python -m coverage report
   - python3.5 -m coverage run ardublocklyserver/tests/run_all.py
   - python3.5 -m coverage report
   # - pydocstyle ardublocklyserver --match-dir='ardublocklyserver'
