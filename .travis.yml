@@ -60,8 +60,6 @@ before_install:
   # We need a newer unreleased version of PyInstaller for Python 3.5
   - pip3.5 install https://github.com/pyinstaller/pyinstaller/archive/964547cd92cabe28150d52c2ca809de74a5ddbaa.zip
   - pyenv rehash
-  - ls -la ${HOME}/.pyenv/shims
-  - which pyinstaller
 
   # Check Python, pip and package versions
   - pyenv global system
@@ -78,7 +76,6 @@ before_install:
   - pip3.5 freeze
   - python --version
   - which python
-  - pyenv local 3.5.0
   - pyinstaller --version
 
   # Travis make takes > 10 minutes, so need to increase wait
