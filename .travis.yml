@@ -40,8 +40,8 @@ before_install:
 
   # Install Python 3.5 with pip, and check versions
   - pyenv install 3.5.0
-  # - pyenv global 3.5.0
-  # - sudo pip3.5 install --upgrade pip
+  - pyenv global 3.5.0
+  - sudo pip3.5 install --upgrade pip
 
   - brew install libcouchbase
   - PATH=/usr/local/bin:$PATH
