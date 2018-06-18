@@ -58,8 +58,8 @@ before_install:
   #- pip3 install pydocstyle
   - pip3.5 install mkdocs
   # We need a newer unreleased version of PyInstaller for Python 3.5
-  # - pip3.5 install https://github.com/pyinstaller/pyinstaller/archive/964547cd92cabe28150d52c2ca809de74a5ddbaa.zip
-  # - pyenv rehash
+  - pip3.5 install https://github.com/pyinstaller/pyinstaller/archive/964547cd92cabe28150d52c2ca809de74a5ddbaa.zip
+  - pyenv rehash
   - ls -la ${HOME}/.pyenv/shims
   - which pyinstaller
 
