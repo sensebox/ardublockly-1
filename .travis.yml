@@ -95,7 +95,7 @@ install:
   - python3.5 package/pack_ardublockly.py
   - du -sk releases/
   - ls -la releases/
-  - mv releases/*.zip blockly-for-sensebox_v${TRAVIS_TAG}_osx.zip
+  - mv releases/*.zip blockly-for-sensebox_v1.0.0_osx.zip
 
 # Run the tests in both Python 2 and 3
 script:
@@ -112,6 +112,6 @@ after_success:
       -u sensebox \
       -r ardublockly-1 \
       -t "v1.0.0" \
-      -n blockly-for-sensebox_v${TRAVIS_TAG}_osx.zip \
-      -f releases/blockly-for-sensebox_v${TRAVIS_TAG}_osx.zip
+      -n blockly-for-sensebox_v1.0.0_osx.zip \
+      -f releases/blockly-for-sensebox_v1.0.0_osx.zip
     # fi
