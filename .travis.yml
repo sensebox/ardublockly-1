@@ -12,8 +12,7 @@ before_install:
   - go version
   - node --version
   - python --version
-  - which python
-  - pyenv install 3.5.0
+  - export PATH="$PATH:${HOME}/.pyenv/shims"
   - pyenv versions
   - ls -la $HOME/.pyenv/shims
   - export GOPATH="${HOME}/.go"
