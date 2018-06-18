@@ -101,8 +101,8 @@ install:
 script:
   - python -m coverage run ardublocklyserver/tests/run_all.py
   - python -m coverage report
-  - python3 -m coverage run ardublocklyserver/tests/run_all.py
-  - python3 -m coverage report
+  - python3.5 -m coverage run ardublocklyserver/tests/run_all.py
+  - python3.5 -m coverage report
   # - pydocstyle ardublocklyserver --match-dir='ardublocklyserver'
 
 after_success:
