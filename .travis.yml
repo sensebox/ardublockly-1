@@ -37,7 +37,7 @@ before_install:
 
   # Install Python 3.5 with pip, and check versions
   - pyenv install 3.5.0
-  - export PATH="$PATH:${HOME}/.pyenv/shims"
+  - export PATH="$PATH:${HOME}/.pyenv/shims:${HOME}/.pyenv/versions/3.5.0/lib/python3.5/site-packages"
   - pyenv global 3.5.0
   - sudo pip3.5 install --upgrade pip
 
