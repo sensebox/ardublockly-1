@@ -110,4 +110,4 @@ deploy:
   draft: false
   prerelease: false
   on:
-    branch: appveyor                 # release from master branch only
+    branch: master                 # release from master branch only
