@@ -109,10 +109,5 @@ script:
 after_success:
   # - if [[ ! -z "$TRAVIS_TAG" ]]; then
   - echo "Build triggered by a tag";
-  - gothub upload \
-      -u sensebox \
-      -r ardublockly-1 \
-      -t "v1.0.0" \
-      -n blockly-for-sensebox_v1.0.0_osx.zip \
-      -f releases/blockly-for-sensebox_v1.0.0_osx.zip
+  - gothub upload -u sensebox -r ardublockly-1 -t "v1.0.0" -n blockly-for-sensebox_v1.0.0_osx.zip -f releases/blockly-for-sensebox_v1.0.0_osx.zip
     # fi
