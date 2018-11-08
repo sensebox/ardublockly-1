@@ -66,6 +66,7 @@ Ardublockly.bindBlocklyEventListeners = function() {
   Ardublockly.workspace.addChangeListener(function(event) {
     if (event.type != Blockly.Events.UI) {
       Ardublockly.renderContent();
+      Ardublockly.saveSessionStorageBlocks();
     }
   });
   // Ensure the Blockly workspace resizes accordingly
@@ -157,6 +158,7 @@ Ardublockly.saveSessionStorageBlocks = function() {
     var xml = Blockly.Xml.workspaceToDom(Ardublockly.workspace);
     var text = Blockly.Xml.domToText(xml);
     window.sessionStorage.loadOnceBlocks = text;
+    window.localStorage.loadOnceBlocks = text;
   }
 };
 

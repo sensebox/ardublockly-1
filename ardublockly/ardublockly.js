@@ -243,14 +243,17 @@ Ardublockly.loadServerXmlFile = function(xmlFile) {
     Ardublockly.loadXmlBlockFile(xmlFile, loadXmlCb, connectionErrorCb);
   };
 
-  if (Ardublockly.isWorkspaceEmpty()) {
-    loadXmlfileAccepted();
-  } else {
-    Ardublockly.alertMessage(
+  
+  if(!window.localStorage.loadOnceBlocks) {
+    if (Ardublockly.isWorkspaceEmpty()) {
+      loadXmlfileAccepted();
+    } else {
+      Ardublockly.alertMessage(
         Ardublockly.getLocalStr('loadNewBlocksTitle'),
         Ardublockly.getLocalStr('loadNewBlocksBody'),
         true, loadXmlfileAccepted);
-  }
+      }
+    }
 };
 
 /**
