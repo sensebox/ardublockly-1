@@ -123,6 +123,7 @@ Ardublockly.TOOLBOX_XML =
     '  <sep></sep>' +
     '      <category id="catsenseBoxOutput_Web" name="  web" colour="120">' +
     '      <block type="sensebox_wifi"></block>' +
+    '      <block type="sensebox_ip_address"></block>' +
     '      <block type="sensebox_osem_connection"></block>' +
     '      <block type="sensebox_send_to_osem"></block>' +
     '      <block type="sensebox_send_mobile_to_osem"></block>' +

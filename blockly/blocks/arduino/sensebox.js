@@ -1,10 +1,10 @@
 /*
 @metadata
     author": senseBox Team
-    lastupdated": 2018 
+    lastupdated": 2018
     for more information: www.sensebox.de
     add new Blocks for the senseBox MCU
-*/  
+*/
 
 'use strict';
 
@@ -105,7 +105,7 @@ Blockly.Blocks['sensebox_sensor_bmx055_compass'] = {
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.Msg.senseBox_value)
         .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_bmx055_x,"X"], [Blockly.Msg.senseBox_bmx055_y,"Y"]]), "NAME");
-    this.setOutput(true, Blockly.Types.DECIMAL.output);    
+    this.setOutput(true, Blockly.Types.DECIMAL.output);
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.setTooltip(Blockly.Msg.senseBox_bmx055_compass_tip);
     this.setHelpUrl('https://edu.books.sensebox.de/de/projekte/diy_umweltstation/temp_und_luftfeuchte.html');
@@ -185,10 +185,10 @@ Blockly.Blocks['sensebox_sensor_ultrasonic_ranger'] = {
    * Parse XML to restore the number of pins available.
    * @param {!Element} xmlElement XML storage element.
    * @this Blockly.Block
-   
+
   domToMutation: function(xmlElement) {
     var input = (xmlElement.getAttribute('port'));
-    
+
   },*
   /**
    * Create XML to represent number of pins selection.
@@ -212,15 +212,15 @@ Blockly.Blocks['sensebox_sensor_ultrasonic_ranger'] = {
     var input = this.getFieldValue('port');
     switch (input){
       case 'A':
-      this.setFieldValue('1','ultrasonic_trigger');  
+      this.setFieldValue('1','ultrasonic_trigger');
       this.setFieldValue('2','ultrasonic_echo');
       break;
       case 'B':
-      this.setFieldValue('3','ultrasonic_trigger');  
+      this.setFieldValue('3','ultrasonic_trigger');
       this.setFieldValue('4','ultrasonic_echo');
       break;
       case 'C':
-      this.setFieldValue('5','ultrasonic_trigger');  
+      this.setFieldValue('5','ultrasonic_trigger');
       this.setFieldValue('6','ultrasonic_echo');
       break;
     }
@@ -301,6 +301,17 @@ Blockly.Blocks['sensebox_wifi'] = {
           }
         },
         LOOP_TYPES: ['arduino_functions'],
+  };
+
+  Blockly.Blocks['sensebox_ip_address'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField(Blockly.Msg.senseBox_ip_address);
+      this.setTooltip(Blockly.Msg.senseBox_ip_address_tip);
+      this.setHelpUrl('');
+      this.setOutput(true, Blockly.Types.TEXT.output);
+      this.setColour(Blockly.Blocks.sensebox.HUE);
+    }
   };
 
   Blockly.Blocks['sensebox_osem_connection'] = {
@@ -654,7 +665,7 @@ Blockly.Blocks['sensebox_display_printDisplay'] = {
     this.appendValueInput("X", 'Number')
             .appendField(Blockly.Msg.senseBox_display_printDisplay_x);
     this.appendValueInput("Y", 'Number')
-            .appendField(Blockly.Msg.senseBox_display_printDisplay_y);   
+            .appendField(Blockly.Msg.senseBox_display_printDisplay_y);
     this.appendValueInput('printDisplay')
         .appendField(Blockly.Msg.senseBox_display_printDisplay_value)
         .setCheck(null);
@@ -713,7 +724,7 @@ Blockly.Blocks['sensebox_display_plotDisplay'] = {
     this.appendValueInput("YTick", 'Number')
             .appendField(Blockly.Msg.senseBox_display_plotYTick);
     this.appendValueInput("TimeFrame", 'Number')
-            .appendField(Blockly.Msg.senseBox_display_plotTimeFrame);     
+            .appendField(Blockly.Msg.senseBox_display_plotTimeFrame);
     this.appendValueInput('plotDisplay')
         .appendField(Blockly.Msg.senseBox_display_printDisplay_value)
         .setCheck(null);
@@ -750,7 +761,7 @@ Blockly.Blocks['sensebox_display_plotDisplay'] = {
 
 Blockly.Blocks['sensebox_display_show'] = {
   init: function() {
-    
+
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendDummyInput()
         .appendField(Blockly.Msg.sensebox_display_show);

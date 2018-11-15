@@ -41,7 +41,7 @@ Blockly.Arduino.sensebox_sensor_uv_light = function(){
     Blockly.Arduino.setups_['sensebox_sensor_uv_light'] = 'veml.begin();'
     var code = 'veml.get'+dropdown_name+'()';
   }
-  if (dropdown_name == 'Illuminance'){  
+  if (dropdown_name == 'Illuminance'){
     Blockly.Arduino.userFunctions_['define_tsl'] = 'TSL45315 tsl;'
     Blockly.Arduino.setups_['sensebox_sensor_illuminance'] = 'tsl.begin();'
     var code = 'tsl.get'+dropdown_name+'()';
@@ -103,6 +103,11 @@ Blockly.Arduino.sensebox_wifi = function(block) {
   return code;
 };
 
+Blockly.Arduino.sensebox_ip_address = function(block) {
+    var code = "b->getIpAddress()";
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 Blockly.Arduino.sensebox_osem_connection = function(block) {
   var box_id = this.getFieldValue('BoxID');
   var branch = Blockly.Arduino.statementToCode(block, 'DO');
@@ -110,7 +115,7 @@ Blockly.Arduino.sensebox_osem_connection = function(block) {
   Blockly.Arduino.userFunctions_['define_osem'] = 'OpenSenseMap osem("'+box_id+'",b);';
   Blockly.Arduino.setups_['sensebox_osem'] = '';
   var code = '';
-      code += branch; 
+      code += branch;
   return code;
 };
 
@@ -243,7 +248,7 @@ Blockly.Arduino.sensebox_sd_create_file = function(block) {
   var code = '';
   return code;
   };
-  
+
 
 Blockly.Arduino.sensebox_sd_open_file = function(block) {
 var filename = this.getFieldValue('Filename');
@@ -347,7 +352,7 @@ Blockly.Arduino.sensebox_sd_write_file = function(block) {
           var branch = Blockly.Arduino.statementToCode(block, 'DO');
           var code = 'time_start = millis();\n';
               code += 'if (time_start > time_actual + interval) {\n  time_actual = millis();\n'
-              code += branch; 
+              code += branch;
               code += '}\n'
           return code;
         };
