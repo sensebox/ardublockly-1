@@ -127,6 +127,16 @@ Ardublockly.TOOLBOX_XML =
     '      <block type="sensebox_osem_connection"></block>' +
     '      <block type="sensebox_send_to_osem"></block>' +
     '      <block type="sensebox_send_mobile_to_osem"></block>' +
+    '      <block type="sensebox_initialize_http_server"></block>' +
+    '      <block type="sensebox_http_on_client_connect"></block>' +
+    '      <block type="sensebox_http_method"></block>' +
+    '      <block type="sensebox_http_uri"></block>' +
+    '      <block type="sensebox_http_protocol_version"></block>' +
+    '      <block type="sensebox_http_user_agent"></block>' +
+    '      <block type="sensebox_generate_http_succesful_response"></block>' +
+    '      <block type="sensebox_generate_http_not_found_response"></block>' +
+    '      <block type="sensebox_generate_html_doc"></block>' +
+    '      <block type="sensebox_general_html_tag"></block>' +
     '       </category>' +
     '  <sep></sep>' +
     '      <category id="catsenseBoxOutput_SD" name="   SD" colour="120">' +
