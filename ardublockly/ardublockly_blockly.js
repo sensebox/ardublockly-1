@@ -165,14 +165,14 @@ Ardublockly.saveSessionStorageBlocks = function() {
 /** Load blocks saved on session storage and deletes them from storage. */
 Ardublockly.loadSessionStorageBlocks = function() {
   try {
-    var loadOnce = window.sessionStorage.loadOnceBlocks;
+    var loadOnce = window.localStorage.loadOnceBlocks;
   } catch (e) {
     // Firefox sometimes throws a SecurityError when accessing sessionStorage.
     // Restarting Firefox fixes this, so it looks like a bug.
     var loadOnce = null;
   }
   if (loadOnce) {
-    delete window.sessionStorage.loadOnceBlocks;
+    delete window.localStorage.loadOnceBlocks;
     var xml = Blockly.Xml.textToDom(loadOnce);
     Blockly.Xml.domToWorkspace(xml, Ardublockly.workspace);
   }
