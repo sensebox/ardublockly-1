@@ -243,13 +243,33 @@ Ardublockly.loadServerXmlFile = function(xmlFile) {
     Ardublockly.loadXmlBlockFile(xmlFile, loadXmlCb, connectionErrorCb);
   };
 
-  if (Ardublockly.isWorkspaceEmpty()) {
-    loadXmlfileAccepted();
-  } else {
+  if(window.localStorage.loadOnceBlocks) {
+    var didReload = false;
     Ardublockly.alertMessage(
-        Ardublockly.getLocalStr('loadNewBlocksTitle'),
-        Ardublockly.getLocalStr('loadNewBlocksBody'),
-        true, loadXmlfileAccepted);
+      Ardublockly.getLocalStr('loadSavedBlocksTitle'),
+      Ardublockly.getLocalStr('loadSavedBlocksBody'),
+      true,
+      function(test) {
+        if(test){
+          didReload = true;
+          Ardublockly.loadLocalStorageBlocks();
+        } 
+      },
+      function() {
+          loadXmlfileAccepted();
+      }
+      );
+     
+  
+  } else {
+    if (Ardublockly.isWorkspaceEmpty()) {
+        loadXmlfileAccepted();
+    } else {
+      Ardublockly.alertMessage(
+          Ardublockly.getLocalStr('loadNewBlocksTitle'),
+          Ardublockly.getLocalStr('loadNewBlocksBody'),
+          true, loadXmlfileAccepted);
+    }
   }
 };
 
@@ -726,8 +746,8 @@ Ardublockly.functionNotImplemented = function() {
  * @param {string=|function=} callback If confirm option is selected this would
  *     be the function called when clicked 'OK'.
  */
-Ardublockly.alertMessage = function(title, body, confirm, callback) {
-  Ardublockly.materialAlert(title, body, confirm, callback);
+Ardublockly.alertMessage = function(title, body, confirm, callback, callbackCancel) {
+  Ardublockly.materialAlert(title, body, confirm, callback, callbackCancel);
 };
 
 /**

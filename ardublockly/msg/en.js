@@ -119,5 +119,8 @@ Ardublockly.LOCALISED_TEXT = {
   code_copied: "Code was copied",
   save_to_clipboard: "Copy to clipboard",
   compile_sketch: "Compile sketch",
-  sketch_compiled: "Sketch was compiled"
+  sketch_compiled: "Sketch was compiled",
+  loadSavedBlocksTitle: "Load saved blocks?",
+  loadSavedBlocksBody: "We found some blocks saved in your browser. Do you want to reload them?"
+
 };

@@ -281,7 +281,7 @@ Ardublockly.resizeBlocklyWorkspace = function() {
  * @param {string=|function=} callback If confirm option is selected this would
  *     be the function called when clicked 'OK'.
  */
-Ardublockly.materialAlert = function(title, body, confirm, callback) {
+Ardublockly.materialAlert = function(title, body, confirm, callback, callbackCancel) {
   $('#gen_alert_title').text(title);
   $('#gen_alert_body').text('');
   $('#gen_alert_body').append(body);
@@ -289,10 +289,12 @@ Ardublockly.materialAlert = function(title, body, confirm, callback) {
     $('#gen_alert_cancel_link').css({'display': 'block'});
     if (callback) {
       $('#gen_alert_ok_link').bind('click', callback);
+      $('#gen_alert_cancel_link').bind('click', callbackCancel);
     }
   } else {
     $('#gen_alert_cancel_link').css({'display': 'none'});
     $('#gen_alert_ok_link').unbind('click');
+    $('#gen_alert_cancel_link').unbind('click');
   }
   $('#gen_alert').openModal();
   window.location.hash = '';
