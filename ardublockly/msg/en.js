@@ -77,6 +77,10 @@ Ardublockly.LOCALISED_TEXT = {
   loadNewBlocksTitle: "Load new blocks?",
   loadNewBlocksBody: "Loading a new XML file will replace the current blocks from the workspace.<br>" +
                      "Are you sure you want to proceed?",
+  loadOldBlocksTitle: "Restore old blocks?",
+  loadOldBlocksBody: "We found an old project on your Computer.<br>" +
+                    "Do you want to restore your old project?",
+                   
   discardBlocksTitle: "Delete blocks?",
   discardBlocksBody: "There are %1 blocks on the workspace.<br>" +
                      "Are you sure you want to delete them?",

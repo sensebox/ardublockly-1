@@ -232,9 +232,9 @@ Ardublockly.loadServerXmlFile = function(xmlFile) {
         Ardublockly.renderContent();
       } else {
         Ardublockly.alertMessage(
-            Ardublockly.getLocalStr('invalidXmlTitle'),
-            Ardublockly.getLocalStr('invalidXmlBody'),
-            false);
+          Ardublockly.getLocalStr('invalidXmlTitle'),
+          Ardublockly.getLocalStr('invalidXmlBody'),
+          false);
       }
     };
     var connectionErrorCb = function() {
@@ -246,11 +246,11 @@ Ardublockly.loadServerXmlFile = function(xmlFile) {
   
   if(!window.localStorage.loadOnceBlocks) {
     if (Ardublockly.isWorkspaceEmpty()) {
-      loadXmlfileAccepted();
+      // loadXmlfileAccepted();
     } else {
       Ardublockly.alertMessage(
-        Ardublockly.getLocalStr('loadNewBlocksTitle'),
-        Ardublockly.getLocalStr('loadNewBlocksBody'),
+        Ardublockly.getLocalStr('loadOldBlocksTitle'),
+        Ardublockly.getLocalStr('loadOldBlocksBody'),
         true, loadXmlfileAccepted);
       }
     }
