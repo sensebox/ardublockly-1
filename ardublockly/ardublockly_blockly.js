@@ -20,7 +20,6 @@ Ardublockly.workspace = null;
  * @type Element
  */
 Ardublockly.xmlTree = null;
-
 /**
  * Injects Blockly into a given HTML element. Toolbox XMl has to be a string.
  * @param {!Element} blocklyEl Element to inject Blockly into.
@@ -66,6 +65,7 @@ Ardublockly.bindBlocklyEventListeners = function() {
   Ardublockly.workspace.addChangeListener(function(event) {
     if (event.type != Blockly.Events.UI) {
       Ardublockly.renderContent();
+      Ardublockly.saveLocalStorageBlocks();
     }
   });
   // Ensure the Blockly workspace resizes accordingly
@@ -146,6 +146,36 @@ Ardublockly.loadBlocksfromXmlDom = function(blocksXmlDom) {
     return false;
   }
   return true;
+};
+
+/**
+  * Save blocks into session storage. Note that MSIE 11 does not support
+  * sessionStorage on file:// URLs.
+  */
+ Ardublockly.saveLocalStorageBlocks = function() {
+  if (window.localStorage) {
+    var xml = Blockly.Xml.workspaceToDom(Ardublockly.workspace);
+    var text = Blockly.Xml.domToText(xml);
+    localStorage.setItem(document.getElementById('sketch_name').value, text);
+    //window.localStorage.loadOnceBlocks = text;
+  }
+};
+
+ /** Load blocks saved on session storage and deletes them from storage. */
+Ardublockly.loadLocalStorageBlocks = function() {
+  try {
+    var loadOnce = localStorage.getItem(document.getElementById('sketch_name').value);
+  } catch (e) {
+    // Firefox sometimes throws a SecurityError when accessing sessionStorage.
+    // Restarting Firefox fixes this, so it looks like a bug.
+    var loadOnce = null;
+  }
+  if (loadOnce) {
+    var xml = Blockly.Xml.textToDom(loadOnce);
+    console.log(xml);
+    Ardublockly.loadBlocksfromXmlDom(xml);
+    delete window.localStorage.loadOnceBlocks;
+  }
 };
 
 /**

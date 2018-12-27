@@ -41,6 +41,7 @@ Ardublockly.init = function(options) {
 /** Binds functions to each of the buttons, nav links, and related. */
 Ardublockly.bindActionFunctions = function() {
   // Navigation buttons
+  Ardublockly.bindClick_('button_reload', Ardublockly.loadLocalStorageBlocks);
   Ardublockly.bindClick_('button_load', Ardublockly.loadUserXmlFile);
   Ardublockly.bindClick_('button_save', Ardublockly.saveXmlFile);
   Ardublockly.bindClick_('button_save_ino', Ardublockly.saveSketchFile);
@@ -545,6 +546,7 @@ Ardublockly.XmlTextareaToBlocks = function() {
         false);
   }
 };
+
 
 /**
  * Private variable to save the previous version of the Arduino Code.
