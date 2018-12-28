@@ -157,26 +157,9 @@ Ardublockly.loadBlocksfromXmlDom = function(blocksXmlDom) {
     var xml = Blockly.Xml.workspaceToDom(Ardublockly.workspace);
     var text = Blockly.Xml.domToText(xml);
     localStorage.setItem(document.getElementById('sketch_name').value, text);
-    //window.localStorage.loadOnceBlocks = text;
   }
 };
 
- /** Load blocks saved on session storage and deletes them from storage. */
-Ardublockly.loadLocalStorageBlocks = function() {
-  try {
-    var loadOnce = localStorage.getItem(document.getElementById('sketch_name').value);
-  } catch (e) {
-    // Firefox sometimes throws a SecurityError when accessing sessionStorage.
-    // Restarting Firefox fixes this, so it looks like a bug.
-    var loadOnce = null;
-  }
-  if (loadOnce) {
-    var xml = Blockly.Xml.textToDom(loadOnce);
-    console.log(xml);
-    Ardublockly.loadBlocksfromXmlDom(xml);
-    delete window.localStorage.loadOnceBlocks;
-  }
-};
 
 /**
  * Save blocks into session storage. Note that MSIE 11 does not support

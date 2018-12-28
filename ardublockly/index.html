@@ -79,7 +79,8 @@
       </a>
       <!-- Horizontal Navbar links only shown on large resolutions -->
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#" id="button_reload"><span class="translatable_reload">Reload Blocks</span><i class="mdi-file-file-upload left"></i></a></li>
+        <li><a href="#" id="button_project"><span class="translatable_project">New Project</span><i class="mdi-file-file-upload left"></i></a></li>
+        <li><a href="#" id="button_load_project"><span class="translatable_load_project">Load Project</span><i class="mdi-file-file-upload left"></i></a></li>
         <li><a href="#" id="button_load"><span class="translatable_open">Open Blocks</span><i class="mdi-file-file-upload left"></i></a></li>
         <li><a href="#" id="button_save"><span class="translatable_save">Save Blocks</span><i class="mdi-file-file-download left"></i></a></li>
         <li><a href="#" id="button_save_ino"><span class="translatable_save_ino">Save Sketch</span><i class="mdi-file-file-download left"></i></a></li>
@@ -328,6 +329,30 @@
     <div class="modal-footer">
       <a id="gen_alert_ok_link" href="#" class="waves-effect btn-flat modal-close"><span class="translatable_okay">Okay</span></a>
     </div>
+  </div>
+
+  <!-- Modal for the Project List -->
+  <div class="modal fade" id="ProjectModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="gen_alert_title"><span class="translatable_titleProjects">Saved Projects</span></h4>
+          </div>
+          <div class="modal-body" id="modal-body">
+              <div class="container">
+                  <div class="row" id="modal-body-btn"> 
+                    <p></p>
+          </div>
+          <div class="modal-footer">
+              <a id="gen_alert_ok_link" href="#" class="waves-effect btn-flat modal-close"><span class="translatable_okay">Okay</span></a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
   </div>
 
   <!-- Desktop version of Ardublockly JS, needs to be loaded first. -->

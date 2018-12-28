@@ -41,7 +41,8 @@ Ardublockly.init = function(options) {
 /** Binds functions to each of the buttons, nav links, and related. */
 Ardublockly.bindActionFunctions = function() {
   // Navigation buttons
-  Ardublockly.bindClick_('button_reload', Ardublockly.loadLocalStorageBlocks);
+  Ardublockly.bindClick_('button_project', Ardublockly.startNewProject);
+  Ardublockly.bindClick_('button_load_project', Ardublockly.loadProject);
   Ardublockly.bindClick_('button_load', Ardublockly.loadUserXmlFile);
   Ardublockly.bindClick_('button_save', Ardublockly.saveXmlFile);
   Ardublockly.bindClick_('button_save_ino', Ardublockly.saveSketchFile);
@@ -328,6 +329,80 @@ Ardublockly.saveSketchFile = function() {
       Ardublockly.generateArduino());
 };
 
+/**
+ * Start a new Project and save to localStorage
+ * 
+ */
+
+Ardublockly.startNewProject = function() {
+  var newProject = Blockly.prompt('message', 'opt_defaultInput');
+  console.log(newProject);
+  document.getElementById('sketch_name').value = newProject;
+  Ardublockly.workspace.clear();
+  Ardublockly.loadServerXmlFile(Ardublockly.options.blocklyPath + '/ardublockly/start.xml');
+};
+
+
+/**
+ * Load Project list from Local Storage
+ * 
+ */
+
+Ardublockly.loadProject = function() {
+  $(document).ready(function(){
+    $("#ProjectModal").openModal();
+ });
+  var projects = Object.keys(localStorage);
+  console.log(projects);
+  document.getElementById('modal-body-btn').innerHTML = '';
+  generateProjectButtons(projects);
+  
+
+  function generateProjectButtons(projects) {
+    projects.forEach(function (pname, index) {
+    var newElement = document.createElement('div');
+    //newElement.id = index;
+    console.log(pname);
+    newElement.innerHTML = '<class="col-md-2"><button type="button" onclick="Ardublockly.loadLocalStorageBlocks('+index+')" class="waves-effect btn-flat" id="' + pname + '">' + pname +'</button> <button type="button" onclick="Ardublockly.deleteFromLocalStorage('+index+')"><i class="mdi-action-delete"</i></button>';
+    document.getElementById('modal-body-btn').appendChild(newElement);
+    });
+  }
+};
+
+/**
+ * Load Project from Local Storage
+ * 
+ */
+
+Ardublockly.loadLocalStorageBlocks = function(index) {
+  var projects = Object.keys(localStorage);
+  var pname = projects[index];
+  try {
+    var loadOnce = localStorage.getItem(pname);
+  } catch (e) {
+    // Firefox sometimes throws a SecurityError when accessing sessionStorage.
+    // Restarting Firefox fixes this, so it looks like a bug.
+    var loadOnce = null;
+  }
+  if (loadOnce) {
+    var xml = Blockly.Xml.textToDom(loadOnce);
+    console.log(xml);
+    Ardublockly.workspace.clear();
+    Blockly.Xml.domToWorkspace(xml, Ardublockly.workspace);
+  }
+};
+
+/**
+ * Delete Project from Local Storage
+ * 
+ */
+
+Ardublockly.deleteFromLocalStorage = function(index){
+  var projects = Object.keys(localStorage);
+  var pname = projects[index];
+  localStorage.removeItem(pname);
+}
+ 
 /**
  * Creates an text file with the input content and files name, and prompts the
  * users to save it into their local file system.
