@@ -406,3 +406,15 @@ Blockly.Arduino.sensebox_sd_write_file = function(block) {
               code += '}\n'
           return code;
         };
+
+        Blockly.Arduino.sensebox_mqtt_setup = function(){
+
+        };
+
+        Blockly.Arduino.sensebox_mqtt_pub = function(){
+
+        };
+
+        Blockly.Arduino.sensebox_mqtt_sub = function(){
+
+        };

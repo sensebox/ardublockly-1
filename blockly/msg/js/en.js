@@ -638,3 +638,10 @@ Blockly.Msg.senseBox_wifi_tip  = "Establishes a wifi connection";
 Blockly.Msg.sensebox_display_show  = "Print on Display";
 Blockly.Msg.sensebox_display_show_tip  = "Print on Display";
 Blockly.Msg.sensebox_sd_filename = "Filename";
+Blockly.Msg.sensebox_mqtt_setup = "Setup MQTT Server";
+Blockly.Msg.sensebox_mqtt_connect = "Server Adress";
+Blockly.Msg.sensebox_mqtt_pub = "Publish to Topic";
+Blockly.Msg.sensebox_mqtt_topic_tip = "Setup the Topic you want to Publish to";
+Blockly.Msg.sensebox_mqtt_sub = "Subscribe to Topic";
+Blockly.Msg.sensebox_mqtt_topic_sub_tip = "Returns Values from subscribed topic";
+

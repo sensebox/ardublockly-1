@@ -128,6 +128,9 @@ Ardublockly.TOOLBOX_XML =
     '      <block type="sensebox_osem_connection"></block>' +
     '      <block type="sensebox_send_to_osem"></block>' +
     '      <block type="sensebox_send_mobile_to_osem"></block>' +
+    '      <block type="sensebox_mqtt_setup"></block>' +
+    '      <block type="sensebox_mqtt_pub"></block>' +
+    '      <block type="sensebox_mqtt_sub"></block>' +
     '       </category>' +
     '  <sep></sep>' +
     '      <category id="catsenseBoxOutput_SD" name="   SD" colour="120">' +

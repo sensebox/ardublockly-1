@@ -858,3 +858,67 @@ Blockly.Blocks['sensebox_display_show'] = {
       this.setNextStatement(true, null);
           }
     };
+
+    /** MQTT Blocks
+     * 
+     * Blocks for the senseBox MQTT Service. Can be used also with other Broker
+     */
+
+    Blockly.Blocks['sensebox_mqtt_setup'] = {
+      /**
+       * Block for setting up the MQTT Connection.
+       * @this Blockly.Block
+       */
+      init: function() {
+        this.setHelpUrl('http://arduino.cc/en/Serial/Begin');
+        this.setColour(Blockly.Blocks.sensebox.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.sensebox_mqtt_setup);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.sensebox_mqtt_connect)
+            .appendField(new Blockly.FieldTextInput("https://mqtt.sensebox.de"), "Broker");
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.sensebox_mqtt_connect)
+            .appendField(new Blockly.FieldTextInput("Acces-Key"), "Key");
+        this.setInputsInline(false);
+        this.setTooltip(Blockly.Msg.ARD_SERIAL_SETUP_TIP);
+      }
+    };
+
+    Blockly.Blocks['sensebox_mqtt_pub'] = {
+      /**
+       * MQTT Pub Function
+       * 
+       * @this Blockly.Block
+       */
+      init: function(){
+        this.setColour(Blockly.Blocks.sensebox.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.sensebox_mqtt_pub)
+            .appendField(new Blockly.FieldTextInput("Topic"), "Topic");
+        this.appendValueInput('Value')
+            .appendField('Value');
+        this.setHelpUrl('https//sensebox.de');
+        this.setTooltip(Blockly.Msg.sensebox_mqtt_topic_tip);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+      }
+    };
+
+    Blockly.Blocks['sensebox_mqtt_sub'] = {
+      /**
+       * MQTT Pub Function
+       * 
+       * @this Blockly.Block
+       */
+      init: function(){
+        this.setColour(Blockly.Blocks.sensebox.HUE);
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.sensebox_mqtt_sub)
+            .appendField(new Blockly.FieldTextInput("Topic"), "Topic");
+        this.setHelpUrl('https//sensebox.de');
+        this.setTooltip(Blockly.Msg.sensebox_mqtt_sub_tip);
+        this.setOutput(true, Blockly.Types.NUMBER.output);
+      }
+    };
+
