@@ -130,6 +130,7 @@ Ardublockly.TOOLBOX_XML =
     '      <block type="sensebox_send_mobile_to_osem"></block>' +
     '      <block type="sensebox_mqtt_setup"></block>' +
     '      <block type="sensebox_mqtt_pub"></block>' +
+    '      <block type="sensebox_mqtt_pub2"></block>' +
     '      <block type="sensebox_mqtt_sub"></block>' +
     '       </category>' +
     '  <sep></sep>' +

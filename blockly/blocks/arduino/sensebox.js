@@ -876,10 +876,19 @@ Blockly.Blocks['sensebox_display_show'] = {
             .appendField(Blockly.Msg.sensebox_mqtt_setup);
         this.appendDummyInput()
             .appendField(Blockly.Msg.sensebox_mqtt_connect)
-            .appendField(new Blockly.FieldTextInput("https://mqtt.sensebox.de"), "Broker");
+            .appendField(new Blockly.FieldTextInput("https://mqtt.sensebox.de"), "server");
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.sensebox_mqtt_port)
+            .appendField(new Blockly.FieldTextInput("1883"), "port");
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.sensebox_mqtt_port)
+            .appendField(new Blockly.FieldTextInput("Username"), "user");
+        this.appendDummyInput()
+            .appendField(Blockly.Msg.sensebox_mqtt_port)
+            .appendField(new Blockly.FieldTextInput("Passwort"), "passw");
         this.appendDummyInput()
             .appendField(Blockly.Msg.sensebox_mqtt_connect)
-            .appendField(new Blockly.FieldTextInput("Acces-Key"), "Key");
+            .appendField(new Blockly.FieldTextInput("Acces-Key"), "key");
         this.setInputsInline(false);
         this.setTooltip(Blockly.Msg.ARD_SERIAL_SETUP_TIP);
       }
@@ -919,6 +928,169 @@ Blockly.Blocks['sensebox_display_show'] = {
         this.setHelpUrl('https//sensebox.de');
         this.setTooltip(Blockly.Msg.sensebox_mqtt_sub_tip);
         this.setOutput(true, Blockly.Types.NUMBER.output);
+      }
+    };
+
+    Blockly.Blocks['sensebox_mqtt_pub2'] = {
+      init: function() {
+        this.setColour(Blockly.Blocks.sensebox.HUE);
+        this.appendDummyInput()
+            .appendField('Publish to MQTT Server');
+        this.setInputsInline(false);
+        this.appendValueInput('Value')
+            .appendField('Value')
+            .appendField(Blockly.Msg.sensebox_mqtt_pub)
+            .appendField(new Blockly.FieldTextInput("Topic"), "Topic");    
+        this.setHelpUrl('https//sensebox.de');
+        this.setTooltip(Blockly.Msg.sensebox_mqtt_topic_tip);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setMutator(new Blockly.Mutator(['additional_child']));
+        var thisBlock = this;
+        this.additionalChildCount_ = 0;
+      },
+      /**
+       * Create XML to represent the number of else-if and else inputs.
+       * @return {Element} XML storage element.
+       * @this Blockly.Block
+       */
+      mutationToDom: function() {
+        if (!this.additionalChildCount_) {
+          return null;
+        }
+        var container = document.createElement('mutation');
+        if (this.additionalChildCount_) {
+          container.setAttribute('add_child', this.additionalChildCount_);
+        }
+        return container;
+      },
+      /**
+       * Parse XML to restore the else-if and else inputs.
+       * @param {!Element} xmlElement XML storage element.
+       * @this Blockly.Block
+       */
+      domToMutation: function(xmlElement) {
+        this.additionalChildCount_ = parseInt(xmlElement.getAttribute('add_child'), 10) || 0;
+        this.updateShape_();
+      },
+      /**
+       * Populate the mutator's dialog with this block's components.
+       * @param {!Blockly.Workspace} workspace Mutator's workspace.
+       * @return {!Blockly.Block} Root block in mutator.
+       * @this Blockly.Block
+       */
+      decompose: function(workspace) {
+        var containerBlock = workspace.newBlock('first_child');
+        containerBlock.initSvg();
+        var connection = containerBlock.nextConnection;
+        for (var i = 1; i <= this.additionalChildCount_; i++) {
+          var elseifBlock = workspace.newBlock('additional_child');
+          elseifBlock.initSvg();
+          connection.connect(elseifBlock.previousConnection);
+          connection = elseifBlock.nextConnection;
+        }
+        return containerBlock;
+      },
+      /**
+       * Reconfigure this block based on the mutator dialog's components.
+       * @param {!Blockly.Block} containerBlock Root block in mutator.
+       * @this Blockly.Block
+       */
+      compose: function(containerBlock) {
+        var clauseBlock = containerBlock.nextConnection.targetBlock();
+        // Count number of inputs.
+        this.additionalChildCount_ = 0;
+        var statementConnections = [null];
+        var elseStatementConnection = null;
+        while (clauseBlock) {
+          switch (clauseBlock.type) {
+            case 'additional_child':
+              this.additionalChildCount_++;
+              statementConnections.push(clauseBlock.statementConnection_);
+              break;
+            default:
+              throw 'Unknown block type.';
+          }
+          clauseBlock = clauseBlock.nextConnection &&
+              clauseBlock.nextConnection.targetBlock();
+        }
+        this.updateShape_();
+        // Reconnect any child blocks.
+        for (var i = 1; i <= this.additionalChildCount_; i++) {
+          Blockly.Mutator.reconnect(statementConnections[i], this, 'DO' + i);
+        }
+      },
+      /**
+       * Store pointers to any connected child blocks.
+       * @param {!Blockly.Block} containerBlock Root block in mutator.
+       * @this Blockly.Block
+       */
+      saveConnections: function(containerBlock) {
+        var clauseBlock = containerBlock.nextConnection.targetBlock();
+        var i = 1;
+        while (clauseBlock) {
+          switch (clauseBlock.type) {
+            case 'additional_child':
+              var inputDo = this.getInput('DO' + i);
+              clauseBlock.statementConnection_ =
+                  inputDo && inputDo.connection.targetConnection;
+              i++;
+              break;
+            default:
+              throw 'Unknown block type.';
+          }
+          clauseBlock = clauseBlock.nextConnection &&
+              clauseBlock.nextConnection.targetBlock();
+        }
+      },
+      /**
+       * Modify this block to have the correct number of inputs.
+       * @private
+       * @this Blockly.Block
+       */
+      updateShape_: function() {
+        // Delete everything.
+        var i = 1;
+        while (this.getInput('DO' + i)) {
+          this.removeInput('DO' + i);
+          i++;
+        }
+        // Rebuild block.
+        for (var i = 1; i <= this.additionalChildCount_; i++) {
+          this.appendValueInput('DO' + i, Blockly.Arduino.ORDER_NONE);
+        }
+      }
+    };
+    
+     Blockly.Blocks['first_child'] = {
+      init: function() {
+        this.setColour(Blockly.Blocks.sensebox.HUE);
+        this.setInputsInline(false);
+        this.appendValueInput('Value')
+            .appendField(Blockly.Msg.sensebox_mqtt_pub)
+            .appendField(new Blockly.FieldTextInput("Topic"), "Topic")
+            .appendField('Value');
+        this.setInputsInline(false);
+        this.setNextStatement(true);
+        this.setTooltip("just a tip");
+        this.contextMenu = false;
+      }
+    };
+    
+    
+     Blockly.Blocks['additional_child'] = {
+      init: function() {
+        this.setColour(Blockly.Blocks.sensebox.HUE);
+        this.setInputsInline(false);
+        this.appendValueInput('Value')
+            .appendField(Blockly.Msg.sensebox_mqtt_pub)
+            .appendField(new Blockly.FieldTextInput("Topic"), "Topic")
+            .appendField('Value');
+        this.setPreviousStatement(true);
+        this.setInputsInline(false);
+        this.setNextStatement(true);
+        this.setTooltip("just a tip");
+        this.contextMenu = false;
       }
     };
 
