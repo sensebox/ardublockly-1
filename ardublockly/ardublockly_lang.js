@@ -120,7 +120,7 @@ Ardublockly.injectLanguageJsSources = function(langKey) {
   // Retrieve and inject Ardublockly translations synchronously
   var appLangJsLoad = document.createElement('script');
   var request = ArdublocklyServer.createRequest();
-  var appLangJdPath = 'msg/' + langKey + '.js';
+  var appLangJdPath = this.options.blocklyPath + '/ardublockly/msg/' + langKey + '.js';
   try {
     request.open('GET', appLangJdPath, false);
     request.send('');
@@ -138,7 +138,7 @@ Ardublockly.injectLanguageJsSources = function(langKey) {
 
   // Retrieve and inject Blockly translations asynchronously
   var blocklyLangJsLoad = document.createElement('script');
-  blocklyLangJsLoad.src = '../blockly/msg/js/' + langKey + '.js';
+  blocklyLangJsLoad.src = this.options.blocklyPath + '/blockly/msg/js/' + langKey + '.js';
   head.appendChild(blocklyLangJsLoad);
 };
 
