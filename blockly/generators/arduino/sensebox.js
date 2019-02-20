@@ -11,7 +11,7 @@ goog.provide('Blockly.Arduino.sensebox');
 
 goog.require('Blockly.Arduino');
 
-
+var mqtt_username;
 /*
 ----------------------------------Sensoren--------------------------------------------------
 */
@@ -410,11 +410,11 @@ Blockly.Arduino.sensebox_sd_write_file = function(block) {
         Blockly.Arduino.sensebox_mqtt_setup = function(){
           var server = this.getFieldValue('server');
           var port = this.getFieldValue('port');
-          var key = this.getFieldValue('key');
+          mqtt_username = this.getFieldValue('user');
           Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
           Blockly.Arduino.includes_['library_Adafruit_MQTT'] = '#include "Adafruit_MQTT.h"';
           Blockly.Arduino.includes_['library_Adafruit_Client'] = '#include "Adafruit_MQTT_Client.h"';
-          Blockly.Arduino.definitions_['define_MQTT_basics'] = '#define AIO_SERVER      "' + server +'"\n#define AIO_SERVERPORT  ' + port + '\n#define AIO_USERNAME\n#define AIO_KEY    ' + key + '';
+          Blockly.Arduino.definitions_['define_MQTT_basics'] = '#define AIO_SERVER      "' + server +'"\n#define AIO_SERVERPORT  ' + port + '\n#define AIO_USERNAME\n';
           Blockly.Arduino.definitions_['define_MQTT_wificlient']  = 'WiFiclient client;';
           Blockly.Arduino.definitions_['define_MQTT_client']  = 'Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_KEY)';
           Blockly.Arduino.userFunctions_['sensebox_mqtt_function'] = 'void MQTT_connect() {\nint8_t ret;\nif (mqtt.connected()) {\nreturn;\n}\nuint8_t retries = 3;\nwhile ((ret = mqtt.connect()) != 0) {\nmqtt.disconnect();\ndelay(5000);\nretries--;\nif (retries == 0) {\nwhile (1);\n}\n}\n};';
@@ -426,32 +426,21 @@ Blockly.Arduino.sensebox_sd_write_file = function(block) {
           var topic = this.getFieldValue('Topic');
           var sensor_value = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || '"Input"';
           Blockly.Arduino.definitions_['define_MQTT_topic'] = '#define AIO_'+ topic +        '"'+ topic +'"';
-          Blockly.Arduino.definitions_['define_MQTT_topic_feed'] = 'Adafruit_MQTT_Publish ' + topic +'_feed = Adafruit_MQTT_Publish(&mqtt, "mariopesch/feeds/temperatur");';
+          Blockly.Arduino.definitions_['define_MQTT_topic_pub'] = 'Adafruit_MQTT_Publish ' + topic +'_feed = Adafruit_MQTT_Publish(&mqtt, "/' + mqtt_username + '/' + topic + ');';
           var code = '';
           code += 'MQTT_connect();\n';
           code += topic + '_feed.publish(' + sensor_value + ');\n'
           return code;
         };
 
-        Blockly.Arduino.sensebox_mqtt_pub2 = function(){
+        Blockly.Arduino.sensebox_mqtt_sub = function(){
           var topic = this.getFieldValue('Topic');
           var sensor_value = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || '"Input"';
           Blockly.Arduino.definitions_['define_MQTT_topic'] = '#define AIO_'+ topic +        '"'+ topic +'"';
-          Blockly.Arduino.definitions_['define_MQTT_topic_feed'] = 'Adafruit_MQTT_Publish ' + topic +'_feed = Adafruit_MQTT_Publish(&mqtt, "mariopesch/feeds/temperatur");';
+          Blockly.Arduino.definitions_['define_MQTT_topic_sub'] = 'Adafruit_MQTT_Subscribe ' + topic +'_feed = Adafruit_MQTT_Subscribe(&mqtt, "/' + mqtt_username + '/' + topic + ');';
+          Blockly.Arduino.setups_['setup_mqtt_sub'] = 'MQTT_connect();\nmqtt.subscribe(&' + topic + '_feed);\n';
           var code = '';
           code += 'MQTT_connect();\n';
-          code += topic + '_feed.publish(' + sensor_value + ');\n'
+          code += 'mqtt.subscribe(&' + topic + '_feed);\n'
           return code;
-        };
-
-        Blockly.Arduino.additional_child = function(){
-          var topic = this.getFieldValue('Topic');
-          var sensor_value = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || '"Input"';
-          var code = '';
-          code += topic + '_feed.publish(' + sensor_value + ');\n'
-          return code;
-        }
-
-        Blockly.Arduino.sensebox_mqtt_sub = function(){
-
         };
