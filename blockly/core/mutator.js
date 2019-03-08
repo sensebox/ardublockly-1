@@ -118,6 +118,7 @@ Blockly.Mutator.prototype.createEditor_ = function() {
     var quarkXml = null;
   }
   var workspaceOptions = {
+    disabledPatternId: this.block_.workspace.options.disabledPatternId,
     languageTree: quarkXml,
     parentWorkspace: this.block_.workspace,
     pathToMedia: this.block_.workspace.options.pathToMedia,
@@ -128,7 +129,6 @@ Blockly.Mutator.prototype.createEditor_ = function() {
     getMetrics: this.getFlyoutMetrics_.bind(this),
     setMetrics: null
   };
-  this.workspace_ = new Blockly.WorkspaceSvg(workspaceOptions);
   this.svgDialog_.appendChild(
       this.workspace_.createDom('blocklyMutatorBackground'));
   return this.svgDialog_;

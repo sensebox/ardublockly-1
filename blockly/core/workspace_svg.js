@@ -1121,6 +1121,15 @@ Blockly.WorkspaceSvg.prototype.updateGridPattern_ = function() {
   }
 };
 
+/**
+ * Is the user currently dragging a block or scrolling the flyout/workspace?
+ * @return {boolean} True if currently dragging or scrolling.
+ */
+Blockly.WorkspaceSvg.prototype.isDragging = function() {
+  return this.currentGesture_ != null && this.currentGesture_.isDragging();
+};
+
+
 // Export symbols that would otherwise be renamed by Closure compiler.
 Blockly.WorkspaceSvg.prototype['setVisible'] =
     Blockly.WorkspaceSvg.prototype.setVisible;
