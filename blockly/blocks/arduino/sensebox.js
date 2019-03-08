@@ -1,7 +1,7 @@
 /*
 @metadata
     author": senseBox Team
-    lastupdated": 2018 
+    lastupdated": 2019-03-08 
     for more information: www.sensebox.de
     add new Blocks for the senseBox MCU
 */  
@@ -45,7 +45,7 @@ Blockly.Blocks['sensebox_sensor_uv_light'] = {
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.Msg.senseBox_value)
-        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_uv,"UvIntensity"], [Blockly.Msg.senseBox_light,"Illuminance"]]), "NAME");
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_light,"Illuminance"], [Blockly.Msg.senseBox_uv,"UvIntensity"]]), "NAME");
     this.setOutput(true, Blockly.Types.NUMBER.output);
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.setTooltip(Blockly.Msg.senseBox_uv_light_tip);
@@ -148,10 +148,6 @@ Blockly.Blocks['sensebox_sensor_pressure'] = {
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.Msg.senseBox_value)
         .appendField(dropdown, "NAME");
-        /*.appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_pressure,"Pressure"], [Blockly.Msg.senseBox_temp,"Temperature"], [Blockly.Msg.senseBox_gps_alt,"Altitude"]]), function(option) {
-          var input = (option == 'Pressure') || (option ==  'Temperature') || (option == 'Altitude');
-          this.sourceBlock_.updateShape_(input);
-          }, "NAME");*/
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.setOutput(true, Blockly.Types.NUMBER.output);
     this.setTooltip(Blockly.Msg.senseBox_pressure_tip);
