@@ -15,13 +15,24 @@ If you find erros, enhancement or want to request new features submit a new [iss
 1. Go to [Blockly for senseBox](https://blockly.sensebox.de/) pick the senseBox MCU.
 2. Drag and Drop Blocks to the Workspace, hit compile and copy the .bin to your senseBox MCU
 
-#### Blockly for senseBox
-![Screenshot](https://github.com/sensebox/ardublockly-1/blob/master/assets/imgs/screenshot.png)
-
-
 ## Documentation
 Documentation can be found online in German and English: [Blockly Book](https://sensebox.github.io/books-v2/blockly/)
 
+## Branches
+
+* master: The newest compressed version runs via netlify here
+* develop: This the uncompressed development version runs via netlify here
+* feat/..: The branch holds a new feature
+
+
+## Development
+If you want to contribute to Blockly for senseBox please follow the development rules:
+- fork the develop branch which holds the the umcompressed version
+- add your blocks, translations or new features 
+- name your new branch with name feat/featurename
+- PR from your branch to the develop branch
+
+--> you can view the develop branch [here](https://develop--sensebox-blockly.netlify.com/)
 
 ## Credits
 This project has been inspired by [BlocklyDuino](https://github.com/BlocklyDuino/BlocklyDuino) and is a fork of [Ardublockly](https://github.com/carlosperate/ardublockly)
