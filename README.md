@@ -1,3 +1,5 @@
+**NOTE**: This branch contains a slimmed down version of blockly for use inside the blockly app: https://github.com/sensebox/blockly-app
+
 # Blockly for senseBox
 Blockly for senseBox is a visual programming editor for the senseBox:edu. It is based on Google's [Blockly](https://developers.google.com/blockly/) and carlosperates [Ardublockly](https://github.com/carlosperate/ardublockly), which has been forked.
 
