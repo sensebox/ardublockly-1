@@ -151,7 +151,7 @@
                                         </value>
                                         <value name="ADD1">
                                           <block type="variables_get" id="-VSOcQTFn[7!{k3bP?n0">
-                                            <field name="VAR">lat</field>
+                                            <field name="VAR">alt</field>
                                           </block>
                                         </value>
                                       </block>
