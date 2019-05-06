@@ -21,7 +21,7 @@
         </value>
         <next>
           <block type="sensebox_interval_timer" id="Q2@Rq0[4-Od@t#3yD)RY">
-            <field name="interval">time</field>
+            <field name="interval">10000</field>
             <statement name="DO">
               <block type="sensebox_osem_connection" id="O^,^^(mOD~tR[kRe3{dp">
                 <field name="BoxID">BoxID</field>
