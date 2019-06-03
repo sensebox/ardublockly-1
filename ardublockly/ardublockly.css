@@ -181,6 +181,31 @@ ul.side-nav li.side-menu-end {
   height: calc(100vh - 446px);          /* Standard */
 }
 
+#tutorials_body {
+  resize: none;
+  outline: none;
+  border: none;
+  padding: 0px 5px;
+  font-family: monospace;
+  font-size: smaller;
+  overflow: scroll;
+  font-style: 0.2em !important;
+  min-height: 384px;
+  background-color: rgb(255, 255, 255);
+}
+.tutorials_body_large {
+  height: -moz-calc(100vh - 286px);     /* Firefox  */
+  height: -webkit-calc(100vh - 286px);  /* WebKit   */
+  height: -o-calc(100vh - 286px);       /* Opera    */
+  height: calc(100vh - 286px);          /* Standard */
+}
+.tutorials_body_small {
+  height: -moz-calc(100vh - 446px);     /* Firefox  */
+  height: -webkit-calc(100vh - 446px);  /* WebKit   */
+  height: -o-calc(100vh - 446px);       /* Opera    */
+  height: calc(100vh - 446px);          /* Standard */
+}
+
 /* The materialize framework changes height of the div to show or hide */
 /* the collapsible elements. */
 #content_arduino {

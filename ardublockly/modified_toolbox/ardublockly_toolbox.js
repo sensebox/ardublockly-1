@@ -12,7 +12,7 @@ var Ardublockly = Ardublockly || {};
 Ardublockly.TOOLBOX_XML =
     '<xml>' +
     '  <sep></sep>' +
-    '   <category id="catSenseBox_Sensor" name="senseBox Sensors" colour="120">' +
+/**    '   <category id="catSenseBox_Sensor" name="senseBox Sensors" colour="120">' +
     '      <block type="sensebox_sensor_temp_hum"></block>' +
     '      <block type="sensebox_sensor_uv_light"></block>' +
     '      <block type="sensebox_sensor_bmx055_accelerometer"></block>' +
@@ -143,13 +143,13 @@ Ardublockly.TOOLBOX_XML =
     '        </value>' +
     '       </block>' +
     '   </category>' +
-    '  <sep></sep>' +
-    '   <category id="catSenseBox_Led" name="LED" colour="120">' +
+    '  <sep></sep>' +       */
+    '    <category id="catSenseBox_Led" name="LED" colour="120">' +
     '       <block type="sensebox_led"></block>' +
-    '      <block type="sensebox_rgb_led">' +
+    '      <block type="sensebox_rgb_led">' + 
     '        <value name="RED">' +
     '          <block type="math_number">' +
-    '            <field name="NUM">0</field>' +
+    '            <field name="NUM">0</field>' + 
     '          </block>' +
     '        </value>' +
     '        <value name="GREEN">' +
@@ -164,7 +164,7 @@ Ardublockly.TOOLBOX_XML =
     '        </value>' +
     '      </block>' +
     '   </category>' +
-    '  <sep></sep>' +
+/**    '  <sep></sep>' +
     '      <category id="catSenseBoxOutput_Web" name="Web" colour="120">' +
     '      <category id="catSenseBox_Wifi" name="Wifi" colour="120">' +     
     '      <block type="sensebox_wifi"></block>' +
@@ -418,4 +418,5 @@ Ardublockly.TOOLBOX_XML =
     '  </category>' +
     '  <category id="catFunctions" name="Functions" custom="PROCEDURE" colour="290"></category>' +
     '  </category>' +
+    */
     '</xml>';
