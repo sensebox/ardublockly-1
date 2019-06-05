@@ -41,7 +41,7 @@ Ardublockly.injectBlockly = function(blocklyEl, toolboxXml, blocklyPath) {
       css: true,
       disable: true,
       grid: false,
-      maxBlocks: Infinity,
+      maxBlocks: 5,
       media: blocklyPath + '/media/',
       rtl: false,
       scrollbars: true,
@@ -60,12 +60,14 @@ Ardublockly.injectBlockly = function(blocklyEl, toolboxXml, blocklyPath) {
   // On language change the blocks have been stored in session storage
   Ardublockly.loadSessionStorageBlocks();
 };
-
+ 
 /** Binds the event listeners relevant to Blockly. */
 Ardublockly.bindBlocklyEventListeners = function() {
   Ardublockly.workspace.addChangeListener(function(event) {
     if (event.type != Blockly.Events.UI) {
       Ardublockly.renderContent();
+      document.getElementById('capacity').textContent =
+      Ardublockly.workspace.remainingCapacity();
     }
   });
   // Ensure the Blockly workspace resizes accordingly
@@ -324,3 +326,7 @@ Ardublockly.ajaxRequest = function() {
   }
   return request;
 };
+
+
+  
+
