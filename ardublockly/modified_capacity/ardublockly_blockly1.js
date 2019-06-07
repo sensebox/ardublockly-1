@@ -41,7 +41,7 @@ Ardublockly.injectBlockly = function(blocklyEl, toolboxXml, blocklyPath) {
       css: true,
       disable: true,
       grid: false,
-      maxBlocks: 5,
+      maxBlocks: 2,
       media: blocklyPath + '/media/',
       rtl: false,
       scrollbars: true,
@@ -66,8 +66,11 @@ Ardublockly.bindBlocklyEventListeners = function() {
   Ardublockly.workspace.addChangeListener(function(event) {
     if (event.type != Blockly.Events.UI) {
       Ardublockly.renderContent();
+      var AllBlocks= (Ardublockly.workspace.getAllBlocks())
       document.getElementById('capacity').textContent =
       Ardublockly.workspace.remainingCapacity();
+      document.getElementById('used_blocks').textContent =
+      AllBlocks.length;
     }
   });
   // Ensure the Blockly workspace resizes accordingly
