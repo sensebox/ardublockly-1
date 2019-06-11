@@ -45,6 +45,7 @@ Ardublockly.bindActionFunctions = function() {
   Ardublockly.bindClick_('button_save', Ardublockly.saveXmlFile);
   Ardublockly.bindClick_('button_save_ino', Ardublockly.saveSketchFile);
   Ardublockly.bindClick_('button_delete', Ardublockly.discardAllBlocks);
+  Ardublockly.bindClick_("finish_tutorial", Ardublockly.finish_tutorial);
 
   // Side menu buttons, they also close the side menu
   Ardublockly.bindClick_('menu_load', function() {

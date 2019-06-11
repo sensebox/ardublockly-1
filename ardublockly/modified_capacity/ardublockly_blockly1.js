@@ -71,7 +71,10 @@ Ardublockly.bindBlocklyEventListeners = function() {
       Ardublockly.workspace.remainingCapacity();
       document.getElementById('used_blocks').textContent =
       AllBlocks.length;
-    }
+      if (AllBlocks[1] != undefined){
+        console.log(AllBlocks[1].id)
+      }
+    } 
   });
   // Ensure the Blockly workspace resizes accordingly
   window.addEventListener('resize',
@@ -180,6 +183,28 @@ Ardublockly.loadSessionStorageBlocks = function() {
     Blockly.Xml.domToWorkspace(xml, Ardublockly.workspace);
   }
 };
+
+/** Check Tutorials Tutorial */
+Ardublockly.finish_tutorial = function() {
+  var AllBlocks= (Ardublockly.workspace.getAllBlocks())
+      if(AllBlocks[1] != undefined){
+        if (AllBlocks[1].id !="smf=tg2CPrerK?zX_JR"){
+          Ardublockly.alertMessage(
+            "Alles Richtig",
+            false);}
+        else{
+          Ardublockly.alertMessage(
+            "Falscher Block",
+            false);
+          }
+        }
+      else{
+        Ardublockly.alertMessage(
+          "Bitte Blocks einfügen",
+          false);
+      }   
+}
+
 
 /** Discard all blocks from the workspace. */
 Ardublockly.discardAllBlocks = function() {
