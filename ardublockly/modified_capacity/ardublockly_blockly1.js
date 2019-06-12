@@ -71,9 +71,6 @@ Ardublockly.bindBlocklyEventListeners = function() {
       Ardublockly.workspace.remainingCapacity();
       document.getElementById('used_blocks').textContent =
       AllBlocks.length;
-      if (AllBlocks[1] != undefined){
-        console.log(AllBlocks[1].id)
-      }
     } 
   });
   // Ensure the Blockly workspace resizes accordingly
@@ -187,20 +184,27 @@ Ardublockly.loadSessionStorageBlocks = function() {
 /** Check Tutorials Tutorial */
 Ardublockly.finish_tutorial = function() {
   var AllBlocks= (Ardublockly.workspace.getAllBlocks())
-      if(AllBlocks[1] != undefined){
-        if (AllBlocks[1].id !="smf=tg2CPrerK?zX_JR"){
-          Ardublockly.alertMessage(
-            "Alles Richtig",
-            false);}
-        else{
-          Ardublockly.alertMessage(
-            "Falscher Block",
-            false);
+      if(AllBlocks[1] != null && AllBlocks[1].parentBlock_ != null){
+        if(AllBlocks[1].parentBlock_.inputList[1].renderHeight==25){
+          if (AllBlocks[1].type ="sensebox_led"){
+            Ardublockly.alertMessage(
+              "Alles Richtig",
+              false);
+            }
+          else{
+            Ardublockly.alertMessage(
+              "Falscher Block",
+              false);
+            }
+          }
+        else{Ardublockly.alertMessage(
+          "Blöcke bitte in den Loop",
+          false);
           }
         }
       else{
         Ardublockly.alertMessage(
-          "Bitte Blocks einfügen",
+          "Bitte Blöcke in Setup Block einfügen",
           false);
       }   
 }
