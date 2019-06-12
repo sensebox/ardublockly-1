@@ -310,7 +310,7 @@ Ardublockly.TOOLBOX_XML =
     '    </block>' +
     '    <block type="variables_set_type"></block>' +
     '  </category>' +
-    '  <sep></sep>' +
+    '  <sep></sep>' + */
     '  <category id="catTime" name="Time" colour="140">' +
     '    <block type="time_delay">' +
     '      <value name="DELAY_TIME_MILI">' +
@@ -319,7 +319,7 @@ Ardublockly.TOOLBOX_XML =
     '        </block>' +
     '      </value>' +
     '    </block>' +
-    '    <block type="time_delaymicros">' +
+/**    '    <block type="time_delaymicros">' +
     '      <value name="DELAY_TIME_MICRO">' +
     '        <block type="math_number">' +
     '          <field name="NUM">100</field>' +
@@ -329,9 +329,9 @@ Ardublockly.TOOLBOX_XML =
     '    <block type="time_millis"></block>' +
     '    <block type="time_micros"></block>' +
     '    <block type="infinite_loop"></block>' +
-    '    <block type="sensebox_interval_timer"></block>' +
+    '    <block type="sensebox_interval_timer"></block>' + */
     '  </category>' +
-    '  <category id="catAudio" name="Audio" colour="250">' +
+/**    '  <category id="catAudio" name="Audio" colour="250">' +
     '    <block type="io_tone">' +
     '      <value name="FREQUENCY">' +
     '        <shadow type="math_number">' +

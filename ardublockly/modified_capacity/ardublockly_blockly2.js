@@ -41,7 +41,7 @@ Ardublockly.injectBlockly = function(blocklyEl, toolboxXml, blocklyPath) {
       css: true,
       disable: true,
       grid: false,
-      maxBlocks: 5,
+      maxBlocks: 7,
       media: blocklyPath + '/media/',
       rtl: false,
       scrollbars: true,
@@ -71,6 +71,7 @@ Ardublockly.bindBlocklyEventListeners = function() {
       Ardublockly.workspace.remainingCapacity();
       document.getElementById('used_blocks').textContent =
       AllBlocks.length;
+      console.log(AllBlocks[2].id)
     }
   });
   // Ensure the Blockly workspace resizes accordingly
@@ -180,6 +181,34 @@ Ardublockly.loadSessionStorageBlocks = function() {
     Blockly.Xml.domToWorkspace(xml, Ardublockly.workspace);
   }
 };
+
+/** Check Tutorials Tutorial */
+Ardublockly.finish_tutorial = function() {
+  var AllBlocks= (Ardublockly.workspace.getAllBlocks())
+      if(AllBlocks[1] != undefined){
+        if (AllBlocks[1].id !="smf=tg2CPrerK?zX_JR"){
+          Ardublockly.alertMessage(
+            "Richtiger Start-Block",
+            false);
+            if(AllBlocks[1].id !="-97w,Z6N5chjim#lxgrg")
+            {
+              Ardublockly.alertMessage(
+                "Richtiger 2.Block",
+                false);
+            }
+          }
+        else{
+          Ardublockly.alertMessage(
+            "Falscher Start-Block",
+            false);
+          }
+        }
+      else{
+        Ardublockly.alertMessage(
+          "Bitte Blocks einfügen",
+          false);
+      }   
+}
 
 /** Discard all blocks from the workspace. */
 Ardublockly.discardAllBlocks = function() {
