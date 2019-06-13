@@ -620,7 +620,7 @@ ul.side-nav li.side-menu-end {
 /*****************/
 .sketch_name_wrapper {
   display: inline-block;
-  padding-left: 5px;
+  padding-left: 0px;
 }
 .sketch_name_icon {
   display: inline !important;
@@ -633,7 +633,7 @@ ul.side-nav li.side-menu-end {
   max-width: 400px;
   line-height: 64px;
   height: 3rem !important;
-  font-size: 1.5rem !important;
+  font-size: 1rem !important;
   border-bottom: 0px solid #EEE !important;
   font-style: italic;
 }
@@ -782,10 +782,10 @@ ul.side-nav li.side-menu-end {
 /*********************************/
 /* Modify container to have a larger width in all resolutions */
 .container {
-  width: 90%;
+  width: 100%;
   max-width: initial !important;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
 }
 @media only screen and (min-width : 601px) {
   .container {
@@ -861,7 +861,7 @@ ul.side-nav li ul li ul li {
 
 /* Add extra margin to the side menu button*/
 .button-collapse {
-  margin-right: 16px;
+  margin-right: 0px;
 }
 
 /* Increase the size of Materialize Modal in small resolutions */

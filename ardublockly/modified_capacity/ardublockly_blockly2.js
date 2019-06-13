@@ -71,8 +71,10 @@ Ardublockly.bindBlocklyEventListeners = function() {
       Ardublockly.workspace.remainingCapacity();
       document.getElementById('used_blocks').textContent =
       AllBlocks.length;
-      if (AllBlocks[1] != undefined){
+      if (AllBlocks[1] != undefined && AllBlocks[2] != undefined && AllBlocks[3] != undefined){
         console.log(AllBlocks[1].type)
+        console.log(AllBlocks[2].type)
+        console.log(AllBlocks[3].type)
       }
     }
   });
@@ -187,27 +189,62 @@ Ardublockly.loadSessionStorageBlocks = function() {
 /** Check Tutorials Tutorial */
 Ardublockly.finish_tutorial = function() {
   var AllBlocks= (Ardublockly.workspace.getAllBlocks())
-      if(AllBlocks[1] != undefined){
-        if (AllBlocks[1].id !="smf=tg2CPrerK?zX_JR"){
-          Ardublockly.alertMessage(
-            "Richtiger Start-Block",
-            false);
-            if(AllBlocks[1].id !="-97w,Z6N5chjim#lxgrg")
-            {
+      if(AllBlocks[1] != null && AllBlocks[1].parentBlock_ != null){
+        if(AllBlocks[1].parentBlock_.inputList[1].renderHeight==25){
+          if (AllBlocks[1].type ="sensebox_led"){
+            if(AllBlocks[2] != undefined && AllBlocks[2].type =="time_delay"){
+              if(AllBlocks[3] != null && AllBlocks[3].type== "math_number"){
+                if(AllBlocks[4] != null && AllBlocks[4].type== "sensebox_led"){
+                  if(AllBlocks[5] != null && AllBlocks[5].type== "time_delay"){
+                    if(AllBlocks[6] != null && AllBlocks[6].type== "math_number"){
+                      Ardublockly.alertMessage(
+                        "Alles Richtig",
+                        false);
+                    }
+                    else{
+                      Ardublockly.alertMessage(
+                        "Falscher/fehlender 6. Block",
+                        false);
+                    }
+                  }
+                  else{
+                    Ardublockly.alertMessage(
+                      "Falscher/fehlender 5. Block",
+                      false);
+                  }
+                }
+                else{
+                  Ardublockly.alertMessage(
+                    "Falscher/fehlender 4. Block",
+                    false);
+                }
+              }
+              else{
+                Ardublockly.alertMessage(
+                  "Falscher/fehlender 3. Block",
+                  false);
+              }
+            }
+            else{
               Ardublockly.alertMessage(
-                "Richtiger 2.Block",
+                "Falscher/fehlender 2. Block",
                 false);
             }
+            }
+          else{
+            Ardublockly.alertMessage(
+              "Falscher/fehlender 1. Block",
+              false);
+            }
           }
-        else{
-          Ardublockly.alertMessage(
-            "Falscher Start-Block",
-            false);
+        else{Ardublockly.alertMessage(
+          "Blöcke bitte in den Loop",
+          false);
           }
         }
       else{
         Ardublockly.alertMessage(
-          "Bitte Blocks einfügen",
+          "Bitte Blöcke in Setup Block einfügen",
           false);
       }   
 }
