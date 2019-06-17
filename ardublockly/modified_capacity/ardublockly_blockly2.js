@@ -198,48 +198,49 @@ Ardublockly.finish_tutorial = function() {
                   if(AllBlocks[5] != null && AllBlocks[5].type== "time_delay"){
                     if(AllBlocks[6] != null && AllBlocks[6].type== "math_number"){
                       Ardublockly.alertMessage(
-                        "Alles Richtig",
+                        "Alles Richtig Goldmedallie verdient",
                         false);
                     }
                     else{
                       Ardublockly.alertMessage(
-                        "Falscher/fehlender 6. Block",
+                        "Falscher/fehlender 7. Block",
                         false);
                     }
                   }
                   else{
                     Ardublockly.alertMessage(
-                      "Falscher/fehlender 5. Block",
+                      "Falscher/fehlender 6. Block",
                       false);
                   }
                 }
                 else{
                   Ardublockly.alertMessage(
-                    "Falscher/fehlender 4. Block",
+                    "Falscher/fehlender 5. Block",
                     false);
                 }
               }
               else{
                 Ardublockly.alertMessage(
-                  "Falscher/fehlender 3. Block",
+                  "Falscher/fehlender 4. Block",
                   false);
               }
             }
             else{
               Ardublockly.alertMessage(
-                "Falscher/fehlender 2. Block",
+                "Falscher/fehlender 3. Block",
                 false);
             }
             }
           else{
             Ardublockly.alertMessage(
-              "Falscher/fehlender 1. Block",
+              "Falscher/fehlender 2. Block",
               false);
             }
           }
-        else{Ardublockly.alertMessage(
-          "Blöcke bitte in den Loop",
-          false);
+        else{
+          Ardublockly.alertMessage(
+            "Blöcke bitte in den Loop",
+            false);
           }
         }
       else{
