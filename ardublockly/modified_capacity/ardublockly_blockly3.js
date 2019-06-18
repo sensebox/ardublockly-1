@@ -215,7 +215,7 @@ Ardublockly.finish_tutorial = function() {
                       if(AllBlocks[7]!= null && AllBlocks[7].type== "time_delay"){
                         if(AllBlocks[8]!= null && AllBlocks[8].type== "math_number"){
                           Ardublockly.alertMessage(
-                            "Alles Richtig Goldmedallie verdient",
+                            "Alles Richtig, Goldmedallie verdient",
                             false);
                         }
                         else{

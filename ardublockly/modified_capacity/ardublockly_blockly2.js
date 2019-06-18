@@ -60,7 +60,8 @@ Ardublockly.injectBlockly = function(blocklyEl, toolboxXml, blocklyPath) {
   // On language change the blocks have been stored in session storage
   Ardublockly.loadSessionStorageBlocks();
 };
- 
+
+var ChangedBlocks=0
 /** Binds the event listeners relevant to Blockly. */
 Ardublockly.bindBlocklyEventListeners = function() {
   Ardublockly.workspace.addChangeListener(function(event) {
@@ -71,11 +72,9 @@ Ardublockly.bindBlocklyEventListeners = function() {
       Ardublockly.workspace.remainingCapacity();
       document.getElementById('used_blocks').textContent =
       AllBlocks.length;
-      if (AllBlocks[1] != undefined && AllBlocks[2] != undefined && AllBlocks[3] != undefined){
-        console.log(AllBlocks[1].type)
-        console.log(AllBlocks[2].type)
-        console.log(AllBlocks[3].type)
-      }
+      ChangedBlocks= ChangedBlocks+1;
+      console.log(ChangedBlocks)
+
     }
   });
   // Ensure the Blockly workspace resizes accordingly
@@ -198,7 +197,7 @@ Ardublockly.finish_tutorial = function() {
                   if(AllBlocks[5] != null && AllBlocks[5].type== "time_delay"){
                     if(AllBlocks[6] != null && AllBlocks[6].type== "math_number"){
                       Ardublockly.alertMessage(
-                        "Alles Richtig Goldmedallie verdient",
+                        "Alles Richtig, Goldmedallie verdient",
                         false);
                     }
                     else{
