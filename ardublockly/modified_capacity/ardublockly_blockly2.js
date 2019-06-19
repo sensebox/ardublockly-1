@@ -71,7 +71,23 @@ Ardublockly.bindBlocklyEventListeners = function() {
       Ardublockly.workspace.remainingCapacity();
       document.getElementById('used_blocks').textContent =
       AllBlocks.length;
-    } 
+      var Loopkids= 0
+      var Setupkids= 0
+      var SelfBlock= 1
+      if(AllBlocks[0]!= undefined){
+        if(AllBlocks[0].childBlocks_[1]!=undefined){
+          Loopkids=1
+        }
+        if(AllBlocks[0].childBlocks_[0]!=undefined){
+          Setupkids=1
+        }
+      }
+    var maxBlocks = 2
+    var activeblocks=Setupkids+Loopkids+SelfBlock
+    var remainingBlock= maxBlocks-activeblocks
+    document.getElementById('active_blocks').textContent =activeblocks
+    document.getElementById('capacity').textContent = remainingBlock
+  } 
   });
   // Ensure the Blockly workspace resizes accordingly
   window.addEventListener('resize',

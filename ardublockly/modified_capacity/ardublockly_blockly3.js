@@ -61,7 +61,6 @@ Ardublockly.injectBlockly = function(blocklyEl, toolboxXml, blocklyPath) {
   Ardublockly.loadSessionStorageBlocks();
 };
 
-var ChangedBlocks=0
 /** Binds the event listeners relevant to Blockly. */
 Ardublockly.bindBlocklyEventListeners = function() {
   Ardublockly.workspace.addChangeListener(function(event) {
@@ -78,7 +77,7 @@ Ardublockly.bindBlocklyEventListeners = function() {
           if(AllBlocks[0].childBlocks_[1].childBlocks_[0]!=undefined){
             if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[0]!=undefined){
               if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].childBlocks_[0]!=undefined){
-                if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].ChangedBlocks[0].childBlocks_[0]!=undefined){
+                if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].childBlocks_[0].childBlocks_[0]!=undefined){
                   Loopkids=5
                 }
                 else{
