@@ -146,7 +146,7 @@ Ardublockly.TOOLBOX_XML =
     '  <sep></sep>' +       */
     '    <category id="catSenseBox_Led" name="LED" colour="120">' +
     '       <block type="sensebox_led"></block>' +
-    '      <block type="sensebox_rgb_led">' + 
+/**    '      <block type="sensebox_rgb_led">' + 
     '        <value name="RED">' +
     '          <block type="math_number">' +
     '            <field name="NUM">0</field>' + 
@@ -162,7 +162,7 @@ Ardublockly.TOOLBOX_XML =
     '            <field name="NUM">0</field>' +
     '          </block>' +
     '        </value>' +
-    '      </block>' +
+    '      </block>' + */
     '   </category>' +
 /**    '  <sep></sep>' +
     '      <category id="catSenseBoxOutput_Web" name="Web" colour="120">' +

@@ -146,9 +146,9 @@ Ardublockly.TOOLBOX_XML =
     '  <sep></sep>' +       */
     '    <category id="catSenseBox_Led" name="LED" colour="120">' +
     '       <block type="sensebox_led"></block>' +
-/*    '      <block type="sensebox_rgb_led">' + 
+/**     '      <block type="sensebox_rgb_led">' + 
     '        <value name="RED">' +
-    '          <block type="math_number">' +
+   '          <block type="math_number">' +
     '            <field name="NUM">0</field>' + 
     '          </block>' +
     '        </value>' +
@@ -215,13 +215,13 @@ Ardublockly.TOOLBOX_XML =
     '   <sep></sep>' + */
     '    <category id="catLoops" name="Loops" colour="10">' +
     '           <block type="controls_repeat_ext">' +
-    '               <value name="TIMES">' +
+/**    '               <value name="TIMES">' +
     '           <block type="math_number">' +
     '               <field name="NUM">10</field>' +
     '           </block>' +
-    '               </value>' +
-    '    </block>' +
-/**    '    <block type="controls_whileUntil"></block>' +
+    '               </value>' + */
+   '    </block>' +
+/**     '    <block type="controls_whileUntil"></block>' +
     '    <block type="controls_for">' +
     '      <value name="FROM">' +
     '        <block type="math_number">' +
@@ -239,12 +239,12 @@ Ardublockly.TOOLBOX_XML =
     '        </block>' +
     '      </value>' +
     '    </block>' +
-    '    <block type="controls_flow_statements"></block>' + */
-    '  </category>' + /*
-    '  <sep></sep>' +
+    '    <block type="controls_flow_statements"></block>' +
+*/    '  </category>' + /**
+    '  <sep></sep>' + */
     '  <category id="catMath" name="Math" colour="230">' +
     '    <block type="math_number"></block>' +
-    '    <block type="math_arithmetic"></block>' +
+ /**   '    <block type="math_arithmetic"></block>' +
     '    <block type="math_single"></block>' +
     '    <block type="math_trig"></block>' +
     '    <block type="math_constant"></block>' +
@@ -283,9 +283,9 @@ Ardublockly.TOOLBOX_XML =
     '      </value>' +
     '    </block>' +
     '    <block type="math_random_float"></block>' +
-    '    <block type="base_map"></block>' +
+    '    <block type="base_map"></block>' + */
     '  </category>' +
-    '  <sep></sep>' +
+/**    '  <sep></sep>' +
     '  <category id="catText" name="Text" colour="160">' +
     '    <block type="text"></block>' +
     '    <block type="text_join"></block>' +
@@ -313,11 +313,11 @@ Ardublockly.TOOLBOX_XML =
     '  <sep></sep>' + */
     '  <category id="catTime" name="Time" colour="140">' +
     '    <block type="time_delay">' +
-    '      <value name="DELAY_TIME_MILI">' +
+/**   '       <value name="DELAY_TIME_MILI">' +
     '        <block type="math_number">' +
     '          <field name="NUM">1000</field>' +
     '        </block>' +
-    '      </value>' +
+    '      </value>' + */
     '    </block>' +
 /**    '    <block type="time_delaymicros">' +
     '      <value name="DELAY_TIME_MICRO">' +
