@@ -128,9 +128,18 @@ Ardublockly.bindBlocklyEventListeners = function() {
     var remainingBlock= maxBlocks-activeblocks
       document.getElementById('active_blocks').textContent =activeblocks
       document.getElementById('capacity').textContent = remainingBlock
- 
-  }
-  });
+    //Get specific Data from Blocks
+    if(AllBlocks[1]!=undefined){
+      if(AllBlocks[1].type=="sensebox_led"){
+        console.log(AllBlocks[1].inputList[0].fieldRow[4].text_)
+        console.log(AllBlocks[1].inputList[0].fieldRow[2].text_)
+      }
+      if(AllBlocks[1].type=="math_number"){
+        console.log(AllBlocks[1].inputList[0].fieldRow[0].text_)
+      }
+    }
+    } 
+});
   // Ensure the Blockly workspace resizes accordingly
   window.addEventListener('resize',
       function() { Blockly.asyncSvgResize(Ardublockly.workspace); }, false);
