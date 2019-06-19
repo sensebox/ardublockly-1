@@ -68,11 +68,69 @@ Ardublockly.bindBlocklyEventListeners = function() {
     if (event.type != Blockly.Events.UI) {
       Ardublockly.renderContent();
       var AllBlocks= (Ardublockly.workspace.getAllBlocks())
-      document.getElementById('capacity').textContent =
-      Ardublockly.workspace.remainingCapacity();
       document.getElementById('used_blocks').textContent =
       AllBlocks.length;
+      var Loopkids= 0
+      var Setupkids= 0
+      var SelfBlock= 1
+      if(AllBlocks[0]!= undefined){
+        if(AllBlocks[0].childBlocks_[1]!=undefined){
+          if(AllBlocks[0].childBlocks_[1].childBlocks_[0]!=undefined){
+            if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[0]!=undefined){
+              if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].childBlocks_[0]!=undefined){
+                if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].ChangedBlocks[0].childBlocks_[0]!=undefined){
+                  Loopkids=5
+                }
+                else{
+                  Loopkids=4
+                }
+              }
+              else{
+                Loopkids=3
+              }
+            }
+            else{
+              Loopkids=2
+            }
+          }
+          else{
+            Loopkids=1
+          }
+        }
+        else{
+          Loopkids=0
+          }
+        if(AllBlocks[0].childBlocks_[0]!=undefined){
+          if(AllBlocks[0].childBlocks_[0].childBlocks_[0]!=undefined){
+            if(AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[0]!=undefined){
+              if(AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[0].childBlocks_[0]!=undefined){
+                if(AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[0].childBlocks_[0].childBlocks_[0]!=undefined){
+                  Setupkids=5
+                }
+                else{
+                  Setupkids=4
+                }
+              }
+              else{
+                Setupkids=3
+              }
+            }
+            else{
+              Setupkids=2
+            }
+          }
+          else{
+            Setupkids=1
+          }
+      }
     }
+    var maxBlocks = 7
+    var activeblocks=Setupkids+Loopkids+SelfBlock
+    var remainingBlock= maxBlocks-activeblocks
+      document.getElementById('active_blocks').textContent =activeblocks
+      document.getElementById('capacity').textContent = remainingBlock
+ 
+  }
   });
   // Ensure the Blockly workspace resizes accordingly
   window.addEventListener('resize',
