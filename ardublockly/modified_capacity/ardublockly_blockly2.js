@@ -71,22 +71,17 @@ Ardublockly.bindBlocklyEventListeners = function() {
       Ardublockly.workspace.remainingCapacity();
       document.getElementById('used_blocks').textContent =
       AllBlocks.length;
-      var Loopkids= 0
-      var Setupkids= 0
-      var SelfBlock= 1
       if(AllBlocks[0]!= undefined){
-        if(AllBlocks[0].childBlocks_[1]!=undefined){
-          Loopkids=1
-        }
-        if(AllBlocks[0].childBlocks_[0]!=undefined){
-          Setupkids=1
+        if(AllBlocks[1] != undefined && AllBlocks[1].parentBlock_!= undefined){
+          UsedBlocks=UsedBlocks+1
         }
       }
-    var maxBlocks = 2
-    var activeblocks=Setupkids+Loopkids+SelfBlock
-    var remainingBlock= maxBlocks-activeblocks
-    document.getElementById('active_blocks').textContent =activeblocks
-    document.getElementById('capacity').textContent = remainingBlock
+      console.log(UsedBlocks)
+      var maxBlocks = 2
+      var activeblocks=UsedBlocks
+      var remainingBlock= maxBlocks-activeblocks
+      document.getElementById('active_blocks').textContent =activeblocks
+      document.getElementById('capacity').textContent = remainingBlock
   } 
   });
   // Ensure the Blockly workspace resizes accordingly
@@ -202,17 +197,31 @@ Ardublockly.finish_tutorial = function() {
   var AllBlocks= (Ardublockly.workspace.getAllBlocks())
       if(AllBlocks[1] != null && AllBlocks[1].parentBlock_ != null){
         if(AllBlocks[1].parentBlock_.inputList[1].renderHeight==25){
-          if (AllBlocks[1].type ="sensebox_led"){
-            Ardublockly.alertMessage(
-              "Alles Richtig",
-              false);
+          if (AllBlocks[1].type =="sensebox_led"){
+            if(AllBlocks[1].inputList[0].fieldRow[2].text_=="BUILTIN_1"){
+              if(AllBlocks[1].inputList[0].fieldRow[4].text_=="on"){
+                Ardublockly.alertMessage(
+                  "Alles Richtig",
+                  false);
+                }
+              else{
+                Ardublockly.alertMessage(
+                  "Die Lampe muss angeschaltet werden",
+                  false);
+                }
+              }
+            else{
+              Ardublockly.alertMessage(
+                "Der angeschlossene Pin ist falsch",
+                false);
             }
+          }
           else{
             Ardublockly.alertMessage(
               "Falscher Block",
               false);
             }
-          }
+        }
         else{Ardublockly.alertMessage(
           "Blöcke bitte in den Loop",
           false);
