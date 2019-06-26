@@ -79,6 +79,7 @@ Ardublockly.bindBlocklyEventListeners = function() {
       document.getElementById('capacity').textContent =
       maxBlocks-usedBlocks-1
       usedBlocks=0
+      console.log(AllBlocks[1])
     }
   });
   // Ensure the Blockly workspace resizes accordingly
@@ -192,32 +193,43 @@ Ardublockly.loadSessionStorageBlocks = function() {
 /** Check Tutorials Function */
 Ardublockly.finish_tutorial = function() {
   var AllBlocks= (Ardublockly.workspace.getAllBlocks())
-      if(AllBlocks[1] != null && AllBlocks[1].parentBlock_ != null){
-        if(AllBlocks[1].parentBlock_.inputList[1].renderHeight==25){
-          if (AllBlocks[1].type =="sensebox_led"){
-            if(AllBlocks[1].inputList[0].fieldRow[2].text_=="BUILTIN_1"){
-              if(AllBlocks[1].inputList[0].fieldRow[4].text_=="on"){
-                Ardublockly.alertMessage(
-                  "Alles Richtig",
-                  false);
+  for (var i = 0; i <= AllBlocks.length; i++) {
+    checkParent(AllBlocks[i])
+  }
+  usedBlocks=usedBlocks+1
+  if(AllBlocks[0] != null && AllBlocks[0].childBlocks_[0] != null){
+        if(AllBlocks[0].inputList[1].renderHeight==25){
+          if(usedBlocks<=2){
+            if(AllBlocks[0].childBlocks_[0].type =="sensebox_led"){
+              if(AllBlocks[0].childBlocks_[0].inputList[0].fieldRow[2].text_=="BUILTIN_1"){
+                if(AllBlocks[0].childBlocks_[0].inputList[0].fieldRow[4].text_=="on"){
+                  Ardublockly.alertMessage(
+                    "Alles Richtig",
+                    false);
+                  }
+                else{
+                  Ardublockly.alertMessage(
+                    "Die Lampe muss angeschaltet werden",
+                    false);
+                  }
                 }
               else{
                 Ardublockly.alertMessage(
-                  "Die Lampe muss angeschaltet werden",
+                  "Der angeschlossene Pin ist falsch",
                   false);
-                }
               }
+            }
             else{
               Ardublockly.alertMessage(
-                "Der angeschlossene Pin ist falsch",
+                "Falscher Block",
                 false);
-            }
+              }
           }
           else{
             Ardublockly.alertMessage(
-              "Falscher Block",
+              "Zu viele aktive Blöcke",
               false);
-            }
+          }
         }
         else{Ardublockly.alertMessage(
           "Blöcke bitte in den Loop",
@@ -228,7 +240,8 @@ Ardublockly.finish_tutorial = function() {
         Ardublockly.alertMessage(
           "Bitte Blöcke in Setup Block einfügen",
           false);
-      }   
+      }  
+  usedBlocks =0
 }
 
 
