@@ -71,123 +71,20 @@ Ardublockly.bindBlocklyEventListeners = function() {
     if (event.type != Blockly.Events.UI) {
       Ardublockly.renderContent();
       var AllBlocks= (Ardublockly.workspace.getAllBlocks())
+      document.getElementById('capacity').textContent =
+      Ardublockly.workspace.remainingCapacity();
       document.getElementById('used_blocks').textContent =
       AllBlocks.length;
-      var UsedBlocks=0
-      if(AllBlocks[0]!= undefined){
-        if(AllBlocks[1]!= undefined){
-          if(AllBlocks[1].parentBlock_ != null && AllBlocks[1].parentBlock_.type =="arduino_functions"){
-            UsedBlocks=UsedBlocks+1
-          }
-        }
-        if(AllBlocks[2] != undefined ){
-          if(AllBlocks[2].parentBlock_ != null) {
-            if(AllBlocks[2].parentBlock_.type =="arduino_functions"){
-              UsedBlocks=UsedBlocks+1
-            }
-            if(AllBlocks[2].parentBlock_.parentBlock_ != null && AllBlocks[2].parentBlock_.parentBlock_.type=="arduino_functions"){
-              UsedBlocks=UsedBlocks+1
-            }
-          }  
-        }
-        if(AllBlocks[3] != undefined ){
-          if(AllBlocks[3].parentBlock_ != null) {
-            if(AllBlocks[3].parentBlock_.type =="arduino_functions"){
-              UsedBlocks=UsedBlocks+1
-            }
-            if(AllBlocks[3].parentBlock_.parentBlock_ != null ){
-              if(AllBlocks[3].parentBlock_.parentBlock_.type=="arduino_functions"){
-                UsedBlocks=UsedBlocks+1
-                }
-              if(AllBlocks[3].parentBlock_.parentBlock_.parentBlock_!=null && AllBlocks[3].parentBlock_.parentBlock_.parentBlock_.type== "arduino_functions" ){
-                UsedBlocks=UsedBlocks+1
-              }
-            }
-          }  
-        }
-        if(AllBlocks[4] != undefined ){
-          if(AllBlocks[4].parentBlock_ != null) {
-            if(AllBlocks[4].parentBlock_.type =="arduino_functions"){
-              UsedBlocks=UsedBlocks+1
-            }
-            if(AllBlocks[4].parentBlock_.parentBlock_ != null ){
-              if(AllBlocks[4].parentBlock_.parentBlock_.type=="arduino_functions"){
-                UsedBlocks=UsedBlocks+1
-                }
-              if(AllBlocks[4].parentBlock_.parentBlock_.parentBlock_!=null){
-                if(AllBlocks[4].parentBlock_.parentBlock_.parentBlock_.type== "arduino_functions" ){
-                  UsedBlocks=UsedBlocks+1
-                }
-                if(AllBlocks[4].parentBlock_.parentBlock_.parentBlock_.parentBlock_!=null && AllBlocks[4].parentBlock_.parentBlock_.parentBlock_.parentBlock_.type== "arduino_functions" ){
-                    UsedBlocks=UsedBlocks+1
-                }
-              } 
-            }
-          }  
-        }
-        if(AllBlocks[5] != undefined ){
-          if(AllBlocks[5].parentBlock_ != null) {
-            if(AllBlocks[5].parentBlock_.type =="arduino_functions"){
-              UsedBlocks=UsedBlocks+1
-            }
-            if(AllBlocks[5].parentBlock_.parentBlock_ != null ){
-              if(AllBlocks[5].parentBlock_.parentBlock_.type=="arduino_functions"){
-                UsedBlocks=UsedBlocks+1
-                }
-              if(AllBlocks[5].parentBlock_.parentBlock_.parentBlock_!=null){
-                if(AllBlocks[5].parentBlock_.parentBlock_.parentBlock_.type== "arduino_functions" ){
-                  UsedBlocks=UsedBlocks+1
-                }
-                if(AllBlocks[5].parentBlock_.parentBlock_.parentBlock_.parentBlock_!=null){
-                  if(AllBlocks[5].parentBlock_.parentBlock_.parentBlock_.parentBlock_.type== "arduino_functions" ){
-                    UsedBlocks=UsedBlocks+1
-                  }
-                  if(AllBlocks[5].parentBlock_.parentBlock_.parentBlock_.parentBlock_.parentBlock_!=null && AllBlocks[5].parentBlock_.parentBlock_.parentBlock_.parentBlock_.parentBlock_.type== "arduino_functions" ){
-                    UsedBlocks=UsedBlocks+1
-                  }
-                }   
-              } 
-            }
-          }  
-        }
-        if(AllBlocks[6] != undefined ){
-          if(AllBlocks[6].parentBlock_ != null) {
-            if(AllBlocks[6].parentBlock_.type =="arduino_functions"){
-              UsedBlocks=UsedBlocks+1
-            }
-            if(AllBlocks[6].parentBlock_.parentBlock_ != null ){
-              if(AllBlocks[6].parentBlock_.parentBlock_.type=="arduino_functions"){
-                UsedBlocks=UsedBlocks+1
-              }
-              if(AllBlocks[6].parentBlock_.parentBlock_.parentBlock_!=null){
-                if(AllBlocks[6].parentBlock_.parentBlock_.parentBlock_.type== "arduino_functions" ){
-                  UsedBlocks=UsedBlocks+1
-                }
-                if(AllBlocks[6].parentBlock_.parentBlock_.parentBlock_.parentBlock_!=null){
-                  if(AllBlocks[6].parentBlock_.parentBlock_.parentBlock_.parentBlock_.type== "arduino_functions" ){
-                    UsedBlocks=UsedBlocks+1
-                  }
-                  if(AllBlocks[6].parentBlock_.parentBlock_.parentBlock_.parentBlock_.parentBlock_!=null ){
-                    if(AllBlocks[6].parentBlock_.parentBlock_.parentBlock_.parentBlock_.parentBlock_.type== "arduino_functions" ){
-                      UsedBlocks=UsedBlocks+1
-                    }
-                    if(AllBlocks[6].parentBlock_.parentBlock_.parentBlock_.parentBlock_.parentBlock_.parentBlock_!=null && AllBlocks[6].parentBlock_.parentBlock_.parentBlock_.parentBlock_.parentBlock_.parentBlock_.type== "arduino_functions" ){
-                      UsedBlocks=UsedBlocks+1
-                    }
-                  }  
-                }  
-              } 
-            }
-          }  
-        }
+      for (var i = 0; i <= AllBlocks.length; i++) {
+        checkParent(AllBlocks[i])
       }
+      document.getElementById('active_blocks').textContent =usedBlocks+1
       var maxBlocks = 7
-      var activeblocks=UsedBlocks+1
-      var remainingBlock= maxBlocks-activeblocks
-      document.getElementById('active_blocks').textContent =activeblocks
-      document.getElementById('capacity').textContent = remainingBlock
-    } 
-});
+      document.getElementById('capacity').textContent =
+      maxBlocks-usedBlocks-1
+      usedBlocks=0
+    }
+  });
   // Ensure the Blockly workspace resizes accordingly
   window.addEventListener('resize',
       function() { Blockly.asyncSvgResize(Ardublockly.workspace); }, false);
@@ -296,7 +193,7 @@ Ardublockly.loadSessionStorageBlocks = function() {
   }
 };
 
-/** Check Tutorials Tutorial */
+/** Check Tutorials Function */
 Ardublockly.finish_tutorial = function() {
   var AllBlocks= (Ardublockly.workspace.getAllBlocks())
       if(AllBlocks[1] != null && AllBlocks[1].parentBlock_ != null){
@@ -382,7 +279,7 @@ Ardublockly.finish_tutorial = function() {
         }
       else{
         Ardublockly.alertMessage(
-          "Bitte Blöcke in Setup Block einfügen",
+          "Bitte Blöcke einfügen",
           false);
       }   
 }
@@ -536,3 +433,17 @@ Ardublockly.ajaxRequest = function() {
   }
   return request;
 };
+
+var usedBlocks=0
+function checkParent(Object) {
+  if(Object!=null){
+    if(Object.parentBlock_!=null){
+      if(Object.parentBlock_ != "arduino_functions"){
+        checkParent(Object.parentBlock_)
+      }
+      if(Object.parentBlock_.type == "arduino_functions"){
+        usedBlocks=usedBlocks+1
+      }
+    }
+  }
+}

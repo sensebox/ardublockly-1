@@ -41,7 +41,7 @@ Ardublockly.injectBlockly = function(blocklyEl, toolboxXml, blocklyPath) {
       css: true,
       disable: true,
       grid: false,
-      maxBlocks: 2,
+      maxBlocks: Infinity,
       media: blocklyPath + '/media/',
       rtl: false,
       scrollbars: true,
@@ -71,18 +71,15 @@ Ardublockly.bindBlocklyEventListeners = function() {
       Ardublockly.workspace.remainingCapacity();
       document.getElementById('used_blocks').textContent =
       AllBlocks.length;
-      if(AllBlocks[0]!= undefined){
-        if(AllBlocks[1] != undefined && AllBlocks[1].parentBlock_!= undefined){
-          UsedBlocks=UsedBlocks+1
-        }
+      for (var i = 0; i <= AllBlocks.length; i++) {
+        checkParent(AllBlocks[i])
       }
-      console.log(UsedBlocks)
+      document.getElementById('active_blocks').textContent =usedBlocks+1
       var maxBlocks = 2
-      var activeblocks=UsedBlocks
-      var remainingBlock= maxBlocks-activeblocks
-      document.getElementById('active_blocks').textContent =activeblocks
-      document.getElementById('capacity').textContent = remainingBlock
-  } 
+      document.getElementById('capacity').textContent =
+      maxBlocks-usedBlocks-1
+      usedBlocks=0
+    }
   });
   // Ensure the Blockly workspace resizes accordingly
   window.addEventListener('resize',
@@ -192,7 +189,7 @@ Ardublockly.loadSessionStorageBlocks = function() {
   }
 };
 
-/** Check Tutorials Tutorial */
+/** Check Tutorials Function */
 Ardublockly.finish_tutorial = function() {
   var AllBlocks= (Ardublockly.workspace.getAllBlocks())
       if(AllBlocks[1] != null && AllBlocks[1].parentBlock_ != null){
@@ -384,6 +381,18 @@ Ardublockly.ajaxRequest = function() {
   return request;
 };
 
-
+var usedBlocks=0
+function checkParent(Object) {
+  if(Object!=null){
+    if(Object.parentBlock_!=null){
+      if(Object.parentBlock_ != "arduino_functions"){
+        checkParent(Object.parentBlock_)
+      }
+      if(Object.parentBlock_.type == "arduino_functions"){
+        usedBlocks=usedBlocks+1
+      }
+    }
+  }
+}
   
 
