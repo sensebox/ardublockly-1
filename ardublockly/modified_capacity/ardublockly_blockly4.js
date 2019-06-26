@@ -41,7 +41,7 @@ Ardublockly.injectBlockly = function(blocklyEl, toolboxXml, blocklyPath) {
       css: true,
       disable: true,
       grid: false,
-      maxBlocks: 31,
+      maxBlocks: Infinity,
       media: blocklyPath + '/media/',
       rtl: false,
       scrollbars: true,
@@ -436,6 +436,7 @@ Ardublockly.ajaxRequest = function() {
   }
   return request;
 };
+
 var usedBlocks=0
 function checkParent(Object) {
   if(Object!=null){
