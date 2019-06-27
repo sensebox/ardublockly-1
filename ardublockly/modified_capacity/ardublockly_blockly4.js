@@ -79,6 +79,7 @@ Ardublockly.bindBlocklyEventListeners = function() {
       document.getElementById('capacity').textContent =
       maxBlocks-usedBlocks-1
       usedBlocks=0
+      console.log(AllBlocks[0])
     }
   });
   // Ensure the Blockly workspace resizes accordingly
@@ -217,9 +218,16 @@ Ardublockly.finish_tutorial = function() {
   }
   usedBlocks=usedBlocks+1
       if(AllBlocks[0] != null && AllBlocks[0].childBlocks_[0] != null){
-        if(AllBlocks[0].inputList[1].renderHeight==25){
+        if(AllBlocks[0].inputList[3].renderHeight==24){
           if(usedBlocks<=9){
             if (AllBlocks[0].childBlocks_[0].type ="controls_repeat_ext"){
+              if(AllBlocks[0].childBlocks_[0].childBlocks_[0] != undefined && AllBlocks[0].childBlocks_[0].childBlocks_[1]!=undefined){
+                if(AllBlocks[0].childBlocks_[0].childBlocks_[0].type=="sensebox_led" && AllBlocks[0].childBlocks_[0].childBlocks_[1].type=="math_number"){
+                  var ChangeBlock= AllBlocks[0].childBlocks_[0].childBlocks_[0]
+                  AllBlocks[0].childBlocks_[0].childBlocks_[0]=AllBlocks[0].childBlocks_[0].childBlocks_[1]
+                  AllBlocks[0].childBlocks_[0].childBlocks_[1]=ChangeBlock
+                }
+              }
               if(AllBlocks[0].childBlocks_[0].childBlocks_[0] != undefined && AllBlocks[0].childBlocks_[0].childBlocks_[0].type =="math_number"){
                 if(AllBlocks[0].childBlocks_[0].childBlocks_[0].inputList[0].fieldRow[0].text_ == "5"){
                   if(AllBlocks[0].childBlocks_[0].childBlocks_[1]!=undefined){
@@ -227,11 +235,25 @@ Ardublockly.finish_tutorial = function() {
                       if(AllBlocks[0].childBlocks_[0].childBlocks_[1] != null && AllBlocks[0].childBlocks_[0].childBlocks_[1].type== "sensebox_led"){
                         if(AllBlocks[0].childBlocks_[0].childBlocks_[1].inputList[0].fieldRow[2].text_=="BUILTIN_1" && AllBlocks[0].childBlocks_[0].childBlocks_[1].inputList[0].fieldRow[4].text_=="on"){
                           if(AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0] != null && AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].type== "time_delay"){
+                            if(AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0] != undefined && AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1]!=undefined){
+                              if(AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].type=="sensebox_led" && AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].type=="math_number"){
+                                var ChangeBlock= AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1]
+                                AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1] = AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0]
+                                AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0]=ChangeBlock
+                              }
+                            }
                             if(AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0] != null && AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].type== "math_number"){
                               if(AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].inputList[0].fieldRow[0].text_ == "1000"){
                                 if(AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1] != null && AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].type== "sensebox_led"){
                                   if(AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].inputList[0].fieldRow[2].text_=="BUILTIN_1" && AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].inputList[0].fieldRow[4].text_=="off"){
                                     if(AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0]!= null && AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].type== "time_delay"){
+                                      if(AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0]!= null && AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1]!= null){
+                                        if(AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].type== "sensebox_led" && AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].type== "math_number"){
+                                          var ChangeBlock= AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0]
+                                          AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0] = AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1]
+                                          AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1] = ChangeBlock
+                                        }
+                                      }
                                       if(AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0]!= null && AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].type== "math_number"){
                                         if(AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].inputList[0].fieldRow[0].text_ == "1000"){
                                           Ardublockly.alertMessage(
@@ -320,7 +342,7 @@ Ardublockly.finish_tutorial = function() {
           }}
         else{
           Ardublockly.alertMessage(
-            "Blöcke bitte in den Loop",
+            "Blöcke bitte in den Run First Block",
             false);
         }}
       else{
