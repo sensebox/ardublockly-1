@@ -41,7 +41,7 @@ Ardublockly.injectBlockly = function(blocklyEl, toolboxXml, blocklyPath) {
       css: true,
       disable: true,
       grid: false,
-      maxBlocks: 5,
+      maxBlocks: Infinity,
       media: blocklyPath + '/media/',
       rtl: false,
       scrollbars: true,
@@ -75,7 +75,7 @@ Ardublockly.bindBlocklyEventListeners = function() {
         checkParent(AllBlocks[i])
       }
       document.getElementById('active_blocks').textContent =usedBlocks+1
-      var maxBlocks = 50
+      var maxBlocks = 8
       document.getElementById('capacity').textContent =
       maxBlocks-usedBlocks-1
       usedBlocks=0
@@ -338,6 +338,104 @@ Ardublockly.ajaxRequest = function() {
   }
   return request;
 };
+
+/** Check Tutorials Function */
+Ardublockly.finish_tutorial = function() {
+  var AllBlocks= (Ardublockly.workspace.getAllBlocks())
+  var AllBlocks= (Ardublockly.workspace.getAllBlocks())
+  for (var i = 0; i <= AllBlocks.length; i++) {
+    checkParent(AllBlocks[i])
+  }
+  usedBlocks=usedBlocks+1
+      if(AllBlocks[0] != null && AllBlocks[0].childBlocks_[0] != null){
+        if(usedBlocks<9){
+          if(AllBlocks[0].inputList[1].renderHeight==29){
+            if(AllBlocks[0].inputList[3].renderHeight>24){
+              if(AllBlocks[0].childBlocks_[0] != undefined && AllBlocks[0].childBlocks_[1]!=undefined){
+                if(AllBlocks[0].childBlocks_[0].type=="sensebox_display_show" && AllBlocks[0].childBlocks_[1].type=="sensebox_display_beginDisplay"){
+                  var ChangeBlock= AllBlocks[0].childBlocks_[0]
+                  AllBlocks[0].childBlocks_[0]=AllBlocks[0].childBlocks_[1]
+                  AllBlocks[0].childBlocks_[1]=ChangeBlock
+                }
+              }
+              if(AllBlocks[0].childBlocks_[1].type=="sensebox_display_show"){
+                if(AllBlocks[0].childBlocks_[1].inputList[1].renderHeight>24){
+                  if(AllBlocks[0].childBlocks_[1].childBlocks_[0]!= undefined && AllBlocks[0].childBlocks_[1].childBlocks_[0].type=="sensebox_display_printDisplay" ){
+                    if(AllBlocks[0].childBlocks_[1].childBlocks_[0].inputList[2].renderHeight==26){
+                      if(AllBlocks[0].childBlocks_[1].childBlocks_[0].inputList[3].renderHeight==26){
+                        if(AllBlocks[0].childBlocks_[1].childBlocks_[0].inputList[4].renderHeight==26){
+                          if(AllBlocks[0].childBlocks_[1].childBlocks_[0].inputList[5].renderHeight==50){
+                            Ardublockly.alertMessage(
+                              "Glückwunsch, alles richtig",
+                              false);
+                          }
+                          else{
+                            Ardublockly.alertMessage(
+                              "Falscher/fehlender achter Block",
+                              false);
+                          }
+                        }
+                        else{
+                          Ardublockly.alertMessage(
+                            "Falscher/fehlender siebter Block",
+                            false);
+                        }
+                      }
+                      else{
+                        Ardublockly.alertMessage(
+                          "Falscher/fehlender sechster Block",
+                          false);
+                      }
+                    }
+                    else{
+                      Ardublockly.alertMessage(
+                        "Falscher/fehlender fünfter Block",
+                        false);
+                    }
+                  }
+                  else{
+                    Ardublockly.alertMessage(
+                      "Falscher/fehlender vierter Block",
+                      false);
+                  }
+                }
+                else{
+                  Ardublockly.alertMessage(
+                    "Der vierte Block muss in den Print Block",
+                    false);
+                }
+              }
+              else{
+                Ardublockly.alertMessage(
+                  "Falscher dritter Block",
+                  false);
+              }
+            }
+            else{
+              Ardublockly.alertMessage(
+                "Bitte Blöcke in den Loop einfügen",
+                false);
+            }
+          }
+          else{
+            Ardublockly.alertMessage(
+              "Falscher/fehlender Block im Run-First Block",
+              false);
+          }  
+        }
+        else{
+          Ardublockly.alertMessage(
+            "zu viele aktive Blöcke",
+            false);
+        }
+      }
+      else{
+        Ardublockly.alertMessage(
+          "Bitte Blöcke einfügen",
+          false);
+      }
+      usedBlocks=0                
+}
 
 var usedBlocks=0
 function checkParent(Object) {

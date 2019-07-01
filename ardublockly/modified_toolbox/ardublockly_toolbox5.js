@@ -12,9 +12,9 @@ var Ardublockly = Ardublockly || {};
 Ardublockly.TOOLBOX_XML =
     '<xml>' +
     '  <sep></sep>' +
-/**    '   <category id="catSenseBox_Sensor" name="senseBox Sensors" colour="120">' +
-    '      <block type="sensebox_sensor_temp_hum"></block>' +
-    '      <block type="sensebox_sensor_uv_light"></block>' +
+    '   <category id="catSenseBox_Sensor" name="senseBox Sensors" colour="120">' +
+/**    '      <block type="sensebox_sensor_temp_hum"></block>' +
+*/    '      <block type="sensebox_sensor_uv_light"></block>' + /** 
     '      <block type="sensebox_sensor_bmx055_accelerometer"></block>' +
    // '      <block type="sensebox_sensor_bmx055_gyroscope"></block>' +
    // '      <block type="sensebox_sensor_bmx055_compass"></block>' +
@@ -31,29 +31,29 @@ Ardublockly.TOOLBOX_XML =
     '      <block type="sensebox_button"></block>' +
     '      <block type="sensebox_poti"></block>' +
     '      <block type="sensebox_gps_getValues"></block>' +
-    '      </category>' +
+*/    '      </category>' + /** 
     '      <sep></sep>' +
-    '      <category id="catSenseBox_Display" name="Display" colour="120">' +
+*/    '      <category id="catSenseBox_Display" name="Display" colour="120">' + 
     '      <block type="sensebox_display_beginDisplay"></block>' +
-    '      <block type="sensebox_display_show"></block>' +
-    '      <block type="sensebox_display_clearDisplay"></block>' +
+     '      <block type="sensebox_display_show"></block>' + 
+/**    '      <block type="sensebox_display_clearDisplay"></block>' + */
     '      <block type="sensebox_display_printDisplay">' +
     '         <value name="SIZE">' +
-    '       <block type="math_number">' +
+/*    '       <block type="math_number">' +
     '            <field name="NUM">1</field>' +
-    '          </block>' +
+    '          </block>' + */
     '        </value>' +
     '       <value name="X">' +
-    '               <block type="math_number">' +
+/*    '               <block type="math_number">' +
     '                 <field name="NUM">0</field>' +
-    '          </block>' +
+    '          </block>' + */
     '        </value>' +
     '        <value name="Y">' +
-    '          <block type="math_number">' +
+/*    '          <block type="math_number">' +
     '            <field name="NUM">0</field>' +
-    '          </block>' +
+    '          </block>' + */
     '       </value>' +
-    '      </block>' +
+    '      </block>' + /** 
     '      <block type="sensebox_display_fillCircle">' +
     '       <value name="X">' +
     '          <block type="math_number">' +
@@ -142,11 +142,11 @@ Ardublockly.TOOLBOX_XML =
     '          </block>' +
     '        </value>' +
     '       </block>' +
-    '   </category>' +
-    '  <sep></sep>' +       */
+*/    '   </category>' + /** 
+    '  <sep></sep>' +       
     '    <category id="catSenseBox_Led" name="LED" colour="120">' +
     '       <block type="sensebox_led"></block>' +
-/**    '      <block type="sensebox_rgb_led">' + 
+    '      <block type="sensebox_rgb_led">' + 
     '        <value name="RED">' +
     '          <block type="math_number">' +
     '            <field name="NUM">0</field>' + 
@@ -162,9 +162,9 @@ Ardublockly.TOOLBOX_XML =
     '            <field name="NUM">0</field>' +
     '          </block>' +
     '        </value>' +
-    '      </block>' + */
+    '      </block>' + 
     '   </category>' +
-/**    '  <sep></sep>' +
+    '  <sep></sep>' +
     '      <category id="catSenseBoxOutput_Web" name="Web" colour="120">' +
     '      <category id="catSenseBox_Wifi" name="Wifi" colour="120">' +     
     '      <block type="sensebox_wifi"></block>' +
@@ -242,8 +242,8 @@ Ardublockly.TOOLBOX_XML =
     '    <block type="controls_flow_statements"></block>' +
     '  </category>' +
     '  <sep></sep>' +
-    '  <category id="catMath" name="Math" colour="230">' +
-    '    <block type="math_number"></block>' +
+*/    '  <category id="catMath" name="Math" colour="230">' +
+    '    <block type="math_number"></block>' + /*
     '    <block type="math_arithmetic"></block>' +
     '    <block type="math_single"></block>' +
     '    <block type="math_trig"></block>' +
@@ -284,7 +284,7 @@ Ardublockly.TOOLBOX_XML =
     '    </block>' +
     '    <block type="math_random_float"></block>' +
     '    <block type="base_map"></block>' +
-    '  </category>' +
+*/    '  </category>' + /*
     '  <sep></sep>' +
     '  <category id="catText" name="Text" colour="160">' +
     '    <block type="text"></block>' +
