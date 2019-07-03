@@ -238,7 +238,7 @@ Ardublockly.finish_tutorial = function() {
         }
       else{
         Ardublockly.alertMessage(
-          "Bitte Blöcke in Setup Block einfügen",
+          "Bitte Blöcke einfügen",
           false);
       }  
   usedBlocks =0
