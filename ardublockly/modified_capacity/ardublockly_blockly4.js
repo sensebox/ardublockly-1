@@ -75,7 +75,7 @@ Ardublockly.bindBlocklyEventListeners = function() {
         checkParent(AllBlocks[i])
       }
       document.getElementById('active_blocks').textContent =usedBlocks+1
-      var maxBlocks = 31
+      var maxBlocks = 9
       document.getElementById('capacity').textContent =
       maxBlocks-usedBlocks-1
       usedBlocks=0
