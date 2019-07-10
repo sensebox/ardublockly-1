@@ -335,6 +335,21 @@ Ardublockly.openAdditionalBlocksModal = function(htmlContent) {
   });
 };
 
+
+/**
+ * Opens the modal to login using the OSEM Account
+ * @param none
+ */
+
+Ardublockly.openLoginModal = function(){
+  $('#login_modal').openModal({
+    dismissible: true,
+    opacity: .5,
+    in_duration: 200,
+    out_duration: 250
+  });
+}
+
 /**
  * Creates an HTML node with the blocks category information from arguments.
  * @param {!string} title Text to include as category title.
