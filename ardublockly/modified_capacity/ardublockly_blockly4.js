@@ -209,6 +209,11 @@ Ardublockly.discardAllBlocks = function() {
   }
 };
 
+document.getElementById('checks').textContent =0
+document.getElementById('hints').textContent =0
+var hints=0
+var checks=0
+
 /** Check Tutorials Function */
 Ardublockly.finish_tutorial = function() {
   var AllBlocks= (Ardublockly.workspace.getAllBlocks())
@@ -350,8 +355,17 @@ Ardublockly.finish_tutorial = function() {
         "Bitte Blöcke einfügen",
         false);
       }
-      usedBlocks=0
-                    
+      usedBlocks=0   
+      checks=checks+1
+      document.getElementById('checks').textContent = checks             
+}
+
+Ardublockly.hint = function() {
+  Ardublockly.alertMessage(
+    "Hint Message",
+    false);
+    hints=hints+1
+    document.getElementById('hints').textContent = hints
 }
 
 /** @return {!boolean} Indicates if the Blockly workspace has blocks. */
