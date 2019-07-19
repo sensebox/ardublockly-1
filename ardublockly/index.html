@@ -90,8 +90,16 @@
               class="mdi-file-file-download left"></i></a></li>
         <li><a href="#" id="button_delete"><span class="translatable_deleteAll">Delete All</span><i
               class="mdi-action-delete left"></i></a></li>
-        <li><a href="#" id="button_login"><span class="translatable_log_in">Log In</span><i
-              class="mdi-action-account-box left"></i></a></li>
+        <!-- <li><a href="#" id="button_login"><span class="translatable_log_in">Log In</span><i
+              class="mdi-action-account-box left"></i></a></li> -->
+        <li><a href="#" id="button_login_navbar" data-hover="true" data-beloworigin="true" data-constrainwidth="true" data-activates="acc-dropdown" class="dropdown-button">
+            <span id='login_name' class="translatable_logged_in">Log In</span><i class="mdi-action-account-box left"></i>
+          </a>
+          <ul id="acc-dropdown" class="dropdown-content" style="visibility: hidden">
+            <li><a href="#!">My Sensebox</a></li>
+            <li><a href="#!">Log Out</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </nav>
@@ -328,6 +336,63 @@
 
   <!-- Modal: Login with OSEM -->
   <div id="login_modal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4 class="center">Login with senseBox</h4>
+      <div class="row">
+        <form class="col s6 offset-s3" id="loginForm">
+          <form class="col s12" method="post">
+            <div class='row'>
+              <div class='col s12'>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <input class='validate' type='email' name='email' id='email' />
+                <label for='email'>Enter your email</label>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <input class='validate' type='password' name='password' id='password' />
+                <label for='password'>Enter your password</label>
+              </div>
+            </div>
+            <br />
+
+            <span class="center hide" id="wrongCredentials">Email and/or password does not match!</span>
+
+            <div class='row'>
+              <button id='button_login_pressed' class='col s12 btn btn-large waves-effect sensebox_green'>Login</button>
+            </div>
+
+            <label style='float: right;'>
+              <a class='indigo-text' id='initForgotPassword' href='#!'><b>Forgot Password?</b></a>
+            </label>
+            <label style='float: left;'>
+              <a class='indigo-text' id="initCreateAccount" href='#!'><b>Create Account</b></a>
+            </label>
+          </form>
+      </div>
+
+
+      <form class="col s6 offset-s3 hide" id="registerForm"></form>
+
+    </div>
+    <!-- ----- -->
+
+    <!-- Hide by default, if register clicked show this -->
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+  </div>
+  </div>
+
+
+  <!-- Modal: Register with OSEM TODO-->
+  <div id="register_modal" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h4 class="center">Login with senseBox</h4>
       <div class="row">

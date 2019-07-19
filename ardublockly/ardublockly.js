@@ -36,7 +36,13 @@ Ardublockly.init = function (options) {
     console.log('Offline app modal opened as non localhost host name found: ' +
       document.location.hostname)
   }
+
+  // Check for existing JWT login token from OSEM or other sensebox websites TODO
+  Ardublockly.isLoggedIn = Ardublockly.recoverSession();
+
+
 };
+
 
 /** Binds functions to each of the buttons, nav links, and related. */
 Ardublockly.bindActionFunctions = function () {
@@ -45,7 +51,11 @@ Ardublockly.bindActionFunctions = function () {
   Ardublockly.bindClick_('button_save', Ardublockly.saveXmlFile);
   Ardublockly.bindClick_('button_save_ino', Ardublockly.saveSketchFile);
   Ardublockly.bindClick_('button_delete', Ardublockly.discardAllBlocks);
-  Ardublockly.bindClick_('button_login', Ardublockly.openLoginModal);
+
+
+  Ardublockly.bindClick_('button_login_navbar', function () {
+    if(!Ardublockly.isLoggedIn) Ardublockly.openLoginModal();
+  });
 
   // Side menu buttons, they also close the side menu
   Ardublockly.bindClick_('menu_load', function () {
@@ -125,64 +135,9 @@ Ardublockly.bindActionFunctions = function () {
     Ardublockly.setSketchLocationHtml);
 
   // Login Modal
-  Ardublockly.bindClick_('button_login_pressed', function () {
+  //Ardublockly.bindClick_('button_login_pressed', function () {
 
-    // Validate E-Mail:
-    function validateEmail(email) {
-      var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(email);
-    }
-    
-    if(!validateEmail(document.getElementById('email').value)) return;
-
-
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "https://api.opensensemap.org/users/sign-in",
-      "method": "POST",
-      "headers": {
-        "Content-Type": "application/json",
-      },
-      "data": JSON.stringify({
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value
-      })
-    }
-
-    $.ajax(settings)
-      .fail(function (response) {
-        console.log(response);
-
-        if(response.status === 403){
-          document.getElementById('email').classList.add('invalid');
-          document.getElementById('password').classList.add('invalid');
-          document.getElementById('wrongCredentials').classList.remove('hide');
-        }
-
-      })
-      .done(function (response) {
-
-        if(response.code === "Authorized"){
-          // Set JWT token
-          window.sessionStorage.accessToken = response.token
-          $('#login_modal').closeModal();
-
-          // Hide Button in NavBar
-          document.getElementById('button_login').classList.add('hide');
-
-          // Add / Show Icon to NavBar
-        }
-
-        console.log(response);
-      });
-
-    // set JWT token TODO
-
-    // Update Button Text TODO
-
-
-  })
+  Ardublockly.bindClick_('button_login_pressed', Ardublockly.logIn);
 
 };
 

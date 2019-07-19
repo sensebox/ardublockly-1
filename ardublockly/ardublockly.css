@@ -877,3 +877,10 @@ img.animated-gif{
 .sb-disabled {
   background: rgb(168, 167, 167) !important;
 }
+
+/* Further Enhancements for OSEM Login*/
+
+.dropdown-content{
+  width: max-content !important;
+  height:auto !important;
+}
