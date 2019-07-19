@@ -425,24 +425,44 @@ Ardublockly.logIn = function () {
 
 /**
  * Tries to recover a session by checking if there is an existing JWT token
+ * @param none
  */
 Ardublockly.recoverSession = function () {
-  let accessToken = sessionStorage.getItem('sb_accessToken');
-  if (accessToken != null) {
-    
-      // Get refresh token
-      let refreshToken = sessionStorage.getItem('sb_refreshToken');
+  let refreshToken = sessionStorage.getItem('sb_refreshToken');
+  if (refreshToken != null) {
 
-      // Contact API to get refreshed access token
-      // ++ Retrieve Data and update visuals
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://api.opensensemap.org/users/refresh-auth",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "data": JSON.stringify({
+        "token": refreshToken
+      })
+    }
 
-      console.log(accessToken);
-      console.log(refreshToken);
+    $.ajax(settings).fail(function (response) {
+      console.log(response);
+      return false;
+    }).done(function (response) {
 
+      window.sessionStorage.setItem('sb_accessToken', response.token);
+      window.sessionStorage.setItem('sb_refreshToken', response.refreshToken);
 
-    return true;
+      // Display name in navbar
+      $('#login_name')[0].innerHTML = response.data.user.name;
+
+      // Show Dropdown
+      $('#acc-dropdown').css('visibility', 'visible')
+
+      return true;
+    });
+
   } else {
-    return false
+    return false;
   }
 
 
