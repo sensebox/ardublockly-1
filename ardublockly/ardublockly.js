@@ -9,6 +9,10 @@
 /** Create a namespace for the application. */
 var Ardublockly = Ardublockly || {};
 
+/** Globals to save the user in */
+Ardublockly.isLoggedIn = false
+Ardublockly.user = {}
+
 /** Initialize function for Ardublockly, to be called on page load. */
 Ardublockly.init = function (options) {
   this.options = options || {};
@@ -37,9 +41,8 @@ Ardublockly.init = function (options) {
       document.location.hostname)
   }
 
-  // Check for existing JWT login token from OSEM or other sensebox websites TODO
+  // Login Status of OSEM
   Ardublockly.isLoggedIn = Ardublockly.recoverSession();
-
 
 };
 
@@ -54,7 +57,9 @@ Ardublockly.bindActionFunctions = function () {
 
 
   Ardublockly.bindClick_('button_login_navbar', function () {
-    if(!Ardublockly.isLoggedIn) Ardublockly.openLoginModal();
+    if (!Ardublockly.isLoggedIn) {
+      Ardublockly.openLoginModal();
+    }
   });
 
   // Side menu buttons, they also close the side menu
@@ -134,10 +139,8 @@ Ardublockly.bindActionFunctions = function () {
     ArdublocklyServer.setSketchLocationHtml,
     Ardublockly.setSketchLocationHtml);
 
-  // Login Modal
-  //Ardublockly.bindClick_('button_login_pressed', function () {
-
   Ardublockly.bindClick_('button_login_pressed', Ardublockly.logIn);
+  Ardublockly.bindClick_('button_logout_pressed', Ardublockly.logOut);
 
 };
 
@@ -784,3 +787,131 @@ Ardublockly.bindClick_ = function (el, func) {
   el.addEventListener('ontouchend', propagateOnce);
   el.addEventListener('click', propagateOnce);
 };
+
+
+/**
+ * Login process with OSEM Account
+ * @param none
+ */
+
+Ardublockly.logIn = function () {
+
+  // Validate E-Mail:
+  function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
+  if (!validateEmail(document.getElementById('email').value)) return;
+
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://api.opensensemap.org/users/sign-in",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+    },
+    "data": JSON.stringify({
+      email: document.getElementById('email').value,
+      password: document.getElementById('password').value
+    })
+  }
+
+  $.ajax(settings)
+    .fail(function (response) {
+      console.log(response);
+      if (response.status === 403) {
+        document.getElementById('email').classList.add('invalid');
+        document.getElementById('password').classList.add('invalid');
+        document.getElementById('wrongCredentials').classList.remove('hide');
+      }
+    })
+    .done(function (response) {
+
+      if (response.code === "Authorized") {
+        // Set JWT token
+        window.sessionStorage.setItem('sb_accessToken', response.token);
+        window.sessionStorage.setItem('sb_refreshToken', response.refreshToken);
+        $('#login_modal').closeModal();
+
+        // Display name in navbar
+        $('#login_name')[0].innerHTML = response.data.user.name;
+
+        // Show Dropdown
+        $('#acc-dropdown').css('visibility', 'visible')
+
+        Ardublockly.isLoggedIn = true;
+      }
+      console.log(response);
+    });
+}
+
+/**
+ * Tries to recover a session by checking if there is an existing JWT token
+ * @param none
+ * @return true if the session was recovered, false if not
+ */
+Ardublockly.recoverSession = function () {
+  let refreshToken = sessionStorage.getItem('sb_refreshToken');
+  if (refreshToken != null) {
+
+    var settings = {
+      "crossDomain": true,
+      "url": "https://api.opensensemap.org/users/refresh-auth",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "data": JSON.stringify({
+        "token": refreshToken
+      })
+    }
+
+    $.ajax(settings).fail(function (response) {
+      console.log(response);
+      return false;
+    }).done(function (response) {
+
+      window.sessionStorage.setItem('sb_accessToken', response.token);
+      window.sessionStorage.setItem('sb_refreshToken', response.refreshToken);
+
+      // Display name in navbar
+      $('#login_name')[0].innerHTML = response.data.user.name;
+
+      // Show Dropdown
+      $('#acc-dropdown').css('visibility', 'visible')
+
+      return true;
+    });
+
+  } else {
+    return false;
+  }
+}
+
+Ardublockly.logOut = function () {
+  if (Ardublockly.isLoggedIn === false) return;
+
+  let accessToken = sessionStorage.getItem('sb_accessToken');
+
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://api.opensensemap.org/users/sign-out",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + accessToken,
+      "cache-control": "no-cache"
+    }
+  }
+
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
+
+  sessionStorage.removeItem('sb_accessToken');
+  sessionStorage.removeItem('sb_refreshToken');
+  location.reload();
+}

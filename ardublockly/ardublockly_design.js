@@ -9,7 +9,6 @@
 /** Create a namespace for the application. */
 var Ardublockly = Ardublockly || {};
 
-
 /** Initialises all the design related JavaScript. */
 Ardublockly.designJsInit = function () {
   Ardublockly.materializeJsInit();
@@ -363,113 +362,6 @@ Ardublockly.openLoginModal = function () {
     out_duration: 250
   });
 }
-
-/**
- * Login process with OSEM Account
- * @param none
- */
-
-Ardublockly.logIn = function () {
-
-  // Validate E-Mail:
-  function validateEmail(email) {
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-  }
-
-  if (!validateEmail(document.getElementById('email').value)) return;
-
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://api.opensensemap.org/users/sign-in",
-    "method": "POST",
-    "headers": {
-      "Content-Type": "application/json",
-    },
-    "data": JSON.stringify({
-      email: document.getElementById('email').value,
-      password: document.getElementById('password').value
-    })
-  }
-
-  $.ajax(settings)
-    .fail(function (response) {
-      console.log(response);
-      if (response.status === 403) {
-        document.getElementById('email').classList.add('invalid');
-        document.getElementById('password').classList.add('invalid');
-        document.getElementById('wrongCredentials').classList.remove('hide');
-      }
-    })
-    .done(function (response) {
-
-      if (response.code === "Authorized") {
-
-        // Set JWT token
-        window.sessionStorage.setItem('sb_accessToken', response.token);
-        window.sessionStorage.setItem('sb_refreshToken', response.refreshToken);
-        $('#login_modal').closeModal();
-
-        // Display name in navbar
-        $('#login_name')[0].innerHTML = response.data.user.name;
-
-        // Show Dropdown
-        $('#acc-dropdown').css('visibility', 'visible')
-
-        Ardublockly.isLoggedIn = true;
-      }
-      console.log(response);
-    });
-}
-
-/**
- * Tries to recover a session by checking if there is an existing JWT token
- * @param none
- */
-Ardublockly.recoverSession = function () {
-  let refreshToken = sessionStorage.getItem('sb_refreshToken');
-  if (refreshToken != null) {
-
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "https://api.opensensemap.org/users/refresh-auth",
-      "method": "POST",
-      "headers": {
-        "Content-Type": "application/json"
-      },
-      "data": JSON.stringify({
-        "token": refreshToken
-      })
-    }
-
-    $.ajax(settings).fail(function (response) {
-      console.log(response);
-      return false;
-    }).done(function (response) {
-
-      window.sessionStorage.setItem('sb_accessToken', response.token);
-      window.sessionStorage.setItem('sb_refreshToken', response.refreshToken);
-
-      // Display name in navbar
-      $('#login_name')[0].innerHTML = response.data.user.name;
-
-      // Show Dropdown
-      $('#acc-dropdown').css('visibility', 'visible')
-
-      return true;
-    });
-
-  } else {
-    return false;
-  }
-
-
-
-
-}
-
 
 /**
  * Creates an HTML node with the blocks category information from arguments.
