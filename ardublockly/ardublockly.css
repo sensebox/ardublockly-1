@@ -42,21 +42,26 @@ body {
 .arduino_teal {
   background-color: #00979C;
 }
+
 .arduino_teal_dark {
   background-color: #006468;
   /* background-color: #00878F; from community logo */
 }
+
 .arduino_teal_light {
   background-color: #62AEB2;
 }
+
 .arduino_orange {
   background-color: #E47128;
 }
+
 .arduino_yellow {
   background-color: rgba(255, 204, 51, 1);
   /* background-color: #FFCC33; */
   /* background-color: #E5AD24; from community logo */
 }
+
 .arduino_brown {
   background-color: #8C7965;
 }
@@ -78,10 +83,12 @@ body {
   margin-bottom: 30px;
   z-index: 997 !important;
 }
+
 @media only screen and (min-width : 993px) {
   body {
     padding-top: 100px;
   }
+
   .nav-fixed {
     position: fixed;
     right: 0;
@@ -101,9 +108,11 @@ ul.side-nav li.logo {
   height: 145px;
   background-color: transparent;
 }
+
 ul.side-nav li.logo:hover {
   background-color: transparent;
 }
+
 ul.side-nav li.side-menu-end {
   background-color: #eeeeee;
   border-radius: 0px 0px 25px 0px;
@@ -123,6 +132,7 @@ ul.side-nav li.side-menu-end {
   width: 100%;
   background-color: #ffffff;
 }
+
 .height_transition {
   transition: height 0.2s ease-out;
   -ms-transition: height 0.2s ease-out;
@@ -135,26 +145,41 @@ ul.side-nav li.side-menu-end {
   position: relative !important;
   min-height: 480px;
 }
+
 .blocks_panel_large {
-  height: -moz-calc(100vh - 190px);     /* Firefox  */
-  height: -webkit-calc(100vh - 190px);  /* WebKit   */
-  height: -o-calc(100vh - 190px);       /* Opera    */
-  height: calc(100vh - 190px);          /* Standard */
+  height: -moz-calc(100vh - 190px);
+  /* Firefox  */
+  height: -webkit-calc(100vh - 190px);
+  /* WebKit   */
+  height: -o-calc(100vh - 190px);
+  /* Opera    */
+  height: calc(100vh - 190px);
+  /* Standard */
 }
+
 .blocks_panel_small {
-  height: -moz-calc(100vh - 350px);     /* Firefox  */
-  height: -webkit-calc(100vh - 350px);  /* WebKit   */
-  height: -o-calc(100vh - 350px);       /* Opera    */
-  height: calc(100vh - 350px);          /* Standard */
+  height: -moz-calc(100vh - 350px);
+  /* Firefox  */
+  height: -webkit-calc(100vh - 350px);
+  /* WebKit   */
+  height: -o-calc(100vh - 350px);
+  /* Opera    */
+  height: calc(100vh - 350px);
+  /* Standard */
 }
+
 #content_blocks {
   margin: 0;
   padding: 0;
   min-height: 480px;
-  height: -moz-calc(100vh - 190px);     /* Firefox  */
-  height: -webkit-calc(100vh - 190px);  /* WebKit   */
-  height: -o-calc(100vh - 190px);       /* Opera    */
-  height: calc(100vh - 190px);          /* Standard */
+  height: -moz-calc(100vh - 190px);
+  /* Firefox  */
+  height: -webkit-calc(100vh - 190px);
+  /* WebKit   */
+  height: -o-calc(100vh - 190px);
+  /* Opera    */
+  height: calc(100vh - 190px);
+  /* Standard */
 }
 
 #content_xml {
@@ -168,17 +193,27 @@ ul.side-nav li.side-menu-end {
   font-style: 0.2em !important;
   min-height: 384px;
 }
+
 .content_xml_large {
-  height: -moz-calc(100vh - 286px);     /* Firefox  */
-  height: -webkit-calc(100vh - 286px);  /* WebKit   */
-  height: -o-calc(100vh - 286px);       /* Opera    */
-  height: calc(100vh - 286px);          /* Standard */
+  height: -moz-calc(100vh - 286px);
+  /* Firefox  */
+  height: -webkit-calc(100vh - 286px);
+  /* WebKit   */
+  height: -o-calc(100vh - 286px);
+  /* Opera    */
+  height: calc(100vh - 286px);
+  /* Standard */
 }
+
 .content_xml_small {
-  height: -moz-calc(100vh - 446px);     /* Firefox  */
-  height: -webkit-calc(100vh - 446px);  /* WebKit   */
-  height: -o-calc(100vh - 446px);       /* Opera    */
-  height: calc(100vh - 446px);          /* Standard */
+  height: -moz-calc(100vh - 446px);
+  /* Firefox  */
+  height: -webkit-calc(100vh - 446px);
+  /* WebKit   */
+  height: -o-calc(100vh - 446px);
+  /* Opera    */
+  height: calc(100vh - 446px);
+  /* Standard */
 }
 
 /* The materialize framework changes height of the div to show or hide */
@@ -198,17 +233,27 @@ ul.side-nav li.side-menu-end {
   user-select: text;
   min-height: 388px;
 }
+
 .content_arduino_large {
-  height: -moz-calc(100vh - 280px);     /* Firefox  */
-  height: -webkit-calc(100vh - 280px);  /* WebKit   */
-  height: -o-calc(100vh - 280px);       /* Opera    */
-  height: calc(100vh - 280px);          /* Standard */
+  height: -moz-calc(100vh - 280px);
+  /* Firefox  */
+  height: -webkit-calc(100vh - 280px);
+  /* WebKit   */
+  height: -o-calc(100vh - 280px);
+  /* Opera    */
+  height: calc(100vh - 280px);
+  /* Standard */
 }
+
 .content_arduino_small {
-  height: -moz-calc(100vh - 440px);     /* Firefox  */
-  height: -webkit-calc(100vh - 440px);  /* WebKit   */
-  height: -o-calc(100vh - 440px);       /* Opera    */
-  height: calc(100vh - 440px);          /* Standard */
+  height: -moz-calc(100vh - 440px);
+  /* Firefox  */
+  height: -webkit-calc(100vh - 440px);
+  /* WebKit   */
+  height: -o-calc(100vh - 440px);
+  /* Opera    */
+  height: calc(100vh - 440px);
+  /* Standard */
 }
 
 /****************/
@@ -228,24 +273,30 @@ ul.side-nav li.side-menu-end {
   border-left: 0;
   border-right: 0;
 }
+
 .ide_output_header_normal {
   background-color: #4EAF47;
   color: #ffffff;
-  -moz-transition: background-color 0.6s ease-in;;
+  -moz-transition: background-color 0.6s ease-in;
+  ;
   -o-transition: background-color 0.6s ease-in;
   -webkit-transition: background-color 0.6s ease-in;
 }
+
 .ide_output_header_highlight {
   background-color: #62AEB2;
   color: #ffffff;
-  -moz-transition: background-color 0.6s ease-in;;
+  -moz-transition: background-color 0.6s ease-in;
+  ;
   -o-transition: background-color 0.6s ease-in;
   -webkit-transition: background-color 0.6s ease-in;
 }
+
 .ide_output_header_error {
   background-color: #E47128;
   color: #ffffff;
-  -moz-transition: background-color 0.6s ease-in;;
+  -moz-transition: background-color 0.6s ease-in;
+  ;
   -o-transition: background-color 0.6s ease-in;
   -webkit-transition: background-color 0.6s ease-in;
 }
@@ -268,23 +319,30 @@ ul.side-nav li.side-menu-end {
   background-color: #303030;
   color: #ffffff;
 }
+
 /* IDE output content text formatting */
 #content_ide_output .arduino_dialog_success {
-  color: #00979C;   /* arduino light teal */
+  color: #00979C;
+  /* arduino light teal */
   font-size: 1.2rem;
   margin: 16px 0px 8px 0px;
 }
+
 #content_ide_output .arduino_dialog_failure {
-  color: #E47128;   /* arduino orange */
+  color: #E47128;
+  /* arduino orange */
   font-size: 1.2rem;
   margin: 16px 0px 8px 0px;
 }
+
 #content_ide_output .arduino_dialog_out {
   color: #ffffff;
   font-size: 0.9rem;
 }
+
 #content_ide_output .arduino_dialog_out_error {
-  color: #E47128;   /* arduino orange */
+  color: #E47128;
+  /* arduino orange */
   font-size: 0.9rem;
   padding-top: 8px;
   display: block;
@@ -294,16 +352,19 @@ ul.side-nav li.side-menu-end {
 #ide_output_spacer {
   height: 40px;
 }
+
 @media only screen and (min-width: 0) {
   #ide_output_spacer {
     height: 20px;
   }
 }
+
 @media only screen and (min-width: 601px) {
   #ide_output_spacer {
     height: 30px;
   }
 }
+
 @media only screen and (min-width: 993px) {
   #ide_output_spacer {
     height: 40px;
@@ -322,6 +383,7 @@ ul.side-nav li.side-menu-end {
   width: 160px;
   z-index: 12;
 }
+
 #button_compile_sketch {
   position: absolute;
   right: 0px;
@@ -329,10 +391,12 @@ ul.side-nav li.side-menu-end {
   width: 55px;
   height: 55px;
 }
+
 #button_compile_sketch i {
   font-size: 2.4rem !important;
   line-height: 55px;
 }
+
 #button_copy_clipboard {
   position: absolute;
   right: 72px;
@@ -344,6 +408,7 @@ ul.side-nav li.side-menu-end {
   -o-transition: visibility 0.3s linear, opacity 0.3s linear;
   transition: visibility 0.3s linear, opacity 0.3s linear;
 }
+
 #button_ide_large {
   position: absolute;
   right: 0px;
@@ -351,10 +416,12 @@ ul.side-nav li.side-menu-end {
   width: 55px;
   height: 55px;
 }
+
 #button_ide_large i {
   font-size: 2.4rem !important;
   line-height: 55px;
 }
+
 #button_ide_middle {
   position: absolute;
   right: 72px;
@@ -366,6 +433,7 @@ ul.side-nav li.side-menu-end {
   -o-transition: visibility 0.3s linear, opacity 0.3s linear;
   transition: visibility 0.3s linear, opacity 0.3s linear;
 }
+
 #button_ide_left {
   position: absolute;
   right: 126px;
@@ -377,6 +445,7 @@ ul.side-nav li.side-menu-end {
   -o-transition: visibility 0.3s linear, opacity 0.3s linear;
   transition: visibility 0.3s linear, opacity 0.3s linear;
 }
+
 #button_ide_large:hover:before,
 #button_ide_middle:hover:before,
 #button_ide_left:hover:before {
@@ -387,7 +456,7 @@ ul.side-nav li.side-menu-end {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(255,255,255, 0.25);
+  background: rgba(255, 255, 255, 0.25);
   transition: all .3s linear;
 }
 
@@ -397,6 +466,7 @@ ul.side-nav li.side-menu-end {
   bottom: 36px;
   display: none;
 }
+
 #button_load_xml .mdi-action-extension {
   font-size: 2.1rem !important;
 }
@@ -411,6 +481,7 @@ ul.side-nav li.side-menu-end {
   -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 #button_ide_large:active,
 #button_ide_middle:active,
 #button_ide_left:active,
@@ -435,15 +506,17 @@ ul.side-nav li.side-menu-end {
   -webkit-border-radius: 4px 4px 4px 4px !important;
   -moz-border-radius: 4px 4px 4px 4px !important;
   border-radius: 4px 4px 4px 4px !important;
-  background: rgba(98, 174, 178, .2) !important;  /* Arduino Light Teal */
+  background: rgba(98, 174, 178, .2) !important;
+  /* Arduino Light Teal */
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); 
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   transition: background 0.3s linear, box-shadow 0.3s linear, border-width 0.3s linear;
   -ms-transition: background 0.3s linear, box-shadow 0.3s linear, border-width 0.3s linear;
   -moz-transition: background 0.3s linear, -moz-box-shadow 0.3s linear, border-width 0.3s linear;
   -webkit-transition: background 0.3s linear, -webkit-box-shadow 0.3s linear, border-width 0.3s linear;
 }
+
 .button_toggle_toolbox_off {
   position: absolute;
   margin: 0 !important;
@@ -464,44 +537,54 @@ ul.side-nav li.side-menu-end {
   right: 0px !important;
   top: 0px !important;
   width: 55px !important;
-  height: 55px !important; 
+  height: 55px !important;
   z-index: 5;
 }
+
 .spinner-orange {
   border-color: #E47128;
 }
+
 .active .spinner-layer.spinner-orange {
   /* durations: 4 * ARCTIME */
   -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, blue-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
   animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, blue-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
 }
+
 .spinner-dark-teal {
   border-color: #00878F;
 }
+
 .active .spinner-layer.spinner-dark-teal {
   /* durations: 4 * ARCTIME */
   -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, red-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
   animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, red-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
 }
+
 .spinner-yellow {
   border-color: rgba(255, 204, 51, 1);
 }
+
 .active .spinner-layer.spinner-yellow {
   /* durations: 4 * ARCTIME */
   -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, yellow-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
   animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, yellow-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
 }
+
 .spinner-light-teal {
   border-color: #62AEB2;
 }
+
 .active .spinner-layer.spinner-light-teal {
   /* durations: 4 * ARCTIME */
   -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, green-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
   animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, green-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
 }
+
 .spinner-purple {
   border-color: #8e24aa;
 }
+
 .active .spinner-layer.spinner-purple {
   /* durations: 4 * ARCTIME */
   -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, red-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
@@ -534,17 +617,24 @@ ul.side-nav li.side-menu-end {
 #arduino_dialog_body {
   padding-top: 25px;
 }
+
 .arduino_dialog_out {}
+
 .arduino_dialog_out_error {
-  color: #E47128;   /* arduino orange */
+  color: #E47128;
+  /* arduino orange */
   padding-top: 25px;
   display: block;
 }
+
 .arduino_dialog_success {
-  color: #00979C;   /* arduino light teal */
+  color: #00979C;
+  /* arduino light teal */
 }
+
 .arduino_dialog_failure {
-  color: #E47128;   /* arduino orange */
+  color: #E47128;
+  /* arduino orange */
 }
 
 /* Footer buttons padding */
@@ -555,33 +645,39 @@ ul.side-nav li.side-menu-end {
 /* Small modal responsive design */
 .modal_small {
   height: auto !important;
-  display: table; /* This is important */ 
-  overflow-y: auto;    
+  display: table;
+  /* This is important */
+  overflow-y: auto;
   overflow-x: auto;
   width: auto;
   min-height: 450px;
 }
+
 .modal_small .modal-content {
   margin-top: 0;
   padding-top: 12px;
   margin-bottom: 0;
   padding-bottom: 0;
 }
+
 .modal_small input {
   width: 100%;
 }
+
 @media only screen and (min-width: 0) {
   .modal_small {
     max-width: 75% !important;
     width: 75% !important;
   }
 }
+
 @media only screen and (min-width: 601px) {
   .modal_small {
     max-width: 55% !important;
     width: 55% !important;
   }
 }
+
 @media only screen and (min-width: 993px) {
   .modal_small {
     max-width: 35% !important;
@@ -597,12 +693,14 @@ ul.side-nav li.side-menu-end {
   display: inline-block;
   padding-left: 5px;
 }
+
 .sketch_name_icon {
   display: inline !important;
   font-size: 1.2rem !important;
   float: right;
   padding-top: 3px;
 }
+
 .sketch_name {
   width: auto !important;
   max-width: 400px;
@@ -612,24 +710,28 @@ ul.side-nav li.side-menu-end {
   border-bottom: 0px solid #EEE !important;
   font-style: italic;
 }
+
 .sketch_name:focus {
-    border-bottom: 1px solid #EEE !important;
+  border-bottom: 1px solid #EEE !important;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 600px) {
   .sketch_name {
     max-width: 200px;
   }
+
   /* Remove the "Ardublockly title only leaving the sketch name */
   .app_title {
     display: none;
   }
 }
+
 @media only screen and (min-width : 600px) {
   .sketch_name {
     max-width: 275px;
   }
 }
+
 @media only screen and (min-width : 993px) {
   .sketch_name {
     max-width: 350px;
@@ -654,8 +756,10 @@ ul.side-nav li.side-menu-end {
 
 /* Colours for the new and deleted code highlighting */
 .code_highlight_new {
-  background-color: rgba(255, 204, 51, 0.5); /* Arduino yellow 50% */
+  background-color: rgba(255, 204, 51, 0.5);
+  /* Arduino yellow 50% */
 }
+
 .code_highlight_deleted {
   background-color: #FDBEBE;
 }
@@ -665,10 +769,13 @@ ul.side-nav li.side-menu-end {
 /*  Overwriting Blockly CSS  */
 /*****************************/
 /* Blockly text for the following components:  */
-.blocklyTreeLabel,           /* Toolbox        */
-.blocklyText,                /* Block          */
-.goog-menuitem-content {     /* Drop down menu */
-  font-family: "Roboto", sans-serif!important;
+.blocklyTreeLabel,
+/* Toolbox        */
+.blocklyText,
+/* Block          */
+.goog-menuitem-content {
+  /* Drop down menu */
+  font-family: "Roboto", sans-serif !important;
 }
 
 /* Entire Blockly area, Toolbox dranw on top */
@@ -686,43 +793,56 @@ ul.side-nav li.side-menu-end {
   border: none !important;
   margin: 0px !important;
   padding: 0px 0px 0px 0px !important;
-  background: rgba(98, 174, 178, .2) !important;  /* Arduino Light Teal */
+  background: rgba(98, 174, 178, .2) !important;
+  /* Arduino Light Teal */
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   overflow: hidden !important;
 }
+
 .blocklyTreeRoot {
   background: none !important;
   border: none !important;
   margin: 36px 0px 0px 0px !important;
   padding: 0px 1px !important;
-  height: -moz-calc(100% - 37px);     /* Firefox  */
-  height: -webkit-calc(100% - 37px);  /* WebKit   */
-  height: -o-calc(100% - 37px);       /* Opera    */
-  height: calc(100% - 37px);          /* Standard */
+  height: -moz-calc(100% - 37px);
+  /* Firefox  */
+  height: -webkit-calc(100% - 37px);
+  /* WebKit   */
+  height: -o-calc(100% - 37px);
+  /* Opera    */
+  height: calc(100% - 37px);
+  /* Standard */
   overflow-x: hidden;
   overflow-y: auto;
 }
+
 .blocklyTreeRow {
   background: none !important;
   /* border: none !important; */
   margin: 0px 0px !important;
   padding: 7px 16px 7px 0px !important;
   box-sizing: content-box !important;
-  }
-  [aria-level = "2"]{
-    margin-left: 16px !important;
 }
+
+[aria-level="2"] {
+  margin-left: 16px !important;
+}
+
 .blocklyTreeSelected {
-  background-color: #E47128 !important;  /* arduino orange */
+  background-color: #E47128 !important;
+  /* arduino orange */
 }
+
 .blocklyTreeRow:not(.blocklyTreeSelected):hover {
-  background-color: rgba(255, 204, 51, 1) !important;  /* arduino yellow */
+  background-color: rgba(255, 204, 51, 1) !important;
+  /* arduino yellow */
 }
-.blocklyTreeLabel {
-}
-.blocklyTreeSeparator{
+
+.blocklyTreeLabel {}
+
+.blocklyTreeSeparator {
   padding: 0px !important;
   margin: 0px !important;
 }
@@ -741,6 +861,7 @@ ul.side-nav li.side-menu-end {
   fill: #00878F !important;
   fill-opacity: 0.7 !important;
 }
+
 .blocklyScrollbarBackground {
   stroke-width: 0px !important;
   fill: none !important;
@@ -762,16 +883,19 @@ ul.side-nav li.side-menu-end {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
+
 @media only screen and (min-width : 601px) {
   .container {
     width: 95%;
   }
 }
+
 @media only screen and (min-width : 993px) {
   .container {
     width: 100%;
   }
 }
+
 @media only screen and (min-width : 1380px) {
   .container {
     width: 90%;
@@ -783,16 +907,19 @@ ul.side-nav li.side-menu-end {
   body {
     padding-top: 0px;
   }
+
   /* Expand to all visible horizontal space */
   .container {
     width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
   }
+
   nav {
     margin: 0 !important;
     padding: 0px 12px !important;
   }
+
   /* remove space between cards and navigation bar */
   .col {
     margin-top: -8px;
@@ -804,20 +931,25 @@ ul.side-nav {
   padding: 0px !important;
   line-height: 64px !important;
 }
+
 ul.side-nav i {
   font-size: 1.8rem !important;
 }
+
 ul.side-nav .collapsible {
   margin: 0 !important;
 }
+
 /* Set the background effect in the side menu */
 ul.side-nav {
   background-color: transparent;
   box-shadow: none !important;
 }
+
 ul.side-nav li {
   background-color: #eeeeee;
 }
+
 ul.side-nav li {
   background-color: #eeeeee;
   box-sizing: border-box;
@@ -826,10 +958,12 @@ ul.side-nav li {
   border-right: 2px solid #dddddd;
   border-left: 2px solid #ffffff;
 }
+
 ul.side-nav li ul li ul {
   cursor: pointer;
   border: none !important;
 }
+
 ul.side-nav li ul li ul li {
   border: none !important;
 }
@@ -869,7 +1003,8 @@ ul.side-nav li ul li ul li {
   width: 100% !important;
   background-color: white !important;
 }
-img.animated-gif{
+
+img.animated-gif {
   width: auto;
   height: 200px;
 }
@@ -880,7 +1015,13 @@ img.animated-gif{
 
 /* Further Enhancements for OSEM Login*/
 
-.dropdown-content{
+.dropdown-content {
   width: max-content !important;
-  height:auto !important;
+  height: auto !important;
+}
+
+.center-modal {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }

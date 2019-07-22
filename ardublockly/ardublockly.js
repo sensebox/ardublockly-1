@@ -141,7 +141,9 @@ Ardublockly.bindActionFunctions = function () {
 
   Ardublockly.bindClick_('button_login_pressed', Ardublockly.logIn);
   Ardublockly.bindClick_('button_logout_pressed', Ardublockly.logOut);
-
+  Ardublockly.bindClick_('initForgotPassword', Ardublockly.initForgotPassword);
+  Ardublockly.bindClick_('button_forgot_password_pressed', Ardublockly.submitForgotPassword);
+  Ardublockly.bindClick_('initLogin', Ardublockly.initLogin);
 };
 
 /** Sets the Ardublockly server IDE setting to upload and sends the code. */
@@ -880,8 +882,9 @@ Ardublockly.recoverSession = function () {
       $('#login_name')[0].innerHTML = response.data.user.name;
 
       // Show Dropdown
-      $('#acc-dropdown').css('visibility', 'visible')
+      $('#acc-dropdown').css('visibility', 'visible');
 
+      Ardublockly.user = response.data.user;
       return true;
     });
 
@@ -890,6 +893,12 @@ Ardublockly.recoverSession = function () {
   }
 }
 
+
+/**
+ * Logs the user out, deletes tokens and registers tokens as
+ * invalid with the OSEM API
+ * @param none
+ */
 Ardublockly.logOut = function () {
   if (Ardublockly.isLoggedIn === false) return;
 
@@ -914,4 +923,75 @@ Ardublockly.logOut = function () {
   sessionStorage.removeItem('sb_accessToken');
   sessionStorage.removeItem('sb_refreshToken');
   location.reload();
+}
+
+
+/**
+ * Initializes the frontend for retrieving a forgotten password
+ * @param none
+ */
+Ardublockly.initForgotPassword = function () {
+  // First hide the login fields
+  console.log('forgot pw');
+  document.getElementById('loginForm').classList.add('hide');
+  document.getElementById('forgotPasswordForm').classList.remove('hide');
+
+  document.getElementById('wrongCredentials_forgotPW').classList.add('hide');
+}
+
+
+/**
+ * Sends a HTTP Request to the OSEM API requesting an email for password reset
+ * @param none
+ */
+Ardublockly.submitForgotPassword = function () {
+
+  function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
+  if (!validateEmail(document.getElementById('forgotPasswordEmail').value)) {
+    document.getElementById('wrongCredentials_forgotPW').classList.remove('hide');
+    return;
+  }
+
+  // Hide message if the email was valid
+  document.getElementById('wrongCredentials_forgotPW').classList.add('hide');
+
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://api.opensensemap.org/users/request-password-reset",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+    },
+    "data": JSON.stringify({
+      email: document.getElementById('forgotPasswordEmail').value
+    })
+  }
+
+  // Call API with above settings to request email.
+  $.ajax(settings)
+    .fail((err) => {
+      Materialize.toast('Error while requesting password Reset', 4000);
+      console.log(err);
+    })
+    .done((response) => {
+
+      Materialize.toast('Check your E-Mail inbox!', 4000)
+      Ardublockly.initLogin();
+
+    })
+}
+
+
+/**
+ * Helper Function to switch back to the standard login screen
+ * @param none
+ */
+Ardublockly.initLogin = function () {
+  document.getElementById('forgotPasswordForm').classList.add('hide');
+  document.getElementById('loginForm').classList.remove('hide');
 }
