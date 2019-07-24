@@ -253,7 +253,7 @@ Ardublockly.finish_tutorial = function() {
 
 Ardublockly.hint = function() {
   Ardublockly.alertMessage(
-    "Hint Message",
+    "Hier werden deine Hint stehen",
     false);
     hints=hints+1
     document.getElementById('hints').textContent = hints

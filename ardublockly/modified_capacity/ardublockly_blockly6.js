@@ -468,11 +468,38 @@ document.getElementById('checks').textContent = checks
 }
 
 Ardublockly.hint = function() {
-  Ardublockly.alertMessage(
-    "Hint Message",
+  if(hints==0){
+    Ardublockly.alertMessage(
+    "Du musst jeden Block nur einmal benutzen",
     false);
     hints=hints+1
     document.getElementById('hints').textContent = hints
+  }
+  else{
+    if(hints==1){
+      Ardublockly.alertMessage(
+      "In den Do-Teil der Logischen-Verzweigung muss nur ein Block",
+      false);
+      hints=hints+1
+      document.getElementById('hints').textContent = hints
+      }
+    else{
+      if(hints==2){
+        Ardublockly.alertMessage(
+          "Der Vergleichs-Operator muss an die IF-Bedingung gehängt werden",
+          false);
+          hints=hints+1
+          document.getElementById('hints').textContent = hints
+      }
+      else{
+      Ardublockly.alertMessage(
+        "Alle Hints benutzt. Diese waren:",
+        "1. Du musst jeden Block nur einmal benutzen<br> 2. In den Do-Teil der Logischen-Verzweigung muss nur ein Block <br> 3. Der Vergleichs-Operator muss an die IF-Bedingung gehängt werden" ,
+        false);
+        document.getElementById('hints').textContent = hints
+      }
+    }
+  }
 }
 
 var usedBlocks=0

@@ -304,11 +304,29 @@ Ardublockly.finish_tutorial = function() {
 }
 
 Ardublockly.hint = function() {
-  Ardublockly.alertMessage(
-    "Hint Message",
+  if(hints==0){
+    Ardublockly.alertMessage(
+    "Du musst jeden Block genau zwei mal benutzen",
     false);
     hints=hints+1
     document.getElementById('hints').textContent = hints
+  }
+  else{
+    if(hints==1){
+      Ardublockly.alertMessage(
+      "Die ersten drei Blöcke sind genauso aufgebaut wie die letzten drei",
+      false);
+      hints=hints+1
+      document.getElementById('hints').textContent = hints
+      }
+    else{
+      Ardublockly.alertMessage(
+        "Alle Hints benutzt. Diese waren:",
+        "1. Du musst jeden Block genau zwei mal benutzen <br> 2. Die ersten drei Blöcke sind genauso aufgebaut wie die letzten drei",
+        false);
+        document.getElementById('hints').textContent = hints
+    }
+  }
 }
 
 

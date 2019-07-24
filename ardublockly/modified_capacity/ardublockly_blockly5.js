@@ -79,7 +79,7 @@ Ardublockly.bindBlocklyEventListeners = function() {
       document.getElementById('capacity').textContent =
       maxBlocks-usedBlocks-1
       usedBlocks=0
-      console.log(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[4])
+      console.log(AllBlocks[0].childBlocks_[1].childBlocks_[0])
     }
   });
   // Ensure the Blockly workspace resizes accordingly
@@ -358,168 +358,150 @@ Ardublockly.finish_tutorial = function() {
           if(AllBlocks[0].inputList[1].renderHeight==29){
             if(AllBlocks[0].inputList[3].renderHeight>24){
               if(AllBlocks[0].childBlocks_[0] != undefined && AllBlocks[0].childBlocks_[1]!=undefined){
+                //Block Changer
                 if(AllBlocks[0].childBlocks_[0].type=="sensebox_display_show" && AllBlocks[0].childBlocks_[1].type=="sensebox_display_beginDisplay"){
                   var ChangeBlock= AllBlocks[0].childBlocks_[0]
                   AllBlocks[0].childBlocks_[0]=AllBlocks[0].childBlocks_[1]
                   AllBlocks[0].childBlocks_[1]=ChangeBlock
                 }
-              }
-              if(AllBlocks[0].childBlocks_[1].type=="sensebox_display_show"){
-                if(AllBlocks[0].childBlocks_[1].inputList[1].renderHeight>24){
-                  if(AllBlocks[0].childBlocks_[1].childBlocks_[0]!= undefined && AllBlocks[0].childBlocks_[1].childBlocks_[0].type=="sensebox_display_printDisplay" ){
-                    if(AllBlocks[0].childBlocks_[1].childBlocks_[0].inputList[2].renderHeight==26){
-                      if(AllBlocks[0].childBlocks_[1].childBlocks_[0].inputList[3].renderHeight==26){
-                        if(AllBlocks[0].childBlocks_[1].childBlocks_[0].inputList[4].renderHeight==26){
-                          if(AllBlocks[0].childBlocks_[1].childBlocks_[0].inputList[5].renderHeight==50){
-                            if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[4]!= undefined){
-                              if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].outputConnection==null){
-                                if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].type="sensebox_display_clearDisplay"){
-                                  checkFontSize(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[1],
-                                                AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[2],
-                                                AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[3],
-                                                AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[4])
-                                }
-                                else{
-                                  Ardublockly.alertMessage(
-                                    "falscher neunter Block",
-                                    false);
-                                }
-                              }
-                              if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].outputConnection==null){
-                                if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].type="sensebox_display_clearDisplay"){
-                                  checkFontSize(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[0],
-                                                AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[2],
-                                                AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[3],
-                                                AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[4])
-                                }
-                                else{
-                                  Ardublockly.alertMessage(
-                                    "falscher neunter Block",
-                                    false);
-                                }
-                              }
-                              if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[2].outputConnection==null){
-                                if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[2].type="sensebox_display_clearDisplay"){
-                                  checkFontSize(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[0],
-                                                AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[1],
-                                                AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[3],
-                                                AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[4])
-                                }
-                                else{
-                                  Ardublockly.alertMessage(
-                                    "falscher neunter Block",
-                                    false);
-                                }
-                              }
-                              if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[3].outputConnection==null){
-                                if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[3].type="sensebox_display_clearDisplay"){
+                }
+                if(AllBlocks[0].childBlocks_[1].type=="sensebox_display_show"){
+                  if(AllBlocks[0].childBlocks_[1].inputList[1].renderHeight>24){
+                    //Block Changer
+                    if(AllBlocks[0].childBlocks_[1].childBlocks_[1]!= undefined && AllBlocks[0].childBlocks_[1].childBlocks_[1].type=="sensebox_display_printDisplay" && AllBlocks[0].childBlocks_[1].childBlocks_[0]!= undefined && AllBlocks[0].childBlocks_[1].childBlocks_[0].type=="sensebox_display_clearDisplay"){
+                      var ChangeBlock= AllBlocks[0].childBlocks_[1].childBlocks_[0]
+                      AllBlocks[0].childBlocks_[1].childBlocks_[0]=AllBlocks[0].childBlocks_[1].childBlocks_[1]
+                      AllBlocks[0].childBlocks_[1].childBlocks_[1]=ChangeBlock
+                    }
+                    if(AllBlocks[0].childBlocks_[1].childBlocks_[0]!= undefined && AllBlocks[0].childBlocks_[1].childBlocks_[0].type=="sensebox_display_printDisplay" ){
+                      if(AllBlocks[0].childBlocks_[1].childBlocks_[0].inputList[2].renderHeight==26){
+                        if(AllBlocks[0].childBlocks_[1].childBlocks_[0].inputList[3].renderHeight==26){
+                          if(AllBlocks[0].childBlocks_[1].childBlocks_[0].inputList[4].renderHeight==26){
+                            if(AllBlocks[0].childBlocks_[1].childBlocks_[0].inputList[5].renderHeight==50){
+                              if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_.length == 4){
+                                if(AllBlocks[0].childBlocks_[1].childBlocks_[1]!= undefined && AllBlocks[0].childBlocks_[1].childBlocks_[1].type=="sensebox_display_clearDisplay"){
                                   checkFontSize(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[0],
                                                 AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[1],
                                                 AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[2],
-                                                AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[4])
-                                }
+                                                AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[3]
+                                  )
+                              }
                                 else{
                                   Ardublockly.alertMessage(
-                                    "falscher neunter Block",
+                                    "Falscher neunter Block",
                                     false);
                                 }
                               }
-                              if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[4].outputConnection==null){
-                                if(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[4].type="sensebox_display_clearDisplay"){
-                                  checkFontSize(AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[0],
-                                                AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[1],
-                                                AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[2],
-                                                AllBlocks[0].childBlocks_[1].childBlocks_[0].childBlocks_[3])
-                                }
-                                else{
-                                  Ardublockly.alertMessage(
-                                    "falscher neunter Block",
-                                    false);
-                                }
+                              else{
+                                Ardublockly.alertMessage(
+                                  "Fehlender/falsche Stelle des neunten Blocks",
+                                  false);
                               }
                             }
                             else{
-                            Ardublockly.alertMessage(
-                              "fehlender neunter Block",
-                              false);
+                              Ardublockly.alertMessage(
+                                "Falscher/fehlender achter Block",
+                                false);
                             }
                           }
                           else{
                             Ardublockly.alertMessage(
-                              "Falscher/fehlender achter Block",
+                              "Falscher/fehlender siebter Block",
                               false);
                           }
                         }
                         else{
                           Ardublockly.alertMessage(
-                            "Falscher/fehlender siebter Block",
+                            "Falscher/fehlender sechster Block",
                             false);
                         }
                       }
                       else{
                         Ardublockly.alertMessage(
-                          "Falscher/fehlender sechster Block",
+                          "Falscher/fehlender fünfter Block",
                           false);
                       }
                     }
                     else{
                       Ardublockly.alertMessage(
-                        "Falscher/fehlender fünfter Block",
+                        "Falscher/fehlender vierter Block",
                         false);
                     }
                   }
                   else{
                     Ardublockly.alertMessage(
-                      "Falscher/fehlender vierter Block",
+                      "Der vierte Block muss in den Print Block",
                       false);
                   }
                 }
                 else{
                   Ardublockly.alertMessage(
-                    "Der vierte Block muss in den Print Block",
+                    "Falscher dritter Block",
                     false);
                 }
               }
               else{
                 Ardublockly.alertMessage(
-                  "Falscher dritter Block",
+                  "Bitte Blöcke in den Loop einfügen",
                   false);
               }
             }
             else{
               Ardublockly.alertMessage(
-                "Bitte Blöcke in den Loop einfügen",
+                "Falscher/fehlender Block im Run-First Block",
                 false);
-            }
+            }  
           }
           else{
             Ardublockly.alertMessage(
-              "Falscher/fehlender Block im Run-First Block",
+              "zu viele aktive Blöcke",
               false);
-          }  
+          }
         }
         else{
           Ardublockly.alertMessage(
-            "zu viele aktive Blöcke",
+            "Bitte Blöcke einfügen",
             false);
         }
-      }
-      else{
-        Ardublockly.alertMessage(
-          "Bitte Blöcke einfügen",
-          false);
-      }
       usedBlocks=0   
       checks=checks+1
       document.getElementById('checks').textContent = checks             
 }
 
 Ardublockly.hint = function() {
-  Ardublockly.alertMessage(
-    "Hint Message",
+  if(hints==0){
+    Ardublockly.alertMessage(
+    "Es müssen 7 Blöcke in den Loop und einer in den run first Block",
     false);
     hints=hints+1
     document.getElementById('hints').textContent = hints
+  }
+  else{
+    if(hints==1){
+      Ardublockly.alertMessage(
+      "Im Loop gibt es 2 Blöcke von denen nur einer Blöcke in sich geschachtelt hat",
+      false);
+      hints=hints+1
+      document.getElementById('hints').textContent = hints
+      }
+    else{
+      if(hints==2){
+        Ardublockly.alertMessage(
+          "Die Grundstruktur des Programmes ist:",
+          "1. Initalisieren <br> 2. Print Text <br> 3 Display clearen",
+          false);
+          hints=hints+1
+          document.getElementById('hints').textContent = hints
+      }
+      else{
+      Ardublockly.alertMessage(
+        "Alle Hints benutzt. Diese waren:",
+        "1. Es müssen 7 Blöcke in den Loop und einer in den run first Block <br> 2. Im Loop gibt es 2 Blöcke von denen nur einer Blöcke in sich geschachtelt hat <br> 3. Die Grundstruktur des Programmes ist: Initalisieren--> Print Text--> Display clearen" ,
+        false);
+        document.getElementById('hints').textContent = hints
+      }
+    }
+  }
 }
 
 var usedBlocks=0

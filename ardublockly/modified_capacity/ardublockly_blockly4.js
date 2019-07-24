@@ -361,11 +361,29 @@ Ardublockly.finish_tutorial = function() {
 }
 
 Ardublockly.hint = function() {
-  Ardublockly.alertMessage(
-    "Hint Message",
+  if(hints==0){
+    Ardublockly.alertMessage(
+    "Es müssen 6 Blöcke in den do Block des Loops",
     false);
     hints=hints+1
     document.getElementById('hints').textContent = hints
+  }
+  else{
+    if(hints==1){
+      Ardublockly.alertMessage(
+      "Der Teil im do Block sieht exakt so aus wie der aus Tutorial Nr. 2",
+      false);
+      hints=hints+1
+      document.getElementById('hints').textContent = hints
+      }
+    else{
+      Ardublockly.alertMessage(
+        "Alle Hints benutzt. Diese waren:",
+        "1. Es müssen 6 Blöcke in den do Block des Loops <br> 2. Der Teil im do Block sieht exakt so aus wie der aus Tutorial Nr. 2",
+        false);
+        document.getElementById('hints').textContent = hints
+    }
+  }
 }
 
 /** @return {!boolean} Indicates if the Blockly workspace has blocks. */
