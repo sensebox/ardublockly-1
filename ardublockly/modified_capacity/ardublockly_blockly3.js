@@ -229,19 +229,19 @@ Ardublockly.finish_tutorial = function() {
                                 if(hints==0 && checks<3){
                                   Ardublockly.alertMessage(
                                     "Glückwunsch. Alles Richtig",
-                                    "Du hast dir eine Goldmedallie erarbeitet <br> Jetzt einfach nur noch hochladen und danach das nächste Tutorial bearbeiten",
+                                    "Du hast dir eine Goldmedaille erarbeitet <br> Jetzt einfach nur noch hochladen und danach das nächste Tutorial bearbeiten",
                                     false);
                                 }
                                 else if(hints>0 && checks >3){
                                   Ardublockly.alertMessage(
                                     "Glückwunsch. Alles Richtig",
-                                    "Du hast dir eine Bronzemedallie erarbeitet <br> Jetzt einfach nur noch hochladen und danach das nächste Tutorial bearbeiten",
+                                    "Du hast dir eine Bronzemedaille erarbeitet <br> Jetzt einfach nur noch hochladen und danach das nächste Tutorial bearbeiten",
                                     false);
                                 }
                                 else{
                                   Ardublockly.alertMessage(
                                     "Glückwunsch. Alles Richtig",
-                                    "Du hast dir eine Silbermedallie erarbeitet <br> Jetzt einfach nur noch hochladen und danach das nächste Tutorial bearbeiten",
+                                    "Du hast dir eine Silbermedaille erarbeitet <br> Jetzt einfach nur noch hochladen und danach das nächste Tutorial bearbeiten",
                                     false);
                                 }
                               }
