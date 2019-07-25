@@ -226,6 +226,7 @@ Ardublockly.finish_tutorial = function() {
         if(AllBlocks[0].inputList[3].renderHeight==24){
           if(usedBlocks<=9){
             if (AllBlocks[0].childBlocks_[0].type ="controls_repeat_ext"){
+              //Block Changer
               if(AllBlocks[0].childBlocks_[0].childBlocks_[0] != undefined && AllBlocks[0].childBlocks_[0].childBlocks_[1]!=undefined){
                 if(AllBlocks[0].childBlocks_[0].childBlocks_[0].type=="sensebox_led" && AllBlocks[0].childBlocks_[0].childBlocks_[1].type=="math_number"){
                   var ChangeBlock= AllBlocks[0].childBlocks_[0].childBlocks_[0]
@@ -261,9 +262,24 @@ Ardublockly.finish_tutorial = function() {
                                       }
                                       if(AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0]!= null && AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].type== "math_number"){
                                         if(AllBlocks[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].inputList[0].fieldRow[0].text_ == "1000"){
-                                          Ardublockly.alertMessage(
-                                            "Alles richtig, Goldmedallie verdient",
-                                            false);
+                                          if(hints<=1 && checks<5){
+                                            Ardublockly.alertMessage(
+                                              "Glückwunsch. Alles Richtig",
+                                              "Du hast dir eine Goldmedallie erarbeitet <br> Jetzt einfach nur noch hochladen und danach das nächste Tutorial bearbeiten",
+                                              false);
+                                          }
+                                          else if(hints>1 && checks >5){
+                                            Ardublockly.alertMessage(
+                                              "Glückwunsch. Alles Richtig",
+                                              "Du hast dir eine Bronzemedallie erarbeitet <br> Jetzt einfach nur noch hochladen und danach das nächste Tutorial bearbeiten",
+                                              false);
+                                          }
+                                          else{
+                                            Ardublockly.alertMessage(
+                                              "Glückwunsch. Alles Richtig",
+                                              "Du hast dir eine Silbermedallie erarbeitet <br> Jetzt einfach nur noch hochladen und danach das nächste Tutorial bearbeiten",
+                                              false);
+                                          }
                                         }
                                         else{
                                           Ardublockly.alertMessage(

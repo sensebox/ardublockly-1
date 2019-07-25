@@ -211,16 +211,39 @@ Ardublockly.finish_tutorial = function() {
             if (AllBlocks[0].childBlocks_[0].type =="sensebox_led"){
               if(AllBlocks[0].childBlocks_[0].inputList[0].fieldRow[2].text_=="BUILTIN_1" && AllBlocks[0].childBlocks_[0].inputList[0].fieldRow[4].text_=="on"){
                 if(AllBlocks[0].childBlocks_[0].childBlocks_[0] != null && AllBlocks[0].childBlocks_[0].childBlocks_[0].type == "time_delay"){
+                  //Block Changer
+                  if(AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[0] != undefined && AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[1]!=undefined){
+                    if(AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[0].type=="sensebox_led" && AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[1].type=="math_number"){
+                      var ChangeBlock= AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[0]
+                      AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[0]=AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[1]
+                      AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[1]=ChangeBlock
+                    }
+                  }
                   if(AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[0] != null && AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[0].type =="math_number"){
                     if(AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[0].inputList[0].fieldRow[0].text_ == "1000"){
                       if(AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[1] != null && AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[1].type =="sensebox_led"){
-                        if(AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[1].inputList[0].fieldRow[2].text_=="BUILTIN_1" && AllBlocks[4].inputList[0].fieldRow[4].text_=="off"){
+                        if(AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[1].inputList[0].fieldRow[2].text_=="BUILTIN_1" && AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[1].inputList[0].fieldRow[4].text_=="off"){
                           if(AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[1].childBlocks_[0] != null && AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].type == "time_delay"){
                             if(AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0] != null && AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].type =="math_number"){
                               if(AllBlocks[0].childBlocks_[0].childBlocks_[0].childBlocks_[1].childBlocks_[0].childBlocks_[0].inputList[0].fieldRow[0].text_ == "1000"){
-                                Ardublockly.alertMessage(
-                                  "Alles Richtig",
-                                  false);
+                                if(hints==0 && checks<3){
+                                  Ardublockly.alertMessage(
+                                    "Glückwunsch. Alles Richtig",
+                                    "Du hast dir eine Goldmedallie erarbeitet <br> Jetzt einfach nur noch hochladen und danach das nächste Tutorial bearbeiten",
+                                    false);
+                                }
+                                else if(hints>0 && checks >3){
+                                  Ardublockly.alertMessage(
+                                    "Glückwunsch. Alles Richtig",
+                                    "Du hast dir eine Bronzemedallie erarbeitet <br> Jetzt einfach nur noch hochladen und danach das nächste Tutorial bearbeiten",
+                                    false);
+                                }
+                                else{
+                                  Ardublockly.alertMessage(
+                                    "Glückwunsch. Alles Richtig",
+                                    "Du hast dir eine Silbermedallie erarbeitet <br> Jetzt einfach nur noch hochladen und danach das nächste Tutorial bearbeiten",
+                                    false);
+                                }
                               }
                               else{
                                 Ardublockly.alertMessage(

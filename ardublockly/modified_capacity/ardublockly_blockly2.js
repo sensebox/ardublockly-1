@@ -209,7 +209,8 @@ Ardublockly.finish_tutorial = function() {
               if(AllBlocks[0].childBlocks_[0].inputList[0].fieldRow[2].text_=="BUILTIN_1"){
                 if(AllBlocks[0].childBlocks_[0].inputList[0].fieldRow[4].text_=="on"){
                   Ardublockly.alertMessage(
-                    "Alles Richtig",
+                    "Glückwunsch.Alles Richtig",
+                    "Jetzt einfach nur noch hochladen",
                     false);
                   }
                 else{
