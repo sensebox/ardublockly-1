@@ -30,6 +30,17 @@ else if (dropdown_name == 'Altitude'){
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
 
+
+Blockly.Arduino.sensebox_sensor_bme680 = function() {
+  var dropdown_name = this.getFieldValue('NAME');
+  Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
+  Blockly.Arduino.includes_['library_AdafruitBME680'] = '#include "Adafruit_BME680.h"';
+  Blockly.Arduino.userFunctions_['define_pressure'] = 'Adafruit_BME680 bme;';
+  Blockly.Arduino.setups_['sensebox_bmp_sensor'] = 'bme.begin();';
+    var code ='bme.' + dropdown_name + '()';
+    return [code ,Blockly.Arduino.ORDER_ATOMIC];
+  };
+
 Blockly.Arduino.sensebox_sensor_temp_hum = function(){
   var dropdown_name = this.getFieldValue('NAME');
   Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
