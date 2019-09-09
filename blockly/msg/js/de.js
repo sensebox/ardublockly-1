@@ -703,5 +703,6 @@ Blockly.Msg.senseBox_tag_first_mutator_tip = "Mögliche Erweiterungen zu diesem 
 Blockly.Msg.senseBox_tag_optional_mutator_tip = "Mehr Tags zum Block hinzufügen";
 Blockly.Msg.senseBox_sd_web_readHTML = "Lese HTML von SD Karte";
 Blockly.Msg.sensebox_web_readHTML_filename = "Datei:";
-Blockly.Msg.senseBox_bme680  = "Multisensor";
+Blockly.Msg.senseBox_bme680  = "Umweltsensor (BME680)";
+Blockly.Msg.senseBox_gas = "Gas (VOC)";
 

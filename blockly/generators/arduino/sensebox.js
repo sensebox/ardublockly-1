@@ -37,7 +37,8 @@ Blockly.Arduino.sensebox_sensor_bme680 = function() {
   Blockly.Arduino.includes_['library_AdafruitBME680'] = '#include "Adafruit_BME680.h"';
   Blockly.Arduino.userFunctions_['define_pressure'] = 'Adafruit_BME680 bme;';
   Blockly.Arduino.setups_['sensebox_bmp_sensor'] = 'bme.begin();';
-    var code ='bme.' + dropdown_name + '()';
+    var code ='bme.performReading();';
+     code +='bme.' + dropdown_name + '()';
     return [code ,Blockly.Arduino.ORDER_ATOMIC];
   };
 
