@@ -175,6 +175,13 @@ SenseboxExtension.populateBoards = function () {
   $('#boards-online').material_select();
 }
 
+SenseboxExtension.getSenseboxes = function () {
+
+  // TODO: Make call to OSEM API
+  
+}
+
+
 function hasClass(el, className) {
   if (el.classList)
     return el.classList.contains(className);

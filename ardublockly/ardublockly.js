@@ -141,9 +141,18 @@ Ardublockly.bindActionFunctions = function () {
 
   Ardublockly.bindClick_('button_login_pressed', Ardublockly.logIn);
   Ardublockly.bindClick_('button_logout_pressed', Ardublockly.logOut);
-  Ardublockly.bindClick_('initForgotPassword', Ardublockly.initForgotPassword);
   Ardublockly.bindClick_('button_forgot_password_pressed', Ardublockly.submitForgotPassword);
-  Ardublockly.bindClick_('initLogin', Ardublockly.initLogin);
+
+  // Account Modal Switchers
+
+  let classes = ['initForgotPassword', 'initLogin', 'initRegisterAccount'];
+
+  for (let switcher of classes) {
+    let elems = document.getElementsByClassName(switcher);
+    for (let elem of elems) {
+      Ardublockly.bindClick_(elem, Ardublockly[switcher]);
+    }
+  }
 };
 
 /** Sets the Ardublockly server IDE setting to upload and sends the code. */
@@ -932,11 +941,11 @@ Ardublockly.logOut = function () {
  */
 Ardublockly.initForgotPassword = function () {
   // First hide the login fields
-  console.log('forgot pw');
-  document.getElementById('loginForm').classList.add('hide');
-  document.getElementById('forgotPasswordForm').classList.remove('hide');
+  !document.getElementById('loginForm').classList.contains('hide') && document.getElementById('loginForm').classList.add('hide');
+  !document.getElementById('registerForm').classList.contains('hide') && document.getElementById('registerForm').classList.add('hide');
+  !document.getElementById('wrongCredentials_forgotPW').classList.contains('hide') && document.getElementById('wrongCredentials_forgotPW').classList.add('hide');
 
-  document.getElementById('wrongCredentials_forgotPW').classList.add('hide');
+  document.getElementById('forgotPasswordForm').classList.remove('hide');
 }
 
 
@@ -992,6 +1001,18 @@ Ardublockly.submitForgotPassword = function () {
  * @param none
  */
 Ardublockly.initLogin = function () {
-  document.getElementById('forgotPasswordForm').classList.add('hide');
+  !document.getElementById('forgotPasswordForm').classList.contains('hide') && document.getElementById('forgotPasswordForm').classList.add('hide');
+  !document.getElementById('registerForm').classList.contains('hide') && document.getElementById('registerForm').classList.add('hide');
   document.getElementById('loginForm').classList.remove('hide');
+}
+
+/**
+ * Helper Function to initialize the create account screen
+ * @param none
+ */
+
+Ardublockly.initRegisterAccount = function () {
+  !document.getElementById('forgotPasswordForm').classList.contains('hide') && document.getElementById('forgotPasswordForm').classList.add('hide');
+  !document.getElementById('loginForm').classList.contains('hide') && document.getElementById('loginForm').classList.add('hide');
+  document.getElementById('registerForm').classList.remove('hide');
 }

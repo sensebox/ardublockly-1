@@ -334,9 +334,10 @@
     </div>
   </div>
 
+  <!-- TODO: Add translatables -->
   <!-- Modal: Login with OSEM -->
   <div id="login_modal" class="modal modal-fixed-footer">
-    <div class="modal-content">
+    <div class="modal-content" style="height: 100%">
 
       <!-- Standard Login View -->
       <div class="row center-modal">
@@ -365,10 +366,10 @@
           </div>
 
           <label style='float: right;'>
-            <a class='indigo-text' id='initForgotPassword' href='#!'><b>Forgot Password?</b></a>
+            <a class='indigo-text initForgotPassword' href='#!'><b>Forgot Password?</b></a>
           </label>
           <label style='float: left;'>
-            <a class='indigo-text' id="initCreateAccount" href='https://opensensemap.org/register'><b>Create
+            <a class='indigo-text initRegisterAccount' href='#!'><b>Create
                 Account</b></a>
           </label>
         </form>
@@ -391,21 +392,69 @@
             </div>
           </div>
           <label style='float: right;'>
-            <a class='indigo-text' id='initLogin' href='#!'><b>Login with senseBox</b></a>
+            <a class='indigo-text initLogin' href='#!'><b>Login with senseBox</b></a>
           </label>
           <label style='float: left;'>
-            <a class='indigo-text' id="initCreateAccount" href='https://opensensemap.org/register'><b>Create
+            <a class='indigo-text initRegisterAccount' href='#!'><b>Create
                 Account</b></a>
           </label>
 
         </form>
       </div>
+
+      <!-- Register View  -->
+      <div class="row center-modal" style="margin-top: -1em;">
+
+        <form class="col s12 hide" id="registerForm" style="">
+
+          <h5 class="center">Register senseBox Account</h5>
+          <div class='row'>
+            <div class='input-field col s6'>
+              <input class='validate' type='text' name='name' id='registerName' />
+              <label for='name'>Enter your name or a pseudonym</label>
+            </div>
+            <div class='input-field col s6'>
+              <input class='validate' type='email' name='email' id='registerEmail' />
+              <label for='email'>Enter your email</label>
+            </div>
+
+          </div>
+
+          <div class='row'>
+            <div class='input-field col s12'>
+              <input class='validate' type='password' name='password' id='registerPassword' />
+              <label for='password'>Enter your password</label>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='input-field col s12'>
+              <input class='validate' type='password' name='password_verify' id='registerPassword_verify' />
+              <label for='password_verify'>Enter your password again, please.</label>
+            </div>
+          </div>
+
+          <!-- Reset Password trigger TODO: Add Translation -->
+          <div class='row'>
+            <button id='button_register_pressed' class='col s12 btn btn-large waves-effect sensebox_green'>Create
+              Account
+            </button>
+          </div>
+          <label style='float: left; margin-top: -1em;'>
+            <a class='indigo-text initLogin' href='#!'><b>Login with senseBox</b></a>
+          </label>
+
+          <label style='float: right; margin-top: -1em;'>
+            <a class='indigo-text initForgotPassword' href='#!'><b>Forgot Password
+              </b></a>
+          </label>
+
+        </form>
+      </div>
+
+
     </div>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-  </div>
-  </div>
+    <!-- </div> -->
   </div>
 
   <!-- General Alert: Content is loaded using JavaScript to display alerts -->
