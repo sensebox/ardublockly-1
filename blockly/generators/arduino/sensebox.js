@@ -37,8 +37,13 @@ Blockly.Arduino.sensebox_sensor_bme680 = function() {
   Blockly.Arduino.includes_['library_AdafruitBME680'] = '#include "Adafruit_BME680.h"';
   Blockly.Arduino.userFunctions_['define_pressure'] = 'Adafruit_BME680 bme;';
   Blockly.Arduino.setups_['sensebox_bmp_sensor'] = 'bme.begin();';
-    var code ='bme.performReading();';
-     code +='bme.' + dropdown_name + '()';
+  Blockly.Arduino.setups_['bme_temperature_oversampling'] = 'bme.setTemperatureOversampling(BME680_OS_8X);';
+  Blockly.Arduino.setups_['bme_humidity_oversampling'] = 'bme.setHumidityOversampling(BME680_OS_2X);';
+  Blockly.Arduino.setups_['bme_pressure_oversampling'] = 'bme.setPressureOversampling(BME680_OS_4X);';
+  Blockly.Arduino.setups_['bme_setIIR'] = 'bme.setIIRFilterSize(BME680_FILTER_SIZE_3);';
+  Blockly.Arduino.setups_['bme_gas_heater'] = 'bme.setGasHeater(320, 150);';
+  Blockly.Arduino.loops_['bme_performReading'] = 'bme.performReading();';
+    var code ='bme.' + dropdown_name;
     return [code ,Blockly.Arduino.ORDER_ATOMIC];
   };
 

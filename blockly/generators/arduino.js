@@ -106,6 +106,8 @@ Blockly.Arduino.init = function(workspace) {
   Blockly.Arduino.setups_ = Object.create(null);
   // Create a dictionary of pins to check if their use conflicts
   Blockly.Arduino.pins_ = Object.create(null);
+   // Create a dictionary of loops to be printed in the loop()
+   Blockly.Arduino.loops_ = Object.create(null);
 
   if (!Blockly.Arduino.variableDB_) {
     Blockly.Arduino.variableDB_ =
@@ -175,6 +177,19 @@ Blockly.Arduino.finish = function(code) {
     setups.push(userSetupCode);
   }
 
+    // userSetupCode added at the end of the setup function without leading spaces
+    var loops = [''], userLoopCode= '';
+    if (Blockly.Arduino.loops_['userLoopCode'] !== undefined) {
+      userLoopCode = '\n' + Blockly.Arduino.loops_['userLoopsCode'];
+      delete Blockly.Arduino.loops_['userLoopsCode'];
+    }
+    for (var name in Blockly.Arduino.loops_) {
+      loops.push(Blockly.Arduino.loops_[name]);
+    }
+    if (userLoopCode) {
+      loops.push(userLoopCode);
+    }
+
   // Clean up temporary data
   delete Blockly.Arduino.includes_;
   delete Blockly.Arduino.definitions_;
@@ -182,13 +197,14 @@ Blockly.Arduino.finish = function(code) {
   delete Blockly.Arduino.userFunctions_;
   delete Blockly.Arduino.functionNames_;
   delete Blockly.Arduino.setups_;
+  delete Blockly.Arduino.loops_;
   delete Blockly.Arduino.pins_;
   Blockly.Arduino.variableDB_.reset();
 
   var allDefs = includes.join('\n') + variables.join('\n') +
       definitions.join('\n') + functions.join('\n\n');
   var setup = 'void setup() {' + setups.join('\n  ') + '\n}\n\n';
-  var loop = 'void loop() {\n  ' + code.replace(/\n/g, '\n  ') + '\n}';
+  var loop = 'void loop() {\n  ' + loops.join('\n')+ '\n' + code.replace(/\n/g, '\n  ') + '\n}';
   return allDefs + setup + loop;
 };
 
@@ -203,6 +219,8 @@ Blockly.Arduino.addInclude = function(includeTag, code) {
     Blockly.Arduino.includes_[includeTag] = code;
   }
 };
+
+
 
 /**
  * Adds a string of code to be declared globally to the sketch.
@@ -248,6 +266,15 @@ Blockly.Arduino.addSetup = function(setupTag, code, overwrite) {
   var overwritten = false;
   if (overwrite || (Blockly.Arduino.setups_[setupTag] === undefined)) {
     Blockly.Arduino.setups_[setupTag] = code;
+    overwritten = true;
+  }
+  return overwritten;
+};
+
+Blockly.Arduino.addLoop = function(loopTag, code, overwrite) {
+  var overwritten = false;
+  if (overwrite || (Blockly.Arduino.loops_[loopTag] === undefined)) {
+    Blockly.Arduino.loop_[loopTag] = code;
     overwritten = true;
   }
   return overwritten;
