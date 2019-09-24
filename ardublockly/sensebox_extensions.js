@@ -11,13 +11,13 @@ SenseboxExtension.SUPPORTED_BOARDS = {
 /** Initialize function for senseBox extensions, to be called on page load. */
 SenseboxExtension.init = function () {
 
-  $(".manuel_check").click(function() {
-    if (document.getElementById("manuel_check").checked){
+  $(".manually").click(function() {
+    if (document.getElementById("manually").checked){
     Ardublockly.alertMessage("Achtung: Der Code wird nun nicht mehr aus den Blöcken generiert");
     editor.setReadOnly(false);
     }
-    else if (!document.getElementById("manuel_check").checked){
-      Ardublockly.alertMessage("Achtung: Der Code wird nun wieder aus dem Blöcken");
+    else if (!document.getElementById("manually").checked){
+      Ardublockly.alertMessage("Achtung: Der Code wird nun wieder aus dem Blöcken generiert");
       editor.setReadOnly(true);
       }  // false to make it editable
     var sketch = Ardublockly.generateArduino();
@@ -97,7 +97,7 @@ SenseboxExtension.init = function () {
       addClass(compile, "sb-disabled");
       addClass(compile, "running");
       compiling = true;
-      if (document.getElementById("manuel_check").checked){
+      if (document.getElementById("manually").checked){
 
         var sketch = editor.getValue();
       } else {
