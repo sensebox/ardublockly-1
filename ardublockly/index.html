@@ -15,11 +15,11 @@
   <link rel="stylesheet" type="text/css" href="prettify/loading-btn.css"/>
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
 
-  <!-- Ardublockly - These three files contain the compress version-->
+  <!-- Ardublockly - These three files contain the compress version
   <script src="../blockly/blockly_compressed.js"></script>
   <script src="../blockly/blocks_compressed.js"></script>
-  <script src="../blockly/arduino_compressed.js"></script>
-  <!-- To use the uncompressed version comment out the above and comment in the ones below
+  <script src="../blockly/arduino_compressed.js"></script>-->
+  <!-- To use the uncompressed version comment out the above and comment in the ones below-->
   <script src="../blockly/blockly_uncompressed.js"></script>
   <script src="../blockly/blocks/logic.js"></script>
   <script src="../blockly/blocks/loops.js"></script>
@@ -57,7 +57,7 @@
   <script src="../blockly/generators/arduino/time.js"></script>
   <script src="../blockly/generators/arduino/tone.js"></script>
   <script src="../blockly/generators/arduino/variables.js"></script>
-  <script src="../blockly/generators/arduino/sensebox.js"></script>-->
+  <script src="../blockly/generators/arduino/sensebox.js"></script>
 
   <!-- Default language js files, user selection appended to head on load -->
   <script src="../blockly/msg/js/en.js"></script>
@@ -188,9 +188,24 @@
             <div class="collapsible-header active">
               <span class="collapsible_logo">{ }</span>
               <span class="translatable_arduinoSourceCode">Arduino Source Code</span>
+                <!-- Switch -->
+      <div class="switch">
+          Manuel Edit Code  
+        <label style="margin-left: 15px">
+        Off
+        <input type="checkbox" class="manuel_check" id="manuel_check">
+        <span class="lever"></span>
+        On
+      </label>
+    </span>
+  </div>
             </div>
+              <!-- <input type="checkbox" class="manuel_check" id="manuel_check" autocomplete="off">
+                <label class="switch" for="manuel_check"><span class="slider">Manuel Edit</span></label></span>-->
+  
             <div class="collapsible-body">
-              <pre id="content_arduino" class="content content_height_transition content_arduino_large"></pre>
+                <pre id="editor"></pre>
+             <!-- <pre id="content_arduino" class="content content_height_transition content_arduino_large"></pre>-->
             </div>
           </li>
           <li>
@@ -351,6 +366,22 @@
   <script src="js_libs/clipboard.min.js"></script>
   <!-- Cookie consent -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+  <!-- load ace -->
+          <script src="https://pagecdn.io/lib/ace/1.4.5/ace.js"
+          integrity="sha256-5Xkhn3k/1rbXB+Q/DX/2RuAtaB4dRRyQvMs83prFjpM=" crossorigin="anonymous"></script>
+      <!-- load ace language_tools extension -->
+      <script>
+          var editor = ace.edit("editor");
+          editor.setOptions({
+              theme: "ace/theme/katzenmilch",
+              mode: "ace/mode/c_cpp",
+              maxLines: 50,
+              minLines: 30,
+              autoScrollEditorIntoView: true,
+              readOnly: true,
+          });
+
+      </script>
   <script>
     window.addEventListener("load", function(){
     window.cookieconsent.initialise({

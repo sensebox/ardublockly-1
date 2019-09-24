@@ -561,6 +561,7 @@ Ardublockly.renderContent = function() {
   Ardublockly.workspace.addChangeListener(Blockly.Events.disableOrphans);
   // Render Arduino Code with latest change highlight and syntax highlighting
   var arduinoCode = Ardublockly.generateArduino();
+  editor.session.setValue(arduinoCode);
   if (arduinoCode !== Ardublockly.PREV_ARDUINO_CODE_) {
     var diff = JsDiff.diffWords(Ardublockly.PREV_ARDUINO_CODE_, arduinoCode);
     var resultStringArray = [];
@@ -576,9 +577,10 @@ Ardublockly.renderContent = function() {
         }
       }
     }
+    /*
     document.getElementById('content_arduino').innerHTML =
         prettyPrintOne(resultStringArray.join(''), 'cpp', false);
-    Ardublockly.PREV_ARDUINO_CODE_ = arduinoCode;
+    Ardublockly.PREV_ARDUINO_CODE_ = arduinoCode;*/
   }
 
   // Generate plain XML into element
