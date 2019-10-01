@@ -178,6 +178,7 @@
         <!-- Blockly Panel -->
         <div class="card-panel white" style="padding: 0">
           <div id="blocks_panel" class="content blocks_panel_large">
+            <div id="manually_edit" style="display: none"></div>
             <div id="content_blocks" class="content z-depth-1"></div>
           </div>
         </div>
@@ -208,7 +209,7 @@
              <!-- <pre id="content_arduino" class="content content_height_transition content_arduino_large"></pre>-->
             </div>
           </li>
-          <li>
+          <li id="xml">
             <div class="collapsible-header" id="xml_collapsible_header">
               <span class="collapsible_logo">&#60; &#62;</span>
               <span class="translatable_blocksXml">Blocks XML</span>
@@ -376,9 +377,10 @@
               theme: "ace/theme/katzenmilch",
               mode: "ace/mode/c_cpp",
               maxLines: 50,
-              minLines: 30,
+              //minLines: 30,
               autoScrollEditorIntoView: true,
               readOnly: true,
+              highlightSelectedWord: true, // boolean
           });
 
       </script>

@@ -10,15 +10,41 @@ SenseboxExtension.SUPPORTED_BOARDS = {
 
 /** Initialize function for senseBox extensions, to be called on page load. */
 SenseboxExtension.init = function () {
+  function resizeAce() {
+    var h = window.innerHeight;
+    console.log(h);
+    if (h > 360) {
+        $('#editor').css('height', (h - 350).toString() + 'px');
+    }
+};
+$(window).on('resize', function () {
+    resizeAce();
+});
+resizeAce();
+
 
   $(".manually").click(function() {
+    var toolbox = document.getElementsByClassName("blocklyToolboxDiv");
+    var blocks = document.getElementById("content_blocks");
+    var edit = document.getElementById("manually_edit");
+    var xml = document.getElementById("xml");
+    var blocks_panel = document.getElementById("blocks_panel");
+    var blocks_panel_height = $(blocks_panel).height();
     if (document.getElementById("manually").checked){
     Ardublockly.alertMessage("Achtung: Der Code wird nun nicht mehr aus den Blöcken generiert");
     editor.setReadOnly(false);
+    $(toolbox).hide();
+    $(blocks).hide();
+    $(xml).hide();
+    $(edit).show();
     }
     else if (!document.getElementById("manually").checked){
       Ardublockly.alertMessage("Achtung: Der Code wird nun wieder aus dem Blöcken generiert");
       editor.setReadOnly(true);
+      $(toolbox).show();
+      $(blocks).show();
+      $(xml).show();
+      $(edit).hide();
       }  // false to make it editable
     var sketch = Ardublockly.generateArduino();
     editor.session.setValue(sketch);

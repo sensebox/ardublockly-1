@@ -877,3 +877,10 @@ img.animated-gif{
 .sb-disabled {
   background: rgb(168, 167, 167) !important;
 }
+
+#editor {
+    width: 100%;
+    height: 100%;
+    transition: height .5s;
+    -webkit-transition: height .5s;
+  }
