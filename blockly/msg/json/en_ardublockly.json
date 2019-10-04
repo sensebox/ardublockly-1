@@ -308,5 +308,6 @@
 	"senseBox_sd_web_readHTML" : "Read HTML from SD Card",
 	"sensebox_web_readHTML_filename" : "File:",
 	"senseBox_bme680" : "Environmental sensor (BME680)",
+	"senseBox_bme680_tip" : "Returns values from the BME680",
 	"senseBox_gas" : "Gas (VOC)"
 }

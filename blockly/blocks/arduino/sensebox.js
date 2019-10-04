@@ -149,7 +149,7 @@ Blockly.Blocks['sensebox_sensor_bme680'] = {
         .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_temp,"temperature"], [Blockly.Msg.senseBox_hum,"humidity"], [Blockly.Msg.senseBox_pressure,"pressure"], [Blockly.Msg.senseBox_gas,"gas_resistance"]]), "NAME");
     this.setOutput(true, Blockly.Types.NUMBER.output);
     this.setColour(Blockly.Blocks.sensebox.HUE);
-    this.setTooltip(Blockly.Msg.senseBox_bme_tip);
+    this.setTooltip(Blockly.Msg.senseBox_bme680_tip);
     this.setHelpUrl('https://edu.books.sensebox.de/de/projekte/diy_umweltstation/temp_und_luftfeuchte.html');
   },
   getBlockType: function() {
