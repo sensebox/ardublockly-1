@@ -1,7 +1,7 @@
 /*
 @metadata
 		author": senseBox
-		lastupdated": 2018
+		lastupdated": 2019
 		for more information: www.sensebox.de
 */
 
@@ -43,9 +43,10 @@ Blockly.Arduino.sensebox_sensor_bme680 = function() {
   Blockly.Arduino.setups_['bme_setIIR'] = 'bme.setIIRFilterSize(BME680_FILTER_SIZE_3);';
   Blockly.Arduino.loops_['bme_performReading'] = 'bme.performReading();';
     var code ='bme.' + dropdown_name;
-    if (dropdown_name == 'gas_resistance' && !(dropdown_name == 'temperature' || dropdown_name == 'humidity' || dropdown_name == 'pressure' ) {
+    if (dropdown_name == 'gas_resistance' && dropdown_name != 'temperature' || dropdown_name != 'humidity' || dropdown_name != 'pressure' 
+    {
 	Blockly.Arduino.setups_['bme_gas_heater'] = 'bme.setGasHeater(320, 150);';    
-    } else
+    }
     return [code ,Blockly.Arduino.ORDER_ATOMIC];
   };
 
