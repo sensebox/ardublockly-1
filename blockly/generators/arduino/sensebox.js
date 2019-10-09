@@ -41,12 +41,11 @@ Blockly.Arduino.sensebox_sensor_bme680 = function() {
   Blockly.Arduino.setups_['bme_humidity_oversampling'] = 'bme.setHumidityOversampling(BME680_OS_2X);';
   Blockly.Arduino.setups_['bme_pressure_oversampling'] = 'bme.setPressureOversampling(BME680_OS_4X);';
   Blockly.Arduino.setups_['bme_setIIR'] = 'bme.setIIRFilterSize(BME680_FILTER_SIZE_3);';
-  Blockly.Arduino.setups_['bme_gas_heater'] = 'bme.setGasHeater(0, 0);';
   Blockly.Arduino.loops_['bme_performReading'] = 'bme.performReading();';
     var code ='bme.' + dropdown_name;
-    if (dropdown_name == 'gas_resistance') {
+    if (dropdown_name == 'gas_resistance' && !(dropdown_name == 'temperature' || dropdown_name == 'humidity' || dropdown_name == 'pressure' ) {
 	Blockly.Arduino.setups_['bme_gas_heater'] = 'bme.setGasHeater(320, 150);';    
-    }
+    } else
     return [code ,Blockly.Arduino.ORDER_ATOMIC];
   };
 
