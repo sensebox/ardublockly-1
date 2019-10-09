@@ -42,7 +42,7 @@ Blockly.Arduino.sensebox_sensor_bme680 = function() {
   Blockly.Arduino.setups_['bme_pressure_oversampling'] = 'bme.setPressureOversampling(BME680_OS_4X);';
   Blockly.Arduino.setups_['bme_setIIR'] = 'bme.setIIRFilterSize(BME680_FILTER_SIZE_3);';
   Blockly.Arduino.setups_['bme_gas_heater'] = 'bme.setGasHeater(320, 150);';
-  Blockly.Arduino.loops_['bme_performReading'] = 'bme.performReading();';
+  Blockly.Arduino.loops_['bme_performReading'] = 'bme.performReading();\ndelay(2000);';
     var code ='bme.' + dropdown_name;
     return [code ,Blockly.Arduino.ORDER_ATOMIC];
   };
