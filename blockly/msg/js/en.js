@@ -525,6 +525,7 @@ Blockly.Msg.senseBox_basic_red  = "Red";
 Blockly.Msg.senseBox_basic_state  = "Status";
 Blockly.Msg.senseBox_bme680 = "Environmental sensor (BME680)";
 Blockly.Msg.senseBox_bme680_tip = "Returns values from the BME680";
+Blockly.Msg.senseBox_bme680_warning = "Achtung, um den Messwert zu bestimmen muss der Sensor aufgewärmt werden. Gleichzeitiges messen der Temperatur sollte somit nicht durchgeführt werden."
 Blockly.Msg.senseBox_bmx055_accelerometer  = "Accelerometer";
 Blockly.Msg.senseBox_bmx055_accelerometer_direction = "Direction";
 Blockly.Msg.senseBox_bmx055_accelerometer_direction_total = "Total";
