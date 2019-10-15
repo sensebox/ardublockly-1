@@ -90,4 +90,18 @@ Ardublockly.LOCALISED_TEXT = {
   catAudio: "Auditivo",
   catMotors: "Motores",
   catComms: "Comunicação",
+  /* senseBox */
+  catSenseBox_Sensor:"Sensores",
+  catsenseBox_Output:"Ausgabe",
+  catSenseBox_Display:"Display",
+  catSenseBoxOutput_SD:"SD",
+  catSenseBoxOutput_Web:"Web",
+  catSenseBoxOutput_Webserver:"Webserver",
+  catSenseBox_Led: "LED",
+  catSenseBox_Wifi: "WiFi",
+  catSenseBox_osem: "openSenseMap",
+  code_copied: "O código foi copiado",
+  save_to_clipboard: "Copiar para a área de transferência",
+  compile_sketch: "Desenho do Compilador",
+  sketch_compiled: "Sketch foi compilado",
 };
