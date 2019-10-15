@@ -141,7 +141,7 @@ Blockly.Blocks['sensebox_sensor_sds011'] = {
 
 Blockly.Blocks['sensebox_sensor_bme680'] = {
   init: function() {
-    var dropdownOptions = [[Blockly.Msg.senseBox_temp,"temperature"], [Blockly.Msg.senseBox_hum,"humidity"], [Blockly.Msg.senseBox_pressure,"pressure"], [Blockly.Msg.senseBox_gas,"gas_resistance"], [Blockly.Msg.senseBox_gps_alt,"Altitude"]];
+    var dropdownOptions = [[Blockly.Msg.senseBox_temp,"temperature"], [Blockly.Msg.senseBox_hum,"humidity"], [Blockly.Msg.senseBox_pressure,"pressure"], [Blockly.Msg.senseBox_gas,"gas_resistance"], [Blockly.Msg.senseBox_gps_alt,"readAltitude"]];
     var blocks = Blockly.mainWorkspace.getAllBlocks();
     var bme680_present = false;
     for (var i=0; i<blocks.length; i++){
@@ -151,30 +151,17 @@ Blockly.Blocks['sensebox_sensor_bme680'] = {
        if (dropdown == 'gas_resistance'){
          dropdownOptions = [[Blockly.Msg.senseBox_gas,"gas_resistance"]];
        }
-       else if (dropdown == 'temperature' || dropdown == 'humidity' || dropdown == 'pressure' || dropdown == 'Altitude' ){
-        var dropdownOptions = [[Blockly.Msg.senseBox_temp,"temperature"], [Blockly.Msg.senseBox_hum,"humidity"], [Blockly.Msg.senseBox_pressure,"pressure"], [Blockly.Msg.senseBox_gps_alt,"Altitude"]];
+       else if (dropdown == 'temperature' || dropdown == 'humidity' || dropdown == 'pressure' || dropdown == 'readAltitude' ){
+        var dropdownOptions = [[Blockly.Msg.senseBox_temp,"temperature"], [Blockly.Msg.senseBox_hum,"humidity"], [Blockly.Msg.senseBox_pressure,"pressure"], [Blockly.Msg.senseBox_gps_alt,"readAltitude"]];
 
        } 
       }
     }
     var dropdown = new Blockly.FieldDropdown(dropdownOptions, function(option) {
-      var input = (option == 'Pressure') || (option ==  'Temperature') || (option == 'Altitude') || (option == 'gas_resistance') || (option == 'humidity');
+      var input = (option == 'Pressure') || (option ==  'Temperature') || (option == 'readAltitude') || (option == 'gas_resistance') || (option == 'humidity');
       this.sourceBlock_.updateShape_(input);
       });
 
-    
-   /* for (var x = 0; x < blocks.length; x++) {
-      var func = blocks[x].getBlockById('sensebox_sensor_bme680');
-      if (func) {
-        var setupBlockInstanceName = func.call(blocks[x]);
-        if (thisInstanceName == setupBlockInstanceName) {
-          bme680_present = true;
-          break;
-        }
-      }
-    }
-    console.log(bme680_present);*/
-  
     this.appendDummyInput()
         .appendField(Blockly.Msg.senseBox_bme680);
     this.appendDummyInput('dropdown')
@@ -230,7 +217,7 @@ Blockly.Blocks['sensebox_sensor_bme680'] = {
 
     var extraFieldExist = this.getFieldValue('referencePressure');
     var input = this.getFieldValue('NAME');
-    if (input == 'Altitude' && extraFieldExist == null){
+    if (input == 'readAltitude' && extraFieldExist == null){
       console.log('update shape');
       this.appendDummyInput('extraField')
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -239,7 +226,7 @@ Blockly.Blocks['sensebox_sensor_bme680'] = {
         .appendField(Blockly.Msg.senseBox_pressure_referencePressure_dim);
     }
   
-    if ((input == 'Pressure' || input == 'Temperature') && extraFieldExist != null){
+    if ((input == 'pressure' || input == 'temperature'|| input == 'humidity' || input == 'gas_resistance') && extraFieldExist != null){
         this.removeInput('extraField');
     }  
    },
