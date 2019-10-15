@@ -175,6 +175,11 @@ Blockly.Blocks['sensebox_sensor_bme680'] = {
     
   },
   getBlockType: function() {
+    var input = this.getFieldValue('NAME');
+    if (input == 'pressure' || input == 'gas_resistance'){
+      return Blockly.Types.LARGE_NUMBER;
+    }
+    else if (input == 'temperature' || input == 'humidity' || input == 'readAltitude')
     return Blockly.Types.DECIMAL;
   },
   onchange: function() {
@@ -230,14 +235,7 @@ Blockly.Blocks['sensebox_sensor_bme680'] = {
         this.removeInput('extraField');
     }  
    },
-  getBlockType: function() {
-    var input = this.getFieldValue('NAME');
-    if (input == 'pressure' || input == 'gas_resistance'){
-      return Blockly.Types.LARGE_NUMBER;
-    }
-    else if (input == 'temperature' )
-    return Blockly.Types.LARGE_NUMBER;
-  },
+
 };
 
 Blockly.Blocks['sensebox_sensor_pressure'] = {
