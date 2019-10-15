@@ -46,6 +46,7 @@ Blockly.Arduino.sensebox_sensor_bme680 = function() {
     var code ='bme.' + dropdown_name;
     if (dropdown_name == 'gas_resistance' && dropdown_name != 'temperature' && dropdown_name != 'humidity' && dropdown_name != 'pressure')
     {
+    code = 'bme.gas_resistance / 1000.0'
 	Blockly.Arduino.setups_['bme_gas_heater'] = 'bme.setGasHeater(320, 150);';    
     }
     else if (dropdown_name == 'readAltitude' && dropdown_name != 'temperature' && dropdown_name != 'humidity' && dropdown_name != 'pressure')

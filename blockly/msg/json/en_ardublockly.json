@@ -309,5 +309,6 @@
 	"sensebox_web_readHTML_filename" : "File:",
 	"senseBox_bme680" : "Environmental sensor (BME680)",
 	"senseBox_bme680_tip" : "Returns values from the BME680",
+	"senseBox_bme680_warning" : "Warning. Gas (VOC) cannot be measured simultaneously with other parameters.",
 	"senseBox_gas" : "Gas (VOC)"
 }

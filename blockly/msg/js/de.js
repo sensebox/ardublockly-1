@@ -706,6 +706,6 @@ Blockly.Msg.senseBox_sd_web_readHTML = "Lese HTML von SD Karte";
 Blockly.Msg.sensebox_web_readHTML_filename = "Datei:";
 Blockly.Msg.senseBox_bme680  = "Umweltsensor (BME680)";
 Blockly.Msg.senseBox_bme680_tip = "Gibt Messwerte des BME680 zurück";
-Blockly.Msg.senseBox_bme680_warning = "Achtung, um den Messwert zu bestimmen muss der Sensor aufgewärmt werden.\nGleichzeitiges messen der Temperatur sollte somit nicht durchgeführt werden."
+Blockly.Msg.senseBox_bme680_warning = "Achtung. Gas (VOC) kann nicht gleichzeitig mit anderen Parametern gemessen werden"
 Blockly.Msg.senseBox_gas = "Gas (VOC)";
 

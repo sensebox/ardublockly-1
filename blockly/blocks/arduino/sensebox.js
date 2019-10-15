@@ -231,6 +231,11 @@ Blockly.Blocks['sensebox_sensor_bme680'] = {
     }  
    },
   getBlockType: function() {
+    var input = this.getFieldValue('NAME');
+    if (input == 'pressure' || input == 'gas_resistance'){
+      return Blockly.Types.LARGE_NUMBER;
+    }
+    else if (input == 'temperature' )
     return Blockly.Types.LARGE_NUMBER;
   },
 };
