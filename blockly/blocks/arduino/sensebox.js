@@ -138,6 +138,106 @@ Blockly.Blocks['sensebox_sensor_sds011'] = {
   },
 };
 
+
+Blockly.Blocks['sensebox_sensor_bme680'] = {
+  init: function() {
+    var dropdownOptions = [[Blockly.Msg.senseBox_temp,"temperature"], [Blockly.Msg.senseBox_hum,"humidity"], [Blockly.Msg.senseBox_pressure,"pressure"], [Blockly.Msg.senseBox_gas,"gas_resistance"], [Blockly.Msg.senseBox_gps_alt,"readAltitude"]];
+    var blocks = Blockly.mainWorkspace.getAllBlocks();
+    var bme680_present = false;
+    for (var i=0; i<blocks.length; i++){
+      console.log(blocks[i]);
+      if (blocks[i].type == 'sensebox_sensor_bme680'){
+       var dropdown =  blocks[i].getFieldValue('NAME');
+       if (dropdown == 'gas_resistance'){
+         dropdownOptions = [[Blockly.Msg.senseBox_gas,"gas_resistance"]];
+       }
+       else if (dropdown == 'temperature' || dropdown == 'humidity' || dropdown == 'pressure' || dropdown == 'readAltitude' ){
+        var dropdownOptions = [[Blockly.Msg.senseBox_temp,"temperature"], [Blockly.Msg.senseBox_hum,"humidity"], [Blockly.Msg.senseBox_pressure,"pressure"], [Blockly.Msg.senseBox_gps_alt,"readAltitude"]];
+
+       } 
+      }
+    }
+    var dropdown = new Blockly.FieldDropdown(dropdownOptions, function(option) {
+      var input = (option == 'Pressure') || (option ==  'Temperature') || (option == 'readAltitude') || (option == 'gas_resistance') || (option == 'humidity');
+      this.sourceBlock_.updateShape_(input);
+      });
+
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.senseBox_bme680);
+    this.appendDummyInput('dropdown')
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.senseBox_value)
+        .appendField(dropdown, "NAME");
+    this.setOutput(true, Blockly.Types.NUMBER.output);
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.setTooltip(Blockly.Msg.senseBox_bme680_tip);
+    this.setHelpUrl('https://edu.books.sensebox.de/de/projekte/diy_umweltstation/temp_und_luftfeuchte.html');
+    
+  },
+  getBlockType: function() {
+    var input = this.getFieldValue('NAME');
+    if (input == 'pressure' || input == 'gas_resistance'){
+      return Blockly.Types.LARGE_NUMBER;
+    }
+    else if (input == 'temperature' || input == 'humidity' || input == 'readAltitude')
+    return Blockly.Types.DECIMAL;
+  },
+  onchange: function() {
+  var input = this.getFieldValue('NAME');
+  if (input == 'gas_resistance') {
+    this.setWarningText(Blockly.Msg.senseBox_bme680_warning);
+  } else {
+    this.setWarningText(null);
+  }
+},
+
+  /**
+   * Parse XML to restore the number of pins available.
+   * @param {!Element} xmlElement XML storage element.
+   * @this Blockly.Block
+   
+  domToMutation: function(xmlElement) {
+    var input = (xmlElement.getAttribute('port'));
+    
+  },*
+  /**
+   * Create XML to represent number of pins selection.
+   * @return {!Element} XML storage element.
+   * @this Blockly.Block
+   */
+  mutationToDom: function() {
+    var container = document.createElement('mutation');
+    var input = this.getFieldValue('NAME');
+    this.updateShape_(input);
+    container.setAttribute('NAME', input);
+    return container;
+  },
+  /**
+   * Modify this block to have the correct number of pins available.
+   * @param {boolean}
+   * @private
+   * @this Blockly.Block
+   */
+  updateShape_: function() {
+
+    var extraFieldExist = this.getFieldValue('referencePressure');
+    var input = this.getFieldValue('NAME');
+    if (input == 'readAltitude' && extraFieldExist == null){
+      console.log('update shape');
+      this.appendDummyInput('extraField')
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.senseBox_pressure_referencePressure)
+        .appendField(new Blockly.FieldTextInput("1013"), "referencePressure")
+        .appendField(Blockly.Msg.senseBox_pressure_referencePressure_dim);
+    }
+  
+    if ((input == 'pressure' || input == 'temperature'|| input == 'humidity' || input == 'gas_resistance') && extraFieldExist != null){
+        this.removeInput('extraField');
+    }  
+   },
+
+};
+
 Blockly.Blocks['sensebox_sensor_pressure'] = {
   init: function() {
     var dropdownOptions = [[Blockly.Msg.senseBox_pressure,"Pressure"], [Blockly.Msg.senseBox_temp,"Temperature"], [Blockly.Msg.senseBox_gps_alt,"Altitude"]];
@@ -210,6 +310,79 @@ Blockly.Blocks['sensebox_sensor_pressure'] = {
   },
 };
 
+/** 
+Blockly.Blocks['sensebox_sensor_bme680'] = {
+  init: function() {
+    var dropdownOptions = [[Blockly.Msg.senseBox_temp,"Temperature"], [Blockly.Msg.senseBox_hum,"Humidity"],[Blockly.Msg.senseBox_pressure,"Pressure"], [Blockly.Msg.senseBox_alt,"Altitude"], [Blockly.Msg.senseBox_gas,"Airquality"]];
+    var dropdown = new Blockly.FieldDropdown(dropdownOptions, function(option) {
+      var input = (option == 'Temperature') || (option ==  'Humidity') || (option == 'Pressure') || (option == 'Altitude') || (option == 'Airquality');
+      this.sourceBlock_.updateShape_(input);
+      });
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.senseBox_pressure_sensor);
+       this.setOutput(true, "Number");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.senseBox_value)
+        .appendField(dropdown, "NAME");
+        /*.appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_pressure,"Pressure"], [Blockly.Msg.senseBox_temp,"Temperature"], [Blockly.Msg.senseBox_gps_alt,"Altitude"]]), function(option) {
+          var input = (option == 'Pressure') || (option ==  'Temperature') || (option == 'Altitude');
+          this.sourceBlock_.updateShape_(input);
+          }, "NAME");
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.setOutput(true, Blockly.Types.NUMBER.output);
+    this.setTooltip(Blockly.Msg.senseBox_pressure_tip);
+    this.setHelpUrl('https://edu.books.sensebox.de/de/projekte/diy_umweltstation/luftdruck.html');
+  },
+  /**
+   * Parse XML to restore the number of pins available.
+   * @param {!Element} xmlElement XML storage element.
+   * @this Blockly.Block
+   
+  domToMutation: function(xmlElement) {
+    var input = (xmlElement.getAttribute('port'));
+    
+  },
+  /**
+   * Create XML to represent number of pins selection.
+   * @return {!Element} XML storage element.
+   * @this Blockly.Block
+   *
+  mutationToDom: function() {
+    var container = document.createElement('mutation');
+    var input = this.getFieldValue('NAME');
+    this.updateShape_(input);
+    container.setAttribute('NAME', input);
+    return container;
+  },
+  /**
+   * Modify this block to have the correct number of pins available.
+   * @param {boolean}
+   * @private
+   * @this Blockly.Block
+   *
+  updateShape_: function() {
+    var extraFieldExist = this.getFieldValue('referencePressure');
+    console.log(extraFieldExist);
+    var input = this.getFieldValue('NAME');
+    if (input == 'Altitude' && extraFieldExist == null){
+      console.log('update shape');
+      this.appendDummyInput('extraField')
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.senseBox_pressure_referencePressure)
+        .appendField(new Blockly.FieldTextInput("1013"), "referencePressure")
+        .appendField(Blockly.Msg.senseBox_pressure_referencePressure_dim);
+    }
+  
+    if ((input == 'Pressure' || input == 'Temperature') && extraFieldExist != null){
+        this.removeInput('extraField');
+    }  
+   },
+  getBlockType: function() {
+    return Blockly.Types.LARGE_NUMBER;
+  },
+};
+*/
 
 Blockly.Blocks['sensebox_sensor_ultrasonic_ranger'] = {
   init: function() {
