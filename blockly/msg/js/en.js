@@ -700,3 +700,4 @@ Blockly.Msg.sensebox_display_show  = "Print on Display";
 Blockly.Msg.sensebox_display_show_tip  = "Print on Display";
 Blockly.Msg.sensebox_sd_filename = "Filename";
 Blockly.Msg.sensebox_web_readHTML_filename = "File:";
+Blockly.Msg.sensebox_soil_stm50 = "Soil Moisture and Temperature (STM50)";
