@@ -699,4 +699,5 @@ Blockly.Msg.sensebox_display_fillCircle_radius = "Radius";  // untranslated
 Blockly.Msg.sensebox_display_show  = "Print on Display";  // untranslated
 Blockly.Msg.sensebox_display_show_tip  = "Print on Display";  // untranslated
 Blockly.Msg.sensebox_sd_filename = "Filename";  // untranslated
+Blockly.Msg.sensebox_soil_stm50 = "Soil Moisture and Temperature (STM50)";  // untranslated
 Blockly.Msg.sensebox_web_readHTML_filename = "File:";  // untranslated
