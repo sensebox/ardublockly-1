@@ -140,6 +140,42 @@ Blockly.Arduino.sensebox_sensor_soil = function() {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino.sensebox_sensor_truebner_stm50 = function(){
+  var dropdown_port = this.getFieldValue('Port')
+  var dropdown_value = this.getFieldValue('value');
+  var dropdown_pin = 1;
+  if (dropdown_value == 'temp'){
+    if (dropdown_port == 'A'){
+      dropdown_pin = 1;
+    }
+    if (dropdown_port == 'B'){
+      dropdown_pin = 3;
+    }
+    if (dropdown_port == 'C'){
+      dropdown_pin = 5;
+    }
+    Blockly.Arduino.userFunctions_['sensebox_stm50_temp'] = 'float getSMT50Temperature(int analogPin){\n  int sensorValue = analogRead(analogPin);\n  float voltage = sensorValue * (3.3 / 1024.0);\n   return (voltage - 0.5) * 100;\n}';
+    var code = 'getSMT50Temperature('+ dropdown_pin + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+  }
+  else if (dropdown_value == 'soil'){
+    if (dropdown_port == 'A'){
+      dropdown_pin = 2;
+    }
+    if (dropdown_port == 'B'){
+      dropdown_pin = 4;
+    }
+    if (dropdown_port == 'C'){
+      dropdown_pin = 6;
+    }
+    Blockly.Arduino.userFunctions_['sensebox_stm50_soil'] = 'float getSMT50Moisture(int analogPin){\n   int sensorValue = analogRead(analogPin);\n    float voltage = sensorValue * (3.3 / 1024.0);\n   return (voltage * 50) / 3;\n}';
+    var code = 'getSMT50Moisture(' + dropdown_pin + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+  }
+
+};
+
+
 Blockly.Arduino.sensebox_sensor_watertemperature = function() {
 
   var dropdown_port = this.getFieldValue('Port');
