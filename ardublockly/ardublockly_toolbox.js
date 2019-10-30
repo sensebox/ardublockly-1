@@ -20,12 +20,14 @@ Ardublockly.TOOLBOX_XML =
    // '      <block type="sensebox_sensor_bmx055_compass"></block>' +
     '      <block type="sensebox_sensor_sds011"></block>' +
     '      <block type="sensebox_sensor_pressure"></block>' +
+    '      <block type="sensebox_sensor_bme680"></block>' +
     '      <block type="sensebox_sensor_ultrasonic_ranger">' +
     '           <field name="ultrasonic_trigger">1</field>' +
     '           <field name="ultrasonic_echo">2</field>' +
     '      </block>' +
     '      <block type="sensebox_sensor_sound"></block>' +
     '      <block type="sensebox_sensor_soil"></block>' +
+    '      <block type="sensebox_sensor_truebner_stm50"></block>'   +
     '      <block type="sensebox_sensor_watertemperature"></block>' +
     '      <block type="sensebox_foto"></block>' +
     '      <block type="sensebox_button"></block>' +

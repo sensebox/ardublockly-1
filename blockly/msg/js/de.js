@@ -531,6 +531,7 @@ Blockly.Msg.senseBox_sd_write_file = " Schreibe Daten auf SD-Karte";
 Blockly.Msg.senseBox_sd_open_file = "Öffne eine Datei auf der SD-Karte";
 Blockly.Msg.sensebox_sd_filename = "Daten";
 Blockly.Msg.senseBox_SD_COMPONENT = "SD-Block";
+Blockly.Msg.senseBox_sd_decimals = "Dezimalen";
 Blockly.Msg.senseBox_output_linebreak = "Zeilenumbruch";
 Blockly.Msg.senseBox_output_networkid = "NetzwerkID";
 Blockly.Msg.senseBox_output_password = "Passwort";
@@ -703,4 +704,9 @@ Blockly.Msg.senseBox_tag_first_mutator_tip = "Mögliche Erweiterungen zu diesem 
 Blockly.Msg.senseBox_tag_optional_mutator_tip = "Mehr Tags zum Block hinzufügen";
 Blockly.Msg.senseBox_sd_web_readHTML = "Lese HTML von SD Karte";
 Blockly.Msg.sensebox_web_readHTML_filename = "Datei:";
+Blockly.Msg.senseBox_bme680  = "Umweltsensor (BME680)";
+Blockly.Msg.senseBox_bme680_tip = "Gibt Messwerte des BME680 zurück";
+Blockly.Msg.senseBox_bme680_warning = "Achtung. Gas (VOC) kann nicht gleichzeitig mit anderen Parametern gemessen werden"
+Blockly.Msg.senseBox_gas = "Gas (VOC)";
+Blockly.Msg.sensebox_soil_stm50 = "Bodenfeuchte/-temperatur (STM50)";
 

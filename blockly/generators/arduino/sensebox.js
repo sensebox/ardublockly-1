@@ -1,7 +1,7 @@
 /*
 @metadata
 		author": senseBox
-		lastupdated": 2018
+		lastupdated": 2019
 		for more information: www.sensebox.de
 */
 
@@ -29,6 +29,33 @@ else if (dropdown_name == 'Altitude'){
 }
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
+
+
+Blockly.Arduino.sensebox_sensor_bme680 = function() {
+  var dropdown_name = this.getFieldValue('NAME');
+  var referencePressure = this.getFieldValue('referencePressure');
+  Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
+  Blockly.Arduino.includes_['library_AdafruitBME680'] = '#include "Adafruit_BME680.h"';
+  Blockly.Arduino.userFunctions_['define_pressure'] = 'Adafruit_BME680 bme;';
+  Blockly.Arduino.setups_['sensebox_bmp_sensor'] = 'bme.begin(0x76);';
+  Blockly.Arduino.setups_['bme_temperature_oversampling'] = 'bme.setTemperatureOversampling(BME680_OS_8X);';
+  Blockly.Arduino.setups_['bme_humidity_oversampling'] = 'bme.setHumidityOversampling(BME680_OS_2X);';
+  Blockly.Arduino.setups_['bme_pressure_oversampling'] = 'bme.setPressureOversampling(BME680_OS_4X);';
+  Blockly.Arduino.setups_['bme_setIIR'] = 'bme.setIIRFilterSize(BME680_FILTER_SIZE_3);';
+  Blockly.Arduino.loops_['bme_performReading'] = 'bme.performReading();';
+  Blockly.Arduino.setups_['bme_gas_heater'] = 'bme.setGasHeater(0,0);'; 
+    var code ='bme.' + dropdown_name;
+    if (dropdown_name == 'gas_resistance' && dropdown_name != 'temperature' && dropdown_name != 'humidity' && dropdown_name != 'pressure')
+    {
+    code = 'bme.gas_resistance / 1000.0'
+	Blockly.Arduino.setups_['bme_gas_heater'] = 'bme.setGasHeater(320, 150);';    
+    }
+    else if (dropdown_name == 'readAltitude' && dropdown_name != 'temperature' && dropdown_name != 'humidity' && dropdown_name != 'pressure')
+    {
+    code = 'bme.readAltitude('+ referencePressure + ')';
+    }
+    return [code ,Blockly.Arduino.ORDER_ATOMIC];
+  };
 
 Blockly.Arduino.sensebox_sensor_temp_hum = function(){
   var dropdown_name = this.getFieldValue('NAME');
@@ -112,6 +139,42 @@ Blockly.Arduino.sensebox_sensor_soil = function() {
   var code = 'analogRead('+dropdown_pin+')';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
+Blockly.Arduino.sensebox_sensor_truebner_stm50 = function(){
+  var dropdown_port = this.getFieldValue('Port')
+  var dropdown_value = this.getFieldValue('value');
+  var dropdown_pin = 1;
+  if (dropdown_value == 'temp'){
+    if (dropdown_port == 'A'){
+      dropdown_pin = 1;
+    }
+    if (dropdown_port == 'B'){
+      dropdown_pin = 3;
+    }
+    if (dropdown_port == 'C'){
+      dropdown_pin = 5;
+    }
+    Blockly.Arduino.userFunctions_['sensebox_stm50_temp'] = 'float getSMT50Temperature(int analogPin){\n  int sensorValue = analogRead(analogPin);\n  float voltage = sensorValue * (3.3 / 1024.0);\n   return (voltage - 0.5) * 100;\n}';
+    var code = 'getSMT50Temperature('+ dropdown_pin + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+  }
+  else if (dropdown_value == 'soil'){
+    if (dropdown_port == 'A'){
+      dropdown_pin = 2;
+    }
+    if (dropdown_port == 'B'){
+      dropdown_pin = 4;
+    }
+    if (dropdown_port == 'C'){
+      dropdown_pin = 6;
+    }
+    Blockly.Arduino.userFunctions_['sensebox_stm50_soil'] = 'float getSMT50Moisture(int analogPin){\n   int sensorValue = analogRead(analogPin);\n    float voltage = sensorValue * (3.3 / 1024.0);\n   return (voltage * 50) / 3;\n}';
+    var code = 'getSMT50Moisture(' + dropdown_pin + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+  }
+
+};
+
 
 Blockly.Arduino.sensebox_sensor_watertemperature = function() {
 
@@ -330,7 +393,11 @@ Blockly.Arduino.sensebox_sd_write_file = function(block) {
       }else{
         linebreak = "";
       }
-  var code ='dataFile' + filename +'.print'+linebreak+'('+ text +');\n'
+  if (text == "gps.getLongitude()" || text == "gps.getLatitude()"){
+  var code ='dataFile' + filename +'.print'+linebreak+'('+ text +',5);\n'
+  }
+  else {
+  var code ='dataFile' + filename +'.print'+linebreak+'('+ text +');\n'}
   return code;
   };
 
