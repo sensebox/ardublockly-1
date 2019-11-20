@@ -503,15 +503,15 @@ Blockly.Blocks['sensebox_initialize_lora'] = {
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_LEFT)
         .appendField(Blockly.Msg.senseBox_LoRa_device_id)
-        .appendField(new Blockly.FieldTextInput("DEVICE ID"), "DEVICE ID");
+        .appendField(new Blockly.FieldTextInput("DEVICE ID"), "DEVICEID");
         this.appendDummyInput()
         .setAlign(Blockly.ALIGN_LEFT)
         .appendField(Blockly.Msg.senseBox_LoRa_app_id)
-        .appendField(new Blockly.FieldTextInput("APP ID"), "APP ID");
+        .appendField(new Blockly.FieldTextInput("APP ID"), "APPID");
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_LEFT)
         .appendField(Blockly.Msg.senseBox_LoRa_app_key)
-        .appendField(new Blockly.FieldTextInput("APP KEY"), "APP KEY");
+        .appendField(new Blockly.FieldTextInput("APP KEY"), "APPKEY");
         this.appendStatementInput('DO')
         .appendField(Blockly.Msg.senseBox_sensor)
         .setCheck(null);

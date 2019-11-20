@@ -554,34 +554,27 @@ Blockly.Arduino.sensebox_sd_write_file = function(block) {
 
 // LoRa
 Blockly.Arduino.sensebox_initialize_lora = function(block) {
-  var deivceID = this.getFieldValue('DEVICE ID');
-  var appID = this.getFieldValue('APP ID');
-  var appKey = this.getFieldValue('APP KEY');
-  Blockly.Arduino.includes_['library_LoRa'] = `
-  #include <LoraMessage.h>
-  #include <lmic.h>
-  #include <hal/hal.h>
-  #include <SPI.h>
-  #include <senseBoxIO.h>`;
+  var deivceID = this.getFieldValue('DEVICEID');
+  var appID = this.getFieldValue('APPID');
+  var appKey = this.getFieldValue('APPKEY');
+  Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
+  Blockly.Arduino.includes_['library_spi'] = '#include <SPI.h>';
+  Blockly.Arduino.includes_['library_LoraMessage'] = '#include <LoraMessage.h>';
+  Blockly.Arduino.includes_['library_lmic'] = '#include <lmic.h>';
+  Blockly.Arduino.includes_['library_hal'] = '#include <hal/hal.h>';
+  Blockly.Arduino.variables_['define_LoRaVariables'] = `
+  static const u1_t PROGMEM APPEUI[8]={ `+ appID + ` };
+  void os_getArtEui (u1_t* buf) { memcpy_P(buf, APPEUI , 8);}
 
-  Blockly.Arduino.variables_['define_LoRa'] = `
-  // This EUI must be in little-endian format, so least-significant-byte
-  // first. When copying an EUI from ttnctl output, this means to reverse
-  // the bytes. For TTN issued EUIs the last bytes should be 0xD5, 0xB3,
-  // 0x70.
-  static const u1_t PROGMEM APPEUI[8]={ 'Your APP ID Here' };
-  void os_getArtEui (u1_t* buf) { memcpy_P(buf, ${appID}, 8);}
-
-  // This should also be in little endian format, see above.
-  static const u1_t PROGMEM DEVEUI[8]={ 'YOUR DEVICE ID HERE '};
-  void os_getDevEui (u1_t* buf) { memcpy_P(buf, ${deivceID}, 8);}
+  static const u1_t PROGMEM DEVEUI[8]={ `+ deivceID + `};
+  void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI , 8);}
 
   // This key should be in big endian format (or, since it is not really a
   // number but a block of memory, endianness does not really apply). In
   // practice, a key taken from ttnctl can be copied as-is.
   // The key shown here is the semtech default key.
-  static const u1_t PROGMEM APPKEY[16] = { 'YOUR APP KEY HERE '};
-  void os_getDevKey (u1_t* buf) {  memcpy_P(buf, ${appKey}, 16);}
+  static const u1_t PROGMEM APPKEY[16] = { `+ appKey + `};
+  void os_getDevKey (u1_t* buf) {  memcpy_P(buf, APPKEY , 16);}
 
   static osjob_t sendjob;
 
@@ -608,7 +601,7 @@ Blockly.Arduino.sensebox_initialize_lora = function(block) {
 
   var lora_sensor_values = Blockly.Arduino.statementToCode(block, 'DO');
 
-  Blockly.Arduino.userFunctions_['functions_lora'] = `
+  Blockly.Arduino.userFunctions_['functions_onEvent'] = `
   void onEvent (ev_t ev) {
     Serial.print(os_getTime());
     Serial.print(": ");
@@ -677,8 +670,8 @@ Blockly.Arduino.sensebox_initialize_lora = function(block) {
             Serial.println(F("Unknown event"));
             break;
     }
-}
-
+}`;
+Blockly.Arduino.userFunctions_['functions_do_send'] = `
 void do_send(osjob_t* j){
     // Check if there is not a current TX/RX job running
     if (LMIC.opmode & OP_TXRXPEND) {
@@ -692,7 +685,7 @@ void do_send(osjob_t* j){
         Serial.println(F("Packet queued"));
     }
     // Next TX is scheduled after TX_COMPLETE event.
-}`
+}`;
 
   const code = 'os_runloop_once();'
   return code;
