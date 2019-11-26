@@ -1,16 +1,16 @@
-@font-face {
-    font-family: BrixSlab;
-    src: url(fonts/BrixSlab-Regular.otf);
-}
+@import url("//hello.myfonts.net/count/2ef157");
 
-@font-face {
-    font-family: BrixSlab;
-    font-weight: bold;
-    src: url(fonts/BrixSlab-Bold.otf);  
-}
+@font-face {font-family: 'BrixSlab-Bold';src: url('https://sensebox.de/css/webfonts/2EF157_0_0.eot');src: url('https://sensebox.de/css/webfonts/2EF157_0_0.eot?#iefix') format('embedded-opentype'),url('https://sensebox.de/css/webfonts/2EF157_0_0.woff2') format('woff2'),url('https://sensebox.de/css/webfonts/2EF157_0_0.woff') format('woff'),url('https://sensebox.de/css/webfonts/2EF157_0_0.ttf') format('truetype');}
+
+@font-face {font-family: 'BrixSlab-Regular';src: url('https://sensebox.de/css/webfonts/2EF157_1_0.eot');src: url('https://sensebox.de/css/webfonts/2EF157_1_0.eot?#iefix') format('embedded-opentype'),url('https://sensebox.de/css/webfonts/2EF157_1_0.woff2') format('woff2'),url('https://sensebox.de/css/webfonts/2EF157_1_0.woff') format('woff'),url('https://sensebox.de/css/webfonts/2EF157_1_0.ttf') format('truetype');}
+
 html, body {
     height: 100%;
     padding: 0;
+}
+
+body {
+    font-family: BrixSlab-Regular, Helvetica, sans-serif;	
 }
 
 h1 {
