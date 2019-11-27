@@ -1016,8 +1016,11 @@ img.animated-gif {
 /* Further Enhancements for OSEM Login*/
 
 .dropdown-content {
-  width: max-content !important;
-  height: auto !important;
+    height: auto !important;
+}
+
+.acc-dropdown {
+  width: 11em;
 }
 
 .center-modal {

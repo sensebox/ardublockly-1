@@ -362,7 +362,7 @@
           <span class="center hide" id="wrongCredentials">Email and/or password does not match!</span>
 
           <div class='row'>
-            <button id='button_login_pressed' class='col s12 btn btn-large waves-effect sensebox_green'>Login</button>
+            <button type="button" id='button_login_pressed' class='col s12 btn btn-large waves-effect sensebox_green'>Login</button>
           </div>
 
           <label style='float: right;'>
@@ -377,7 +377,7 @@
 
       <!-- Forgot Password View -->
       <div class="row center-modal">
-        <form class="col s6 offset-s3 hide" id="forgotPasswordForm">
+        <form class="col s8 offset-s2 hide" id="forgotPasswordForm">
           <h4 class="center">Forgot your password?</h4>
           <div class='row'>
             <div class='input-field col s12'>
@@ -386,7 +386,7 @@
               <span class="center hide" id="wrongCredentials_forgotPW">There is no account with this email!</span>
             </div>
             <div class='row'>
-              <button id='button_forgot_password_pressed'
+              <button type="button" id='button_forgot_password_pressed'
                 class='col s12 btn btn-large waves-effect sensebox_green'>Reset
                 Password</button>
             </div>
@@ -406,7 +406,6 @@
       <div class="row center-modal" style="margin-top: -1em;">
 
         <form class="col s12 hide" id="registerForm" style="">
-
           <h5 class="center">Register senseBox Account</h5>
           <div class='row'>
             <div class='input-field col s6'>
@@ -434,9 +433,9 @@
             </div>
           </div>
 
-          <!-- Reset Password trigger TODO: Add Translation -->
+          <!-- Register Button -->
           <div class='row'>
-            <button id='button_register_pressed' class='col s12 btn btn-large waves-effect sensebox_green'>Create
+            <button type="button" id='button_register_pressed' class='col s12 btn btn-large waves-effect sensebox_green'>Create
               Account
             </button>
           </div>
@@ -553,6 +552,7 @@
     });
   </script>
   <script src="sensebox_extensions.js"></script>
+  <script src="osem_login.js"></script>
   <script>
     window.addEventListener('load', function load(event) {
       window.removeEventListener('load', load, false);
