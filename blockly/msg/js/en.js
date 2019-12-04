@@ -701,3 +701,10 @@ Blockly.Msg.sensebox_display_show_tip  = "Print on Display";
 Blockly.Msg.sensebox_sd_filename = "Filename";
 Blockly.Msg.sensebox_soil_stm50 = "Soil Moisture and Temperature (STM50)";
 Blockly.Msg.sensebox_web_readHTML_filename = "File:";
+// Telegram
+Blockly.Msg.senseBox_telegram_init = "Initialize Telegram Bot"
+Blockly.Msg.senseBox_telegram_token = "Token"
+Blockly.Msg.senseBox_telegram_do = "Telegram do"
+Blockly.Msg.senseBox_telegram_do_on_message = "on message"
+Blockly.Msg.senseBox_telegram_message = "Message"
+Blockly.Msg.senseBox_telegram_send = "Send Message"
