@@ -311,5 +311,11 @@
 	"senseBox_bme680_tip" : "Returns values from the BME680",
 	"senseBox_bme680_warning" : "Warning. Gas (VOC) cannot be measured simultaneously with other parameters.",
 	"senseBox_gas" : "Gas (VOC)",
-	"sensebox_soil_stm50" : "Soil Moisture and Temperature (STM50)"
+	"sensebox_soil_stm50" : "Soil Moisture and Temperature (STM50)",
+	"senseBox_telegram_init" : "Initialize Telegram Bot",
+	"senseBox_telegram_token" : "Token",
+	"senseBox_telegram_do" : "Telegram do",
+	"senseBox_telegram_do_on_message" : "on message",
+	"senseBox_telegram_message" : "Message",
+	"senseBox_telegram_send" : "Send Message"
 }

@@ -111,6 +111,7 @@ Ardublockly.LOCALISED_TEXT = {
   catSenseBox_Led: "LED",
   catSenseBox_Wifi: "WiFi",
   catSenseBox_osem: "openSenseMap",
+  catSenseBoxOutput_Telegram: "Telegram",
   catLogic: "Logik",
   catLoops: "Schleifen",
   catMath: "Mathematik",
