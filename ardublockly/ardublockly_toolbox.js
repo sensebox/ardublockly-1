@@ -193,7 +193,13 @@ Ardublockly.TOOLBOX_XML =
     '      <block type="sensebox_general_html_tag"></block>' +
     '      <block type="sensebox_web_readHTML"></block>'   +
     '       </category>' +
-    '       </category>' +
+    '       <category id="catSenseBoxOutput_Telegram" name="Telegram" colour="120">' +
+    '           <block type="sensebox_telegram"></block>' +
+    '           <block type="sensebox_telegram_do"></block>' +
+    '           <block type="sensebox_telegram_do_on_message"></block>' +
+    '           <block type="sensebox_telegram_send"></block>' +
+    "       </category>" +
+    "       </category>" +
     '  <sep></sep>' +
     '      <category id="catSenseBoxOutput_SD" name="   SD" colour="120">' +
     '      <block type="sensebox_sd_create_file"></block>' +

@@ -614,3 +614,61 @@ Blockly.Arduino.sensebox_sd_write_file = function(block) {
         var code = functionName + '()';  
         return [code, Blockly.Arduino.ORDER_ATOMIC];
         };
+
+        /**
+         * Telegram Bot by re:edu
+         */
+        Blockly.Arduino.sensebox_telegram = function(block) {
+          var token = this.getFieldValue('telegram_token');
+          Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
+          Blockly.Arduino.includes_['library_telegram'] = `#include <UniversalTelegramBot.h>`
+
+          Blockly.Arduino.definitions_['telegram_objects'] = `#define BOTtoken "${token}"  // your Bot Token (Get from Botfather)
+
+WiFiSSLClient client;
+UniversalTelegramBot bot(BOTtoken, client);`
+          
+          var code = '';
+          return code;
+        };
+
+        Blockly.Arduino.sensebox_telegram_do = function(block) {
+          var messageProcessing = Blockly.Arduino.statementToCode(block, 'telegram_do', Blockly.Arduino.ORDER_ATOMIC);
+
+          Blockly.Arduino.definitions_['telegram_variables'] = `int Bot_mtbs = 1000; //mean time between scan messages
+long Bot_lasttime;   //last time messages' scan has been done`
+
+          Blockly.Arduino.loops_['sensebox_telegram_loop'] = `if (millis() > Bot_lasttime + Bot_mtbs)  {
+    int numNewMessages = bot.getUpdates(bot.last_message_received + 1);
+    while(numNewMessages) {
+      for(int i=0; i<numNewMessages; i++) {
+        String chat_id = String(bot.messages[i].chat_id);
+        String text = bot.messages[i].text;
+
+        ${messageProcessing}
+      }
+      numNewMessages = bot.getUpdates(bot.last_message_received + 1);
+    }
+    Bot_lasttime = millis();
+  }`;
+          var code = '';
+          return code;
+        };
+
+        Blockly.Arduino.sensebox_telegram_do_on_message = function(block) {
+          var message = this.getFieldValue('telegram_message');
+          var stuffToDo = Blockly.Arduino.statementToCode(block, 'telegram_do_on_message', Blockly.Arduino.ORDER_ATOMIC);
+
+          var code = `
+      if (text == "${message}") {
+        ${stuffToDo}
+      }`;
+          return code;
+        };
+
+        Blockly.Arduino.sensebox_telegram_send = function(block) {
+          var textToSend = Blockly.Arduino.valueToCode(this, 'telegram_text_to_send', Blockly.Arduino.ORDER_ATOMIC) || '"Keine Eingabe"';
+
+          var code = `bot.sendMessage(chat_id, String(${textToSend}), "");\n`;
+          return code;
+        };
