@@ -306,7 +306,12 @@ Blockly.Blocks['sensebox_sensor_pressure'] = {
     }  
    },
   getBlockType: function() {
-    return Blockly.Types.LARGE_NUMBER;
+    var input = this.getFieldValue('NAME');
+    if (input == 'Temperature'){
+      return Blockly.Types.DECIMAL;
+    } else {
+      return Blockly.Types.LARGE_NUMBER;
+    }
   },
 };
 
