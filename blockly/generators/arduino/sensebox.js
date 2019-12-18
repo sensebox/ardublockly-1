@@ -209,7 +209,7 @@ Blockly.Arduino.sensebox_wifi = function(block) {
   Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
   Blockly.Arduino.userFunctions_['define_network'] = 'Bee* b = new Bee();';
   if (pw == ""){
-    Blockly.Arduino.setups_['sensebox_network'] = 'b->connectToWifi("'+ ssid +'");\ndelay(1000);';
+    Blockly.Arduino.setups_['sensebox_network'] = 'b->connectToUnsecuredWifi("'+ ssid +'");\ndelay(1000);';
   } else
   Blockly.Arduino.setups_['sensebox_network'] = 'b->connectToWifi("'+ ssid +'","'+ pw +'");\ndelay(1000);';
   var code = '';
