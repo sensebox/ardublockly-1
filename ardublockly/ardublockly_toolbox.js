@@ -198,8 +198,13 @@ Ardublockly.TOOLBOX_XML =
     '           <block type="sensebox_telegram_do"></block>' +
     '           <block type="sensebox_telegram_do_on_message"></block>' +
     '           <block type="sensebox_telegram_send"></block>' +
-    "       </category>" +
-    "       </category>" +
+    '       </category>' +
+    '       <category id="catSenseBoxOutput_MQTT" name="MQTT" colour="120">' +
+    '           <block type="sensebox_mqtt_setup"></block>' +
+    '           <block type="sensebox_mqtt_publish"></block>' +
+    '           <block type="sensebox_mqtt_subscribe"></block>' +
+    '       </category>' +
+    '       </category>' +
     '  <sep></sep>' +
     '      <category id="catSenseBoxOutput_SD" name="   SD" colour="120">' +
     '      <block type="sensebox_sd_create_file"></block>' +
