@@ -528,8 +528,8 @@ Blockly.Arduino.sensebox_mqtt_setup = function () {
 
 Blockly.Arduino.sensebox_mqtt_publish = function (block) {
   var feedname = this.getFieldValue('publishfeed');
-  var x=5, feed_client;
-  feed_client = feedname.substr(feedname.length-x,x);
+  var res = feedname.split("/");
+  var feed_client = res[res.length - 1];
   var value = Blockly.Arduino.valueToCode(this, 'value', Blockly.Arduino.ORDER_ATOMIC) || '"No Block connected"';
   Blockly.Arduino.definitions_['mqtt_' + feed_client + ''] = 'Adafruit_MQTT_Publish ' + feed_client + ' = Adafruit_MQTT_Publish(&mqtt, "' + feedname + '");'
   Blockly.Arduino.userFunctions_['mqtt_connect_function'] = `// Function to connect and reconnect as necessary to the MQTT server.
