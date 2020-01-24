@@ -142,7 +142,7 @@
 	"senseBox_sd_create_file ": "Create file on SD-Card",
 	"senseBox_sd_write_file ": " Write Data to SD-Card",
 	"senseBox_sd_open_file ": "Open a file from SD-Card",
-	"sensebox_sd_filename" : "Filename",
+	"sensebox_sd_filename" : "data",
 	"senseBox_SD_COMPONENT" : "SD-Block",
 	"senseBox_sd_decimals" : "decimals",
 	"senseBox_output_serialprint ": "Print on Serial Monitor",
