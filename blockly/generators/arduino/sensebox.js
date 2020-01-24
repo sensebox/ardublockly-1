@@ -553,34 +553,55 @@ Blockly.Arduino.sensebox_sd_write_file = function(block) {
         };
 
 // LoRa
+function reorderLoraSetup(setupObject) {
+  setupObject = JSON.parse(JSON.stringify(setupObject))
+  console.log(setupObject)
+  if (!setupObject.hasOwnProperty('setup_lora')) {
+    return setupObject
+  }
+  const setup_lora = setupObject['setup_lora']
+  delete setupObject['setup_lora']
+
+  console.log(setupObject)
+
+  setupObject['setup_lora'] = setup_lora
+
+  return setupObject
+}
+
+
 Blockly.Arduino.sensebox_initialize_lora = function(block) {
   var deivceID = this.getFieldValue('DEVICEID');
   var appID = this.getFieldValue('APPID');
   var appKey = this.getFieldValue('APPKEY');
+  var interval = this.getFieldValue('INTERVAL');
+
+  var lora_sensor_values = Blockly.Arduino.statementToCode(block, 'DO');
+
   Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
   Blockly.Arduino.includes_['library_spi'] = '#include <SPI.h>';
   Blockly.Arduino.includes_['library_LoraMessage'] = '#include <LoraMessage.h>';
   Blockly.Arduino.includes_['library_lmic'] = '#include <lmic.h>';
   Blockly.Arduino.includes_['library_hal'] = '#include <hal/hal.h>';
   Blockly.Arduino.variables_['define_LoRaVariables'] = `
-  static const u1_t PROGMEM APPEUI[8]={ `+ appID + ` };
+  static const u1_t PROGMEM APPEUI[8]= `+ appID + ` ;
   void os_getArtEui (u1_t* buf) { memcpy_P(buf, APPEUI , 8);}
 
-  static const u1_t PROGMEM DEVEUI[8]={ `+ deivceID + `};
+  static const u1_t PROGMEM DEVEUI[8]= `+ deivceID + `;
   void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI , 8);}
 
   // This key should be in big endian format (or, since it is not really a
   // number but a block of memory, endianness does not really apply). In
   // practice, a key taken from ttnctl can be copied as-is.
   // The key shown here is the semtech default key.
-  static const u1_t PROGMEM APPKEY[16] = { `+ appKey + `};
+  static const u1_t PROGMEM APPKEY[16] = `+ appKey + `;
   void os_getDevKey (u1_t* buf) {  memcpy_P(buf, APPKEY , 16);}
 
   static osjob_t sendjob;
 
   // Schedule TX every this many seconds (might become longer due to duty
   // cycle limitations).
-  const unsigned TX_INTERVAL = 300;
+  const unsigned TX_INTERVAL = ${interval * 60};
 
   // Pin mapping
   const lmic_pinmap lmic_pins = {
@@ -590,16 +611,21 @@ Blockly.Arduino.sensebox_initialize_lora = function(block) {
       .dio = {PIN_XB1_INT, PIN_XB1_INT, LMIC_UNUSED_PIN},
   };`;
 
-  Blockly.Arduino.setups_['setup_lora'] = `
-  // LMIC init
+  Blockly.Arduino.userFunctions_['functions_initLora'] = `
+  void initLora() {
+    delay(2000);
+    // LMIC init
     os_init();
     // Reset the MAC state. Session and pending data transfers will be discarded.
     LMIC_reset();
-
+  
     // Start job (sending automatically starts OTAA too)
-    do_send(&sendjob);`
+    do_send(&sendjob);
+  }`
 
-  var lora_sensor_values = Blockly.Arduino.statementToCode(block, 'DO');
+  Blockly.Arduino.setups_['sensebox_lora_begin'] = `
+  Serial.begin(9600);
+  initLora();`;
 
   Blockly.Arduino.userFunctions_['functions_onEvent'] = `
   void onEvent (ev_t ev) {
@@ -696,6 +722,21 @@ void do_send(osjob_t* j){
  */
 Blockly.Arduino.sensebox_send_lora_sensor_value = function(block) {
   const reading = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || '"Keine Eingabe"';
-  const code = `message.addUint16(${reading});\n`
+  var messageBytes = this.getFieldValue('MESSAGE_BYTES');
+  let code = ''
+  switch (Number(messageBytes)) {
+    case 1:
+      code = `message.addUint8(${reading});\n`
+    break;
+    case 2:
+      code = `message.addUint16(${reading});\n`
+    break;
+    case 3:
+      code = `message.addUint8(${reading});
+      message.addUint16(${reading} >> 8);\n`
+    break;
+    default:
+      code = `message.addUint16(${reading});\n`
+  } 
   return code;
 };

@@ -701,3 +701,6 @@ Blockly.Msg.senseBox_LoRa_connect = "Send to TTN"
 Blockly.Msg.senseBox_LoRa_device_id = "Device ID"
 Blockly.Msg.senseBox_LoRa_app_id = "App ID"
 Blockly.Msg.senseBox_LoRa_app_key = "App Key"
+Blockly.Msg.senseBox_LoRa_interval = "Transmission interval in minutes"
+Blockly.Msg.senseBox_measurement = "Measurement";
+Blockly.Msg.senseBox_measurements = "Measurements";

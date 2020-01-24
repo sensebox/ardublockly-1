@@ -704,4 +704,12 @@ Blockly.Msg.senseBox_tag_first_mutator_tip = "Mögliche Erweiterungen zu diesem 
 Blockly.Msg.senseBox_tag_optional_mutator_tip = "Mehr Tags zum Block hinzufügen";
 Blockly.Msg.senseBox_sd_web_readHTML = "Lese HTML von SD Karte";
 Blockly.Msg.sensebox_web_readHTML_filename = "Datei:";
+// LoRa
+Blockly.Msg.senseBox_LoRa_connect = "Zu TTN senden"
+Blockly.Msg.senseBox_LoRa_device_id = "Device ID"
+Blockly.Msg.senseBox_LoRa_app_id = "App ID"
+Blockly.Msg.senseBox_LoRa_app_key = "App Key"
+Blockly.Msg.senseBox_LoRa_interval = "Intervall in Minuten"
+Blockly.Msg.senseBox_measurement = "Messung";
+Blockly.Msg.senseBox_measurements = "Messungen";
 

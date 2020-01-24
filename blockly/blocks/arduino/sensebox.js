@@ -512,8 +512,12 @@ Blockly.Blocks['sensebox_initialize_lora'] = {
         .setAlign(Blockly.ALIGN_LEFT)
         .appendField(Blockly.Msg.senseBox_LoRa_app_key)
         .appendField(new Blockly.FieldTextInput("APP KEY"), "APPKEY");
-        this.appendStatementInput('DO')
-        .appendField(Blockly.Msg.senseBox_sensor)
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField(Blockly.Msg.senseBox_LoRa_interval)
+        .appendField(new Blockly.FieldTextInput("5"), "INTERVAL");
+    this.appendStatementInput('DO')
+        .appendField(Blockly.Msg.senseBox_measurements)
         .setCheck(null);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -526,8 +530,11 @@ Blockly.Blocks['sensebox_send_lora_sensor_value'] = {
     this.setHelpUrl('');
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendValueInput('Value')
-        .setCheck(null)
-        .appendField('Sensor')
+        .appendField(Blockly.Msg.senseBox_measurement)
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField("Bytes")
+        .appendField(new Blockly.FieldTextInput("2"), "MESSAGE_BYTES");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
   },
