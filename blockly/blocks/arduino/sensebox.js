@@ -516,13 +516,26 @@ Blockly.Blocks['sensebox_initialize_lora'] = {
         .setAlign(Blockly.ALIGN_LEFT)
         .appendField(Blockly.Msg.senseBox_LoRa_interval)
         .appendField(new Blockly.FieldTextInput("5"), "INTERVAL");
-    this.appendStatementInput('DO')
-        .appendField(Blockly.Msg.senseBox_measurements)
-        .setCheck(null);
+    // this.appendStatementInput('DO')
+    //     .appendField(Blockly.Msg.senseBox_measurements)
+    //     .setCheck(null);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
         },
   };
+
+Blockly.Blocks['sensebox_lora_message_send'] = {
+    init: function() {
+      this.setTooltip(Blockly.Msg.senseBox_wifi_tip);
+      this.setHelpUrl('');
+      this.setColour(Blockly.Blocks.sensebox.HUE);
+      this.appendStatementInput('DO')
+          .appendField("Send as Lora Message")
+          .setCheck(null);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      }
+    };
 
 Blockly.Blocks['sensebox_send_lora_sensor_value'] = {
   init: function() {
@@ -563,6 +576,74 @@ Blockly.Blocks['sensebox_send_lora_sensor_value'] = {
   },
   LOOP_TYPES: ['sensebox_initialize_lora'],
 };
+
+Blockly.Blocks['sensebox_lora_cayenne_send'] = {
+  init: function() {
+    this.setTooltip(Blockly.Msg.senseBox_wifi_tip);
+    this.setHelpUrl('');
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendStatementInput('DO')
+        .appendField("Send as Cayenne Payload")
+        .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    }
+  };
+Blockly.Blocks['sensebox_lora_cayenne_temperature'] = {
+  init: function() {
+    this.setTooltip(Blockly.Msg.senseBox_wifi_tip);
+    this.setHelpUrl('');
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendValueInput('Value')
+        .appendField("Temperature")
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    }
+  };
+Blockly.Blocks['sensebox_lora_cayenne_humidity'] = {
+  init: function() {
+    this.setTooltip(Blockly.Msg.senseBox_wifi_tip);
+    this.setHelpUrl('');
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendValueInput('Value')
+        .appendField("Humidity")
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    }
+  };
+Blockly.Blocks['sensebox_lora_cayenne_pressure'] = {
+  init: function() {
+    this.setTooltip(Blockly.Msg.senseBox_wifi_tip);
+    this.setHelpUrl('');
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendValueInput('Value')
+        .appendField("Pressure")
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    }
+  };
+Blockly.Blocks['sensebox_lora_cayenne_luminosity'] = {
+  init: function() {
+    this.setTooltip(Blockly.Msg.senseBox_wifi_tip);
+    this.setHelpUrl('');
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendValueInput('Value')
+        .appendField("Luminosity")
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    }
+  };
+Blockly.Blocks['sensebox_lora_cayenne_sensor'] = {
+  init: function() {
+    this.setTooltip(Blockly.Msg.senseBox_wifi_tip);
+    this.setHelpUrl('');
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendValueInput('Value')
+        .appendField("Generic Sensor")
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    }
+  };
 
 
 
