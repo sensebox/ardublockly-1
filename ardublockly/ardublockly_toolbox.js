@@ -205,6 +205,8 @@ Ardublockly.TOOLBOX_XML =
   '             <block type="sensebox_lora_cayenne_pressure"></block>' +
   '             <block type="sensebox_lora_cayenne_luminosity"></block>' +
   '             <block type="sensebox_lora_cayenne_sensor"></block>' +
+  '             <block type="sensebox_lora_cayenne_accelerometer"></block>' +
+  '             <block type="sensebox_lora_cayenne_gps"></block>' +
   "           </category>" +
   "       </category>" +
   "       </category>" +

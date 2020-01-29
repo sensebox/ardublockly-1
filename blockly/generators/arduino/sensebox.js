@@ -622,10 +622,6 @@ Blockly.Arduino.sensebox_initialize_lora = function(block) {
     do_send(&sendjob);
   }`
 
-  Blockly.Arduino.setups_['sensebox_lora_begin'] = `
-  Serial.begin(9600);
-  initLora();`;
-
   Blockly.Arduino.userFunctions_['functions_onEvent'] = `
   void onEvent (ev_t ev) {
     Serial.print(os_getTime());
@@ -696,24 +692,8 @@ Blockly.Arduino.sensebox_initialize_lora = function(block) {
             break;
     }
 }`;
-// Blockly.Arduino.userFunctions_['functions_do_send'] = `
-// void do_send(osjob_t* j){
-//     // Check if there is not a current TX/RX job running
-//     if (LMIC.opmode & OP_TXRXPEND) {
-//         Serial.println(F("OP_TXRXPEND, not sending"));
-//     } else {
-//         LoraMessage message;
-//         ${lora_sensor_values}
 
-//         // Prepare upstream data transmission at the next possible time.
-//         LMIC_setTxData2(1, message.getBytes(), message.getLength(), 0);
-//         Serial.println(F("Packet queued"));
-//     }
-//     // Next TX is scheduled after TX_COMPLETE event.
-// }`;
-
-  // const code = 'os_runloop_once();'
-  return '';
+  return `Serial.begin(9600);\ninitLora();\n`;
 };
 
 Blockly.Arduino.sensebox_lora_message_send = function(block) {
@@ -784,21 +764,40 @@ return 'os_runloop_once();'
 }
 Blockly.Arduino.sensebox_lora_cayenne_temperature = function(block) {
   var temperature = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || 0
-  return `lpp.addTemperature(1, ${temperature});\n`
+  var channel = this.getFieldValue('CHANNEL');
+  return `lpp.addTemperature(${channel}, ${temperature});\n`
 }
 Blockly.Arduino.sensebox_lora_cayenne_humidity = function(block) {
   var humidity = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || 0
-  return `lpp.addRelativeHumidity(1, ${humidity});\n`
+  var channel = this.getFieldValue('CHANNEL');
+  return `lpp.addRelativeHumidity(${channel}, ${humidity});\n`
 }
 Blockly.Arduino.sensebox_lora_cayenne_pressure = function(block) {
   var pressure = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || 0
-  return `lpp.addBarometricPressure(1, ${pressure});\n`
+  var channel = this.getFieldValue('CHANNEL');
+  return `lpp.addBarometricPressure(${channel}, ${pressure});\n`
 }
 Blockly.Arduino.sensebox_lora_cayenne_luminosity = function(block) {
   var luminosity = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || 0
-  return `lpp.addLuminosity(1, ${luminosity});\n`
+  var channel = this.getFieldValue('CHANNEL');
+  return `lpp.addLuminosity(${channel}, ${luminosity});\n`
 }
 Blockly.Arduino.sensebox_lora_cayenne_sensor = function(block) {
   var sensorValue = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || 0
-  return `lpp.addGenericSensor(1, ${sensorValue});\n`
+  var channel = this.getFieldValue('CHANNEL');
+  return `lpp.addAnalogOutput(${channel}, ${sensorValue});\n`
+}
+Blockly.Arduino.sensebox_lora_cayenne_accelerometer = function(block) {
+  var x = Blockly.Arduino.valueToCode(this, 'X', Blockly.Arduino.ORDER_ATOMIC) || 0
+  var y = Blockly.Arduino.valueToCode(this, 'Y', Blockly.Arduino.ORDER_ATOMIC) || 0
+  var z = Blockly.Arduino.valueToCode(this, 'Z', Blockly.Arduino.ORDER_ATOMIC) || 0
+  var channel = this.getFieldValue('CHANNEL');
+  return `lpp.addAccelerometer(${channel}, ${x}, ${y}, ${z});\n`
+}
+Blockly.Arduino.sensebox_lora_cayenne_gps = function(block) {
+  var lat = Blockly.Arduino.valueToCode(this, 'LAT', Blockly.Arduino.ORDER_ATOMIC) || 0
+  var lng = Blockly.Arduino.valueToCode(this, 'LNG', Blockly.Arduino.ORDER_ATOMIC) || 0
+  var alt = Blockly.Arduino.valueToCode(this, 'ALT', Blockly.Arduino.ORDER_ATOMIC) || 0
+  var channel = this.getFieldValue('CHANNEL');
+  return `lpp.addGPS(${channel}, ${lat}, ${lng}, ${alt});\n`
 }

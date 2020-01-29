@@ -596,6 +596,10 @@ Blockly.Blocks['sensebox_lora_cayenne_temperature'] = {
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendValueInput('Value')
         .appendField("Temperature")
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField("Channel")
+        .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     }
@@ -607,6 +611,10 @@ Blockly.Blocks['sensebox_lora_cayenne_humidity'] = {
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendValueInput('Value')
         .appendField("Humidity")
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField("Channel")
+        .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     }
@@ -618,6 +626,10 @@ Blockly.Blocks['sensebox_lora_cayenne_pressure'] = {
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendValueInput('Value')
         .appendField("Pressure")
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField("Channel")
+        .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     }
@@ -629,6 +641,10 @@ Blockly.Blocks['sensebox_lora_cayenne_luminosity'] = {
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendValueInput('Value')
         .appendField("Luminosity")
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField("Channel")
+        .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     }
@@ -639,7 +655,49 @@ Blockly.Blocks['sensebox_lora_cayenne_sensor'] = {
     this.setHelpUrl('');
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendValueInput('Value')
-        .appendField("Generic Sensor")
+        .appendField("Analog Value")
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField("Channel")
+        .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    }
+  };
+Blockly.Blocks['sensebox_lora_cayenne_accelerometer'] = {
+  init: function() {
+    this.setTooltip(Blockly.Msg.senseBox_wifi_tip);
+    this.setHelpUrl('');
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendValueInput('X')
+        .appendField("X-Value")
+    this.appendValueInput('Y')
+        .appendField("Y-Value")
+    this.appendValueInput('Z')
+        .appendField("Z-Value")
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField("Channel")
+        .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    }
+  };
+Blockly.Blocks['sensebox_lora_cayenne_gps'] = {
+  init: function() {
+    this.setTooltip(Blockly.Msg.senseBox_wifi_tip);
+    this.setHelpUrl('');
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendValueInput('LAT')
+        .appendField("Latitude")
+    this.appendValueInput('LNG')
+        .appendField("Longitude")
+    this.appendValueInput('ALT')
+        .appendField("Altitude")
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField("Channel")
+        .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     }
