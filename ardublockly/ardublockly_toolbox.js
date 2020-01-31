@@ -193,7 +193,8 @@ Ardublockly.TOOLBOX_XML =
   "       </category>" +
   "       <sep></sep>" +
   '      <category id="catSenseBoxOutput_LoRa" name="  LoRa" colour="120">' +
-  '         <block type="sensebox_initialize_lora"></block>' +
+  '         <block type="sensebox_lora_initialize_otaa"></block>' +
+  '         <block type="sensebox_lora_initialize_abp"></block>' +
   '           <category id="catSenseBoxOutput_LoRa_loramessage" name="Lora Message" colour="120">' +
   '               <block type="sensebox_lora_message_send"></block>' +
   '               <block type="sensebox_send_lora_sensor_value"></block>' +

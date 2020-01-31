@@ -493,14 +493,15 @@ Blockly.Blocks['sensebox_wifi'] = {
 ----------------------------------LoRa--------------------------------------------------
 */
 
-Blockly.Blocks['sensebox_initialize_lora'] = {
+Blockly.Blocks['sensebox_lora_initialize_otaa'] = {
   init: function() {
     this.setTooltip(Blockly.Msg.senseBox_wifi_tip);
     this.setHelpUrl('');
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendDummyInput()
-        .appendField(Blockly.Msg.senseBox_LoRa_connect);
-    this.appendDummyInput()
+        .appendField("Initialize LoRa (OTAA)");
+    
+        this.appendDummyInput()
         .setAlign(Blockly.ALIGN_LEFT)
         .appendField(Blockly.Msg.senseBox_LoRa_device_id)
         .appendField(new Blockly.FieldTextInput("DEVICE ID"), "DEVICEID");
@@ -512,6 +513,37 @@ Blockly.Blocks['sensebox_initialize_lora'] = {
         .setAlign(Blockly.ALIGN_LEFT)
         .appendField(Blockly.Msg.senseBox_LoRa_app_key)
         .appendField(new Blockly.FieldTextInput("APP KEY"), "APPKEY");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField(Blockly.Msg.senseBox_LoRa_interval)
+        .appendField(new Blockly.FieldTextInput("5"), "INTERVAL");
+    // this.appendStatementInput('DO')
+    //     .appendField(Blockly.Msg.senseBox_measurements)
+    //     .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+        },
+  };
+
+Blockly.Blocks['sensebox_lora_initialize_abp'] = {
+  init: function() {
+    this.setTooltip(Blockly.Msg.senseBox_wifi_tip);
+    this.setHelpUrl('');
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendDummyInput()
+        .appendField("Initialize LoRa (ABP)");
+        this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField('NWSKEY')
+        .appendField(new Blockly.FieldTextInput("NWSKEY"), "NWSKEY");
+        this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField('APPSKEY')
+        .appendField(new Blockly.FieldTextInput("APPSKEY"), "APPSKEY");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField('DEVADDR')
+        .appendField(new Blockly.FieldTextInput("DEVADDR"), "DEVADDR");
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_LEFT)
         .appendField(Blockly.Msg.senseBox_LoRa_interval)
