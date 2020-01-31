@@ -192,11 +192,25 @@ Ardublockly.TOOLBOX_XML =
     '      <block type="sensebox_web_readHTML"></block>' +
     '       </category>' +
     '       <sep></sep>' +
-    '      <category id="catSenseBoxOutput_LoRa" name="  LoRa" colour="120">' +
-    '      <block type="sensebox_initialize_lora"></block>' +
-    '      <block type="sensebox_send_lora_sensor_value"></block>' +
-    '       </category>' +
-    '       </category>' +
+    '       <category id="catSenseBoxOutput_LoRa" name="  LoRa" colour="120">' +
+  '         <block type="sensebox_lora_initialize_otaa"></block>' +
+  '         <block type="sensebox_lora_initialize_abp"></block>' +
+  '           <category id="catSenseBoxOutput_LoRa_loramessage" name="Lora Message" colour="120">' +
+  '               <block type="sensebox_lora_message_send"></block>' +
+  '               <block type="sensebox_send_lora_sensor_value"></block>' +
+  "           </category>" +
+  '           <category id="catSenseBoxOutput_LoRa_cayenne" name="Cayenne LPP" colour="120">' +
+  '             <block type="sensebox_lora_cayenne_send"></block>' +
+  '             <block type="sensebox_lora_cayenne_temperature"></block>' +
+  '             <block type="sensebox_lora_cayenne_humidity"></block>' +
+  '             <block type="sensebox_lora_cayenne_pressure"></block>' +
+  '             <block type="sensebox_lora_cayenne_luminosity"></block>' +
+  '             <block type="sensebox_lora_cayenne_sensor"></block>' +
+  '             <block type="sensebox_lora_cayenne_accelerometer"></block>' +
+  '             <block type="sensebox_lora_cayenne_gps"></block>' +
+  "           </category>" +
+  "       </category>" +
+  "       </category>" +
     '  <sep></sep>' +
     '      <category id="catSenseBoxOutput_SD" name="   SD" colour="120">' +
     '      <block type="sensebox_sd_create_file"></block>' +
