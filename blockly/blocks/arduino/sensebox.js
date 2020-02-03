@@ -606,7 +606,7 @@ Blockly.Blocks['sensebox_send_lora_sensor_value'] = {
       this.setWarningText(Blockly.Msg.CONTROLS_FLOW_STATEMENTS_WARNING);
     }
   },
-  LOOP_TYPES: ['sensebox_initialize_lora'],
+  LOOP_TYPES: ['sensebox_lora_message_send'],
 };
 
 Blockly.Blocks['sensebox_lora_cayenne_send'] = {
@@ -634,7 +634,8 @@ Blockly.Blocks['sensebox_lora_cayenne_temperature'] = {
         .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    }
+    },
+    LOOP_TYPES: ['sensebox_lora_cayenne_send'],
   };
 Blockly.Blocks['sensebox_lora_cayenne_humidity'] = {
   init: function() {
@@ -649,7 +650,8 @@ Blockly.Blocks['sensebox_lora_cayenne_humidity'] = {
         .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    }
+    },
+    LOOP_TYPES: ['sensebox_lora_cayenne_send'],
   };
 Blockly.Blocks['sensebox_lora_cayenne_pressure'] = {
   init: function() {
@@ -664,7 +666,8 @@ Blockly.Blocks['sensebox_lora_cayenne_pressure'] = {
         .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    }
+    },
+    LOOP_TYPES: ['sensebox_lora_cayenne_send'],
   };
 Blockly.Blocks['sensebox_lora_cayenne_luminosity'] = {
   init: function() {
@@ -679,7 +682,8 @@ Blockly.Blocks['sensebox_lora_cayenne_luminosity'] = {
         .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    }
+    },
+    LOOP_TYPES: ['sensebox_lora_cayenne_send'],
   };
 Blockly.Blocks['sensebox_lora_cayenne_sensor'] = {
   init: function() {
@@ -694,7 +698,8 @@ Blockly.Blocks['sensebox_lora_cayenne_sensor'] = {
         .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    }
+    },
+    LOOP_TYPES: ['sensebox_lora_cayenne_send'],
   };
 Blockly.Blocks['sensebox_lora_cayenne_accelerometer'] = {
   init: function() {
@@ -713,7 +718,8 @@ Blockly.Blocks['sensebox_lora_cayenne_accelerometer'] = {
         .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    }
+    },
+    LOOP_TYPES: ['sensebox_lora_cayenne_send'],
   };
 Blockly.Blocks['sensebox_lora_cayenne_gps'] = {
   init: function() {
@@ -732,7 +738,8 @@ Blockly.Blocks['sensebox_lora_cayenne_gps'] = {
         .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    }
+    },
+    LOOP_TYPES: ['sensebox_lora_cayenne_send'],
   };
 
 
