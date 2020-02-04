@@ -214,7 +214,6 @@ Ardublockly.TOOLBOX_XML =
     '             <block type="sensebox_lora_cayenne_gps"></block>' +
     '           </category>' +
     '       </category>' +
-    '       </category>' +
     '       <category id="catSenseBoxOutput_Telegram" name="Telegram" colour="120">' +
     '           <block type="sensebox_telegram"></block>' +
     '           <block type="sensebox_telegram_do"></block>' +

@@ -673,7 +673,7 @@ Blockly.Blocks['sensebox_wifi'] = {
 
 Blockly.Blocks['sensebox_lora_initialize_otaa'] = {
   init: function() {
-    this.setTooltip(Blockly.Msg.senseBox_wifi_tip);
+    this.setTooltip(Blockly.Msg.senseBox_LoRa_init_tip);
     this.setHelpUrl('');
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendDummyInput()
@@ -740,7 +740,7 @@ Blockly.Blocks['sensebox_lora_message_send'] = {
       this.setHelpUrl('');
       this.setColour(Blockly.Blocks.sensebox.HUE);
       this.appendStatementInput('DO')
-          .appendField("Send as Lora Message")
+          .appendField(Blockly.Msg.senseBox_LoRa_send_message)
           .setCheck(null);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -793,7 +793,7 @@ Blockly.Blocks['sensebox_lora_cayenne_send'] = {
     this.setHelpUrl('');
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendStatementInput('DO')
-        .appendField("Send as Cayenne Payload")
+        .appendField(Blockly.Msg.senseBox_LoRa_send_cayenne)
         .setCheck(null);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -805,10 +805,10 @@ Blockly.Blocks['sensebox_lora_cayenne_temperature'] = {
     this.setHelpUrl('');
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendValueInput('Value')
-        .appendField("Temperature")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_temperature)
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_LEFT)
-        .appendField("Channel")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_channel)
         .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -821,10 +821,10 @@ Blockly.Blocks['sensebox_lora_cayenne_humidity'] = {
     this.setHelpUrl('');
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendValueInput('Value')
-        .appendField("Humidity")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_humidity)
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_LEFT)
-        .appendField("Channel")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_channel)
         .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -837,10 +837,10 @@ Blockly.Blocks['sensebox_lora_cayenne_pressure'] = {
     this.setHelpUrl('');
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendValueInput('Value')
-        .appendField("Pressure")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_pressure)
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_LEFT)
-        .appendField("Channel")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_channel)
         .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -853,10 +853,10 @@ Blockly.Blocks['sensebox_lora_cayenne_luminosity'] = {
     this.setHelpUrl('');
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendValueInput('Value')
-        .appendField("Luminosity")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_luminosity)
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_LEFT)
-        .appendField("Channel")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_channel)
         .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -869,10 +869,10 @@ Blockly.Blocks['sensebox_lora_cayenne_sensor'] = {
     this.setHelpUrl('');
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendValueInput('Value')
-        .appendField("Analog Value")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_analog)
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_LEFT)
-        .appendField("Channel")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_channel)
         .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -885,14 +885,14 @@ Blockly.Blocks['sensebox_lora_cayenne_accelerometer'] = {
     this.setHelpUrl('');
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendValueInput('X')
-        .appendField("X-Value")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_x)
     this.appendValueInput('Y')
-        .appendField("Y-Value")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_y)
     this.appendValueInput('Z')
-        .appendField("Z-Value")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_z)
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_LEFT)
-        .appendField("Channel")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_channel)
         .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -905,14 +905,14 @@ Blockly.Blocks['sensebox_lora_cayenne_gps'] = {
     this.setHelpUrl('');
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendValueInput('LAT')
-        .appendField("Latitude")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_lat)
     this.appendValueInput('LNG')
-        .appendField("Longitude")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_lng)
     this.appendValueInput('ALT')
-        .appendField("Altitude")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_alt)
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_LEFT)
-        .appendField("Channel")
+        .appendField(Blockly.Msg.senseBox_LoRa_cayenne_channel)
         .appendField(new Blockly.FieldTextInput("1"), "CHANNEL");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

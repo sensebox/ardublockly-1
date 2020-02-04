@@ -715,3 +715,20 @@ Blockly.Msg.senseBox_LoRa_app_key = "App Key"
 Blockly.Msg.senseBox_LoRa_interval = "Transmission interval in minutes"
 Blockly.Msg.senseBox_measurement = "Measurement";
 Blockly.Msg.senseBox_measurements = "Measurements";
+
+Blockly.Msg.senseBox_LoRa_init_tip = "";
+Blockly.Msg.senseBox_LoRa_send_message = "Send as Lora Message";
+Blockly.Msg.senseBox_LoRa_send_cayenne = "Send as Cayenne Payload";
+Blockly.Msg.senseBox_LoRa_cayenne_temperature = "Temperature";
+Blockly.Msg.senseBox_LoRa_cayenne_channel = "Channel";
+Blockly.Msg.senseBox_LoRa_cayenne_humidity = "Humidity"
+Blockly.Msg.senseBox_LoRa_cayenne_pressure = "Pressure";
+Blockly.Msg.senseBox_LoRa_cayenne_luminosity = "Luminosity";
+Blockly.Msg.senseBox_LoRa_cayenne_analog = "Analog Value";
+Blockly.Msg.senseBox_LoRa_cayenne_x = "X Value";
+Blockly.Msg.senseBox_LoRa_cayenne_y = "Y Value";
+Blockly.Msg.senseBox_LoRa_cayenne_z = "Z Value";
+Blockly.Msg.senseBox_LoRa_cayenne_lat = "Latitude";
+Blockly.Msg.senseBox_LoRa_cayenne_lng = "Longitude";
+Blockly.Msg.senseBox_LoRa_cayenne_alt = "Altitude";
+
