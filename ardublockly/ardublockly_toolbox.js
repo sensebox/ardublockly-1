@@ -20,12 +20,14 @@ Ardublockly.TOOLBOX_XML =
     // '      <block type="sensebox_sensor_bmx055_compass"></block>' +
     '      <block type="sensebox_sensor_sds011"></block>' +
     '      <block type="sensebox_sensor_pressure"></block>' +
+    '      <block type="sensebox_sensor_bme680"></block>' +
     '      <block type="sensebox_sensor_ultrasonic_ranger">' +
     '           <field name="ultrasonic_trigger">1</field>' +
     '           <field name="ultrasonic_echo">2</field>' +
     '      </block>' +
     '      <block type="sensebox_sensor_sound"></block>' +
     '      <block type="sensebox_sensor_soil"></block>' +
+    '      <block type="sensebox_sensor_truebner_stm50"></block>'   +
     '      <block type="sensebox_sensor_watertemperature"></block>' +
     '      <block type="sensebox_foto"></block>' +
     '      <block type="sensebox_button"></block>' +
@@ -194,25 +196,32 @@ Ardublockly.TOOLBOX_XML =
     '       <sep></sep>' +
     '       <category id="catSenseBoxOutput_LoRa" name="  LoRa" colour="120">' +
     '       <category id="catSenseBoxOutput_LoRa_activation" name="  Activation" colour="120">' +
-  '         <block type="sensebox_lora_initialize_otaa"></block>' +
-  '         <block type="sensebox_lora_initialize_abp"></block>' +
-  "       </category>" +
-  '           <category id="catSenseBoxOutput_LoRa_loramessage" name="    Lora Message" colour="120">' +
-  '               <block type="sensebox_lora_message_send"></block>' +
-  '               <block type="sensebox_send_lora_sensor_value"></block>' +
-  "           </category>" +
-  '           <category id="catSenseBoxOutput_LoRa_cayenne" name="    Cayenne LPP" colour="120">' +
-  '             <block type="sensebox_lora_cayenne_send"></block>' +
-  '             <block type="sensebox_lora_cayenne_temperature"></block>' +
-  '             <block type="sensebox_lora_cayenne_humidity"></block>' +
-  '             <block type="sensebox_lora_cayenne_pressure"></block>' +
-  '             <block type="sensebox_lora_cayenne_luminosity"></block>' +
-  '             <block type="sensebox_lora_cayenne_sensor"></block>' +
-  '             <block type="sensebox_lora_cayenne_accelerometer"></block>' +
-  '             <block type="sensebox_lora_cayenne_gps"></block>' +
-  "           </category>" +
-  "       </category>" +
-  "       </category>" +
+    '         <block type="sensebox_lora_initialize_otaa"></block>' +
+    '         <block type="sensebox_lora_initialize_abp"></block>' +
+    '       </category>' +
+    '           <category id="catSenseBoxOutput_LoRa_loramessage" name="    Lora Message" colour="120">' +
+    '               <block type="sensebox_lora_message_send"></block>' +
+    '               <block type="sensebox_send_lora_sensor_value"></block>' +
+    '           </category>' +
+    '           <category id="catSenseBoxOutput_LoRa_cayenne" name="    Cayenne LPP" colour="120">' +
+    '             <block type="sensebox_lora_cayenne_send"></block>' +
+    '             <block type="sensebox_lora_cayenne_temperature"></block>' +
+    '             <block type="sensebox_lora_cayenne_humidity"></block>' +
+    '             <block type="sensebox_lora_cayenne_pressure"></block>' +
+    '             <block type="sensebox_lora_cayenne_luminosity"></block>' +
+    '             <block type="sensebox_lora_cayenne_sensor"></block>' +
+    '             <block type="sensebox_lora_cayenne_accelerometer"></block>' +
+    '             <block type="sensebox_lora_cayenne_gps"></block>' +
+    '           </category>' +
+    '       </category>' +
+    '       </category>' +
+    '       <category id="catSenseBoxOutput_Telegram" name="Telegram" colour="120">' +
+    '           <block type="sensebox_telegram"></block>' +
+    '           <block type="sensebox_telegram_do"></block>' +
+    '           <block type="sensebox_telegram_do_on_message"></block>' +
+    '           <block type="sensebox_telegram_send"></block>' +
+    '      </category>' +
+    '       </category>' +
     '  <sep></sep>' +
     '      <category id="catSenseBoxOutput_SD" name="   SD" colour="120">' +
     '      <block type="sensebox_sd_create_file"></block>' +

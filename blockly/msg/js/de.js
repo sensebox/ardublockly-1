@@ -712,4 +712,16 @@ Blockly.Msg.senseBox_LoRa_app_key = "App Key"
 Blockly.Msg.senseBox_LoRa_interval = "Intervall in Minuten"
 Blockly.Msg.senseBox_measurement = "Messung";
 Blockly.Msg.senseBox_measurements = "Messungen";
+Blockly.Msg.senseBox_bme680  = "Umweltsensor (BME680)";
+Blockly.Msg.senseBox_bme680_tip = "Gibt Messwerte des BME680 zurück";
+Blockly.Msg.senseBox_bme680_warning = "Achtung. Gas (VOC) kann nicht gleichzeitig mit anderen Parametern gemessen werden"
+Blockly.Msg.senseBox_gas = "Gas (VOC)";
+Blockly.Msg.sensebox_soil_stm50 = "Bodenfeuchte/-temperatur (STM50)";
+//Telegram
+Blockly.Msg.senseBox_telegram_init = "Telegram Bot initialisieren"
+Blockly.Msg.senseBox_telegram_token = "Token"
+Blockly.Msg.senseBox_telegram_do = "Telegram mache"
+Blockly.Msg.senseBox_telegram_do_on_message = "bei Nachricht"
+Blockly.Msg.senseBox_telegram_message = "Nachricht"
+Blockly.Msg.senseBox_telegram_send = "Sende Nachricht"
 

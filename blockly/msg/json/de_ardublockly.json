@@ -642,5 +642,16 @@
 	"senseBox_tag_first_mutator_tip" : "Obligatorische Kinder zu diesem Block.",
 	"senseBox_tag_optional_mutator_tip" : "Fügt dem Block mehr Kinder hinzu.",
 	"senseBox_sd_web_readHTML" : "Lese HTML von SD Karte",
-	"sensebox_web_readHTML_filename" : "Datei:"
+	"sensebox_web_readHTML_filename" : "Datei:",
+	"senseBox_bme680" : "Umweltsensor (BME680)",
+	"senseBox_bme680_tip" : "Gibt Messwerte des BME680 zurück",
+	"senseBox_bme680_warning" : "Achtung. Gas (VOC) kann nicht gleichzeitig mit anderen Parametern gemessen werden",
+	"senseBox_gas" : "Gas (VOC)",
+	"sensebox_soil_stm50" : "Bodenfeuchte/-temperatur (STM50)",
+	"senseBox_telegram_init" : "Telegram Bot initialisieren",
+	"senseBox_telegram_token" : "Token",
+	"senseBox_telegram_do" : "Telegram mache",
+	"senseBox_telegram_do_on_message" : "bei Nachricht",
+	"senseBox_telegram_message" : "Nachricht",
+	"senseBox_telegram_send" : "Sende Nachricht"
 	}

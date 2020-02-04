@@ -1,7 +1,7 @@
 /*
 @metadata
 		author": senseBox
-		lastupdated": 2018
+		lastupdated": 2019
 		for more information: www.sensebox.de
 */
 
@@ -29,6 +29,33 @@ else if (dropdown_name == 'Altitude'){
 }
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
+
+
+Blockly.Arduino.sensebox_sensor_bme680 = function() {
+  var dropdown_name = this.getFieldValue('NAME');
+  var referencePressure = this.getFieldValue('referencePressure');
+  Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
+  Blockly.Arduino.includes_['library_AdafruitBME680'] = '#include "Adafruit_BME680.h"';
+  Blockly.Arduino.userFunctions_['define_pressure'] = 'Adafruit_BME680 bme;';
+  Blockly.Arduino.setups_['sensebox_bmp_sensor'] = 'bme.begin(0x76);';
+  Blockly.Arduino.setups_['bme_temperature_oversampling'] = 'bme.setTemperatureOversampling(BME680_OS_8X);';
+  Blockly.Arduino.setups_['bme_humidity_oversampling'] = 'bme.setHumidityOversampling(BME680_OS_2X);';
+  Blockly.Arduino.setups_['bme_pressure_oversampling'] = 'bme.setPressureOversampling(BME680_OS_4X);';
+  Blockly.Arduino.setups_['bme_setIIR'] = 'bme.setIIRFilterSize(BME680_FILTER_SIZE_3);';
+  Blockly.Arduino.loops_['bme_performReading'] = 'bme.performReading();';
+  Blockly.Arduino.setups_['bme_gas_heater'] = 'bme.setGasHeater(0,0);'; 
+    var code ='bme.' + dropdown_name;
+    if (dropdown_name == 'gas_resistance' && dropdown_name != 'temperature' && dropdown_name != 'humidity' && dropdown_name != 'pressure')
+    {
+    code = 'bme.gas_resistance / 1000.0'
+	Blockly.Arduino.setups_['bme_gas_heater'] = 'bme.setGasHeater(320, 150);';    
+    }
+    else if (dropdown_name == 'readAltitude' && dropdown_name != 'temperature' && dropdown_name != 'humidity' && dropdown_name != 'pressure')
+    {
+    code = 'bme.readAltitude('+ referencePressure + ')';
+    }
+    return [code ,Blockly.Arduino.ORDER_ATOMIC];
+  };
 
 Blockly.Arduino.sensebox_sensor_temp_hum = function(){
   var dropdown_name = this.getFieldValue('NAME');
@@ -113,6 +140,42 @@ Blockly.Arduino.sensebox_sensor_soil = function() {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino.sensebox_sensor_truebner_stm50 = function(){
+  var dropdown_port = this.getFieldValue('Port')
+  var dropdown_value = this.getFieldValue('value');
+  var dropdown_pin = 1;
+  if (dropdown_value == 'temp'){
+    if (dropdown_port == 'A'){
+      dropdown_pin = 1;
+    }
+    if (dropdown_port == 'B'){
+      dropdown_pin = 3;
+    }
+    if (dropdown_port == 'C'){
+      dropdown_pin = 5;
+    }
+    Blockly.Arduino.userFunctions_['sensebox_stm50_temp'] = 'float getSMT50Temperature(int analogPin){\n  int sensorValue = analogRead(analogPin);\n  float voltage = sensorValue * (3.3 / 1024.0);\n   return (voltage - 0.5) * 100;\n}';
+    var code = 'getSMT50Temperature('+ dropdown_pin + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+  }
+  else if (dropdown_value == 'soil'){
+    if (dropdown_port == 'A'){
+      dropdown_pin = 2;
+    }
+    if (dropdown_port == 'B'){
+      dropdown_pin = 4;
+    }
+    if (dropdown_port == 'C'){
+      dropdown_pin = 6;
+    }
+    Blockly.Arduino.userFunctions_['sensebox_stm50_soil'] = 'float getSMT50Moisture(int analogPin){\n   int sensorValue = analogRead(analogPin);\n    float voltage = sensorValue * (3.3 / 1024.0);\n   return (voltage * 50) / 3;\n}';
+    var code = 'getSMT50Moisture(' + dropdown_pin + ')';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+  }
+
+};
+
+
 Blockly.Arduino.sensebox_sensor_watertemperature = function() {
 
   var dropdown_port = this.getFieldValue('Port');
@@ -145,6 +208,9 @@ Blockly.Arduino.sensebox_wifi = function(block) {
   var ssid = this.getFieldValue('SSID');
   Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
   Blockly.Arduino.userFunctions_['define_network'] = 'Bee* b = new Bee();';
+  if (pw == ""){
+    Blockly.Arduino.setups_['sensebox_network'] = 'b->connectToWifi("'+ ssid +'");\ndelay(1000);';
+  } else
   Blockly.Arduino.setups_['sensebox_network'] = 'b->connectToWifi("'+ ssid +'","'+ pw +'");\ndelay(1000);';
   var code = '';
   return code;
@@ -301,7 +367,7 @@ Blockly.Arduino.sensebox_sd_create_file = function(block) {
   var filename = this.getFieldValue('Filename');
   Blockly.Arduino.includes_['library_spi'] = '#include <SPI.h>';
   Blockly.Arduino.includes_['library_sd'] = '#include <SD.h>';
-  Blockly.Arduino.codeFunctions_['define_sd'] = 'File dataFile' + filename +';';
+  Blockly.Arduino.definitions_['define_' + filename] = 'File dataFile' + filename +';';
   Blockly.Arduino.setups_['sensebox_sd'] = 'SD.begin(28);';
   Blockly.Arduino.setups_['sensebox_sd' + filename] = 'dataFile' + filename +' = SD.open("'+filename+'.txt", FILE_WRITE);\ndataFile' + filename +'.close();\n';
   var code = '';
@@ -992,3 +1058,60 @@ Blockly.Arduino.sensebox_lora_cayenne_gps = function(block) {
   var channel = this.getFieldValue('CHANNEL');
   return `lpp.addGPS(${channel}, ${lat}, ${lng}, ${alt});\n`
 }
+        /**
+         * Telegram Bot by re:edu
+         */
+        Blockly.Arduino.sensebox_telegram = function(block) {
+          var token = this.getFieldValue('telegram_token');
+          Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
+          Blockly.Arduino.includes_['library_telegram'] = `#include <UniversalTelegramBot.h>`
+
+          Blockly.Arduino.definitions_['telegram_objects'] = `#define BOTtoken "${token}"  // your Bot Token (Get from Botfather)
+
+WiFiSSLClient client;
+UniversalTelegramBot bot(BOTtoken, client);`
+          
+          var code = '';
+          return code;
+        };
+
+        Blockly.Arduino.sensebox_telegram_do = function(block) {
+          var messageProcessing = Blockly.Arduino.statementToCode(block, 'telegram_do', Blockly.Arduino.ORDER_ATOMIC);
+
+          Blockly.Arduino.definitions_['telegram_variables'] = `int Bot_mtbs = 1000; //mean time between scan messages
+long Bot_lasttime;   //last time messages' scan has been done`
+
+          Blockly.Arduino.loops_['sensebox_telegram_loop'] = `if (millis() > Bot_lasttime + Bot_mtbs)  {
+    int numNewMessages = bot.getUpdates(bot.last_message_received + 1);
+    while(numNewMessages) {
+      for(int i=0; i<numNewMessages; i++) {
+        String chat_id = String(bot.messages[i].chat_id);
+        String text = bot.messages[i].text;
+
+        ${messageProcessing}
+      }
+      numNewMessages = bot.getUpdates(bot.last_message_received + 1);
+    }
+    Bot_lasttime = millis();
+  }`;
+          var code = '';
+          return code;
+        };
+
+        Blockly.Arduino.sensebox_telegram_do_on_message = function(block) {
+          var message = this.getFieldValue('telegram_message');
+          var stuffToDo = Blockly.Arduino.statementToCode(block, 'telegram_do_on_message', Blockly.Arduino.ORDER_ATOMIC);
+
+          var code = `
+      if (text == "${message}") {
+        ${stuffToDo}
+      }`;
+          return code;
+        };
+
+        Blockly.Arduino.sensebox_telegram_send = function(block) {
+          var textToSend = Blockly.Arduino.valueToCode(this, 'telegram_text_to_send', Blockly.Arduino.ORDER_ATOMIC) || '"Keine Eingabe"';
+
+          var code = `bot.sendMessage(chat_id, String(${textToSend}), "");\n`;
+          return code;
+        };
