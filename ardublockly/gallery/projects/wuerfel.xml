@@ -1,0 +1,813 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="5KebY,-ltvxB7K^El}1(" x="-493" y="-3078">
+    <statement name="SETUP_FUNC">
+      <block type="sensebox_display_beginDisplay" id="#6-w|szo36LFC4H%1nY7">
+        <next>
+          <block type="sensebox_display_show" id="*wvdS5:alSO5hX;8tZ#X">
+            <statement name="SHOW">
+              <block type="sensebox_display_printDisplay" id="|hi2A`.7eNL}SM9mw/VO">
+                <field name="COLOR">WHITE,BLACK</field>
+                <value name="SIZE">
+                  <block type="math_number" id="4=061Z]4V`j75h:5JZ8q">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <value name="X">
+                  <block type="math_number" id="d]-rO+Z:P_PXp;sgy#Ak">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="Y">
+                  <block type="math_number" id="rpHE(eMBhVYYpT?w^C{)">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="printDisplay">
+                  <block type="text" id="h~?120l9Dy%vKP)_ragN">
+                    <field name="TEXT">senseBox Wuerfel</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="sensebox_display_printDisplay" id="vg}z|2a}ndb#2Ax8b[lU">
+                    <field name="COLOR">WHITE,BLACK</field>
+                    <value name="SIZE">
+                      <block type="math_number" id="]129H@P+3!WOi)tzm?=H">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <value name="X">
+                      <block type="math_number" id="vX2!V_#:[0DaB3h?#X8~">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="Y">
+                      <block type="math_number" id="6dT1BKG;eR4%.76scCkc">
+                        <field name="NUM">32</field>
+                      </block>
+                    </value>
+                    <value name="printDisplay">
+                      <block type="text" id="9!x4p|MAw9y%Bhd+~[FH">
+                        <field name="TEXT">Bitte den blauen Knopf druecken.</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="jtJ_@d/L1kUPqdJw!o.]">
+        <value name="IF0">
+          <block type="sensebox_button" id="{c_m,5+m{?s=9T~JN@6,">
+            <field name="FUNCTION">isPressed</field>
+            <field name="PIN">0</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="lQi~B|OP~8F|l5|H@,Z6">
+            <field name="VAR">Zufallszahl</field>
+            <value name="VALUE">
+              <block type="math_random_int" id="B/qe_PQ{Hz`S)2m:%_1x">
+                <value name="FROM">
+                  <block type="math_number" id="6jGaOwJCd)1#YH|hJZzE">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <value name="TO">
+                  <block type="math_number" id="iY~AgQ`8PqdK!0+[v*O~">
+                    <field name="NUM">6</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="U/8-_U(*x|rk@VA03pxi">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id=",14tMsB@YvUk;W*/f6T^">
+                    <field name="NUM">300</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="M:ao51uXh%~lmS,FJXGF">
+                    <mutation elseif="5"></mutation>
+                    <value name="IF0">
+                      <block type="logic_compare" id="e2@O~5ZSd/F(omJDNkXz">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="2W4xVx*UDKE29.vKS#4,">
+                            <field name="VAR">Zufallszahl</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="!6ro?^{xFSM(n+3D|5mG">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="sensebox_display_clearDisplay" id=";0,roMukcCX{C(m+i.v?">
+                        <next>
+                          <block type="sensebox_display_show" id="D@8cui7zSE_O2^wKIXl@">
+                            <statement name="SHOW">
+                              <block type="sensebox_display_drawRectangle" id="Q6l@S%(:hve!]Oj,QF}2">
+                                <field name="FILL">FALSE</field>
+                                <value name="X">
+                                  <block type="math_number" id="[j(:q53G11-ciYo6h=p^">
+                                    <field name="NUM">34</field>
+                                  </block>
+                                </value>
+                                <value name="Y">
+                                  <block type="math_number" id="7-}H:lC@dTDxJ.Q*SWK5">
+                                    <field name="NUM">2</field>
+                                  </block>
+                                </value>
+                                <value name="width">
+                                  <block type="math_number" id="`Nj@5,@kUdjKbU/^]q7S">
+                                    <field name="NUM">60</field>
+                                  </block>
+                                </value>
+                                <value name="height">
+                                  <block type="math_number" id="3e`KH6zJ0K*g2XizwE}u">
+                                    <field name="NUM">60</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="sensebox_display_fillCircle" id="~N2Yul-j*j^1;5`[-Ep|">
+                                    <field name="FILL">TRUE</field>
+                                    <value name="X">
+                                      <block type="math_number" id="nWjoOX%wLk!Os%h{BQw+">
+                                        <field name="NUM">64</field>
+                                      </block>
+                                    </value>
+                                    <value name="Y">
+                                      <block type="math_number" id="Yj)I2d90kf},7!03bwae">
+                                        <field name="NUM">32</field>
+                                      </block>
+                                    </value>
+                                    <value name="Radius">
+                                      <block type="math_number" id="KfL#;2r3PzYS0GO6/](h">
+                                        <field name="NUM">3</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <value name="IF1">
+                      <block type="logic_compare" id="ru#syX,C25p4o,y*9nXf">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="RDZUMfe0}Fh,w!e_=B3u">
+                            <field name="VAR">Zufallszahl</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id=")lr2x4xLw+;UCmR9ay/m">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO1">
+                      <block type="sensebox_display_clearDisplay" id="}VN~Y/g0%a1479fBzqci">
+                        <next>
+                          <block type="sensebox_display_show" id="0)3@Sn]!*sHA(,xm()))">
+                            <statement name="SHOW">
+                              <block type="sensebox_display_drawRectangle" id="1]/23L|0XKNSfvG{=S)L">
+                                <field name="FILL">FALSE</field>
+                                <value name="X">
+                                  <block type="math_number" id="bfK9B?Fzq~#SI!Uz(m*H">
+                                    <field name="NUM">34</field>
+                                  </block>
+                                </value>
+                                <value name="Y">
+                                  <block type="math_number" id="^j6:HksTW+hbJD859h./">
+                                    <field name="NUM">2</field>
+                                  </block>
+                                </value>
+                                <value name="width">
+                                  <block type="math_number" id="W~qt*)!7NLqC(6EEAQ.l">
+                                    <field name="NUM">60</field>
+                                  </block>
+                                </value>
+                                <value name="height">
+                                  <block type="math_number" id="_D7hRvoEe[Enja6PmA%]">
+                                    <field name="NUM">60</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="sensebox_display_fillCircle" id="kfKdlK,Dab;|dS?#5BbU">
+                                    <field name="FILL">TRUE</field>
+                                    <value name="X">
+                                      <block type="math_number" id="^;mMRwx?G#dKaD(^K-Z/">
+                                        <field name="NUM">49</field>
+                                      </block>
+                                    </value>
+                                    <value name="Y">
+                                      <block type="math_number" id="lIB,PLfsp,hilvwpioRN">
+                                        <field name="NUM">17</field>
+                                      </block>
+                                    </value>
+                                    <value name="Radius">
+                                      <block type="math_number" id="+[R|a8ulv]I9=7%=PYoi">
+                                        <field name="NUM">3</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="sensebox_display_fillCircle" id="tMG+,vax;DV(Em.Ut^:1">
+                                        <field name="FILL">TRUE</field>
+                                        <value name="X">
+                                          <block type="math_number" id="V8N^%1eBErj)E(2oat_.">
+                                            <field name="NUM">79</field>
+                                          </block>
+                                        </value>
+                                        <value name="Y">
+                                          <block type="math_number" id="}o,Tu[)4[Js+%KsJl]WR">
+                                            <field name="NUM">47</field>
+                                          </block>
+                                        </value>
+                                        <value name="Radius">
+                                          <block type="math_number" id="Qpl?w=(#Np0w~b2.qHTA">
+                                            <field name="NUM">3</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <value name="IF2">
+                      <block type="logic_compare" id="t?~23TC4!c7sQRyFfqT4">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="E](nvkaQaH8rx0U7qB~Q">
+                            <field name="VAR">Zufallszahl</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="IA]EU;S?v%rA9D:4WZ[A">
+                            <field name="NUM">3</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO2">
+                      <block type="sensebox_display_clearDisplay" id=".)P{|7P%UtcuGoV)I+y@">
+                        <next>
+                          <block type="sensebox_display_show" id="u!bO96:J?|twe%2eUlyQ">
+                            <statement name="SHOW">
+                              <block type="sensebox_display_drawRectangle" id="{?yRJxClqD_DVlzlhYlo">
+                                <field name="FILL">FALSE</field>
+                                <value name="X">
+                                  <block type="math_number" id="b%-V!M66FS[?hV::EbNX">
+                                    <field name="NUM">34</field>
+                                  </block>
+                                </value>
+                                <value name="Y">
+                                  <block type="math_number" id="OFT~A^WwEokVc+0QJSWv">
+                                    <field name="NUM">2</field>
+                                  </block>
+                                </value>
+                                <value name="width">
+                                  <block type="math_number" id="*7ZSb]2;TjIt9}Ns~?dw">
+                                    <field name="NUM">60</field>
+                                  </block>
+                                </value>
+                                <value name="height">
+                                  <block type="math_number" id="h_8oJ(Uc*Dn=6Lc#PM:|">
+                                    <field name="NUM">60</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="sensebox_display_fillCircle" id="t_%`h[8QD](3gym|ti`(">
+                                    <field name="FILL">TRUE</field>
+                                    <value name="X">
+                                      <block type="math_number" id="UwsCUPeDLJ[mW2PzYbqy">
+                                        <field name="NUM">49</field>
+                                      </block>
+                                    </value>
+                                    <value name="Y">
+                                      <block type="math_number" id=")#f=capoi!m8Ew5+J!^o">
+                                        <field name="NUM">17</field>
+                                      </block>
+                                    </value>
+                                    <value name="Radius">
+                                      <block type="math_number" id="c#LIm8k}WQj?d`y+;4Jg">
+                                        <field name="NUM">3</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="sensebox_display_fillCircle" id="~Nsr1U4:+16Ao52ZQ}]9">
+                                        <field name="FILL">TRUE</field>
+                                        <value name="X">
+                                          <block type="math_number" id="w_g38,1l24~PphAhsaqS">
+                                            <field name="NUM">64</field>
+                                          </block>
+                                        </value>
+                                        <value name="Y">
+                                          <block type="math_number" id="d`y!J)F,Gj-%`d/t%PHa">
+                                            <field name="NUM">32</field>
+                                          </block>
+                                        </value>
+                                        <value name="Radius">
+                                          <block type="math_number" id="EYZYJbGs2Vp8b4*1S.,3">
+                                            <field name="NUM">3</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="sensebox_display_fillCircle" id="/rq:(54ui[mTT~tTD9Hz">
+                                            <field name="FILL">TRUE</field>
+                                            <value name="X">
+                                              <block type="math_number" id="7#=WT1!YXwFXlMY`W}85">
+                                                <field name="NUM">79</field>
+                                              </block>
+                                            </value>
+                                            <value name="Y">
+                                              <block type="math_number" id="0y(N;#haLks@^XYh.npK">
+                                                <field name="NUM">47</field>
+                                              </block>
+                                            </value>
+                                            <value name="Radius">
+                                              <block type="math_number" id="k3!9Pg4{_4jE;OaxKPkB">
+                                                <field name="NUM">3</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <value name="IF3">
+                      <block type="logic_compare" id="S=CBb8m|Fm8xV|~(h)BK">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="Y%S))DJ!U8^2lhjp~pIs">
+                            <field name="VAR">Zufallszahl</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="}C3Of`wEd!W;gP.73o@m">
+                            <field name="NUM">4</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO3">
+                      <block type="sensebox_display_clearDisplay" id="BuKPl3ap{cD4o5g]QEMN">
+                        <next>
+                          <block type="sensebox_display_show" id="m:{X=G2n@_ZjWShKN.Q]">
+                            <statement name="SHOW">
+                              <block type="sensebox_display_drawRectangle" id="/1+b]t_ul~u=K9Jp-r{Z">
+                                <field name="FILL">FALSE</field>
+                                <value name="X">
+                                  <block type="math_number" id="J-IiDFd0Cn-IH!rIYo]p">
+                                    <field name="NUM">34</field>
+                                  </block>
+                                </value>
+                                <value name="Y">
+                                  <block type="math_number" id="+*Fc|^T6/BVy+Xy*e.pX">
+                                    <field name="NUM">2</field>
+                                  </block>
+                                </value>
+                                <value name="width">
+                                  <block type="math_number" id="Dh%Wy.`lfU;u:I:xhkk^">
+                                    <field name="NUM">60</field>
+                                  </block>
+                                </value>
+                                <value name="height">
+                                  <block type="math_number" id="{LJY;gyzHtQ;f6WDx,H^">
+                                    <field name="NUM">60</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="sensebox_display_fillCircle" id="BArse`-WttINI=WlJY:G">
+                                    <field name="FILL">TRUE</field>
+                                    <value name="X">
+                                      <block type="math_number" id="hr7,TW)1..)z?+8d)FC{">
+                                        <field name="NUM">49</field>
+                                      </block>
+                                    </value>
+                                    <value name="Y">
+                                      <block type="math_number" id="=:TGA?l74Wxe!yq-oGK9">
+                                        <field name="NUM">17</field>
+                                      </block>
+                                    </value>
+                                    <value name="Radius">
+                                      <block type="math_number" id="V|0PNtOG}{69O@@e{-K;">
+                                        <field name="NUM">3</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="sensebox_display_fillCircle" id="h61@ozDt`1%?/2J3ZUP6">
+                                        <field name="FILL">TRUE</field>
+                                        <value name="X">
+                                          <block type="math_number" id="rqq7(qz|~}iMERQz+VN%">
+                                            <field name="NUM">79</field>
+                                          </block>
+                                        </value>
+                                        <value name="Y">
+                                          <block type="math_number" id="-y=LcKfE(:Hy}}cH^Xgm">
+                                            <field name="NUM">17</field>
+                                          </block>
+                                        </value>
+                                        <value name="Radius">
+                                          <block type="math_number" id="f:G`pwieOHXd.R].Qd*@">
+                                            <field name="NUM">3</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="sensebox_display_fillCircle" id="HIgfySDJ*~BM4x,DUM*s">
+                                            <field name="FILL">TRUE</field>
+                                            <value name="X">
+                                              <block type="math_number" id="L4pR)]8sX/2K..o{83dP">
+                                                <field name="NUM">49</field>
+                                              </block>
+                                            </value>
+                                            <value name="Y">
+                                              <block type="math_number" id="K|-9mD6r{J3X7aN`*8ve">
+                                                <field name="NUM">47</field>
+                                              </block>
+                                            </value>
+                                            <value name="Radius">
+                                              <block type="math_number" id="6B9Tzt.cOw,sqdM;|6wS">
+                                                <field name="NUM">3</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="sensebox_display_fillCircle" id="ql1UJ5Gho)3]^;Lh*@ti">
+                                                <field name="FILL">TRUE</field>
+                                                <value name="X">
+                                                  <block type="math_number" id="eA4j}xh-%oYS#yo+fylw">
+                                                    <field name="NUM">79</field>
+                                                  </block>
+                                                </value>
+                                                <value name="Y">
+                                                  <block type="math_number" id=":E^YnFdO8tzT}qX5/rpi">
+                                                    <field name="NUM">47</field>
+                                                  </block>
+                                                </value>
+                                                <value name="Radius">
+                                                  <block type="math_number" id="@q%SUxzkGqQiNyU!@VAi">
+                                                    <field name="NUM">3</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <value name="IF4">
+                      <block type="logic_compare" id="C3j_LSWM`2%Z-%;?%]q-">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="{u;68yRb]z:4bIG}K=D_">
+                            <field name="VAR">Zufallszahl</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="=L6[xAlN;cg5Qi12Ucie">
+                            <field name="NUM">5</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO4">
+                      <block type="sensebox_display_clearDisplay" id="42zs9Z7Vto:-1mHc)9C`">
+                        <next>
+                          <block type="sensebox_display_show" id="uWdx?9O^+([v;^4FE#!e">
+                            <statement name="SHOW">
+                              <block type="sensebox_display_drawRectangle" id="P1GcLCCQA7y0*[1~N|Rw">
+                                <field name="FILL">FALSE</field>
+                                <value name="X">
+                                  <block type="math_number" id="NjSMjSJaMlavV8l+r]E=">
+                                    <field name="NUM">34</field>
+                                  </block>
+                                </value>
+                                <value name="Y">
+                                  <block type="math_number" id="4v!(5VgGz_[?q.}brms5">
+                                    <field name="NUM">2</field>
+                                  </block>
+                                </value>
+                                <value name="width">
+                                  <block type="math_number" id=")Mez)Z)C4,l@Saeb]o*b">
+                                    <field name="NUM">60</field>
+                                  </block>
+                                </value>
+                                <value name="height">
+                                  <block type="math_number" id="UY?OzTM^fRjd=9Ue[n{G">
+                                    <field name="NUM">60</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="sensebox_display_fillCircle" id="I#H~%WwjmJB{U0%w9Fz=">
+                                    <field name="FILL">TRUE</field>
+                                    <value name="X">
+                                      <block type="math_number" id="r/M3mu7+da(cTFhJ^(p8">
+                                        <field name="NUM">49</field>
+                                      </block>
+                                    </value>
+                                    <value name="Y">
+                                      <block type="math_number" id="*jURXB.-4oUuC/G%cQ.M">
+                                        <field name="NUM">17</field>
+                                      </block>
+                                    </value>
+                                    <value name="Radius">
+                                      <block type="math_number" id="7%YQn47w9=rbfdc=6453">
+                                        <field name="NUM">3</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="sensebox_display_fillCircle" id="etwX?r^r7M0o%,0AJ@6U">
+                                        <field name="FILL">TRUE</field>
+                                        <value name="X">
+                                          <block type="math_number" id="aJoRBnI=GDfCW1xK9Lgg">
+                                            <field name="NUM">79</field>
+                                          </block>
+                                        </value>
+                                        <value name="Y">
+                                          <block type="math_number" id="5D*mqAUa/1M8mJ*F.XRL">
+                                            <field name="NUM">17</field>
+                                          </block>
+                                        </value>
+                                        <value name="Radius">
+                                          <block type="math_number" id="0_u_yR]X%k/_Ql:Nqu~T">
+                                            <field name="NUM">3</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="sensebox_display_fillCircle" id="4b8QZ55PcgAI-IDSDx[1">
+                                            <field name="FILL">TRUE</field>
+                                            <value name="X">
+                                              <block type="math_number" id="iIMtL|[NlR?}s*N/u*Q)">
+                                                <field name="NUM">64</field>
+                                              </block>
+                                            </value>
+                                            <value name="Y">
+                                              <block type="math_number" id="yHGKE6O}qbqi;eDxM`e-">
+                                                <field name="NUM">32</field>
+                                              </block>
+                                            </value>
+                                            <value name="Radius">
+                                              <block type="math_number" id="r*YtU?H@~eE[OQ@yYc..">
+                                                <field name="NUM">3</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="sensebox_display_fillCircle" id="|Fv;G/M6z6fPHm6O@C94">
+                                                <field name="FILL">TRUE</field>
+                                                <value name="X">
+                                                  <block type="math_number" id="K]a`C5Ns|ZBbY^^3]AEa">
+                                                    <field name="NUM">49</field>
+                                                  </block>
+                                                </value>
+                                                <value name="Y">
+                                                  <block type="math_number" id="si[~6vIFg@_NeoT(;N3A">
+                                                    <field name="NUM">47</field>
+                                                  </block>
+                                                </value>
+                                                <value name="Radius">
+                                                  <block type="math_number" id="V!+^`.eq6h47e3i@Df|E">
+                                                    <field name="NUM">3</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="sensebox_display_fillCircle" id="1Gvx#U4gOBiF%c1Sl*LL">
+                                                    <field name="FILL">TRUE</field>
+                                                    <value name="X">
+                                                      <block type="math_number" id="jah6=[b2L1_ZkPfacEc5">
+                                                        <field name="NUM">79</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="Y">
+                                                      <block type="math_number" id="Z^^hi.i.m:U~4{N!YtDo">
+                                                        <field name="NUM">47</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="Radius">
+                                                      <block type="math_number" id="j6e[ogOLr(L%vXhtrpjE">
+                                                        <field name="NUM">3</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <value name="IF5">
+                      <block type="logic_compare" id="~4()@F6QLUIS|vo{iFYA">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="9SLY0s)q8pvo!KT,Q~:W">
+                            <field name="VAR">Zufallszahl</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="5D/J4fKD_lc}o#z9J0GF">
+                            <field name="NUM">6</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO5">
+                      <block type="sensebox_display_clearDisplay" id="K]w~FCNHME0~N1Zsh3S^">
+                        <next>
+                          <block type="sensebox_display_show" id="zq)^~PMfc)%+Cp?sNrbZ">
+                            <statement name="SHOW">
+                              <block type="sensebox_display_drawRectangle" id="h~{{BFyKGHKNcdaQLKsF">
+                                <field name="FILL">FALSE</field>
+                                <value name="X">
+                                  <block type="math_number" id="Kv*kcC5@7sL}jNmM^hjh">
+                                    <field name="NUM">34</field>
+                                  </block>
+                                </value>
+                                <value name="Y">
+                                  <block type="math_number" id=".Q|/ZqeF:5SH8BYf?+z?">
+                                    <field name="NUM">2</field>
+                                  </block>
+                                </value>
+                                <value name="width">
+                                  <block type="math_number" id="2L.iDNENV6`=OAvf=o9a">
+                                    <field name="NUM">60</field>
+                                  </block>
+                                </value>
+                                <value name="height">
+                                  <block type="math_number" id="w+P/sifvry,(he6*V;?P">
+                                    <field name="NUM">60</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="sensebox_display_fillCircle" id="8d=l#k5UexygBXeFVqGG">
+                                    <field name="FILL">TRUE</field>
+                                    <value name="X">
+                                      <block type="math_number" id="n3Eupux+T]C4EiU+0p^W">
+                                        <field name="NUM">49</field>
+                                      </block>
+                                    </value>
+                                    <value name="Y">
+                                      <block type="math_number" id="]{qr17Uz8k]`RcD?J@g.">
+                                        <field name="NUM">17</field>
+                                      </block>
+                                    </value>
+                                    <value name="Radius">
+                                      <block type="math_number" id="WpEGLZ=nRdzSu6nym^eb">
+                                        <field name="NUM">3</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="sensebox_display_fillCircle" id="8):RT=lkOImA~l*rLI:g">
+                                        <field name="FILL">TRUE</field>
+                                        <value name="X">
+                                          <block type="math_number" id="dV@J,hzdU6r5*L=yUW?a">
+                                            <field name="NUM">79</field>
+                                          </block>
+                                        </value>
+                                        <value name="Y">
+                                          <block type="math_number" id="L[jOayt?~gLE/s}A0yO]">
+                                            <field name="NUM">17</field>
+                                          </block>
+                                        </value>
+                                        <value name="Radius">
+                                          <block type="math_number" id="Z]OZ16tB,kf!C]p=bG4B">
+                                            <field name="NUM">3</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="sensebox_display_fillCircle" id="P]F6W7m|/f1B~#)])I)p">
+                                            <field name="FILL">TRUE</field>
+                                            <value name="X">
+                                              <block type="math_number" id="L)+;;fm/i{R5)ne57+W=">
+                                                <field name="NUM">49</field>
+                                              </block>
+                                            </value>
+                                            <value name="Y">
+                                              <block type="math_number" id="@::+um?(desiZS~]fKtL">
+                                                <field name="NUM">32</field>
+                                              </block>
+                                            </value>
+                                            <value name="Radius">
+                                              <block type="math_number" id="1wrjH(aRpzy%qi;f!j[h">
+                                                <field name="NUM">3</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="sensebox_display_fillCircle" id="Ez+B06#OIH=H@qJ;%pL1">
+                                                <field name="FILL">TRUE</field>
+                                                <value name="X">
+                                                  <block type="math_number" id="_^-VWFvvtwXErklb|%MX">
+                                                    <field name="NUM">79</field>
+                                                  </block>
+                                                </value>
+                                                <value name="Y">
+                                                  <block type="math_number" id="J5=4J!,L]~:Hc,a!3!ZQ">
+                                                    <field name="NUM">32</field>
+                                                  </block>
+                                                </value>
+                                                <value name="Radius">
+                                                  <block type="math_number" id="X(@lw-~iy~MQ78O`;r]!">
+                                                    <field name="NUM">3</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="sensebox_display_fillCircle" id="eY2At;9IXOkk?:HZ-BZ?">
+                                                    <field name="FILL">TRUE</field>
+                                                    <value name="X">
+                                                      <block type="math_number" id="ywro~rR.#5H%A@QQ2PbE">
+                                                        <field name="NUM">49</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="Y">
+                                                      <block type="math_number" id="y,QwW1CHm{wLIG?r?3wF">
+                                                        <field name="NUM">47</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="Radius">
+                                                      <block type="math_number" id="wsKBwVjCM%.?VALyom)o">
+                                                        <field name="NUM">3</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="sensebox_display_fillCircle" id="tr@}@@HCNI`g2(h9xwq!">
+                                                        <field name="FILL">TRUE</field>
+                                                        <value name="X">
+                                                          <block type="math_number" id="S^__|TnTS=^tvHOe?V,5">
+                                                            <field name="NUM">79</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="Y">
+                                                          <block type="math_number" id="*x@J+QU348JFgYW~W:/q">
+                                                            <field name="NUM">47</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="Radius">
+                                                          <block type="math_number" id="ot({;!pq^X;~s(fLIeFa">
+                                                            <field name="NUM">3</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

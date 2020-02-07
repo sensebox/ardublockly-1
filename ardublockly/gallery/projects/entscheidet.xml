@@ -1,0 +1,199 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="5KebY,-ltvxB7K^El}1(" x="-493" y="-3078">
+    <statement name="SETUP_FUNC">
+      <block type="sensebox_display_beginDisplay" id="uzX`XUl|Dy}_~yJC#Y:Q"></block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="controls_if" id="rqI5VvYYG*,2r!-i[c7~">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="j^tKTg7EEr5ucJoZsoDP">
+            <field name="OP">GT</field>
+            <value name="A">
+              <block type="sensebox_sensor_bmx055_accelerometer" id="%=Cq`5.!RHyj@1=c%Aa-">
+                <field name="VALUE">X</field>
+                <field name="RANGE">0x3</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="L@0pR!#qSpLnw-|_LDI`">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="-Q-0TLSiNLC{8?8CxCZ[">
+            <field name="VAR">Element</field>
+            <value name="VALUE">
+              <block type="math_random_int" id="6HpW#h+aWNoM`15JMA7i">
+                <value name="FROM">
+                  <block type="math_number" id="Nq8LH9jvp@?Bf7C:]G_S">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="TO">
+                  <block type="math_number" id="0[[@n1z`B(2z)Gc~X*Qn">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="8_pPAQR|IlGrHd46q:K=">
+                <mutation elseif="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="%?6F^d?EtpzX??^FANk2">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="D=G|`]!)pzy!d.T]FrdG">
+                        <field name="VAR">Element</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id=",FPq%sh1_3LwG`Y7!Ptm">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="sensebox_display_clearDisplay" id="fk][jBAuzIS]S^Odc?{{">
+                    <next>
+                      <block type="sensebox_display_show" id="`;vb{E`ZPbWj^s6.1(:(">
+                        <statement name="SHOW">
+                          <block type="sensebox_display_printDisplay" id="VH;hw-.bpDJw1A/HkyiQ">
+                            <field name="COLOR">WHITE,BLACK</field>
+                            <value name="SIZE">
+                              <block type="math_number" id="L1Y)7u^iOG.vTS}]n?_T">
+                                <field name="NUM">2</field>
+                              </block>
+                            </value>
+                            <value name="X">
+                              <block type="math_number" id="P5{s,:rnA}:)|g(h*;y/">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="Y">
+                              <block type="math_number" id="ARO7h2Z_bhvX}=uyJhtI">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="printDisplay">
+                              <block type="text" id="_w5R~eqb{rn62[[Y_{~Z">
+                                <field name="TEXT">Ja</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="time_delay" id="M{AR!Nj1lOHBa~UI*A}a">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="a2Ju=@)ym)c~[2Er;y|n">
+                                <field name="NUM">5000</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="jpdeuL.qF.u[F3Ym@;Mj">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="zgjOjBz_MfC-]-SPR9Q3">
+                        <field name="VAR">Element</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="8i~c=@U`7GJUpVWj3z3l">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="sensebox_display_clearDisplay" id="0@kk209cHaP3PvVw78`g">
+                    <next>
+                      <block type="sensebox_display_show" id="d8W=L@-:f7w;hQ!|+I[g">
+                        <statement name="SHOW">
+                          <block type="sensebox_display_printDisplay" id="#jn3Tv;,b,mWpm/)mnc0">
+                            <field name="COLOR">WHITE,BLACK</field>
+                            <value name="SIZE">
+                              <block type="math_number" id="=+NH!_2H6:s;(g0~Ak-A">
+                                <field name="NUM">2</field>
+                              </block>
+                            </value>
+                            <value name="X">
+                              <block type="math_number" id="AIz)/^BdP`k9]jgy8[3_">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="Y">
+                              <block type="math_number" id="w%^z.[y-Qny;gO}}AY%}">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="printDisplay">
+                              <block type="text" id="{-:UV);N~*oKk.gB-XG-">
+                                <field name="TEXT">Nein</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="time_delay" id="NcIe8NB~?/49lyUStI/A">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="JQz#CwGIiMJfW_Fo~+ob">
+                                <field name="NUM">5000</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="sensebox_display_clearDisplay" id="e9]lgOoMz42SzKS{UQWP">
+            <next>
+              <block type="sensebox_display_show" id="E;tVvCr!MNn^d`c,w,_~">
+                <statement name="SHOW">
+                  <block type="sensebox_display_printDisplay" id="af4G:8Wqrxm9*)9/sCr?">
+                    <field name="COLOR">WHITE,BLACK</field>
+                    <value name="SIZE">
+                      <block type="math_number" id="@I:)vo8S+bI2^fJG^y0m">
+                        <field name="NUM">2</field>
+                      </block>
+                    </value>
+                    <value name="X">
+                      <block type="math_number" id="qy)HnYKv589|#P#emr35">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="Y">
+                      <block type="math_number" id="RM!vEJh!AGBy4afuzBOz">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                    <value name="printDisplay">
+                      <block type="text" id=",8G2,wrqQpP7bb86yiKw">
+                        <field name="TEXT">Schuettel mich!</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

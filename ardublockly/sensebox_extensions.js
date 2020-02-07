@@ -12,14 +12,25 @@ SenseboxExtension.SUPPORTED_BOARDS = {
 SenseboxExtension.init = function () {
   sessionStorage.setItem('no_thanks', 'false');
   var location = window.location;
+  const compilerOnline = 'https://compiler.sensebox.de';
+  //const compilerOnline = 'http://localhost:3000'
   var urlParams = new URLSearchParams(location.search);
-  Ardublockly.loadServerXmlFile(Ardublockly.options.blocklyPath + '/ardublockly/start.xml');
-
+  console.log(urlParams);
+  Ardublockly.changeBlocklyArduinoBoard('sensebox_mcu');
+  if (urlParams.has('gallery')){
+    window.XML = urlParams.get('gallery')
+    Ardublockly.loadServerXmlFile(Ardublockly.options.blocklyPath + '/ardublockly/gallery/'+ window.XML + '.xml');
+  } else{
+    Ardublockly.loadServerXmlFile(Ardublockly.options.blocklyPath + '/ardublockly/start.xml');
+  }
+ 
   if (urlParams.has('board')) {
     window.BOARD = urlParams.get('board');
   } else {
     window.BOARD = 'sensebox';
   }
+
+
 
   if (location.hostname !== 'localhost') {
     //TODO hide all features of running ardublockly locally
@@ -91,7 +102,7 @@ SenseboxExtension.init = function () {
               var download = function(){
                 response = JSON.parse(request.response);
                 var filename = document.getElementById('sketch_name').value;
-                window.open('https://compiler.sensebox.de/download?id=' + response.data.id + '&board=' + window.BOARD + '&filename=' + filename, '_self');
+                window.open(compilerOnline + '/download?id=' + response.data.id + '&board=' + window.BOARD + '&filename=' + filename, '_self');
               }
               var no_thanks = sessionStorage.getItem('no_thanks');
               // If no cookie with our chosen name (e.g. no_thanks)...
@@ -140,7 +151,7 @@ SenseboxExtension.init = function () {
       };
       try {
         Ardublockly.resetIdeOutputContent();
-        request.open('POST', 'https://compiler.sensebox.de/compile', true);
+        request.open('POST', compilerOnline + '/compile', true);
         request.setRequestHeader('Content-Type', 'application/json');
         request.onreadystatechange = onReady;
         request.send(JSON.stringify(data));

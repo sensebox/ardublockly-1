@@ -24,12 +24,15 @@
               </block>
             </value>
             <value name="printDisplay">
-              <block type="text" id="AK^*=Y!,G8pIS7c8zMi=">
-                <field name="TEXT"></field>
+              <block type="sensebox_sensor_temp_hum" id="8=}(l.;]Y0R8i/LA|n=%">
+                <field name="NAME">Temperature</field>
               </block>
             </value>
           </block>
         </statement>
+        <next>
+          <block type="sensebox_display_clearDisplay" id="k.Q1+MsOtR10y#SxVO!4"></block>
+        </next>
       </block>
     </statement>
   </block>
