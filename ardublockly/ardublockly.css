@@ -877,3 +877,7 @@ img.animated-gif{
 .sb-disabled {
   background: rgb(168, 167, 167) !important;
 }
+
+.project-button{
+  margin: 10px;
+}

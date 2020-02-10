@@ -100,6 +100,9 @@ Ardublockly.LOCALISED_TEXT = {
   /* Cards */
   arduinoSourceCode: "Arduino Source Code",
   blocksXml: "Blocks XML",
+  /* Projects */
+  deleteProjectHeader: "Warning",
+  deleteProjectText: "Do you want to delete the Project permanently?",
   /* Toolbox Categories*/
   catSenseBox_Sensor:"Sensors",
   catSenseBox_Output:"senseBox output",

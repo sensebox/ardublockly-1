@@ -336,7 +336,6 @@ Ardublockly.saveSketchFile = function() {
 
 Ardublockly.startNewProject = function() {
   var newProject = Blockly.prompt('message', 'opt_defaultInput');
-  console.log(newProject);
   document.getElementById('sketch_name').value = newProject;
   Ardublockly.workspace.clear();
   Ardublockly.loadServerXmlFile(Ardublockly.options.blocklyPath + '/ardublockly/start.xml');
@@ -362,8 +361,7 @@ Ardublockly.loadProject = function() {
     projects.forEach(function (pname, index) {
     var newElement = document.createElement('div');
     //newElement.id = index;
-    console.log(pname);
-    newElement.innerHTML = '<class="col-md-2"><button type="button" onclick="Ardublockly.loadLocalStorageBlocks('+index+')" class="waves-effect btn-flat" id="' + pname + '">' + pname +'</button> <button type="button" onclick="Ardublockly.deleteFromLocalStorage('+index+')"><i class="mdi-action-delete"</i></button>';
+    newElement.innerHTML = '<class="col s2"><div class="card blue-grey darken-1"><div class="card-content white-text"><span class="card-title">'+pname+'</span><button type="button" onclick="Ardublockly.loadLocalStorageBlocks('+index+')" class="waves-effect waves-light btn-large project-button modal-close" id="' + pname + '">Open</button> <button type="button" onclick="Ardublockly.deleteFromLocalStorage('+index+')" class="waves-effect waves-light btn-large project-button">Delete</button>';
     document.getElementById('modal-body-btn').appendChild(newElement);
     });
   }
@@ -386,9 +384,9 @@ Ardublockly.loadLocalStorageBlocks = function(index) {
   }
   if (loadOnce) {
     var xml = Blockly.Xml.textToDom(loadOnce);
-    console.log(xml);
     Ardublockly.workspace.clear();
     Blockly.Xml.domToWorkspace(xml, Ardublockly.workspace);
+    Ardublockly.sketchNameSet(pname);
   }
 };
 
@@ -400,8 +398,15 @@ Ardublockly.loadLocalStorageBlocks = function(index) {
 Ardublockly.deleteFromLocalStorage = function(index){
   var projects = Object.keys(localStorage);
   var pname = projects[index];
-  localStorage.removeItem(pname);
-}
+  Ardublockly.alertMessage(
+    Ardublockly.getLocalStr('deleteProjectHeader'),
+    Ardublockly.getLocalStr('deleteProjectText'),
+    true, function(){
+      localStorage.removeItem(pname);
+      console.log(pname);
+      Ardublockly.loadProject();
+    });
+};
  
 /**
  * Creates an text file with the input content and files name, and prompts the
