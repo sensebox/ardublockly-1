@@ -41,11 +41,12 @@ Ardublockly.init = function(options) {
 /** Binds functions to each of the buttons, nav links, and related. */
 Ardublockly.bindActionFunctions = function() {
   // Navigation buttons
-  Ardublockly.bindClick_('button_project', Ardublockly.startNewProject);
+  Ardublockly.bindClick_('button_new_project', Ardublockly.startNewProjectModal);
+  Ardublockly.bindClick_('button_save_project', Ardublockly.saveProject);
   Ardublockly.bindClick_('button_load_project', Ardublockly.loadProject);
-  Ardublockly.bindClick_('button_load', Ardublockly.loadUserXmlFile);
-  Ardublockly.bindClick_('button_save', Ardublockly.saveXmlFile);
-  Ardublockly.bindClick_('button_save_ino', Ardublockly.saveSketchFile);
+ // Ardublockly.bindClick_('button_load', Ardublockly.loadUserXmlFile);
+ // Ardublockly.bindClick_('button_save', Ardublockly.saveXmlFile);
+ // Ardublockly.bindClick_('button_save_ino', Ardublockly.saveSketchFile);
   Ardublockly.bindClick_('button_delete', Ardublockly.discardAllBlocks);
 
   // Side menu buttons, they also close the side menu
@@ -94,6 +95,8 @@ Ardublockly.bindActionFunctions = function() {
   });
   Ardublockly.bindClick_('button_load_xml', Ardublockly.XmlTextareaToBlocks);
   Ardublockly.bindClick_('button_toggle_toolbox', Ardublockly.toogleToolbox);
+
+  Ardublockly.bindClick_('button_save_new_project', Ardublockly.saveNewProject);
 
   // Settings modal input field listeners only if they can be edited
   var settingsPathInputListeners = function(elId, setValFunc, setHtmlCallback) {
@@ -334,11 +337,24 @@ Ardublockly.saveSketchFile = function() {
  * 
  */
 
-Ardublockly.startNewProject = function() {
-  var newProject = Blockly.prompt('message', 'opt_defaultInput');
+Ardublockly.startNewProjectModal = function() {
+ // var newProject = Blockly.prompt('message', 'opt_defaultInput');
+  //document.getElementById('sketch_name').value = newProject;
+    $("#Project_modal").openModal();
+    
+};
+
+Ardublockly.saveNewProject = function (){
+  var newProject = document.getElementById('project_name').value;
   document.getElementById('sketch_name').value = newProject;
   Ardublockly.workspace.clear();
   Ardublockly.loadServerXmlFile(Ardublockly.options.blocklyPath + '/ardublockly/start.xml');
+};
+
+
+Ardublockly.saveProject = function() {
+  var newProject = Blockly.prompt('message', 'opt_defaultInput');
+  document.getElementById('sketch_name').value = newProject;
 };
 
 
