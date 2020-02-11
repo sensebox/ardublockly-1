@@ -80,7 +80,7 @@
       <!-- Horizontal Navbar links only shown on large resolutions -->
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="#" id="button_new_project"><span class="translatable_project">New Project</span><i class="mdi-file-file-upload left"></i></a></li>
-        <li><a href="#" id="button_save_project"><span class="translatable_load_project">Save Project</span><i class="mdi-file-file-download disabled left"></i></a></li>
+        <li><a href="#" id="button_save_project_open"><span class="translatable_load_project">Save Project</span><i class="mdi-content-save left"></i></a></li>
         <li><a href="#" id="button_load_project"><span class="translatable_load_project">Load Project</span><i class="mdi-file-file-download left"></i></a></li>
        <!-- <li><a href="#" id="button_load"><span class="translatable_open">Open Blocks</span><i class="mdi-file-file-upload left"></i></a></li>
         <li><a href="#" id="button_save"><span class="translatable_save">Save Blocks</span><i class="mdi-file-file-download left"></i></a></li>
@@ -333,9 +333,7 @@
   </div>
 
   <!-- Modal for the Project List -->
-  <div class="modal fade" id="ProjectModal" role="dialog">
-      <div class="modal-dialog">
-      
+  <div class="modal" id="projectModalList">
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
@@ -355,10 +353,9 @@
     </div>
     
   </div>
-  </div>
 
- <!-- Modal: Login with OSEM -->
- <div id="Project_modal" class="modal modal-fixed-footer">
+ <!-- Modal: New Project -->
+ <div id="projectModalNew" class="modal">
   <div class="modal-content" style="height: 100%">
 
     <!-- Standard Login View -->
@@ -376,10 +373,38 @@
         <br />
 
         <div class='row'>
-          <button type="button" id='button_save_new_project' class='col s12 btn btn-large waves-effect sensebox_green modal-close'>Speichern</button>
+          <button type="submit" id='button_save_new_project' class='col s12 btn btn-large waves-effect sensebox_green modal-close'>Speichern</button>
         </div>
       </form>
     </div>
+  </div>
+ </div>
+
+  <!-- Modal: Save Project -->
+  <div id="projectModalSave" class="modal">
+    <div class="modal-content" style="height: 100%">
+  
+      <!-- Standard Login View -->
+      <div class="row center-modal">
+        <form class="col s6 offset-s3" id="loginForm">
+          <h4 class="center">Save Project</h4>
+  
+          <div class='row'>
+            <div class='input-field col s12'>
+              <input class='validate' type='text' name='project_name' id='project_name_save' />
+              <label for='project_name_save'>Enter your Project name</label>
+            </div>
+          </div>
+  
+          <br />
+  
+          <div class='row'>
+            <button type="submit" id='button_save_project' class='col s12 btn btn-large waves-effect sensebox_green modal-close'>Speichern</button>
+          </div>
+        </form>
+      </div>
+    </div>
+   </div>
 
 
   <!-- Desktop version of Ardublockly JS, needs to be loaded first. -->

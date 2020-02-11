@@ -42,7 +42,7 @@ Ardublockly.init = function(options) {
 Ardublockly.bindActionFunctions = function() {
   // Navigation buttons
   Ardublockly.bindClick_('button_new_project', Ardublockly.startNewProjectModal);
-  Ardublockly.bindClick_('button_save_project', Ardublockly.saveProject);
+  Ardublockly.bindClick_('button_save_project_open', Ardublockly.saveProjectModal);
   Ardublockly.bindClick_('button_load_project', Ardublockly.loadProject);
  // Ardublockly.bindClick_('button_load', Ardublockly.loadUserXmlFile);
  // Ardublockly.bindClick_('button_save', Ardublockly.saveXmlFile);
@@ -97,6 +97,7 @@ Ardublockly.bindActionFunctions = function() {
   Ardublockly.bindClick_('button_toggle_toolbox', Ardublockly.toogleToolbox);
 
   Ardublockly.bindClick_('button_save_new_project', Ardublockly.saveNewProject);
+  Ardublockly.bindClick_('button_save_project', Ardublockly.saveProject);
 
   // Settings modal input field listeners only if they can be edited
   var settingsPathInputListeners = function(elId, setValFunc, setHtmlCallback) {
@@ -340,8 +341,18 @@ Ardublockly.saveSketchFile = function() {
 Ardublockly.startNewProjectModal = function() {
  // var newProject = Blockly.prompt('message', 'opt_defaultInput');
   //document.getElementById('sketch_name').value = newProject;
-    $("#Project_modal").openModal();
-    
+    var project = document.getElementById('sketch_name').value;
+    if (project == "Sketch_Name"){
+      Ardublockly.alertMessage(
+        Ardublockly.getLocalStr('deleteProjectHeader'),
+        Ardublockly.getLocalStr('projectNotSaved'),
+        true, function(){
+          $("#projectModalNew").openModal()
+        });
+  }
+    else{
+    $("#projectModalNew").openModal();
+    }
 };
 
 Ardublockly.saveNewProject = function (){
@@ -351,10 +362,16 @@ Ardublockly.saveNewProject = function (){
   Ardublockly.loadServerXmlFile(Ardublockly.options.blocklyPath + '/ardublockly/start.xml');
 };
 
+Ardublockly.saveProjectModal = function(){
+  $("#projectModalSave").openModal()
+};
+
+
 
 Ardublockly.saveProject = function() {
-  var newProject = Blockly.prompt('message', 'opt_defaultInput');
+  var newProject = document.getElementById('project_name_save').value;
   document.getElementById('sketch_name').value = newProject;
+  Ardublockly.saveLocalStorageBlocks();
 };
 
 
@@ -365,7 +382,7 @@ Ardublockly.saveProject = function() {
 
 Ardublockly.loadProject = function() {
   $(document).ready(function(){
-    $("#ProjectModal").openModal();
+    $("#projectModalList").openModal();
  });
   var projects = Object.keys(localStorage);
   console.log(projects);
@@ -377,7 +394,7 @@ Ardublockly.loadProject = function() {
     projects.forEach(function (pname, index) {
     var newElement = document.createElement('div');
     //newElement.id = index;
-    newElement.innerHTML = '<class="col s2"><div class="card blue-grey darken-1"><div class="card-content white-text"><span class="card-title">'+pname+'</span><button type="button" onclick="Ardublockly.loadLocalStorageBlocks('+index+')" class="waves-effect waves-light btn-large project-button modal-close" id="' + pname + '">Open</button> <button type="button" onclick="Ardublockly.deleteFromLocalStorage('+index+')" class="waves-effect waves-light btn-large project-button">Delete</button>';
+    newElement.innerHTML = '<class="col s2"><div class="card blue-grey darken-1"><div class="card-content white-text"><span class="card-title">'+pname+'</span><button type="button" onclick="Ardublockly.loadLocalStorageBlocks('+index+')" class="waves-effect waves-light btn-large project-button modal-close" id="' + pname + '">Open</button> <button type="button" onclick="Ardublockly.deleteFromLocalStorage('+index+')" class="waves-effect waves-light btn-large project-button modal-close">Delete</button>';
     document.getElementById('modal-body-btn').appendChild(newElement);
     });
   }
@@ -404,6 +421,7 @@ Ardublockly.loadLocalStorageBlocks = function(index) {
     Blockly.Xml.domToWorkspace(xml, Ardublockly.workspace);
     Ardublockly.sketchNameSet(pname);
   }
+  $("#projectModalList").closeModal();
 };
 
 /**
@@ -420,7 +438,8 @@ Ardublockly.deleteFromLocalStorage = function(index){
     true, function(){
       localStorage.removeItem(pname);
       console.log(pname);
-      Ardublockly.loadProject();
+      $("#projectModalList").closeModal();
+      //Ardublockly.loadProject();
     });
 };
  
