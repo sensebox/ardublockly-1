@@ -213,6 +213,8 @@
 	"senseBox_osem_connection_tip ": "",
 	"senseBox_send_to_osem_tip ": "sends the measurement to openSenseMap. Make shure to enter the correct BoxID and SensorID",
 	"senseBox_send_to_osem ": "Send measurement to openSenseMap",
+	"senseBox_osem_host": "api.opensensemap.org",
+	"senseBox_osem_host_workshop" : "workshop.opensensemap.org",
 	"senseBox_sds011 ": "Fine Particular Sensor",
 	"senseBox_sds011_dimension ": "in µg/m³ at",
 	"senseBox_sds011_pm25 ": "PM2.5",

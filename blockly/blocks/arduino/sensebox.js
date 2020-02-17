@@ -571,7 +571,7 @@ Blockly.Blocks['sensebox_wifi'] = {
       this.setColour(Blockly.Blocks.sensebox.HUE);
       this.appendDummyInput()
           .appendField(Blockly.Msg.senseBox_osem_connection)
-          .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_osem_host, '"ingress.opensensemap.org"'], [Blockly.Msg.senseBox_osem_host_workshop, '"ingress.workshop.opensensemap.org"']]), "host");
+          .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_osem_host_workshop, '"ingress.workshop.opensensemap.org"'], [Blockly.Msg.senseBox_osem_host, '"ingress.opensensemap.org"']]), "host");
       this.appendDummyInput()
           .setAlign(Blockly.ALIGN_LEFT)
           .appendField("senseBox ID")
