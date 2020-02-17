@@ -145,7 +145,7 @@ Blockly.FieldImage.prototype.setValue = function(src) {
   this.src_ = src;
   if (this.imageElement_) {
     this.imageElement_.setAttributeNS('http://www.w3.org/1999/xlink',
-        'xlink:href', goog.isString(src) ? src : '');
+        'xlink:href', typeof src == 'string' ? src : '');
   }
 };
 

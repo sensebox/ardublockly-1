@@ -632,7 +632,7 @@ Blockly.BlockSvg.prototype.onMouseUp_ = function(e) {
  * @private
  */
 Blockly.BlockSvg.prototype.showHelp_ = function() {
-  var url = goog.isFunction(this.helpUrl) ? this.helpUrl() : this.helpUrl;
+  var url = typeof this.helpUrl =='function'  ? this.helpUrl() : this.helpUrl;
   if (url) {
     window.open(url);
   }
@@ -757,7 +757,7 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function(e) {
   }
 
   // Option to get help.
-  var url = goog.isFunction(this.helpUrl) ? this.helpUrl() : this.helpUrl;
+  var url = typeof this.helpUrl =='function' ? this.helpUrl() : this.helpUrl;
   var helpOption = {enabled: !!url};
   helpOption.text = Blockly.Msg.HELP;
   helpOption.callback = function() {
@@ -1273,7 +1273,7 @@ Blockly.BlockSvg.prototype.getCommentText = function() {
  */
 Blockly.BlockSvg.prototype.setCommentText = function(text) {
   var changedState = false;
-  if (goog.isString(text)) {
+  if (typeof text == 'string') {
     if (!this.comment) {
       this.comment = new Blockly.Comment(this);
       changedState = true;
@@ -1346,7 +1346,7 @@ Blockly.BlockSvg.prototype.setWarningText = function(text, opt_id) {
   }
 
   var changedState = false;
-  if (goog.isString(text)) {
+  if (typeof text == 'string') {
     if (!this.warning) {
       this.warning = new Blockly.Warning(this);
       changedState = true;
