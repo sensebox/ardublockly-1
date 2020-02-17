@@ -242,7 +242,7 @@ Blockly.FieldDropdown.prototype.trimOptions_ = function() {
  * @private
  */
 Blockly.FieldDropdown.prototype.getOptions_ = function() {
-  if (goog.isFunction(this.menuGenerator_)) {
+  if (typeof this.menuGenerator_ == 'function') {
     return this.menuGenerator_.call(this);
   }
   return /** @type {!Array.<!Array.<string>>} */ (this.menuGenerator_);

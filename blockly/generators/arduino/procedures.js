@@ -143,7 +143,7 @@ Blockly.Arduino['arduino_functions'] = function(block) {
   function statementToCodeNoTab(block, name) {
     var targetBlock = block.getInputTargetBlock(name);
     var code = Blockly.Arduino.blockToCode(targetBlock);
-    if (!goog.isString(code)) {
+    if (typeof code != 'string') {
       throw 'Expecting code from statement block "' + targetBlock.type + '".';
     }
     return code;

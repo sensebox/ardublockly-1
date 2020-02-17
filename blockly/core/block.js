@@ -143,7 +143,7 @@ Blockly.Block = function(workspace, prototypeName, opt_id) {
   workspace.addTopBlock(this);
 
   // Call an initialization function, if it exists.
-  if (goog.isFunction(this.init)) {
+  if (typeof this.init == 'function') {
     this.init();
   }
   // Record initial inline state.
@@ -153,7 +153,7 @@ Blockly.Block = function(workspace, prototypeName, opt_id) {
     Blockly.Events.fire(new Blockly.Events.Create(this));
   }
   // Bind an onchange function, if it exists.
-  if (goog.isFunction(this.onchange)) {
+  if (typeof this.onchange == 'function') {
     this.onchangeWrapper_ = this.onchange.bind(this);
     this.workspace.addChangeListener(this.onchangeWrapper_);
   }
@@ -630,7 +630,7 @@ Blockly.Block.prototype.setColour = function(colour) {
   var hue = parseFloat(colour);
   if (!isNaN(hue)) {
     this.colour_ = Blockly.hueToRgb(hue);
-  } else if (goog.isString(colour) && colour.match(/^#[0-9a-fA-F]{6}$/)) {
+  } else if (typeof colour == 'string' && colour.match(/^#[0-9a-fA-F]{6}$/)) {
     this.colour_ = colour;
   } else {
     throw 'Invalid colour: ' + colour;
