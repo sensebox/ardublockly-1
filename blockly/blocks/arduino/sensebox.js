@@ -778,16 +778,16 @@ Blockly.Blocks['sensebox_sensor_soil'] = {
 };
 
 /**
- * Block for Truebner STM50
+ * Block for Truebner SMT50
  */
 
-Blockly.Blocks['sensebox_sensor_truebner_stm50'] = {
+Blockly.Blocks['sensebox_sensor_truebner_smt50'] = {
   init: function(){
     var dropdownOptions = [[Blockly.Msg.senseBox_ultrasonic_port_A, 'A'],
     [Blockly.Msg.senseBox_ultrasonic_port_B, 'B'],[Blockly.Msg.senseBox_ultrasonic_port_C, 'C']];
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendDummyInput()
-        .appendField(Blockly.Msg.sensebox_soil_stm50);
+        .appendField(Blockly.Msg.sensebox_soil_smt50);
     this.appendDummyInput()
         .appendField("Port:")
         .appendField(new Blockly.FieldDropdown(dropdownOptions), "Port")
@@ -795,7 +795,6 @@ Blockly.Blocks['sensebox_sensor_truebner_stm50'] = {
         .appendField(Blockly.Msg.senseBox_value)
         .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_temp, "temp"], [Blockly.Msg.senseBox_soil, "soil"]]), 'value')    
     this.setOutput(true, Blockly.Types.NUMBER.output);
-    this.setTooltip(Blockly.Msg.sensebox_soil_stm50_tip);
   },
   getBlockType: function() {
     return Blockly.Types.NUMBER;

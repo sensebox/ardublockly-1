@@ -710,7 +710,7 @@ Blockly.Msg.senseBox_bme680  = "Umweltsensor (BME680)";
 Blockly.Msg.senseBox_bme680_tip = "Gibt Messwerte des BME680 zurück";
 Blockly.Msg.senseBox_bme680_warning = "Achtung. Gas (VOC) kann nicht gleichzeitig mit anderen Parametern gemessen werden"
 Blockly.Msg.senseBox_gas = "Gas (VOC)";
-Blockly.Msg.sensebox_soil_stm50 = "Bodenfeuchte/-temperatur (STM50)";
+Blockly.Msg.sensebox_soil_smt50 = "Bodenfeuchte/-temperatur (SMT50)";
 //Telegram
 Blockly.Msg.senseBox_telegram_init = "Telegram Bot initialisieren"
 Blockly.Msg.senseBox_telegram_token = "Token"

@@ -27,7 +27,7 @@ Ardublockly.TOOLBOX_XML =
     '      </block>' +
     '      <block type="sensebox_sensor_sound"></block>' +
     '      <block type="sensebox_sensor_soil"></block>' +
-    '      <block type="sensebox_sensor_truebner_stm50"></block>'   +
+    '      <block type="sensebox_sensor_truebner_smt50"></block>'   +
     '      <block type="sensebox_sensor_watertemperature"></block>' +
     '      <block type="sensebox_foto"></block>' +
     '      <block type="sensebox_button"></block>' +
