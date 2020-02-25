@@ -551,6 +551,8 @@
 	"senseBox_wifi_startap": "Initialisiere WLAN Access Point",
 	"senseBox_osem_connection ": "Verbinde mit openSenseMap",
 	"senseBox_osem_connection_tip ": "stellt eine WLAN verbindung her",
+	"senseBox_osem_host": "opensensemap.org",
+	"senseBox_osem_host_workshop" : "workshop.opensensemap.org",
 	"senseBox_send_to_osem_tip ": "Sende Messwert an die openSenseMap",
 	"senseBox_send_to_osem ": "Sende Messwert an die openSenseMap",
 	"senseBox_sds011_dimension" : "in µg/m³ an",

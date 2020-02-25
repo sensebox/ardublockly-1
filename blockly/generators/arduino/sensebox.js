@@ -227,25 +227,128 @@ Blockly.Arduino.sensebox_startap = function(block) {
 
 Blockly.Arduino.sensebox_osem_connection = function(block) {
   var box_id = this.getFieldValue('BoxID');
+  var host = this.getFieldValue('host');
   var branch = Blockly.Arduino.statementToCode(block, 'DO');
+  /*var blocks = this.getDescendants();
+  console.log(this.getDescendants());
+  var sensor_nr = 0;
+  for (var i = 0; i < blocks.length; i++ ){
+    console.log(blocks[i].type);
+    if (blocks[i].type == 'sensebox_send_to_osem'){
+      sensor_nr++;
+      console.log(sensor_nr);
+    } 
+  }*/
+    var count = 0;
+    var children = block.getChildren();
+    console.log(children.lenght);
+    for (var i = 0; i < children.length; i++) {
+      var childBlock = children[i];
+      if (childBlock.previousConnection != null) {
+        // This child has a statement, add it to the count.
+        count++;
+      }
+    }
+    console.log(count);
   Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
-  Blockly.Arduino.userFunctions_['define_osem'] = 'OpenSenseMap osem("'+box_id+'",b);';
-  Blockly.Arduino.setups_['sensebox_osem'] = '';
+  Blockly.Arduino.definitions_['SenseBoxID'] = 'const char SENSEBOX_ID [] PROGMEM = "'+box_id+'"';
+  Blockly.Arduino.definitions_['host'] = 'const char server [] PROGMEM ='+ host + '';
+  Blockly.Arduino.definitions_['measurement'] = `typedef struct measurement {
+    const char *sensorId;
+    float value;
+  } measurement;`;
+  Blockly.Arduino.definitions_['buffer'] = 'char buffer[750];';
+  Blockly.Arduino.codeFunctions_['addMeasurement'] = `
+  void addMeasurement(const char *sensorId, float value) {
+  measurements[num_measurements].sensorId = sensorId;
+  measurements[num_measurements].value = value;
+  num_measurements++;
+  }`;
+  Blockly.Arduino.codeFunctions_['writeMeasurementsToClient'] = `
+  void writeMeasurementsToClient() {
+  // iterate throug the measurements array
+  for (uint8_t i = 0; i < num_measurements; i++) {
+    sprintf_P(buffer, PSTR("%s,%9.2f\n"), measurements[i].sensorId,
+              measurements[i].value);
+    // transmit buffer to client
+    client.print(buffer);
+  }
+  // reset num_measurements
+  num_measurements = 0;
+}`;
+Blockly.Arduino.codeFunctions_['submitValues'] = `
+if (client.connected()) {
+  client.stop();
+  delay(10);
+}
+bool connected = false;
+char _server[strlen_P(server)];
+strcpy_P(_server, server);
+for (uint8_t timeout = 2; timeout != 0; timeout--) {
+  Serial.println(F("connecting..."));
+  connected = client.connect(_server, 443);
+  if (connected == true) {
+    // construct the HTTP POST request:
+    sprintf_P(buffer,
+              PSTR("POST /boxes/%s/data HTTP/1.1\\nHost: %s\\nContent-Type: "
+                   "text/csv\\nConnection: close\\nContent-Length: %i\\n\\n"),
+              SENSEBOX_ID, server, num_measurements * 35);
+    // send the HTTP POST request:
+    client.print(buffer);
+    // send measurements
+    writeMeasurementsToClient();
+    // send empty line to end the request
+    client.println();
+    uint16_t timeout = 0;
+    // allow the response to be computed
+    while (timeout <= 5000) {
+      delay(10);
+      timeout = timeout + 10;
+      if (client.available()) {
+        break;
+      }
+    }
+
+    num_measurements = 0;
+    break;
+  }
+}
+}`;
   var code = '';
       code += branch; 
   return code;
 };
-/**
+
+ /**
  * Block send Data to the openSenseMap
  */
 Blockly.Arduino.sensebox_send_to_osem = function(block) {
-  var box_id = this.getFieldValue('BoxID');
+ /* var parent = this.getSurroundParent();
+  //var children = parent.getChildren();
+  console.log(parent);
+  console.log(children);*/
+  var blocks = Ardublockly.workspace.getAllBlocks();
+  console.log(blocks);
+ /* for (var i=0; i < blocks.length; i++ ){
+    var children = blocks[i].getChildren();
+    if (children.length > 0){
+      console.log(blocks[i].getChildren()[0].type);
+      if (blocks[i].getChildren()[0].type === 'sensebox_send_to_osem'){
+        console.log(i);
+      }
+    }
+  }*/
+
+  //console.log(Blockly.Blocks.sensebox_osem_connection.getDescendants());
   var sensor_id = this.getFieldValue('SensorID');
+  var IDnr = 0;
+  var num_sensors = 
+  Blockly.Arduino.definitions_['num_sensors'] = 'static const uint8_t NUM_SENSORS = ' + num_sensors +';'
+  Blockly.Arduino.definitions_['SENSOR_ID'+ IDnr + ''] = 'const char SENSOR_ID'+ IDnr + '[] PROGMEM = "'+sensor_id + '";'
   var code = '';
-      Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC)
-      var sensor_id = this.getFieldValue('SensorID') || '90909';
       var sensor_value = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || '"Keine Eingabe"';
-      code += ' osem.uploadMeasurement(' + sensor_value + ',"' + sensor_id +'");\n';
+      Blockly.Arduino.loops_['submit_values'] = 'submitValues();';
+      code += 'addMeasurement(SENSOR_ID'+ IDnr + ',' + sensor_value + ');\n';
   return code;
 };
 

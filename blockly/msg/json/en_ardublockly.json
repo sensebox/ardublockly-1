@@ -265,6 +265,8 @@
 	"senseBox_gps_time": "time",
 	"senseBox_send_mobile_to_osem": "Send measurement and location to openSenseMap",
 	"senseBox_send_mobile_to_osem_tip":"Send Value and Location to openSenseMap",
+	"senseBox_osem_host": "opensensemap.org",
+	"senseBox_osem_host_workshop" : "workshop.opensensemap.org",
 	"senseBox_interval_timer": "Measuring interval",
 	"senseBox_interval" : "ms",
 	"senseBox_interval_timer_tip": "Setup an Intervall",
