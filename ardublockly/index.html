@@ -387,7 +387,7 @@
       </div>
       <div class="modal-body" id="modal-body">
         <div class="container">
-          <div class="row" id="modal-body-btn">
+          <div class="row center-modal" id="modal-body-btn">
             <p></p>
           </div>
           <div class="modal-footer">
@@ -398,7 +398,42 @@
 
       </div>
     </div>
+  </div>
 
+  <!-- Modal: Weclome Screen -->
+  <div id="welcomeModal" class="modal">
+    <div class="modal-content" style="height: 100%">
+
+      <!-- Standard Login View -->
+      <div class="row center-modal">
+        <form class="col s6 offset-s3" id="loginForm">
+          <h4 class="center">New Project</h4>
+
+          <div class='row'>
+            <div class='input-field col s12'>
+              <input class='validate' type='text' name='project_name' id='welcome_project_name' />
+              <label for='project_name'>Enter your Project name</label>
+              <div class="translatable_LocalStorage">
+                <p>The Project will be automatically saved in your browser local storage</p>
+              </div>
+            </div>
+          </div>
+      </div>
+      <br />
+      <div class='row'>
+        <button type="submit" id='welcome_button_save_new_project' disabled="true"
+          class='col s12 btn btn-large waves-effect sensebox_green modal-close'>Speichern</button>
+      </div>
+      <div class='row'>
+        <button type="load" id='welcome_button_load_project'
+          class='col s12 btn btn-large waves-effect sensebox_green'>Projekt
+          Laden</button>
+      </div>
+      </form>
+      <div class="row" id="modal-body-btn">
+        <p></p>
+      </div>
+    </div>
   </div>
 
   <!-- Modal: New Project -->
@@ -420,16 +455,13 @@
             </div>
           </div>
       </div>
-
       <br />
-
       <div class='row'>
         <button type="submit" id='button_save_new_project' disabled="true"
           class='col s12 btn btn-large waves-effect sensebox_green modal-close'>Speichern</button>
       </div>
       </form>
     </div>
-  </div>
   </div>
 
   <!-- Desktop version of Ardublockly JS, needs to be loaded first. -->

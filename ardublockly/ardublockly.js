@@ -95,7 +95,9 @@ Ardublockly.bindActionFunctions = function () {
   Ardublockly.bindClick_('button_load_xml', Ardublockly.XmlTextareaToBlocks);
   Ardublockly.bindClick_('button_toggle_toolbox', Ardublockly.toogleToolbox);
 
+  Ardublockly.bindClick_('welcome_button_save_new_project', Ardublockly.saveNewProject);
   Ardublockly.bindClick_('button_save_new_project', Ardublockly.saveNewProject);
+  Ardublockly.bindClick_('welcome_button_load_project', Ardublockly.loadProject);
 
   // Settings modal input field listeners only if they can be edited
   var settingsPathInputListeners = function (elId, setValFunc, setHtmlCallback) {
@@ -331,26 +333,45 @@ Ardublockly.saveSketchFile = function () {
     Ardublockly.generateArduino());
 };
 
+
+Ardublockly.openWelcomeModal = function () {
+  $(document).ready(function () {
+    $("#welcomeModal").openModal({
+      dismissible: false
+    })
+  });
+  var input = document.querySelector('#welcome_project_name');
+  input.addEventListener('input', function () {
+    var newProject = document.getElementById('welcome_project_name').value;
+    document.getElementById('sketch_name').value = newProject;
+    console.log('change');
+    var projects = Object.keys(localStorage);
+    for (var i = 0; i < projects.length; i++) {
+      if (newProject === projects[i]) {
+        console.log("wrong name");
+        document.getElementById("welcome_button_save_new_project").setAttribute("disabled", "");
+        document.getElementById("welcome_button_save_new_project").classList.add("disabled");
+        break;
+      }
+      else {
+        console.log("correct name");
+        document.getElementById("welcome_button_save_new_project").removeAttribute("disabled");
+        document.getElementById("welcome_button_save_new_project").classList.remove("disabled");
+      }
+    }
+  })
+};
+
 /**
  * Start a new Project and save to localStorage
  * 
  */
 
 Ardublockly.startNewProjectModal = function () {
-  // var newProject = Blockly.prompt('message', 'opt_defaultInput');
-  //document.getElementById('sketch_name').value = newProject;
-  /* var project = document.getElementById('sketch_name').value;
-   if (project == "Sketch_Name"){
-     Ardublockly.alertMessage(
-       Ardublockly.getLocalStr('deleteProjectHeader'),
-       Ardublockly.getLocalStr('projectNotSaved'),
-       true, function(){
-         $("#projectModalNew").openModal()
-       });
- }
-   else{*/
-  $("#projectModalNew").openModal({
-    dismissible: false
+  $(document).ready(function () {
+    $("#projectModalNew").openModal({
+      dismissible: false
+    })
   });
   var input = document.querySelector('#project_name');
   input.addEventListener('input', function () {
@@ -371,8 +392,10 @@ Ardublockly.startNewProjectModal = function () {
         document.getElementById("button_save_new_project").classList.remove("disabled");
       }
     }
-  });
+  })
 };
+
+
 
 Ardublockly.saveNewProject = function () {
   Ardublockly.workspace.clear();
@@ -392,17 +415,26 @@ Ardublockly.loadProject = function () {
   var projects = Object.keys(localStorage);
   console.log(projects);
   document.getElementById('modal-body-btn').innerHTML = '';
-  generateProjectButtons(projects);
+  Ardublockly.generateProjectButtons(projects);
+};
 
 
-  function generateProjectButtons(projects) {
-    projects.forEach(function (pname, index) {
-      var newElement = document.createElement('div');
-      //newElement.id = index;
-      newElement.innerHTML = '<class="col s2"><div class="card blue-grey darken-1"><div class="card-content white-text"><span class="card-title">' + pname + '</span><button type="button" onclick="Ardublockly.loadLocalStorageBlocks(' + index + ')" class="waves-effect waves-light btn-large project-button modal-close" id="' + pname + '">Open</button> <button type="button" onclick="Ardublockly.deleteFromLocalStorage(' + index + ')" class="waves-effect waves-light btn-large project-button modal-close">Delete</button>';
-      document.getElementById('modal-body-btn').appendChild(newElement);
-    });
-  }
+Ardublockly.generateProjectButtons = function (projects) {
+  console.log("generating buttons");
+  projects.forEach(function (pname, index) {
+    var newElement = document.createElement('div');
+    newElement.innerHTML = `<div class="col l3 m6 s12 card project-card"><div class="card-content white-text"><span class="card-title">` + pname + `</span>
+    <div id="button_project_wrapper">
+    <div id="buttons_offline">
+      <a id="button_project_open" type="button" onclick="Ardublockly.loadLocalStorageBlocks(` + index + `)"
+        class="waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_yellow"><i
+          id="button_ide_left_icon" class="mdi-action-open-in-browser"></i></a>
+          <a id="button_project_delte" type="button" onclick="Ardublockly.deleteFromLocalStorage(` + index + `)"
+        class="waves-effect waves-light waves-circle btn-floating z-depth-1-half mdi-action-delete"><i
+          id="button_ide_left_icon" class="mdi-action-open-in-browser"></i></a>
+    </div>`
+    document.getElementById('modal-body-btn').appendChild(newElement);
+  })
 };
 
 /**
@@ -427,6 +459,8 @@ Ardublockly.loadLocalStorageBlocks = function (index) {
     Ardublockly.sketchNameSet(pname);
   }
   $("#projectModalList").closeModal();
+  $("#projectModalNew").closeModal();
+  $("#welcomeModal").closeModal();
 };
 
 /**
@@ -442,7 +476,6 @@ Ardublockly.deleteFromLocalStorage = function (index) {
     Ardublockly.getLocalStr('deleteProjectText'),
     true, function () {
       localStorage.removeItem(pname);
-      console.log(pname);
       $("#projectModalList").closeModal();
       //Ardublockly.loadProject();
     });

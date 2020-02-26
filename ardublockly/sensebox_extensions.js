@@ -17,14 +17,14 @@ SenseboxExtension.init = function () {
   var urlParams = new URLSearchParams(location.search);
   console.log(urlParams);
   Ardublockly.changeBlocklyArduinoBoard('sensebox_mcu');
-  Ardublockly.startNewProjectModal();
-  if (urlParams.has('gallery')){
+  Ardublockly.openWelcomeModal();
+  if (urlParams.has('gallery')) {
     window.XML = urlParams.get('gallery')
-    Ardublockly.loadServerXmlFile(Ardublockly.options.blocklyPath + '/ardublockly/gallery/'+ window.XML + '.xml');
-  } else{
+    Ardublockly.loadServerXmlFile(Ardublockly.options.blocklyPath + '/ardublockly/gallery/' + window.XML + '.xml');
+  } else {
     Ardublockly.loadServerXmlFile(Ardublockly.options.blocklyPath + '/ardublockly/start.xml');
   }
- 
+
   if (urlParams.has('board')) {
     window.BOARD = urlParams.get('board');
   } else {
@@ -99,8 +99,8 @@ SenseboxExtension.init = function () {
         if (request.readyState == 4) {
           if (request.status == 200) {
             var response = null;
-            try{
-              var download = function(){
+            try {
+              var download = function () {
                 response = JSON.parse(request.response);
                 var filename = document.getElementById('sketch_name').value;
                 window.open(compilerOnline + '/download?id=' + response.data.id + '&board=' + window.BOARD + '&filename=' + filename, '_self');
@@ -111,20 +111,20 @@ SenseboxExtension.init = function () {
 
                 window.setTimeout(Ardublockly.alertMessage(
                   Ardublockly.getLocalStr('sketch_compiled'),
-                  Ardublockly.getLocalStr('copy_paste_mcu')),1000);
+                  Ardublockly.getLocalStr('copy_paste_mcu')), 1000);
               }
               window.setTimeout(download, 1000);
-              
-              $(".nothanks").click(function() {
-              sessionStorage.setItem('no_thanks', document.getElementById("checkbox").checked);
-              console.log(sessionStorage.getItem('no_thanks'));
+
+              $(".nothanks").click(function () {
+                sessionStorage.setItem('no_thanks', document.getElementById("checkbox").checked);
+                console.log(sessionStorage.getItem('no_thanks'));
               });
-              
-              }
-              /*response = JSON.parse(request.response);
-              window.open('https://compiler.sensebox.de/download?id='+response.data.id+'&board='+window.BOARD, '_self');
-              Ardublockly.MaterialToast(Ardublockly.getLocalStr('sketch_compiled'));*/
-             catch (e) {
+
+            }
+            /*response = JSON.parse(request.response);
+            window.open('https://compiler.sensebox.de/download?id='+response.data.id+'&board='+window.BOARD, '_self');
+            Ardublockly.MaterialToast(Ardublockly.getLocalStr('sketch_compiled'));*/
+            catch (e) {
               throw e;
             }
           } else if (request.status == 500) {
