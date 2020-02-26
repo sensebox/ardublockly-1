@@ -104,6 +104,8 @@ Ardublockly.LOCALISED_TEXT = {
   deleteProjectHeader: "Warning",
   deleteProjectText: "Do you want to delete the Project permanently?",
   projectNotSaved : "Your Blocks will be replaced. If you want to keep them please save your project.",
+  doubleProjectHead:"Warning",
+  doubleProjectText: "The project with this name already exists, do you want to overwrite it or use a different name",
   /* Toolbox Categories*/
   catSenseBox_Sensor:"Sensors",
   catSenseBox_Output:"senseBox output",

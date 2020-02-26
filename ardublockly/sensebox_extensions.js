@@ -17,6 +17,7 @@ SenseboxExtension.init = function () {
   var urlParams = new URLSearchParams(location.search);
   console.log(urlParams);
   Ardublockly.changeBlocklyArduinoBoard('sensebox_mcu');
+  Ardublockly.startNewProjectModal();
   if (urlParams.has('gallery')){
     window.XML = urlParams.get('gallery')
     Ardublockly.loadServerXmlFile(Ardublockly.options.blocklyPath + '/ardublockly/gallery/'+ window.XML + '.xml');

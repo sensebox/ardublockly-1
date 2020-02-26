@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,9 +12,10 @@
   <link rel="stylesheet" href="materialize/materialize.css" media="screen,projection">
   <link rel="stylesheet" href="prettify/arduino.css">
   <link rel="stylesheet" href="ardublockly.css" media="screen,projection">
-  <link rel="stylesheet" type="text/css" href="prettify/loading.css"/>
-  <link rel="stylesheet" type="text/css" href="prettify/loading-btn.css"/>
-  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+  <link rel="stylesheet" type="text/css" href="prettify/loading.css" />
+  <link rel="stylesheet" type="text/css" href="prettify/loading-btn.css" />
+  <link rel="stylesheet" type="text/css"
+    href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
 
   <!-- Ardublockly - These three files contain the compress version-->
   <script src="../blockly/blockly_compressed.js"></script>
@@ -68,7 +70,8 @@
   <!-- Horizontal Navigation bar -->
   <nav class="nav-fixed sensebox_green">
     <div class="nav-wrapper container">
-      <a class="show-on-large button-collapse" href="#" data-activates="slide-out" id="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      <a class="show-on-large button-collapse" href="#" data-activates="slide-out" id="button-collapse"><i
+          class="mdi-navigation-menu"></i></a>
       <a id="logo-container" class="brand-logo">
         <span class="app_title translatable_title">senseBox:</span>
         <!-- Sketch name editable text field -->
@@ -79,13 +82,15 @@
       </a>
       <!-- Horizontal Navbar links only shown on large resolutions -->
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#" id="button_new_project"><span class="translatable_project">New Project</span><i class="mdi-file-file-upload left"></i></a></li>
-        <li><a href="#" id="button_save_project_open"><span class="translatable_load_project">Save Project</span><i class="mdi-content-save left"></i></a></li>
-        <li><a href="#" id="button_load_project"><span class="translatable_load_project">Load Project</span><i class="mdi-file-file-download left"></i></a></li>
-       <!-- <li><a href="#" id="button_load"><span class="translatable_open">Open Blocks</span><i class="mdi-file-file-upload left"></i></a></li>
+        <li><a href="#" id="button_new_project"><span class="translatable_project">New Project</span><i
+              class="mdi-file-file-upload left"></i></a></li>
+        <li><a href="#" id="button_load_project"><span class="translatable_load_project">Load Project</span><i
+              class="mdi-file-file-download left"></i></a></li>
+        <!-- <li><a href="#" id="button_load"><span class="translatable_open">Open Blocks</span><i class="mdi-file-file-upload left"></i></a></li>
         <li><a href="#" id="button_save"><span class="translatable_save">Save Blocks</span><i class="mdi-file-file-download left"></i></a></li>
         <li><a href="#" id="button_save_ino"><span class="translatable_save_ino">Save Sketch</span><i class="mdi-file-file-download left"></i></a></li>-->
-        <li><a href="#" id="button_delete"><span class="translatable_deleteAll">Delete All</span><i class="mdi-action-delete left"></i></a></li>
+        <li><a href="#" id="button_delete"><span class="translatable_deleteAll">Delete All</span><i
+              class="mdi-action-delete left"></i></a></li>
       </ul>
     </div>
   </nav>
@@ -95,17 +100,24 @@
     <li class="logo"><img src="img/sidenav_header.png" alt="Ardublockly block image"></li>
     <li class="no-padding">
       <ul>
-        <li id="menu_load"><a href="#"><span class="translatable_open">Import Project</span><i class="mdi-file-file-upload left"></i></a></li>
-        <li id="menu_save"><a href="#"><span class="translatable_save">Export Project</span><i class="mdi-file-file-download left"></i></a></li>
-        <li id="menu_delete"><a href="#"><span class="translatable_deleteAll">Delete All</span><i class="mdi-action-delete left"></i></a></li>
-        <li id="menu_settings"><a href="#"><span class="translatable_settings">Settings</span><i class="mdi-action-settings left"></i></a></li>
-        <li id="menu_bug"><a href="https://sensebox.github.io/books-v2/blockly/" target="_blank"><span class="translatable_documentation">Documentation</span><i class="mdi-action-help left"></i></a></li>
-        <li id="menu_bug"><a href="http://github.com/sensebox/ardublockly-1/issues" target="_blank"><span class="translatable_reportBug">Report Bug</span><i class="mdi-action-bug-report left"></i></a></li>
+        <li id="menu_load"><a href="#"><span class="translatable_open">Import Project</span><i
+              class="mdi-file-file-upload left"></i></a></li>
+        <li id="menu_save"><a href="#"><span class="translatable_save">Export Project</span><i
+              class="mdi-file-file-download left"></i></a></li>
+        <li id="menu_delete"><a href="#"><span class="translatable_deleteAll">Delete All</span><i
+              class="mdi-action-delete left"></i></a></li>
+        <li id="menu_settings"><a href="#"><span class="translatable_settings">Settings</span><i
+              class="mdi-action-settings left"></i></a></li>
+        <li id="menu_bug"><a href="https://sensebox.github.io/books-v2/blockly/" target="_blank"><span
+              class="translatable_documentation">Documentation</span><i class="mdi-action-help left"></i></a></li>
+        <li id="menu_bug"><a href="http://github.com/sensebox/ardublockly-1/issues" target="_blank"><span
+              class="translatable_reportBug">Report Bug</span><i class="mdi-action-bug-report left"></i></a></li>
       </ul>
     <li class="no-padding">
       <ul class="collapsible collapsible-accordion">
         <li>
-          <div class="collapsible-header"><span class="translatable_examples">Examples</span><i class="mdi-navigation-arrow-drop-down"></i></div>
+          <div class="collapsible-header"><span class="translatable_examples">Examples</span><i
+              class="mdi-navigation-arrow-drop-down"></i></div>
           <div class="collapsible-body">
             <ul>
               <li id="menu_example_1"><a href="#!" class="translatable_Blink">Blink</a></li>
@@ -125,54 +137,78 @@
     <div class="row">
       <div class="col s12 m12 l8" style="position:relative">
         <!-- Toolbox visibility button -->
-        <a id="button_toggle_toolbox" class="waves-effect waves-light btn-flat button_toggle_toolbox_off" style="display: none"><i id="button_toggle_toolbox_icon" class="mdi-action-visibility-off"></i></a>
+        <a id="button_toggle_toolbox" class="waves-effect waves-light btn-flat button_toggle_toolbox_off"
+          style="display: none"><i id="button_toggle_toolbox_icon" class="mdi-action-visibility-off"></i></a>
         <!-- Arduino IDE action buttons -->
         <div id="ide_buttons_wrapper">
           <div id="buttons_offline">
-            <a id="button_ide_left" class="waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_yellow"><i id="button_ide_left_icon" class="mdi-action-open-in-browser"></i></a>
-            <a id="button_ide_middle" class="waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_teal"><i id="button_ide_middle_icon" class="mdi-navigation-check"></i></a>
-            <a id="button_ide_large" class="waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_orange"><i id="button_ide_large_icon" class="mdi-av-play-arrow"></i></a>
+            <a id="button_ide_left"
+              class="waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_yellow"><i
+                id="button_ide_left_icon" class="mdi-action-open-in-browser"></i></a>
+            <a id="button_ide_middle"
+              class="waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_teal"><i
+                id="button_ide_middle_icon" class="mdi-navigation-check"></i></a>
+            <a id="button_ide_large"
+              class="waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_orange"><i
+                id="button_ide_large_icon" class="mdi-av-play-arrow"></i></a>
           </div>
 
           <div id="buttons_online" class="hidden">
-            <a id="button_copy_clipboard" class="tooltipped copy-btn waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_blue" data-clipboard-action="copy" data-clipboard-target="#content_arduino" data-position="left" data-delay="750" data-tooltip="In Zwischenablage kopieren"><i id="button_copy_clipboard_icon" class="mdi-action-assignment"></i></a>
-            <a id="button_compile_sketch" class="tooltipped copy-btn waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_orange ld-over-inverse" data-position="left" data-delay="750" data-tooltip="Sketch kompilieren"> <div class="ld ld-ring ld-spin"></div> <i id="button_compile_sketch_icon" class="mdi-action-assignment-turned-in"></i></a>
+            <a id="button_copy_clipboard"
+              class="tooltipped copy-btn waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_blue"
+              data-clipboard-action="copy" data-clipboard-target="#content_arduino" data-position="left"
+              data-delay="750" data-tooltip="In Zwischenablage kopieren"><i id="button_copy_clipboard_icon"
+                class="mdi-action-assignment"></i></a>
+            <a id="button_compile_sketch"
+              class="tooltipped copy-btn waves-effect waves-light waves-circle btn-floating z-depth-1-half arduino_orange ld-over-inverse"
+              data-position="left" data-delay="750" data-tooltip="Sketch kompilieren">
+              <div class="ld ld-ring ld-spin"></div> <i id="button_compile_sketch_icon"
+                class="mdi-action-assignment-turned-in"></i>
+            </a>
           </div>
 
           <div id="button_ide_large_spinner" class="preloader-wrapper active ide_loader" style="display:none">
             <div class="spinner-layer spinner-orange">
               <div class="circle-clipper left">
                 <div class="circle"></div>
-              </div><div class="gap-patch">
+              </div>
+              <div class="gap-patch">
                 <div class="circle"></div>
-              </div><div class="circle-clipper right">
+              </div>
+              <div class="circle-clipper right">
                 <div class="circle"></div>
               </div>
             </div>
             <div class="spinner-layer spinner-dark-teal">
               <div class="circle-clipper left">
                 <div class="circle"></div>
-              </div><div class="gap-patch">
+              </div>
+              <div class="gap-patch">
                 <div class="circle"></div>
-              </div><div class="circle-clipper right">
+              </div>
+              <div class="circle-clipper right">
                 <div class="circle"></div>
               </div>
             </div>
             <div class="spinner-layer spinner-yellow">
               <div class="circle-clipper left">
                 <div class="circle"></div>
-              </div><div class="gap-patch">
+              </div>
+              <div class="gap-patch">
                 <div class="circle"></div>
-              </div><div class="circle-clipper right">
+              </div>
+              <div class="circle-clipper right">
                 <div class="circle"></div>
               </div>
             </div>
             <div class="spinner-layer spinner-light-teal">
               <div class="circle-clipper left">
                 <div class="circle"></div>
-              </div><div class="gap-patch">
+              </div>
+              <div class="gap-patch">
                 <div class="circle"></div>
-              </div><div class="circle-clipper right">
+              </div>
+              <div class="circle-clipper right">
                 <div class="circle"></div>
               </div>
             </div>
@@ -202,8 +238,10 @@
               <span class="translatable_blocksXml">Blocks XML</span>
             </div>
             <div class="collapsible-body" style="position:relative" id="xml_collapsible_body">
-              <a class="btn-floating btn-large waves-effect waves-light arduino_teal z-depth-1-half" id="button_load_xml"><i class="mdi-action-extension"></i></a>
-              <textarea id="content_xml" class="content content_height_transition content_xml_large" wrap="soft"></textarea>
+              <a class="btn-floating btn-large waves-effect waves-light arduino_teal z-depth-1-half"
+                id="button_load_xml"><i class="mdi-action-extension"></i></a>
+              <textarea id="content_xml" class="content content_height_transition content_xml_large"
+                wrap="soft"></textarea>
             </div>
           </li>
         </ul>
@@ -258,8 +296,8 @@
         </select>
       </div>
       <div class="modal_section offline hidden">
-              <label><span>Arduino Board</span>:</label>
-       <select name="settings_board_online" id="boards-online"></select>
+        <label><span>Arduino Board</span>:</label>
+        <select name="settings_board_online" id="boards-online"></select>
       </div>
       <div class="modal_section">
         <label><span class="translatable_language">Language</span>:</label>
@@ -291,14 +329,16 @@
   <div id="gen_alert" class="modal modal_small modal-fixed-footer">
     <div class="modal-content">
       <h5 id="gen_alert_title">Empty Alert</h4>
-      <p><span id="gen_alert_body">Empty alert text</span></p>
+        <p><span id="gen_alert_body">Empty alert text</span></p>
     </div>
     <div class="modal-footer">
-      <a id="gen_alert_ok_link" href="#" class="waves-effect btn-flat modal-close"><span class="translatable_okay">Okay</span></a>
-      <div class="form-check" ></div>
-        <input type="checkbox" class="form-check-input nothanks" id="checkbox" autocomplete="off">
-        <label class="form-check-label" for="checkbox"><span class="translatable_notshow">Do not show again</span></label>
-      <a id="gen_alert_cancel_link" href="#" class="waves-effect btn-flat modal-close"><span class="translatable_cancel">Cancel</span></a>
+      <a id="gen_alert_ok_link" href="#" class="waves-effect btn-flat modal-close"><span
+          class="translatable_okay">Okay</span></a>
+      <div class="form-check"></div>
+      <input type="checkbox" class="form-check-input nothanks" id="checkbox" autocomplete="off">
+      <label class="form-check-label" for="checkbox"><span class="translatable_notshow">Do not show again</span></label>
+      <a id="gen_alert_cancel_link" href="#" class="waves-effect btn-flat modal-close"><span
+          class="translatable_cancel">Cancel</span></a>
     </div>
   </div>
 
@@ -309,8 +349,10 @@
       <p><input id="gen_prompt_input" value="test" /></p>
     </div>
     <div class="modal-footer">
-      <a id="gen_prompt_ok_link" href="#" class="waves-effect btn-flat modal-close"><span class="translatable_okay">Okay</span></a>
-      <a id="gen_prompt_cancel_link" href="#" class="waves-effect btn-flat modal-close"><span class="translatable_cancel">Cancel</span></a>
+      <a id="gen_prompt_ok_link" href="#" class="waves-effect btn-flat modal-close"><span
+          class="translatable_okay">Okay</span></a>
+      <a id="gen_prompt_cancel_link" href="#" class="waves-effect btn-flat modal-close"><span
+          class="translatable_cancel">Cancel</span></a>
     </div>
   </div>
 
@@ -321,91 +363,74 @@
         <h4 id="gen_alert_title"><span class="translatable_noServerTitle">Ardublockly app not running</span></h4>
       </div>
       <div class="translatable_noServerBody">
-        <p>For all the Ardublockly features to be enabled, the Ardublockly desktop application must be running locally on your computer.</p>
-        <p>If you are using an online version you will not be able to configure the settings nor load the blocks code into an Arduino.</p>
-        <p>Installation instruction can be found in the <a href="https://github.com/sensebox/ardublockly">Ardublockly repository</a>.</p>
+        <p>For all the Ardublockly features to be enabled, the Ardublockly desktop application must be running locally
+          on your computer.</p>
+        <p>If you are using an online version you will not be able to configure the settings nor load the blocks code
+          into an Arduino.</p>
+        <p>Installation instruction can be found in the <a href="https://github.com/sensebox/ardublockly">Ardublockly
+            repository</a>.</p>
         <p>If you have Ardublockly already installed, make sure the application is running correctly.</p>
       </div>
     </div>
     <div class="modal-footer">
-      <a id="gen_alert_ok_link" href="#" class="waves-effect btn-flat modal-close"><span class="translatable_okay">Okay</span></a>
+      <a id="gen_alert_ok_link" href="#" class="waves-effect btn-flat modal-close"><span
+          class="translatable_okay">Okay</span></a>
     </div>
   </div>
 
   <!-- Modal for the Project List -->
   <div class="modal" id="projectModalList">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="gen_alert_title"><span class="translatable_titleProjects">Saved Projects</span></h4>
-          </div>
-          <div class="modal-body" id="modal-body">
-              <div class="container">
-                  <div class="row" id="modal-body-btn"> 
-                    <p></p>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="gen_alert_title"><span class="translatable_titleProjects">Saved Projects</span></h4>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <div class="container">
+          <div class="row" id="modal-body-btn">
+            <p></p>
           </div>
           <div class="modal-footer">
-              <a id="gen_alert_ok_link" href="#" class="waves-effect btn-flat modal-close"><span class="translatable_okay">Okay</span></a>
+            <a id="gen_alert_ok_link" href="#" class="waves-effect btn-flat modal-close"><span
+                class="translatable_okay">Okay</span></a>
           </div>
         </div>
-        
+
       </div>
     </div>
-    
+
   </div>
 
- <!-- Modal: New Project -->
- <div id="projectModalNew" class="modal">
-  <div class="modal-content" style="height: 100%">
-
-    <!-- Standard Login View -->
-    <div class="row center-modal">
-      <form class="col s6 offset-s3" id="loginForm">
-        <h4 class="center">New Project</h4>
-
-        <div class='row'>
-          <div class='input-field col s12'>
-            <input class='validate' type='text' name='project_name' id='project_name' />
-            <label for='project_name'>Enter your Project name</label>
-          </div>
-        </div>
-
-        <br />
-
-        <div class='row'>
-          <button type="submit" id='button_save_new_project' class='col s12 btn btn-large waves-effect sensebox_green modal-close'>Speichern</button>
-        </div>
-      </form>
-    </div>
-  </div>
- </div>
-
-  <!-- Modal: Save Project -->
-  <div id="projectModalSave" class="modal">
+  <!-- Modal: New Project -->
+  <div id="projectModalNew" class="modal">
     <div class="modal-content" style="height: 100%">
-  
+
       <!-- Standard Login View -->
       <div class="row center-modal">
         <form class="col s6 offset-s3" id="loginForm">
-          <h4 class="center">Save Project</h4>
-  
+          <h4 class="center">New Project</h4>
+
           <div class='row'>
             <div class='input-field col s12'>
-              <input class='validate' type='text' name='project_name' id='project_name_save' />
-              <label for='project_name_save'>Enter your Project name</label>
+              <input class='validate' type='text' name='project_name' id='project_name' />
+              <label for='project_name'>Enter your Project name</label>
+              <div class="translatable_LocalStorage">
+                <p>The Project will be automatically saved in your browser local storage</p>
+              </div>
             </div>
           </div>
-  
-          <br />
-  
-          <div class='row'>
-            <button type="submit" id='button_save_project' class='col s12 btn btn-large waves-effect sensebox_green modal-close'>Speichern</button>
-          </div>
-        </form>
       </div>
-    </div>
-   </div>
 
+      <br />
+
+      <div class='row'>
+        <button type="submit" id='button_save_new_project' disabled="true"
+          class='col s12 btn btn-large waves-effect sensebox_green modal-close'>Speichern</button>
+      </div>
+      </form>
+    </div>
+  </div>
+  </div>
 
   <!-- Desktop version of Ardublockly JS, needs to be loaded first. -->
   <script src="ardublockly_desktop.js"></script>
@@ -430,23 +455,24 @@
   <!-- Cookie consent -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
   <script>
-    window.addEventListener("load", function(){
-    window.cookieconsent.initialise({
-      "palette": {
-        "popup": {
-          "background": "#4eaf47"
+    window.addEventListener("load", function () {
+      window.cookieconsent.initialise({
+        "palette": {
+          "popup": {
+            "background": "#4eaf47"
+          },
+          "button": {
+            "background": "transparent",
+            "border": "#000000",
+            "text": "#000000"
+          }
         },
-        "button": {
-          "background": "transparent",
-          "border": "#000000",
-          "text": "#000000"
+        "content": {
+          "href": "https://sensebox.de/de/privacy"
         }
-      },
-      "content": {
-        "href": "https://sensebox.de/de/privacy"
-      }
-    })});
-    </script>
+      })
+    });
+  </script>
   <script src="sensebox_extensions.js"></script>
   <script>
     window.addEventListener('load', function load(event) {
@@ -456,4 +482,5 @@
     });
   </script>
 </body>
+
 </html>
