@@ -850,7 +850,16 @@ ul.side-nav li ul li ul li {
 /* Why the hell does button large has a predefined background colour !! */
 .btn-large:hover {
   background-color: inherit;
+  color: black;
+  border: 2px solid #4EAF47;
 }
+
+.btn:hover {
+  background-color: inherit;
+  color: black;
+  border: 2px solid #4EAF47;
+}
+
 
 /* Circle clipper (loading animation) thickness */
 .circle-clipper .circle {
