@@ -98,6 +98,7 @@ Ardublockly.bindActionFunctions = function () {
   Ardublockly.bindClick_('welcome_button_save_new_project', Ardublockly.saveNewProject);
   Ardublockly.bindClick_('button_save_new_project', Ardublockly.saveNewProject);
   Ardublockly.bindClick_('welcome_button_load_project', Ardublockly.loadProject);
+  Ardublockly.bindClick_('welcome_button_dont_save_project', Ardublockly.dontSaveProject);
 
   // Settings modal input field listeners only if they can be edited
   var settingsPathInputListeners = function (elId, setValFunc, setHtmlCallback) {
@@ -335,6 +336,7 @@ Ardublockly.saveSketchFile = function () {
 
 
 Ardublockly.openWelcomeModal = function () {
+  localStorage.setItem(document.getElementById('sketch_name').value, null);
   $(document).ready(function () {
     $("#welcomeModal").openModal({
       dismissible: false
@@ -344,17 +346,15 @@ Ardublockly.openWelcomeModal = function () {
   input.addEventListener('input', function () {
     var newProject = document.getElementById('welcome_project_name').value;
     document.getElementById('sketch_name').value = newProject;
-    console.log('change');
     var projects = Object.keys(localStorage);
     for (var i = 0; i < projects.length; i++) {
       if (newProject === projects[i]) {
-        console.log("wrong name");
+        Ardublockly.shortMessage(Ardublockly.getLocalStr('ProjectAlreadyExist'));
         document.getElementById("welcome_button_save_new_project").setAttribute("disabled", "");
         document.getElementById("welcome_button_save_new_project").classList.add("disabled");
         break;
       }
       else {
-        console.log("correct name");
         document.getElementById("welcome_button_save_new_project").removeAttribute("disabled");
         document.getElementById("welcome_button_save_new_project").classList.remove("disabled");
       }
@@ -381,13 +381,12 @@ Ardublockly.startNewProjectModal = function () {
     var projects = Object.keys(localStorage);
     for (var i = 0; i < projects.length; i++) {
       if (newProject === projects[i]) {
-        console.log("wrong name");
+        Ardublockly.shortMessage(Ardublockly.getLocalStr('ProjectAlreadyExist'));
         document.getElementById("button_save_new_project").setAttribute("disabled", "");
         document.getElementById("button_save_new_project").classList.add("disabled");
         break;
       }
       else {
-        console.log("correct name");
         document.getElementById("button_save_new_project").removeAttribute("disabled");
         document.getElementById("button_save_new_project").classList.remove("disabled");
       }
@@ -395,9 +394,14 @@ Ardublockly.startNewProjectModal = function () {
   })
 };
 
+Ardublockly.dontSaveProject = function () {
+  sessionStorage.setItem('autoSave', 'false');
+};
+
 
 
 Ardublockly.saveNewProject = function () {
+  sessionStorage.setItem('autoSave', 'true');
   Ardublockly.workspace.clear();
   Ardublockly.loadServerXmlFile(Ardublockly.options.blocklyPath + '/ardublockly/start.xml');
 };

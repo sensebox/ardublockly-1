@@ -82,9 +82,9 @@
       </a>
       <!-- Horizontal Navbar links only shown on large resolutions -->
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#" id="button_new_project"><span class="translatable_project">New Project</span><i
+        <li><a href="#" id="button_new_project"><span class="translatable_NewProject">New Project</span><i
               class="mdi-file-file-upload left"></i></a></li>
-        <li><a href="#" id="button_load_project"><span class="translatable_load_project">Load Project</span><i
+        <li><a href="#" id="button_load_project"><span class="translatable_LoadButton">Load Project</span><i
               class="mdi-file-file-download left"></i></a></li>
         <!-- <li><a href="#" id="button_load"><span class="translatable_open">Open Blocks</span><i class="mdi-file-file-upload left"></i></a></li>
         <li><a href="#" id="button_save"><span class="translatable_save">Save Blocks</span><i class="mdi-file-file-download left"></i></a></li>
@@ -383,7 +383,7 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="gen_alert_title"><span class="translatable_titleProjects">Saved Projects</span></h4>
+        <h4 class="gen_alert_title"><span class="translatable_SavedProjects">Saved Projects</span></h4>
       </div>
       <div class="modal-body" id="modal-body">
         <div class="container">
@@ -407,12 +407,12 @@
       <!-- Standard Login View -->
       <div class="row center-modal">
         <form class="col s6 offset-s3" id="loginForm">
-          <h4 class="center">New Project</h4>
+          <h4 class="center"><span class="translatable_NewProject">New Project</span></h4>
 
           <div class='row'>
             <div class='input-field col s12'>
               <input class='validate' type='text' name='project_name' id='welcome_project_name' />
-              <label for='project_name'>Enter your Project name</label>
+              <label for='project_name'><span class="translatable_ProjectName">Enter your Project Name</span></label>
               <div class="translatable_LocalStorage">
                 <p>The Project will be automatically saved in your browser local storage</p>
               </div>
@@ -422,16 +422,18 @@
       <br />
       <div class='row'>
         <button type="submit" id='welcome_button_save_new_project' disabled="true"
-          class='col s12 btn btn-large waves-effect sensebox_green modal-close'>Speichern</button>
+          class='col s12 btn btn-large waves-effect sensebox_green modal-close'><span
+            class="translatable_SaveButton">Save</span></button>
       </div>
       <div class='row'>
-        <button type="submit" id='welcome_button_dont_save_project' disabled="false"
-          class='col s12 btn btn-large waves-effect sensebox_green modal-close'>Ohne Speichern fortfahren</button>
+        <button type="submit" id='welcome_button_dont_save_project'
+          class='col s12 btn btn-large waves-effect sensebox_green modal-close'><span
+            class="translatable_DontSaveButton">Continue without saving</span></button>
       </div>
       <div class='row'>
         <button type="load" id='welcome_button_load_project'
-          class='col s12 btn btn-large waves-effect sensebox_green'>Projekt
-          Laden</button>
+          class='col s12 btn btn-large waves-effect sensebox_green'><span class="translatable_LoadButton">Load
+            Project</span></button>
       </div>
       </form>
       <div class="row" id="modal-body-btn">
@@ -447,7 +449,7 @@
       <!-- Standard Login View -->
       <div class="row center-modal">
         <form class="col s6 offset-s3" id="loginForm">
-          <h4 class="center">New Project</h4>
+          <h4 class="center"><span class="translatable_NewProject">New Project</span></h4>
 
           <div class='row'>
             <div class='input-field col s12'>
