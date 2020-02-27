@@ -110,9 +110,9 @@ Ardublockly.LOCALISED_TEXT = {
   SavedProjects: "Gespeicherte Projekte",
   ProjectAlreadyExist: "Dieser Projektname existiert bereits",
   ProjectName: "Gib deinen Projektnamen",
-  LocalStorage: "Das Projekt wird automatisch in deine Localen Browser gespeichert",
+  LocalStorage: "Das Projekt wird in deinem lokalen Browserspeicher gespeichert",
   SaveButton: "Speichern",
-  DontSaveButton: "Fortfahren ohne zu speichern",
+  DontSaveButton: "Ohne Speichern fortfahren",
   LoadButton: "Projekt Laden",
   /* Toolbox Categories*/
   catSenseBox_Sensor: "Sensoren",
