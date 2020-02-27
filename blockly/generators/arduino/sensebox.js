@@ -228,14 +228,16 @@ Blockly.Arduino.sensebox_osem_connection = function (block) {
   var host = this.getFieldValue('host');
   var branch = Blockly.Arduino.statementToCode(block, 'DO');
   Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
-  Blockly.Arduino.definitions_['SenseBoxID'] = 'const char SENSEBOX_ID [] PROGMEM = "' + box_id + '"';
-  Blockly.Arduino.definitions_['host'] = 'const char server [] PROGMEM =' + host + '';
+  Blockly.Arduino.definitions_['SenseBoxID'] = 'const char SENSEBOX_ID [] PROGMEM = "' + box_id + '";';
+  Blockly.Arduino.definitions_['host'] = 'const char server [] PROGMEM =' + host + ';';
   Blockly.Arduino.definitions_['WiFiSSLClient'] = 'WiFiSSLClient client;';
   Blockly.Arduino.definitions_['measurement'] = `typedef struct measurement {
     const char *sensorId;
     float value;
   } measurement;`;
   Blockly.Arduino.definitions_['buffer'] = 'char buffer[750];';
+  Blockly.Arduino.definitions_['num_measurement'] = `measurement measurements[NUM_SENSORS];
+  uint8_t num_measurements = 0;`;
   Blockly.Arduino.codeFunctions_['addMeasurement'] = `
   void addMeasurement(const char *sensorId, float value) {
   measurements[num_measurements].sensorId = sensorId;
@@ -246,7 +248,7 @@ Blockly.Arduino.sensebox_osem_connection = function (block) {
   void writeMeasurementsToClient() {
   // iterate throug the measurements array
   for (uint8_t i = 0; i < num_measurements; i++) {
-    sprintf_P(buffer, PSTR("%s,%9.2f\n"), measurements[i].sensorId,
+    sprintf_P(buffer, PSTR("%s,%9.2f\\n"), measurements[i].sensorId,
               measurements[i].value);
     // transmit buffer to client
     client.print(buffer);
@@ -255,6 +257,7 @@ Blockly.Arduino.sensebox_osem_connection = function (block) {
   num_measurements = 0;
 }`;
   Blockly.Arduino.codeFunctions_['submitValues'] = `
+  void submitValues() {
 if (client.connected()) {
   client.stop();
   delay(10);
@@ -310,7 +313,6 @@ Blockly.Arduino.sensebox_send_to_osem = function (block) {
   }
   var num_sensors = count;
   Blockly.Arduino.definitions_['num_sensors'] = 'static const uint8_t NUM_SENSORS = ' + num_sensors + ';'
-  Blockly.Arduino.loops_['submit_values'] = 'submitValues();';
   for (var i = 0; i < blocks.length; i++) {
     var code = '';
     if (blocks[i].type === 'sensebox_send_to_osem') {
@@ -318,13 +320,13 @@ Blockly.Arduino.sensebox_send_to_osem = function (block) {
       var sensor_value = Blockly.Arduino.valueToCode(blocks[i], 'Value', Blockly.Arduino.ORDER_ATOMIC) || '"Keine Eingabe"';
       Blockly.Arduino.definitions_['SENSOR_ID' + i + ''] = 'const char SENSOR_ID' + i + '[] PROGMEM = "' + sensor_id + '";'
       Blockly.Arduino.loops_['add_values' + i + ''] = 'addMeasurement(SENSOR_ID' + i + ',' + sensor_value + ');\n';
+      Blockly.Arduino.loops_['submit_values'] = 'submitValues();';
     }
   }
   return code;
 };
 
 Blockly.Arduino.sensebox_send_mobile_to_osem = function (block) {
-  var box_id = this.getFieldValue('BoxID');
   var sensor_id = this.getFieldValue('SensorID') || '90909';
   var sensor_value = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || '"Keine Eingabe"';
   var lat = Blockly.Arduino.valueToCode(this, 'lat', Blockly.Arduino.ORDER_ATOMIC) || '0'
