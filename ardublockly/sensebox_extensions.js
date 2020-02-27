@@ -10,6 +10,7 @@ SenseboxExtension.SUPPORTED_BOARDS = {
 
 /** Initialize function for senseBox extensions, to be called on page load. */
 SenseboxExtension.init = function () {
+  sessionStorage.setItem('autoSave', 'false');
   sessionStorage.setItem('no_thanks', 'false');
   var location = window.location;
   const compilerOnline = 'https://compiler.sensebox.de';

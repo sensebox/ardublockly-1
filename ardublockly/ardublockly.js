@@ -336,7 +336,6 @@ Ardublockly.saveSketchFile = function () {
 
 
 Ardublockly.openWelcomeModal = function () {
-  localStorage.setItem(document.getElementById('sketch_name').value, null);
   $(document).ready(function () {
     $("#welcomeModal").openModal({
       dismissible: false
@@ -347,6 +346,11 @@ Ardublockly.openWelcomeModal = function () {
     var newProject = document.getElementById('welcome_project_name').value;
     document.getElementById('sketch_name').value = newProject;
     var projects = Object.keys(localStorage);
+    console.log(projects.length);
+    if (projects.length === 0) {
+      document.getElementById("welcome_button_save_new_project").removeAttribute("disabled");
+      document.getElementById("welcome_button_save_new_project").classList.remove("disabled");
+    }
     for (var i = 0; i < projects.length; i++) {
       if (newProject === projects[i]) {
         Ardublockly.shortMessage(Ardublockly.getLocalStr('ProjectAlreadyExist'));
@@ -379,6 +383,10 @@ Ardublockly.startNewProjectModal = function () {
     document.getElementById('sketch_name').value = newProject;
     console.log('change');
     var projects = Object.keys(localStorage);
+    if (projects.length === 0) {
+      document.getElementById("button_save_new_project").removeAttribute("disabled");
+      document.getElementById("button_save_new_project").classList.remove("disabled");
+    }
     for (var i = 0; i < projects.length; i++) {
       if (newProject === projects[i]) {
         Ardublockly.shortMessage(Ardublockly.getLocalStr('ProjectAlreadyExist'));
