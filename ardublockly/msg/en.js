@@ -114,6 +114,7 @@ Ardublockly.LOCALISED_TEXT = {
   SaveButton: "Save",
   DontSaveButton: "Continue without saving",
   LoadButton: "Load Project",
+  tooltip_Autosave: "Save Project to activate autosave",
   /* Toolbox Categories*/
   catSenseBox_Sensor: "Sensors",
   catSenseBox_Output: "senseBox output",

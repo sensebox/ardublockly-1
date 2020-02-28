@@ -76,6 +76,7 @@ SenseboxExtension.init = function () {
 
   document.getElementById("button_copy_clipboard").setAttribute("data-tooltip", Ardublockly.getLocalStr('save_to_clipboard'));
   document.getElementById("button_compile_sketch").setAttribute("data-tooltip", Ardublockly.getLocalStr('compile_sketch'));
+  document.getElementById("switch_tooltip").setAttribute("data-tooltip", Ardublockly.getLocalStr('tooltip_Autosave'));
 
   var compile = document.getElementById('button_compile_sketch');
   var compiling = false;

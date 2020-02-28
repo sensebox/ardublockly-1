@@ -131,6 +131,20 @@
     </li>
     <li class="no-padding side-menu-end">&nbsp;</li>
   </ul>
+  <!-- Switch -->
+  <div class="container">
+    <div style="display: flex; justify-content: flex-end">
+      <div class="switch tooltipped" id="switch_tooltip" data-position="left" data-tooltip="">
+        <label class="autoSaveSwitch">
+          <span class="translatable_autoSave">Autosave</span>
+          <input id="saveSwitch" type="checkbox" disabled="disabled">
+          <span class="lever"></span>
+          <span class="translatable_on">On</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
 
   <!-- Content -->
   <div class="container">
@@ -464,6 +478,36 @@
       <br />
       <div class='row'>
         <button type="submit" id='button_save_new_project' disabled="true"
+          class='col s12 btn btn-large waves-effect sensebox_green modal-close'>Speichern</button>
+      </div>
+      </form>
+      <a id="gen_prompt_cancel_link" href="#" class="waves-effect sensebox_green btn modal-close"><span
+          class="translatable_cancel">Cancel</span></a>
+    </div>
+  </div>
+
+  <!-- Modal: Save Project -->
+  <div id="projectSaveCurrent" class="modal">
+    <div class="modal-content" style="height: 100%">
+
+      <!-- Standard Login View -->
+      <div class="row center-modal">
+        <form class="col s6 offset-s3" id="loginForm">
+          <h4 class="center"><span class="translatable_SaveProject">Save Project</span></h4>
+
+          <div class='row'>
+            <div class='input-field col s12'>
+              <input class='validate' type='text' name='project_name_current' id='project_name_current' />
+              <label for='project_name'>Enter your Project name</label>
+              <div class="translatable_LocalStorage">
+                <p>The Project will be automatically saved in your browser local storage</p>
+              </div>
+            </div>
+          </div>
+      </div>
+      <br />
+      <div class='row'>
+        <button type="submit" id='button_save_current_project' disabled="true"
           class='col s12 btn btn-large waves-effect sensebox_green modal-close'>Speichern</button>
       </div>
       </form>

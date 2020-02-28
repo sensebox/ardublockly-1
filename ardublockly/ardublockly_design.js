@@ -44,6 +44,28 @@ Ardublockly.materializeJsInit = function () {
   $('select').material_select();
 };
 
+Ardublockly.showSaveButton = function () {
+  var saveProjectButton = document.createElement('li');
+  saveProjectButton.innerHTML = `<a href="#" id="button_save_project"><span class="translatable_LoadButton">Save Project</span><i
+  class="mdi-content-save left"></i></a>`;
+  document.getElementById('nav-mobile').appendChild(saveProjectButton);
+  Ardublockly.bindClick_('button_save_project', Ardublockly.saveCurrentProjectModal);
+};
+
+Ardublockly.hideSaveButton = function () {
+  var d_nested = document.getElementById("button_save_project");
+  d_nested.remove();
+};
+
+Ardublockly.setAutoSaveSwitch = function () {
+  var autosave = sessionStorage.getItem('autoSave');
+  if (autosave === 'true') {
+    document.getElementById("saveSwitch").setAttribute("checked", "checked");
+  } else {
+    document.getElementById("saveSwitch").removeAttribute("checked");
+  }
+};
+
 
 /** Binds the event listeners relevant to the page design. */
 Ardublockly.bindDesignEventListeners = function () {
