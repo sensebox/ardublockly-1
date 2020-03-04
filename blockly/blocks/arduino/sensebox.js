@@ -147,7 +147,6 @@ Blockly.Blocks['sensebox_sensor_bme680'] = {
     var blocks = Blockly.mainWorkspace.getAllBlocks();
     var bme680_present = false;
     for (var i = 0; i < blocks.length; i++) {
-      console.log(blocks[i]);
       if (blocks[i].type == 'sensebox_sensor_bme680') {
         var dropdown = blocks[i].getFieldValue('NAME');
         if (dropdown == 'gas_resistance') {
@@ -225,7 +224,6 @@ Blockly.Blocks['sensebox_sensor_bme680'] = {
     var extraFieldExist = this.getFieldValue('referencePressure');
     var input = this.getFieldValue('NAME');
     if (input == 'readAltitude' && extraFieldExist == null) {
-      console.log('update shape');
       this.appendDummyInput('extraField')
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.Msg.senseBox_pressure_referencePressure)
@@ -292,10 +290,8 @@ Blockly.Blocks['sensebox_sensor_pressure'] = {
    */
   updateShape_: function () {
     var extraFieldExist = this.getFieldValue('referencePressure');
-    console.log(extraFieldExist);
     var input = this.getFieldValue('NAME');
     if (input == 'Altitude' && extraFieldExist == null) {
-      console.log('update shape');
       this.appendDummyInput('extraField')
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.Msg.senseBox_pressure_referencePressure)
@@ -316,80 +312,6 @@ Blockly.Blocks['sensebox_sensor_pressure'] = {
     }
   },
 };
-
-/** 
-Blockly.Blocks['sensebox_sensor_bme680'] = {
-  init: function() {
-    var dropdownOptions = [[Blockly.Msg.senseBox_temp,"Temperature"], [Blockly.Msg.senseBox_hum,"Humidity"],[Blockly.Msg.senseBox_pressure,"Pressure"], [Blockly.Msg.senseBox_alt,"Altitude"], [Blockly.Msg.senseBox_gas,"Airquality"]];
-    var dropdown = new Blockly.FieldDropdown(dropdownOptions, function(option) {
-      var input = (option == 'Temperature') || (option ==  'Humidity') || (option == 'Pressure') || (option == 'Altitude') || (option == 'Airquality');
-      this.sourceBlock_.updateShape_(input);
-      });
-    this.appendDummyInput()
-        .appendField(Blockly.Msg.senseBox_pressure_sensor);
-       this.setOutput(true, "Number");
-    this.appendDummyInput()
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.Msg.senseBox_value)
-        .appendField(dropdown, "NAME");
-        /*.appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_pressure,"Pressure"], [Blockly.Msg.senseBox_temp,"Temperature"], [Blockly.Msg.senseBox_gps_alt,"Altitude"]]), function(option) {
-          var input = (option == 'Pressure') || (option ==  'Temperature') || (option == 'Altitude');
-          this.sourceBlock_.updateShape_(input);
-          }, "NAME");
-    this.setColour(Blockly.Blocks.sensebox.HUE);
-    this.setOutput(true, Blockly.Types.NUMBER.output);
-    this.setTooltip(Blockly.Msg.senseBox_pressure_tip);
-    this.setHelpUrl('https://edu.books.sensebox.de/de/projekte/diy_umweltstation/luftdruck.html');
-  },
-  /**
-   * Parse XML to restore the number of pins available.
-   * @param {!Element} xmlElement XML storage element.
-   * @this Blockly.Block
-   
-  domToMutation: function(xmlElement) {
-    var input = (xmlElement.getAttribute('port'));
-    
-  },
-  /**
-   * Create XML to represent number of pins selection.
-   * @return {!Element} XML storage element.
-   * @this Blockly.Block
-   *
-  mutationToDom: function() {
-    var container = document.createElement('mutation');
-    var input = this.getFieldValue('NAME');
-    this.updateShape_(input);
-    container.setAttribute('NAME', input);
-    return container;
-  },
-  /**
-   * Modify this block to have the correct number of pins available.
-   * @param {boolean}
-   * @private
-   * @this Blockly.Block
-   *
-  updateShape_: function() {
-    var extraFieldExist = this.getFieldValue('referencePressure');
-    console.log(extraFieldExist);
-    var input = this.getFieldValue('NAME');
-    if (input == 'Altitude' && extraFieldExist == null){
-      console.log('update shape');
-      this.appendDummyInput('extraField')
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.Msg.senseBox_pressure_referencePressure)
-        .appendField(new Blockly.FieldTextInput("1013"), "referencePressure")
-        .appendField(Blockly.Msg.senseBox_pressure_referencePressure_dim);
-    }
-  
-    if ((input == 'Pressure' || input == 'Temperature') && extraFieldExist != null){
-        this.removeInput('extraField');
-    }  
-   },
-  getBlockType: function() {
-    return Blockly.Types.LARGE_NUMBER;
-  },
-};
-*/
 
 Blockly.Blocks['sensebox_sensor_ultrasonic_ranger'] = {
   init: function () {
@@ -576,6 +498,10 @@ Blockly.Blocks['sensebox_osem_connection'] = {
       .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_osem_host, '"ingress.opensensemap.org"'], [Blockly.Msg.senseBox_osem_host_workshop, '"ingress.workshop.opensensemap.org"']]), "host");
     this.appendDummyInput()
       .setAlign(Blockly.ALIGN_LEFT)
+      .appendField("Type")
+      .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_osem_stationary, 'Stationary'], [Blockly.Msg.senseBox_osem_mobile, 'Mobile']]), "type");
+    this.appendDummyInput()
+      .setAlign(Blockly.ALIGN_LEFT)
       .appendField("senseBox ID")
       .appendField(new Blockly.FieldTextInput("senseBox ID"), "BoxID");
     this.appendStatementInput('DO')
@@ -589,7 +515,41 @@ Blockly.Blocks['sensebox_osem_connection'] = {
     var blocks = block.getDescendants()
     Blockly.Blocks.sensebox.getDescendants = blocks;
 
-  }
+  },
+  mutationToDom: function () {
+    var container = document.createElement('mutation');
+    var input = this.getFieldValue('type');
+    this.updateShape_(input);
+    container.setAttribute('type', input);
+    return container;
+  },
+  /**
+   * Modify this block to have the correct number of pins available.
+   * @param {boolean}
+   * @private
+   * @this Blockly.Block
+   */
+  updateShape_: function () {
+    var extraFieldExist = this.getFieldValue('gps');
+    var input = this.getFieldValue('type');
+    if ((input == 'Mobile') && extraFieldExist == null) {
+      this.appendValueInput('lat', 'Number')
+        .appendField(Blockly.Msg.senseBox_gps_lat, 'gps');
+      this.appendValueInput('lng', 'Number')
+        .appendField(Blockly.Msg.senseBox_gps_lng);
+      this.appendValueInput('altitude', 'Number')
+        .appendField(Blockly.Msg.senseBox_gps_alt);
+      this.appendValueInput('timeStamp', 'Number')
+        .appendField(Blockly.Msg.senseBox_gps_timeStamp);
+    }
+
+    if (input == 'Stationary' && extraFieldExist != null) {
+      this.removeInput('lat');
+      this.removeInput('lng');
+      this.removeInput('altitude');
+      this.removeInput('timeStamp');
+    }
+  },
 };
 Blockly.Blocks['sensebox_send_to_osem'] = {
   init: function () {
@@ -641,6 +601,8 @@ Blockly.Blocks['sensebox_send_mobile_to_osem'] = {
     this.appendValueInput('lat', 'Number')
       .appendField(Blockly.Msg.senseBox_gps_lat);
     this.appendValueInput('lng', 'Number')
+      .appendField(Blockly.Msg.senseBox_gps_lng);
+    this.appendValueInput('timeStamp', 'Number')
       .appendField(Blockly.Msg.senseBox_gps_lng);
     this.appendValueInput('Value')
       .setCheck(null)
@@ -1209,7 +1171,7 @@ Blockly.Blocks['sensebox_gps_getValues'] = {
     this.appendDummyInput()
       .setAlign(Blockly.ALIGN_RIGHT)
       .appendField(Blockly.Msg.senseBox_value)
-      .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_gps_lat, "Latitude"], [Blockly.Msg.senseBox_gps_lng, "Longitude"], [Blockly.Msg.senseBox_gps_alt, "Altitude"], [Blockly.Msg.senseBox_gps_speed, "Speed"], [Blockly.Msg.senseBox_gps_date, "Date"], [Blockly.Msg.senseBox_gps_time, "Time"]]), "Values");
+      .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_gps_lat, "latitude"], [Blockly.Msg.senseBox_gps_lng, "longitude"], [Blockly.Msg.senseBox_gps_alt, "height"], [Blockly.Msg.senseBox_gps_timeStamp, "tsBuffer"], [Blockly.Msg.senseBox_gps_speed, "Speed"], [Blockly.Msg.senseBox_gps_date, "Date"], [Blockly.Msg.senseBox_gps_time, "Time"]]), "Values");
     this.setOutput(true, Blockly.Types.NUMBER.output);
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.setTooltip(Blockly.Msg.senseBox_gps_getValues_tip);
