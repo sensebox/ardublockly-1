@@ -27,7 +27,7 @@ Ardublockly.TOOLBOX_XML =
     '      </block>' +
     '      <block type="sensebox_sensor_sound"></block>' +
     '      <block type="sensebox_sensor_soil"></block>' +
-    '      <block type="sensebox_sensor_truebner_stm50"></block>'   +
+    '      <block type="sensebox_sensor_truebner_smt50"></block>' +
     '      <block type="sensebox_sensor_watertemperature"></block>' +
     '      <block type="sensebox_foto"></block>' +
     '      <block type="sensebox_button"></block>' +
@@ -176,7 +176,6 @@ Ardublockly.TOOLBOX_XML =
     '      <category id="catSenseBox_osem" name="openSenseMap" colour="120">' +
     '      <block type="sensebox_osem_connection"></block>' +
     '      <block type="sensebox_send_to_osem"></block>' +
-    '      <block type="sensebox_send_mobile_to_osem"></block>' +
     '       </category>' +
     '       <sep></sep>' +
     '      <category id="catSenseBoxOutput_Webserver" name="  webserver" colour="120">' +
