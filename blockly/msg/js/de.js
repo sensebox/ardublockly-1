@@ -716,6 +716,51 @@ Blockly.Msg.senseBox_bme680_tip = "Gibt Messwerte des BME680 zurück";
 Blockly.Msg.senseBox_bme680_warning = "Achtung. Gas (VOC) kann nicht gleichzeitig mit anderen Parametern gemessen werden"
 Blockly.Msg.senseBox_gas = "Gas (VOC)";
 Blockly.Msg.sensebox_soil_smt50 = "Bodenfeuchte/-temperatur (SMT50)";
+// LoRa
+Blockly.Msg.senseBox_LoRa_connect = "Zu TTN senden";
+Blockly.Msg.senseBox_LoRa_device_id = "Device EUI (lsb)";
+Blockly.Msg.senseBox_LoRa_app_id = "Application EUI (lsb)";
+Blockly.Msg.senseBox_LoRa_app_key = "App Key (msb)";
+Blockly.Msg.senseBox_LoRa_nwskey_id = "Network Session Key (msb)";
+Blockly.Msg.senseBox_LoRa_appskey_id = "App Session Key (msb)";
+Blockly.Msg.senseBox_LoRa_devaddr_id = "Device Adress";
+Blockly.Msg.senseBox_LoRa_interval = "Intervall in Minuten"
+Blockly.Msg.senseBox_measurement = "Messung";
+Blockly.Msg.senseBox_measurements = "Messungen";
+
+Blockly.Msg.senseBox_LoRa_send_message = "Sende als Lora Nachricht";
+Blockly.Msg.senseBox_LoRa_send_cayenne = "Sende als Cayenne Nachricht";
+Blockly.Msg.senseBox_LoRa_cayenne_temperature = "Temperatur";
+Blockly.Msg.senseBox_LoRa_cayenne_channel = "Kanal";
+Blockly.Msg.senseBox_LoRa_cayenne_humidity = "Luftfeuchtigkeit"
+Blockly.Msg.senseBox_LoRa_cayenne_pressure = "Luftdruck";
+Blockly.Msg.senseBox_LoRa_cayenne_luminosity = "Helligkeit";
+Blockly.Msg.senseBox_LoRa_cayenne_analog = "Analoger Wert";
+Blockly.Msg.senseBox_LoRa_cayenne_x = "X Wert";
+Blockly.Msg.senseBox_LoRa_cayenne_y = "Y Wert";
+Blockly.Msg.senseBox_LoRa_cayenne_z = "Z Wert";
+Blockly.Msg.senseBox_LoRa_cayenne_lat = "Breitengrad";
+Blockly.Msg.senseBox_LoRa_cayenne_lng = "Längengrad";
+Blockly.Msg.senseBox_LoRa_cayenne_alt = "Höhe";
+
+Blockly.Msg.senseBox_LoRa_cayenne_tip = "Sende Daten als Cayenne Payload Format"
+Blockly.Msg.senseBox_LoRa_cayenne_gps_tip = "Sende GPS";
+Blockly.Msg.senseBox_LoRa_cayenne_temperature_tip = "Sendet Temperaturwert mit einer Nachkommastelle";
+Blockly.Msg.senseBox_LoRa_cayenne_pressure_tip = "Sendet Luftdruck mit einer Nachkommastelle";
+Blockly.Msg.senseBox_LoRa_cayenne_luminosity_tip = "Sendet Helligkeitswert";
+Blockly.Msg.senseBox_LoRa_cayenne_analog_tip = "Sendet einen Dezimalwert mit einer Nachkommastelle";
+
+Blockly.Msg.senseBox_LoRa_message_tip = "Sende eine Nachricht über LoRa";
+Blockly.Msg.senseBox_LoRa_sensor_tip = "Sende eine Sensorwert mit einer bestimmten Anzahl an Bytes";
+Blockly.Msg.senseBox_LoRa_init_abp_tip = "Initialisiere die LoRa übertragung. Kopiere die ID's im lsb Format";
+Blockly.Msg.senseBox_LoRa_init_otaa_tip = "Initialisiere die LoRa übertragung. Kopiere die ID's im lsb Format";
+
+//BME680
+Blockly.Msg.senseBox_bme680  = "Umweltsensor (BME680)";
+Blockly.Msg.senseBox_bme680_tip = "Gibt Messwerte des BME680 zurück";
+Blockly.Msg.senseBox_bme680_warning = "Achtung. Gas (VOC) kann nicht gleichzeitig mit anderen Parametern gemessen werden"
+Blockly.Msg.senseBox_gas = "Gas (VOC)";
+Blockly.Msg.sensebox_soil_stm50 = "Bodenfeuchte/-temperatur (SMT50)";
 //Telegram
 Blockly.Msg.senseBox_telegram_init = "Telegram Bot initialisieren"
 Blockly.Msg.senseBox_telegram_token = "Token"
