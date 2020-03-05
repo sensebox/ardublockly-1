@@ -48,38 +48,38 @@ Ardublockly.LOCALISED_TEXT = {
   arduinoOpErrorIdContext_51: "Could not create sketch file",
   arduinoOpErrorIdContext_52: "Invalid path to internally created sketch file",
   arduinoOpErrorIdContext_53: "Unable to find Arduino IDE<br>" +
-                              "The compiler directory has not been set correctly.<br>" +
-                              "Please ensure the path is correct in the Settings.",
+    "The compiler directory has not been set correctly.<br>" +
+    "Please ensure the path is correct in the Settings.",
   arduinoOpErrorIdContext_54: "What should we do with the Sketch?<br>" +
-                              "The launch IDE option has not been set.<br>" +
-                              "Please select an IDE option in the Settings.",
+    "The launch IDE option has not been set.<br>" +
+    "Please select an IDE option in the Settings.",
   arduinoOpErrorIdContext_55: "Serial Port unavailable<br>" +
-                              "The Serial Port is not accessible.<br>" +
-                              "Please check if the Arduino is correctly connected to the PC and select the Serial Port in the Settings.",
+    "The Serial Port is not accessible.<br>" +
+    "Please check if the Arduino is correctly connected to the PC and select the Serial Port in the Settings.",
   arduinoOpErrorIdContext_56: "Unknown Arduino Board<br>" +
-                              "The Arduino Board has not been set.<br>" +
-                              "Please select the appropriate Arduino Board from the settings.",
+    "The Arduino Board has not been set.<br>" +
+    "Please select the appropriate Arduino Board from the settings.",
   arduinoOpErrorIdContext_52: "Unexpected server error.",
   arduinoOpErrorIdContext_64: "Unable to parse sent JSON.",
   arduinoOpErrorUnknown: "Unexpected error",
   /* Modals */
   noServerTitle: "Ardublockly app not running",
   noServerTitleBody: "<p>For all the Ardublockly features to be enabled, the Ardublockly desktop application must be running locally on your computer.</p>" +
-                     "<p>If you are using an online version you will not be able to configure the settings nor load the blocks code into an Arduino.</p>" +
-                     "<p>Installation instruction can be found in the <a href=\"https://github.com/carlosperate/ardublockly\">Ardublockly repository</a>.</p>" +
-                     "<p>If you have Ardublockly already installed, make sure the application is running correctly.</p>",
+    "<p>If you are using an online version you will not be able to configure the settings nor load the blocks code into an Arduino.</p>" +
+    "<p>Installation instruction can be found in the <a href=\"https://github.com/carlosperate/ardublockly\">Ardublockly repository</a>.</p>" +
+    "<p>If you have Ardublockly already installed, make sure the application is running correctly.</p>",
   noServerNoLangBody: "If the Ardublockly application is not running the language cannot be fully changed.",
   addBlocksTitle: "Additional Blocks",
-  copy_paste_mcu: "Copy the .BIN Datei to your senseBox MCU. <br> If your senseBox MCU is not shown do a fast double push to the reset button.<br>"+
-                  "<img class='animated-gif'src=\"img/copy_to_mcu.gif\"> <br>" +
-                  "You need more help? See here <a href=\"https://sensebox.github.io/books-v2/blockly/en/\" target=\"_blank\">Blockly for senseBox Book</a>",
+  copy_paste_mcu: "Copy the .BIN Datei to your senseBox MCU. <br> If your senseBox MCU is not shown do a fast double push to the reset button.<br>" +
+    "<img class='animated-gif'src=\"img/copy_to_mcu.gif\"> <br>" +
+    "You need more help? See here <a href=\"https://sensebox.github.io/books-v2/blockly/en/\" target=\"_blank\">Blockly for senseBox Book</a>",
   /* Alerts */
   loadNewBlocksTitle: "Load new blocks?",
   loadNewBlocksBody: "Loading a new XML file will replace the current blocks from the workspace.<br>" +
-                     "Are you sure you want to proceed?",
+    "Are you sure you want to proceed?",
   discardBlocksTitle: "Delete blocks?",
   discardBlocksBody: "There are %1 blocks on the workspace.<br>" +
-                     "Are you sure you want to delete them?",
+    "Are you sure you want to delete them?",
   invalidXmlTitle: "Invalid XML",
   invalidXmlBody: "The XML file was not successfully parsed into blocks. Please review the XML code and try again.",
   errorFilename: "The Filename should not contain more than 8 characters",
@@ -101,16 +101,17 @@ Ardublockly.LOCALISED_TEXT = {
   arduinoSourceCode: "Arduino Source Code",
   blocksXml: "Blocks XML",
   /* Toolbox Categories*/
-  catSenseBox_Sensor:"Sensors",
-  catSenseBox_Output:"senseBox output",
-  catSenseBox_Display:"Display",
-  catSenseBoxOutput_SD:"SD",
-  catSenseBoxOutput_Web:"Web",
-  catSenseBoxOutput_Webserver:"Webserver",
-  catSenseBoxOutput_Telegram :"Telegram",
-  catSenseBoxOutput_LoRa_cayenne :"    Cayenne LPP",
-  catSenseBoxOutput_LoRa_message : "    Lora Message",
+  catSenseBox_Sensor: "Sensors",
+  catSenseBox_Output: "senseBox output",
+  catSenseBox_Display: "Display",
+  catSenseBoxOutput_SD: "SD",
+  catSenseBoxOutput_Web: "Web",
+  catSenseBoxOutput_Webserver: "Webserver",
+  catSenseBoxOutput_Telegram: "Telegram",
+  catSenseBoxOutput_LoRa_cayenne: "    Cayenne LPP",
+  catSenseBoxOutput_LoRa_message: "    Lora Message",
   catSenseBoxOutput_LoRa: "    Lora",
+  catSenseBoxOutput_LoRa_activation: "    Activation",
   catSenseBox_Led: "LED",
   catSenseBox_Wifi: "WiFi",
   catSenseBox_osem: "openSenseMap",

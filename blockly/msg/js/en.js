@@ -742,10 +742,12 @@ Blockly.Msg.senseBox_LoRa_cayenne_alt = "Altitude";
 
 Blockly.Msg.senseBox_LoRa_cayenne_tip = "Send Data as Cayenne Payload Format"
 Blockly.Msg.senseBox_LoRa_cayenne_gps_tip = "Send GPS Data";
+Blockly.Msg.senseBox_LoRa_cayenne_humidity_tip = "Send temperature with one decimal";
 Blockly.Msg.senseBox_LoRa_cayenne_temperature_tip = "Send temperature with one decimal";
 Blockly.Msg.senseBox_LoRa_cayenne_pressure_tip = "Send pressure with one decimal";
 Blockly.Msg.senseBox_LoRa_cayenne_luminosity_tip = "Send luminosity";
 Blockly.Msg.senseBox_LoRa_cayenne_analog_tip = "Send a value with one decimal";
+Blockly.Msg.senseBox_LoRa_cayenne_gyros_tip = "Send a value from the Gyroscope";
 
 Blockly.Msg.senseBox_LoRa_message_tip = "Send a message with LoRa";
 Blockly.Msg.senseBox_LoRa_sensor_tip = "Send a value with a specific number of bytes";

@@ -1,7 +1,7 @@
 /*
 @metadata
-		author": senseBox
-		lastupdated": 2019
+		author": Felix Erdmann u. Mario Pesch (senseBox)
+		lastupdated": 2020/03/05
 		for more information: www.sensebox.de
 */
 
@@ -974,37 +974,17 @@ Blockly.Arduino.sensebox_web_readHTML = function (block) {
 };
 
 
-// LoRa
-function reorderLoraSetup(setupObject) {
-  setupObject = JSON.parse(JSON.stringify(setupObject))
-  console.log(setupObject)
-  if (!setupObject.hasOwnProperty('setup_lora')) {
-    return setupObject
-  }
-  const setup_lora = setupObject['setup_lora']
-  delete setupObject['setup_lora']
-
-  console.log(setupObject)
-
-  setupObject['setup_lora'] = setup_lora
-
-  return setupObject
-}
-
 
 Blockly.Arduino.sensebox_lora_initialize_otaa = function (block) {
   var deivceID = this.getFieldValue('DEVICEID');
   var appID = this.getFieldValue('APPID');
   var appKey = this.getFieldValue('APPKEY');
   var interval = this.getFieldValue('INTERVAL');
-
-  // var lora_sensor_values = Blockly.Arduino.statementToCode(block, 'DO');
-
   Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
   Blockly.Arduino.includes_['library_spi'] = '#include <SPI.h>';
   Blockly.Arduino.includes_['library_lmic'] = '#include <lmic.h>';
   Blockly.Arduino.includes_['library_hal'] = '#include <hal/hal.h>';
-  Blockly.Arduino.variables_['define_LoRaVariables'] = `
+  Blockly.Arduino.definitions_['define_LoRaVariablesOTAA'] = `
   static const u1_t PROGMEM APPEUI[8]= `+ appID + ` ;
   void os_getArtEui (u1_t* buf) { memcpy_P(buf, APPEUI , 8);}
 
@@ -1032,7 +1012,7 @@ Blockly.Arduino.sensebox_lora_initialize_otaa = function (block) {
       .dio = {PIN_XB1_INT, PIN_XB1_INT, LMIC_UNUSED_PIN},
   };`;
 
-  Blockly.Arduino.userFunctions_['functions_initLora'] = `
+  Blockly.Arduino.codeFunctions_['functions_initLora'] = `
   void initLora() {
     delay(2000);
     // LMIC init
@@ -1044,7 +1024,7 @@ Blockly.Arduino.sensebox_lora_initialize_otaa = function (block) {
     do_send(&sendjob);
   }`
 
-  Blockly.Arduino.userFunctions_['functions_onEvent'] = `
+  Blockly.Arduino.codeFunctions_['functions_onEvent'] = `
   void onEvent (ev_t ev) {
     Serial.print(os_getTime());
     Serial.print(": ");
@@ -1114,8 +1094,10 @@ Blockly.Arduino.sensebox_lora_initialize_otaa = function (block) {
             break;
     }
 }`;
-
-  return `Serial.begin(9600);\ninitLora();\n`;
+  Blockly.Arduino.setups_['initLora'] = 'initLora();';
+  Blockly.Arduino.setups_['serial.begin'] = 'Serial.begin(9600);';
+  var code = ''
+  return code;
 };
 
 Blockly.Arduino.sensebox_lora_message_send = function (block) {
@@ -1136,7 +1118,8 @@ void do_send(osjob_t* j){
     }
     // Next TX is scheduled after TX_COMPLETE event.
 }`;
-  return 'os_runloop_once();'
+  Blockly.Arduino.loops_['os_runloop'] = 'os_runloop_once();'
+  return ''
 }
 
 /**
@@ -1145,7 +1128,7 @@ void do_send(osjob_t* j){
 Blockly.Arduino.sensebox_send_lora_sensor_value = function (block) {
   const reading = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || '"Keine Eingabe"';
   var messageBytes = this.getFieldValue('MESSAGE_BYTES');
-  let code = ''
+  var code = ''
   switch (Number(messageBytes)) {
     case 1:
       code = `message.addUint8(${reading});\n`
@@ -1182,7 +1165,8 @@ void do_send(osjob_t* j){
     }
     // Next TX is scheduled after TX_COMPLETE event.
 }`;
-  return 'os_runloop_once();'
+  Blockly.Arduino.loops_['os_runloop'] = 'os_runloop_once();'
+  return '';
 }
 
 Blockly.Arduino.sensebox_lora_initialize_abp = function (block) {
@@ -1190,14 +1174,11 @@ Blockly.Arduino.sensebox_lora_initialize_abp = function (block) {
   var appskey = this.getFieldValue('APPSKEY');
   var devaddr = this.getFieldValue('DEVADDR');
   var interval = this.getFieldValue('INTERVAL');
-
-  // var lora_sensor_values = Blockly.Arduino.statementToCode(block, 'DO');
-
   Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
   Blockly.Arduino.includes_['library_spi'] = '#include <SPI.h>';
   Blockly.Arduino.includes_['library_lmic'] = '#include <lmic.h>';
   Blockly.Arduino.includes_['library_hal'] = '#include <hal/hal.h>';
-  Blockly.Arduino.variables_['define_LoRaVariables'] = `
+  Blockly.Arduino.definitions_['define_LoRaVariablesABP'] = `
   // LoRaWAN NwkSKey, network session key
   // This is the default Semtech key, which is used by the early prototype TTN
   // network.
@@ -1232,7 +1213,7 @@ Blockly.Arduino.sensebox_lora_initialize_abp = function (block) {
       .dio = {PIN_XB1_INT, PIN_XB1_INT, LMIC_UNUSED_PIN},
   };`;
 
-  Blockly.Arduino.userFunctions_['functions_initLora'] = `
+  Blockly.Arduino.codeFunctions_['functions_initLora'] = `
   void initLora() {
     delay(2000);
     // LMIC init
@@ -1300,7 +1281,7 @@ Blockly.Arduino.sensebox_lora_initialize_abp = function (block) {
     do_send(&sendjob);
   }`
 
-  Blockly.Arduino.userFunctions_['functions_onEvent'] = `
+  Blockly.Arduino.codeFunctions_['functions_onEvent'] = `
   void onEvent (ev_t ev) {
     Serial.print(os_getTime());
     Serial.print(": ");
@@ -1365,38 +1346,44 @@ Blockly.Arduino.sensebox_lora_initialize_abp = function (block) {
             break;
     }
 }`;
-
-  return `Serial.begin(9600);\ninitLora();\n`;
+  Blockly.Arduino.setups_['initLora'] = 'initLora();';
+  Blockly.Arduino.setups_['serial.begin'] = 'Serial.begin(9600);';
+  return '';
 }
 
 Blockly.Arduino.sensebox_lora_cayenne_temperature = function (block) {
   var temperature = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || 0
   var channel = this.getFieldValue('CHANNEL');
-  return `lpp.addTemperature(${channel}, ${temperature});\n`
+  var code = `lpp.addTemperature(${channel}, ${temperature});\n`;
+  return code;
 }
 
 Blockly.Arduino.sensebox_lora_cayenne_humidity = function (block) {
   var humidity = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || 0
   var channel = this.getFieldValue('CHANNEL');
-  return `lpp.addRelativeHumidity(${channel}, ${humidity});\n`
+  var code = `lpp.addRelativeHumidity(${channel}, ${humidity});\n`;
+  return code;
 }
 
 Blockly.Arduino.sensebox_lora_cayenne_pressure = function (block) {
   var pressure = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || 0
   var channel = this.getFieldValue('CHANNEL');
-  return `lpp.addBarometricPressure(${channel}, ${pressure});\n`
+  var code = `lpp.addBarometricPressure(${channel}, ${pressure});\n`;
+  return code;
 }
 
 Blockly.Arduino.sensebox_lora_cayenne_luminosity = function (block) {
   var luminosity = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || 0
   var channel = this.getFieldValue('CHANNEL');
-  return `lpp.addLuminosity(${channel}, ${luminosity});\n`
+  var code = `lpp.addLuminosity(${channel}, ${luminosity});\n`;
+  return code;
 }
 
 Blockly.Arduino.sensebox_lora_cayenne_sensor = function (block) {
   var sensorValue = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || 0
   var channel = this.getFieldValue('CHANNEL');
-  return `lpp.addAnalogOutput(${channel}, ${sensorValue});\n`
+  var code = `lpp.addAnalogOutput(${channel}, ${sensorValue});\n`;
+  return code;
 }
 
 Blockly.Arduino.sensebox_lora_cayenne_accelerometer = function (block) {
@@ -1404,7 +1391,8 @@ Blockly.Arduino.sensebox_lora_cayenne_accelerometer = function (block) {
   var y = Blockly.Arduino.valueToCode(this, 'Y', Blockly.Arduino.ORDER_ATOMIC) || 0
   var z = Blockly.Arduino.valueToCode(this, 'Z', Blockly.Arduino.ORDER_ATOMIC) || 0
   var channel = this.getFieldValue('CHANNEL');
-  return `lpp.addAccelerometer(${channel}, ${x}, ${y}, ${z});\n`
+  var code = `lpp.addAccelerometer(${channel}, ${x}, ${y}, ${z});\n`;
+  return code;
 }
 
 Blockly.Arduino.sensebox_lora_cayenne_gps = function (block) {
@@ -1412,7 +1400,8 @@ Blockly.Arduino.sensebox_lora_cayenne_gps = function (block) {
   var lng = Blockly.Arduino.valueToCode(this, 'LNG', Blockly.Arduino.ORDER_ATOMIC) || 0
   var alt = Blockly.Arduino.valueToCode(this, 'ALT', Blockly.Arduino.ORDER_ATOMIC) || 0
   var channel = this.getFieldValue('CHANNEL');
-  return `lpp.addGPS(${channel}, ${lat}, ${lng}, ${alt});\n`
+  var code = `lpp.addGPS(${channel}, ${lat}, ${lng}, ${alt});\n`
+  return code;
 }
 
 /**

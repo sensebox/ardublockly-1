@@ -48,39 +48,39 @@ Ardublockly.LOCALISED_TEXT = {
   arduinoOpErrorIdContext_51: "Sketch-Datei konnte nicht übertragen werden",
   arduinoOpErrorIdContext_52: "Ungültiges Verzeichnis um den Sketch zu erstellen",
   arduinoOpErrorIdContext_53: "Arduino IDE konnte nicht gefunden werden<br>" +
-                              "Das Compiler Verzeichnis wurde nicht korrekt ausgewählt.<br>" +
-                              "Bitte überprüfe den Pfad in den Einstellungen.",
+    "Das Compiler Verzeichnis wurde nicht korrekt ausgewählt.<br>" +
+    "Bitte überprüfe den Pfad in den Einstellungen.",
   arduinoOpErrorIdContext_54: "Was sollen wir mit den Sketch machen?<br>" +
-                              "Die Startoptionen der IDE wurden nicht gewählt.<br>" +
-                              "Bitte wähle eine IDE Option in den Einstellungen.",
+    "Die Startoptionen der IDE wurden nicht gewählt.<br>" +
+    "Bitte wähle eine IDE Option in den Einstellungen.",
   arduinoOpErrorIdContext_55: "Serieller Port ist nicht vorhanden.<br>" +
-                              "Der Serielle Port ist nicht erreichbar.<br>" +
-                              "Bitte überprüfe ob der Mikrocontroller ordnungsgemäß mit dem Computer verbunden ist und wähle den Seriellen Port in den Einstellungen.",
+    "Der Serielle Port ist nicht erreichbar.<br>" +
+    "Bitte überprüfe ob der Mikrocontroller ordnungsgemäß mit dem Computer verbunden ist und wähle den Seriellen Port in den Einstellungen.",
   arduinoOpErrorIdContext_56: "Unbekanntes Arduino Board<br>" +
-                              "Das Arduino Board wurde nicht festgelegt.<br>" +
-                              "Bitte wähle ein geeignetes Arduino Board aus den Einstellungen.",
+    "Das Arduino Board wurde nicht festgelegt.<br>" +
+    "Bitte wähle ein geeignetes Arduino Board aus den Einstellungen.",
   arduinoOpErrorIdContext_52: "Unerwarteter Serverfehler.",
   arduinoOpErrorIdContext_64: "Übertragende JSON konnte nicht zerlegt werden",
   arduinoOpErrorUnknown: "Unerwarteter Fehler",
   /* Modals */
   noServerTitle: "Die Ardublockly-App ist nich gestartet.",
   noServerTitleBody: "<p>Damit alle Arduino-Funktionen verfügbar sind, muss das Ardublockly Programm lokal auf deinem Computer installiert sein.</p>" +
-                     "<p>Wenn du die Online Version benutzt wird es nicht möglich sein Einstellungen vorzunehmen noch den Blockly-Code auf den Arduino zu übertragen.</p>" +
-                     "<p>Die Installationsanleitung findest du hier: <a href=\"https://github.com/carlosperate/ardublockly\">Ardublockly repository</a>.</p>" +
-                     "<p>Wenn du das Ardublockly Programm schon installiert hast, überprüfe ob es ordnungsgemäß läuft.</p>",
+    "<p>Wenn du die Online Version benutzt wird es nicht möglich sein Einstellungen vorzunehmen noch den Blockly-Code auf den Arduino zu übertragen.</p>" +
+    "<p>Die Installationsanleitung findest du hier: <a href=\"https://github.com/carlosperate/ardublockly\">Ardublockly repository</a>.</p>" +
+    "<p>Wenn du das Ardublockly Programm schon installiert hast, überprüfe ob es ordnungsgemäß läuft.</p>",
   noServerNoLangBody: "Solang das Ardublocky Programm nicht läuft kann die Sprache nicht vollständig geändert werden.",
   addBlocksTitle: "Zusätzliche Blöcke",
-  copy_paste_mcu: "Kopiere die .BIN Datei auf deine senseBox MCU. <br> Wird die senseBox MCU im Explorer nicht angezeigt mache eine Doppelklick auf den Roten Reset Button.<br>"+
-                  "<img class='animated-gif' src=\"img/copy_to_mcu.gif\"> <br>" +
-                  "Benötigst du mehr Information und Hilfe schau ins <a href=\"https://sensebox.github.io/books-v2/blockly/de/\" target=\"_blank\">Blockly für senseBox Buch</a>",
-  
+  copy_paste_mcu: "Kopiere die .BIN Datei auf deine senseBox MCU. <br> Wird die senseBox MCU im Explorer nicht angezeigt mache eine Doppelklick auf den Roten Reset Button.<br>" +
+    "<img class='animated-gif' src=\"img/copy_to_mcu.gif\"> <br>" +
+    "Benötigst du mehr Information und Hilfe schau ins <a href=\"https://sensebox.github.io/books-v2/blockly/de/\" target=\"_blank\">Blockly für senseBox Buch</a>",
+
   /* Alerts */
   loadNewBlocksTitle: "Neue Blöcke laden?",
   loadNewBlocksBody: "Das Laden der neuen XML-Datei ersetzt die aktuellen Blöcke.<br>" +
-                     "Bist du sicher, dass du fortfahren willst?",
+    "Bist du sicher, dass du fortfahren willst?",
   discardBlocksTitle: "Blöcke löschen?",
   discardBlocksBody: "Es sind %1 Blöcke auf dem Arbeitsbereich.<br>" +
-                     "Möchtest du diese wirklich löschen?",
+    "Möchtest du diese wirklich löschen?",
   invalidXmlTitle: "Ungültige XML",
   invalidXmlBody: "Die XML-Datei konnte nicht in Blöcke zerlegt werden. Bitte überprüfe den XML-Code und versuche es erneut.",
   errorFilename: "Der Dateiname darf maximal aus 8 Zeichen bestehen",
@@ -102,19 +102,20 @@ Ardublockly.LOCALISED_TEXT = {
   arduinoSourceCode: "Arduino Quellcode",
   blocksXml: "XML Blöcke",
   /* Toolbox Categories*/
-  catSenseBox_Sensor:"Sensoren",
-  catsenseBox_Output:"Ausgabe",
-  catSenseBox_Display:"Display",
-  catSenseBoxOutput_SD:"SD",
-  catSenseBoxOutput_Web:"Web",
-  catSenseBoxOutput_Webserver:"Webserver",
+  catSenseBox_Sensor: "Sensoren",
+  catsenseBox_Output: "Ausgabe",
+  catSenseBox_Display: "Display",
+  catSenseBoxOutput_SD: "SD",
+  catSenseBoxOutput_Web: "Web",
+  catSenseBoxOutput_Webserver: "Webserver",
   catSenseBox_Led: "LED",
   catSenseBox_Wifi: "WiFi",
   catSenseBox_osem: "openSenseMap",
   catSenseBoxOutput_Telegram: "Telegram",
-  catSenseBoxOutput_LoRa_cayenne :"    Cayenne LPP",
-  catSenseBoxOutput_LoRa_message : "    Lora Nachrichten",
+  catSenseBoxOutput_LoRa_cayenne: "    Cayenne LPP",
+  catSenseBoxOutput_LoRa_message: "    Lora Nachrichten",
   catSenseBoxOutput_LoRa: "    Lora",
+  catSenseBoxOutput_LoRa_activation: "    Aktvierung",
   catLogic: "Logik",
   catLoops: "Schleifen",
   catMath: "Mathematik",
