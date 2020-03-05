@@ -498,7 +498,7 @@ Blockly.Blocks['sensebox_osem_connection'] = {
       .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_osem_host, '"ingress.opensensemap.org"'], [Blockly.Msg.senseBox_osem_host_workshop, '"ingress.workshop.opensensemap.org"']]), "host");
     this.appendDummyInput()
       .setAlign(Blockly.ALIGN_LEFT)
-      .appendField("Type")
+      .appendField(Blockly.Msg.senseBox_osem_exposure)
       .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_osem_stationary, 'Stationary'], [Blockly.Msg.senseBox_osem_mobile, 'Mobile']]), "type");
     this.appendDummyInput()
       .setAlign(Blockly.ALIGN_LEFT)
@@ -751,13 +751,13 @@ Blockly.Blocks['sensebox_sensor_soil'] = {
  * Block for Truebner STM50
  */
 
-Blockly.Blocks['sensebox_sensor_truebner_stm50'] = {
+Blockly.Blocks['sensebox_sensor_truebner_smt50'] = {
   init: function () {
     var dropdownOptions = [[Blockly.Msg.senseBox_ultrasonic_port_A, 'A'],
     [Blockly.Msg.senseBox_ultrasonic_port_B, 'B'], [Blockly.Msg.senseBox_ultrasonic_port_C, 'C']];
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.sensebox_soil_stm50);
+      .appendField(Blockly.Msg.sensebox_soil_smt50);
     this.appendDummyInput()
       .appendField("Port:")
       .appendField(new Blockly.FieldDropdown(dropdownOptions), "Port")
@@ -765,7 +765,6 @@ Blockly.Blocks['sensebox_sensor_truebner_stm50'] = {
       .appendField(Blockly.Msg.senseBox_value)
       .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_temp, "temp"], [Blockly.Msg.senseBox_soil, "soil"]]), 'value')
     this.setOutput(true, Blockly.Types.NUMBER.output);
-    this.setTooltip(Blockly.Msg.sensebox_soil_stm50_tip);
   },
   getBlockType: function () {
     return Blockly.Types.NUMBER;
@@ -1178,7 +1177,12 @@ Blockly.Blocks['sensebox_gps_getValues'] = {
     this.setHelpUrl('https://edu.books.sensebox.de/de/');
   },
   getBlockType: function () {
-    return Blockly.Types.DECIMAL;
+    var input = this.getFieldValue('Values');
+    if (input == 'tsBuffer') {
+      return Blockly.Types.TEXT;
+    } else {
+      return Blockly.Types.DECIMAL;
+    }
   },
 };
 /** 

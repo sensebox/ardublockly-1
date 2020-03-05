@@ -138,7 +138,7 @@ Blockly.Arduino.sensebox_sensor_soil = function () {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino.sensebox_sensor_truebner_stm50 = function () {
+Blockly.Arduino.sensebox_sensor_truebner_smt50 = function () {
   var dropdown_port = this.getFieldValue('Port')
   var dropdown_value = this.getFieldValue('value');
   var dropdown_pin = 1;
@@ -152,7 +152,7 @@ Blockly.Arduino.sensebox_sensor_truebner_stm50 = function () {
     if (dropdown_port == 'C') {
       dropdown_pin = 5;
     }
-    Blockly.Arduino.userFunctions_['sensebox_stm50_temp'] = 'float getSMT50Temperature(int analogPin){\n  int sensorValue = analogRead(analogPin);\n  float voltage = sensorValue * (3.3 / 1024.0);\n   return (voltage - 0.5) * 100;\n}';
+    Blockly.Arduino.userFunctions_['sensebox_smt50_temp'] = 'float getSMT50Temperature(int analogPin){\n  int sensorValue = analogRead(analogPin);\n  float voltage = sensorValue * (3.3 / 1024.0);\n   return (voltage - 0.5) * 100;\n}';
     var code = 'getSMT50Temperature(' + dropdown_pin + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
   }
@@ -166,7 +166,7 @@ Blockly.Arduino.sensebox_sensor_truebner_stm50 = function () {
     if (dropdown_port == 'C') {
       dropdown_pin = 6;
     }
-    Blockly.Arduino.userFunctions_['sensebox_stm50_soil'] = 'float getSMT50Moisture(int analogPin){\n   int sensorValue = analogRead(analogPin);\n    float voltage = sensorValue * (3.3 / 1024.0);\n   return (voltage * 50) / 3;\n}';
+    Blockly.Arduino.userFunctions_['sensebox_smt50_soil'] = 'float getSMT50Moisture(int analogPin){\n   int sensorValue = analogRead(analogPin);\n    float voltage = sensorValue * (3.3 / 1024.0);\n   return (voltage * 50) / 3;\n}';
     var code = 'getSMT50Moisture(' + dropdown_pin + ')';
     return [code, Blockly.Arduino.ORDER_ATOMIC];
   }
@@ -256,9 +256,9 @@ Blockly.Arduino.sensebox_osem_connection = function (block) {
   measurements[num_measurements].value = value;
   num_measurements++;
   }`;
-  Blockly.Arduino.codeFunctions_['writeMeasurementsToClientDefintion'] = 'void writeMeasurementsToClient(float lat = 0, float lng = 0, float altitude = 0, char* timeStamp = "");';
-  Blockly.Arduino.codeFunctions_['writeMeasurementsToClient'] = `
-  void writeMeasurementsToClient(float lat, float lng, float altitude, char* timeStamp) {
+  if (type === 'Stationary') {
+    Blockly.Arduino.codeFunctions_['writeMeasurementsToClient'] = `
+  void writeMeasurementsToClient() {
   // iterate throug the measurements array
   for (uint8_t i = 0; i < num_measurements; i++) {
     sprintf_P(buffer, PSTR("%s,%9.2f\\n"), measurements[i].sensorId,
@@ -269,7 +269,6 @@ Blockly.Arduino.sensebox_osem_connection = function (block) {
   // reset num_measurements
   num_measurements = 0;
 }`;
-  if (type === 'Stationary') {
     Blockly.Arduino.userFunctions_['submitValues'] = `
   void submitValues() {
 if (client.connected()) {
@@ -303,7 +302,6 @@ for (uint8_t timeout = 2; timeout != 0; timeout--) {
         break;
       }
     }
-
     num_measurements = 0;
     break;
   }
@@ -319,6 +317,18 @@ for (uint8_t timeout = 2; timeout != 0; timeout--) {
     var timestamp = Blockly.Arduino.valueToCode(block, 'timeStamp', Blockly.Arduino.ORDER_ATOMIC);
     var altitude = Blockly.Arduino.valueToCode(block, 'altitude', Blockly.Arduino.ORDER_ATOMIC);
     Blockly.Arduino.definitions_['lengthMultiplikator'] = 'const int lengthMultiplikator = 77;';
+    Blockly.Arduino.codeFunctions_['writeMeasurementsToClient'] = `
+    void writeMeasurementsToClient(float lat, float lng, float altitude, char* timeStamp) {
+    // iterate throug the measurements array
+    for (uint8_t i = 0; i < num_measurements; i++) {
+    sprintf_P(buffer, PSTR("%s,%9.2f,%s,%3.6f,%3.6f,%5.2f\\n"), measurements[i].sensorId,
+              measurements[i].value, timeStamp, lng, lat, altitude);
+    // transmit buffer to client
+    client.print(buffer);
+    }
+    // reset num_measurements
+    num_measurements = 0;
+    }`;
     Blockly.Arduino.userFunctions_['submitValues'] = `
     void submitValues(float lat, float lng, float altitude, char* timeStamp) {
   if (client.connected()) {
@@ -357,7 +367,7 @@ for (uint8_t timeout = 2; timeout != 0; timeout--) {
       break;
     }
   }
-  }`
+}`
     var code = '';
     code += branch;
     code += 'submitValues(' + lat + ',' + lng + ',' + altitude + ',' + timestamp + ');\n';
@@ -590,7 +600,7 @@ Blockly.Arduino.sensebox_display_beginDisplay = function () {
   Blockly.Arduino.includes_['library_AdafruitGFX'] = '#include <Adafruit_GFX.h>';
   Blockly.Arduino.includes_['library_AdafruitSSD1306'] = '#include <Adafruit_SSD1306.h>';
   Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
-  Blockly.Arduino.defintions_['define_display'] = '#define OLED_RESET 4\nAdafruit_SSD1306 display(OLED_RESET);';
+  Blockly.Arduino.definitions_['define_display'] = '#define OLED_RESET 4\nAdafruit_SSD1306 display(OLED_RESET);';
   Blockly.Arduino.setups_['sensebox_display_begin'] = 'senseBoxIO.powerI2C(true);\ndelay(2000);\ndisplay.begin(SSD1306_SWITCHCAPVCC, 0x3D);\ndisplay.display();\ndelay(100);\ndisplay.clearDisplay();';
   var code = '';
   return code;
