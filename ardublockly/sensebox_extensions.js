@@ -12,8 +12,8 @@ SenseboxExtension.SUPPORTED_BOARDS = {
 SenseboxExtension.init = function () {
   sessionStorage.setItem('no_thanks', 'false');
   var location = window.location;
-  //const compilerOnline = 'https://compiler.sensebox.de';
-  const compilerOnline = 'http://localhost:3000'
+  const compilerOnline = 'https://compiler.sensebox.de';
+  //const compilerOnline = 'http://localhost:3000'
   var urlParams = new URLSearchParams(location.search);
   console.log(urlParams);
   Ardublockly.changeBlocklyArduinoBoard('sensebox_mcu');
