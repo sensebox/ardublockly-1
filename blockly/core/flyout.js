@@ -307,9 +307,9 @@ Blockly.Flyout.prototype.setMetrics_ = function(xyRatio) {
   if (!metrics) {
     return;
   }
-  if (!this.horizontalLayout_ && goog.isNumber(xyRatio.y)) {
+  if (!this.horizontalLayout_ && typeof xyRatio.y == 'number') {
     this.workspace_.scrollY = -metrics.contentHeight * xyRatio.y;
-  } else if (this.horizontalLayout_ && goog.isNumber(xyRatio.x)) {
+  } else if (this.horizontalLayout_ && typeof xyRatio.x == 'number') {
     this.workspace_.scrollX = -metrics.contentWidth * xyRatio.x;
   }
 
