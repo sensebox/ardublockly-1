@@ -772,163 +772,6 @@ Blockly.Arduino.sensebox_generate_http_not_found_response = function (block) {
 };
 
 
-Blockly.Arduino.sensebox_display_clearDisplay = function () {
-  var code = 'display.clearDisplay();\n';
-  return code;
-};
-
-Blockly.Arduino.sensebox_display_printDisplay = function () {
-  var x = Blockly.Arduino.valueToCode(this, 'X', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var y = Blockly.Arduino.valueToCode(this, 'Y', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var printDisplay = Blockly.Arduino.valueToCode(this, 'printDisplay', Blockly.Arduino.ORDER_ATOMIC) || '"Keine Eingabe"';
-  var size = Blockly.Arduino.valueToCode(this, 'SIZE', Blockly.Arduino.ORDER_ATOMIC) || '1'
-  var color = this.getFieldValue('COLOR');
-  var code = 'display.setCursor(' + x + ',' + y + ');\n';
-  code += 'display.setTextSize(' + size + ');\n';
-  code += 'display.setTextColor(' + color + ');\n';
-  code += 'display.println(' + printDisplay + ');\n';
-  return code;
-};
-
-Blockly.Arduino.sensebox_display_show = function (block) {
-  var show = Blockly.Arduino.statementToCode(block, 'SHOW');
-  var code = '';
-  code += show;
-  code += 'display.display();\n';
-  return code;
-};
-Blockly.Arduino.sensebox_display_plotDisplay = function () {
-  var YLabel = Blockly.Arduino.valueToCode(this, 'YLabel', Blockly.Arduino.ORDER_ATOMIC) || 'Y'
-  var XLabel = Blockly.Arduino.valueToCode(this, 'XLabel', Blockly.Arduino.ORDER_ATOMIC) || 'X'
-  var Title = Blockly.Arduino.valueToCode(this, 'Title', Blockly.Arduino.ORDER_ATOMIC) || 'Title'
-  var XRange1 = Blockly.Arduino.valueToCode(this, 'XRange1', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var XRange2 = Blockly.Arduino.valueToCode(this, 'XRange2', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var YRange1 = Blockly.Arduino.valueToCode(this, 'YRange1', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var YRange2 = Blockly.Arduino.valueToCode(this, 'YRange2', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var XTick = Blockly.Arduino.valueToCode(this, 'XTick', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var YTick = Blockly.Arduino.valueToCode(this, 'YTick', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var TimeFrame = Blockly.Arduino.valueToCode(this, 'TimeFrame', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var plotDisplay = Blockly.Arduino.valueToCode(this, 'plotDisplay', Blockly.Arduino.ORDER_ATOMIC) || '"Keine Eingabe"';
-  Blockly.Arduino.includes_['library_plot'] = '#include <Plot.h>';
-  Blockly.Arduino.userFunctions_['define_plot_class'] = 'Plot DataPlot(&display);\n';
-  Blockly.Arduino.variables_['define_plot_class'] = 'const double TIMEFRAME = ' + TimeFrame + ';\n';
-  Blockly.Arduino.setups_['sensebox_plot_setup'] = 'DataPlot.setTitle(' + Title + ');\nDataPlot.setXLabel(' + XLabel + ');\nDataPlot.setYLabel(' + YLabel + ');\nDataPlot.setXRange(' + XRange1 + ',' + XRange2 + ');\nDataPlot.setYRange(' + YRange1 + ',' + YRange2 + ');\nDataPlot.setXTick(' + XTick + ');\nDataPlot.setYTick(' + YTick + ');\nDataPlot.setXPrecision(0);\nDataPlot.setYPrecision(0);\n';
-  var code = 'DataPlot.clear();'
-  code += 'double starttime = millis();\ndouble t = 0;\nwhile (t <= TIMEFRAME) {\nt = (millis() - starttime) / 1000.0;\nfloat value = ' + plotDisplay + ';\n';
-  code += 'DataPlot.addDataPoint(t,value);\n}\n';
-  return code;
-};
-
-Blockly.Arduino.sensebox_display_fillCircle = function () {
-  var x = Blockly.Arduino.valueToCode(this, 'X', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var y = Blockly.Arduino.valueToCode(this, 'Y', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var radius = Blockly.Arduino.valueToCode(this, 'Radius', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var fill = this.getFieldValue('FILL');
-  if (fill == 'TRUE') {
-    var code = 'display.fillCircle(' + x + ',' + y + ',' + radius + ',1);\n';
-  }
-  else {
-    var code = 'display.drawCircle(' + x + ',' + y + ',' + radius + ',1);\n';
-  }
-  return code;
-}
-
-Blockly.Arduino.sensebox_display_drawRectangle = function () {
-  var x = Blockly.Arduino.valueToCode(this, 'X', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var y = Blockly.Arduino.valueToCode(this, 'Y', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var width = Blockly.Arduino.valueToCode(this, 'width', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var height = Blockly.Arduino.valueToCode(this, 'height', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  var fill = this.getFieldValue('FILL');
-  if (fill == 'TRUE') {
-    var code = 'display.fillRect(' + x + ',' + y + ',' + width + ',' + height + ',1);\n';
-  }
-  else {
-    var code = 'display.drawRect(' + x + ',' + y + ',' + width + ',' + height + ',1);\n';
-  }
-  return code;
-}
-
-//--GPS--//
-
-Blockly.Arduino.sensebox_gps_getValues = function () {
-  Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
-  Blockly.Arduino.userFunctions_['define_gps'] = 'GPS gps;';
-  Blockly.Arduino.setups_['sensebox_gps_begin'] = 'gps.begin();';
-  var dropdown_name = this.getFieldValue("Values");
-  var code = 'gps.get' + dropdown_name + '()';
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-/**
- * Webserver Blocks by Lucas Steinmann
- * 
- */
-
-Blockly.Arduino.sensebox_initialize_http_server = function (block) {
-  var box_id = this.getFieldValue('Port');
-  Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
-  Blockly.Arduino.codeFunctions_['define_wifi_server'] = 'WiFiServer server(' + box_id + ');';
-  Blockly.Arduino.setups_['sensebox_wifi_server_beging'] = 'server.begin();';
-  return '';
-};
-
-Blockly.Arduino.sensebox_http_on_client_connect = function (block) {
-  var onConnect = Blockly.Arduino.statementToCode(block, 'ON_CONNECT');
-  var code = '';
-  code += 'WiFiClient client = server.available();\n';
-  code += 'if (client && client.available()) {\n';
-  code += '  String request_string = listenClient(client);\n';
-  code += '  Request request;\n';
-  code += '  if (parseRequestSafe(request_string, request)) {\n';
-  code += onConnect;
-  code += '  }\n';
-  code += '  delay(1);\n';
-  code += '  client.stop();\n';
-  code += '  delay(1);\n';
-  code += '}\n';
-  return code;
-};
-
-Blockly.Arduino.sensebox_http_method = function (block) {
-  var code = "request.method";
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-
-Blockly.Arduino.sensebox_http_uri = function (block) {
-  var code = "request.uri";
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino.sensebox_http_protocol_version = function (block) {
-  var code = "request.protocol_version";
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino.sensebox_http_user_agent = function (block) {
-  var code = "request.user_agent";
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino.sensebox_generate_html_doc = function (block) {
-  var header = Blockly.Arduino.valueToCode(block, 'HEADER', Blockly.Arduino.ORDER_NONE) || '""';
-  var body = Blockly.Arduino.valueToCode(block, 'BODY', Blockly.Arduino.ORDER_NONE) || '""';
-  var code = 'buildHTML(' + header + ', ' + body + ')';
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
-};
-
-Blockly.Arduino.sensebox_generate_http_succesful_response = function (block) {
-  var content = Blockly.Arduino.valueToCode(block, 'CONTENT', Blockly.Arduino.ORDER_NONE) || '""';
-  var code = 'client.println(buildSuccessfulResponse(request, ' + content + '));\n';
-  return code;
-};
-
-Blockly.Arduino.sensebox_generate_http_not_found_response = function (block) {
-  var code = 'client.println(buildNotFoundResponse(request));\n';
-  return code;
-};
-
-
 Blockly.Arduino.sensebox_ip_address = function (block) {
   var code = "b->getIpAddress()";
   return [code, Blockly.Arduino.ORDER_ATOMIC];
@@ -972,7 +815,13 @@ Blockly.Arduino.sensebox_web_readHTML = function (block) {
   var code = functionName + '()';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+// Webserver Blöcke 
 
+
+
+/* LoRa Blöcke
+*
+* */
 
 
 Blockly.Arduino.sensebox_lora_initialize_otaa = function (block) {
