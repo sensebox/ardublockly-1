@@ -688,17 +688,47 @@ Blockly.Arduino.sensebox_gps_getValues = function () {
   Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
   var dropdown_name = this.getFieldValue("Values");
   Blockly.Arduino.definitions_['define_gps'] = 'GPS gps;';
-  Blockly.Arduino.definitions_['GpsTimeStamp'] = 'char* tsBuffer;';
-  Blockly.Arduino.definitions_['GpsLatitude'] = 'float latitude;';
-  Blockly.Arduino.definitions_['GpsLongitude'] = 'float longitude;';
-  Blockly.Arduino.definitions_['GpsAltitude'] = 'float height;';
   Blockly.Arduino.setups_['sensebox_gps_begin'] = 'gps.begin();';
   Blockly.Arduino.loops_['gps.getGPS'] = 'gps.getGPS();'
-  Blockly.Arduino.loops_['gps.getLatitude'] = 'latitude = gps.getLatitude();';
-  Blockly.Arduino.loops_['gps.getLongitude'] = 'longitude = gps.getLongitude();';
-  Blockly.Arduino.loops_['gps.getAltitude'] = 'height = gps.getAltitude();';
-  Blockly.Arduino.loops_['gps.getTimeStamp'] = 'tsBuffer = gps.getTimeStamp();';
-  var code = dropdown_name;
+  switch (dropdown_name) {
+    case 'latitude':
+      Blockly.Arduino.definitions_['GpsLatitude'] = 'float latitude;';
+      Blockly.Arduino.loops_['gps.getLatitude'] = 'latitude = gps.getLatitude();';
+      var code = 'latitude';
+      break;
+    case 'longitude':
+      Blockly.Arduino.definitions_['GpsLongitude'] = 'float longitude;';
+      Blockly.Arduino.loops_['gps.getLongitude'] = 'longitude = gps.getLongitude();';
+      var code = 'longitude';
+      break;
+    case 'height':
+      Blockly.Arduino.definitions_['GpsAltitude'] = 'float height;';
+      Blockly.Arduino.loops_['gps.getAltitude'] = 'height = gps.getAltitude();';
+      var code = 'height';
+      break;
+    case 'tsBuffer':
+      Blockly.Arduino.definitions_['GpsTimeStamp'] = 'char* tsBuffer;';
+      Blockly.Arduino.loops_['gps.getTimeStamp'] = 'tsBuffer = gps.getTimeStamp();';
+      var code = 'tsBuffer';
+      break;
+    case 'Speed':
+      Blockly.Arduino.definitions_['GpsSpeed'] = 'float speed;';
+      Blockly.Arduino.loops_['gps.getSpeed'] = 'speed = gps.getSpeed();';
+      var code = 'speed';
+      break;
+    case 'Time':
+      Blockly.Arduino.definitions_['GpsTime'] = 'float time;';
+      Blockly.Arduino.loops_['gps.getTime'] = ' time = gps.getTime();';
+      var code = 'time';
+      break;
+    case 'Date':
+      Blockly.Arduino.definitions_['GpsDate'] = 'float date;';
+      Blockly.Arduino.loops_['gps.getDate'] = 'date = gps.getDate();';
+      var code = 'date';
+      break;
+    default:
+      var code = '';
+  }
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
