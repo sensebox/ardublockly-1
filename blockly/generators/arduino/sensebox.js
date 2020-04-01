@@ -1290,10 +1290,9 @@ Blockly.Arduino.sensebox_telegram = function (block) {
   var token = this.getFieldValue('telegram_token');
   Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
   Blockly.Arduino.includes_['library_telegram'] = `#include <UniversalTelegramBot.h>`
-
+  Blockly.Arduino.definitions_['WiFiSSLClient'] = 'WiFiSSLClient client;';
   Blockly.Arduino.definitions_['telegram_objects'] = `#define BOTtoken "${token}"  // your Bot Token (Get from Botfather)
-
-WiFiSSLClient client;
+  
 UniversalTelegramBot bot(BOTtoken, client);`
 
   var code = '';
