@@ -144,7 +144,7 @@ Blockly.Blocks['sensebox_sensor_sds011'] = {
 
 Blockly.Blocks['sensebox_sensor_bme680_bsec'] = {
   init: function () {
-    var dropdownOptions = [[Blockly.Msg.senseBox_temp, "temperature"], [Blockly.Msg.senseBox_hum, "humidity"], [Blockly.Msg.senseBox_pressure, "pressure"], ["IAQ", "IAQ"], ["IAQ Accuracy", "IAQAccuracy"], ["CO2", "CO2"], ["BreathVOC", "breathVocEquivalent"], [Blockly.Msg.senseBox_gps_alt, "readAltitude"]];
+    var dropdownOptions = [[Blockly.Msg.senseBox_temp, "temperature"], [Blockly.Msg.senseBox_hum, "humidity"], [Blockly.Msg.senseBox_pressure, "pressure"], [Blockly.Msg.senseBox_bme_iaq, "IAQ"], [Blockly.Msg.senseBox_bme_iaq_accuracy, "IAQAccuracy"], [Blockly.Msg.senseBox_bme_co2, "CO2"], [Blockly.Msg.senseBox_bme_breatheVocEquivalent, "breathVocEquivalent"]];
     this.appendDummyInput()
       .appendField(Blockly.Msg.senseBox_bme680);
     this.appendDummyInput()
@@ -153,8 +153,7 @@ Blockly.Blocks['sensebox_sensor_bme680_bsec'] = {
       .appendField(new Blockly.FieldDropdown(dropdownOptions), "dropdown")
     this.setOutput(true, Blockly.Types.NUMBER.output);
     this.setColour(Blockly.Blocks.sensebox.HUE);
-    this.setTooltip(Blockly.Msg.senseBox_sds011_tip);
-    this.setHelpUrl('https://edu.books.sensebox.de/de/projekte/diy_umweltstation/temp_und_luftfeuchte.html');
+    this.setTooltip(Blockly.Msg.senseBox_bme_tip);
   },
   getBlockType: function () {
     return Blockly.Types.DECIMAL;
