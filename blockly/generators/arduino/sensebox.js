@@ -30,6 +30,104 @@ Blockly.Arduino.sensebox_sensor_pressure = function () {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino.sensebox_sensor_bme680_bsec = function () {
+  var dropdown_name = this.getFieldValue('dropdown');
+  Blockly.Arduino.includes_['library_bsec'] = '#include "bsec.h"';
+  Blockly.Arduino.definitions_['bsec_iaqSensor'] = 'Bsec iaqSensor;'
+  Blockly.Arduino.variables_['bmeTemperatur'] = 'float bmeTemperatur;';
+  Blockly.Arduino.variables_['bmeHumidity'] = 'float bmeHumidity;';
+  Blockly.Arduino.variables_['bmePressure'] = 'double bmePressure;';
+  Blockly.Arduino.variables_['bmeIAQ'] = 'float bmeIAQ;';
+  Blockly.Arduino.variables_['bmeIAQAccuracy'] = 'float bmeIAQAccuracy;';
+  Blockly.Arduino.variables_['bmeCO2'] = 'int bmeCO2;';
+  Blockly.Arduino.variables_['bmeBreathVocEquivalent'] = 'float bmeBreathVocEquivalent;'
+
+  Blockly.Arduino.codeFunctions_['checkIaqSensorStatus'] = `
+  void checkIaqSensorStatus(void)
+{
+  if (iaqSensor.status != BSEC_OK) {
+    if (iaqSensor.status < BSEC_OK) {
+      for (;;)
+        errLeds(); /* Halt in case of failure */
+    } 
+  }
+
+  if (iaqSensor.bme680Status != BME680_OK) {
+    if (iaqSensor.bme680Status < BME680_OK) {
+      for (;;)
+        errLeds(); /* Halt in case of failure */
+    } 
+  }
+}
+`;
+  Blockly.Arduino.codeFunctions_['errLeds'] = `
+void errLeds(void)
+{
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(100);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(100);
+}`;
+  //Setup Code
+  Blockly.Arduino.setups_['Wire.begin'] = 'Wire.begin();';
+  Blockly.Arduino.setups_['iaqSensor.begin'] = 'iaqSensor.begin(BME680_I2C_ADDR_PRIMARY, Wire);';
+  Blockly.Arduino.setups_['checkIaqSensorStatus'] = 'checkIaqSensorStatus();';
+  Blockly.Arduino.setups_['bsec_sensorlist'] = `
+  bsec_virtual_sensor_t sensorList[10] = {
+    BSEC_OUTPUT_RAW_TEMPERATURE,
+    BSEC_OUTPUT_RAW_PRESSURE,
+    BSEC_OUTPUT_RAW_HUMIDITY,
+    BSEC_OUTPUT_RAW_GAS,
+    BSEC_OUTPUT_IAQ,
+    BSEC_OUTPUT_STATIC_IAQ,
+    BSEC_OUTPUT_CO2_EQUIVALENT,
+    BSEC_OUTPUT_BREATH_VOC_EQUIVALENT,
+    BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_TEMPERATURE,
+    BSEC_OUTPUT_SENSOR_HEAT_COMPENSATED_HUMIDITY,
+  };
+  `;
+  Blockly.Arduino.setups_['iaqSensorUpdateSubscription'] = 'iaqSensor.updateSubscription(sensorList, 10, BSEC_SAMPLE_RATE_LP);\ncheckIaqSensorStatus();';
+  //Loop Code
+  Blockly.Arduino.loops_['iaqloop'] = `
+  if (iaqSensor.run()) {
+    bmeTemperatur = iaqSensor.temperature;
+    bmeHumidity = iaqSensor.humidity;
+    bmePressure = iaqSensor.pressure;
+    bmeIAQ = iaqSensor.iaq;
+    bmeIAQAccuracy = iaqSensor.iaqAccuracy;
+    bmeCO2 = iaqSensor.co2Equivalent;
+    bmeBreathVocEquivalent = iaqSensor.breathVocEquivalent;
+  } else {
+    checkIaqSensorStatus();
+  }
+  `;
+  switch (dropdown_name) {
+    case 'temperature':
+      var code = 'bmeTemperatur';
+      break;
+    case 'humidity':
+      var code = 'bmeHumidity';
+      break;
+    case 'pressure':
+      var code = 'bmePressure'
+      break;
+    case 'IAQ':
+      var code = 'bmeIAQ';
+      break;
+    case 'IAQAccuracy':
+      var code = 'bmeIAQAccuracy';
+      break;
+    case 'CO2':
+      var code = 'bmeCO2';
+      break;
+    case 'breathVocEquivalent':
+      var code = 'bmeBreathVocEquivalent';
+      break;
+  }
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 
 Blockly.Arduino.sensebox_sensor_bme680 = function () {
   var dropdown_name = this.getFieldValue('NAME');
