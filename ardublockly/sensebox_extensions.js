@@ -30,7 +30,14 @@ SenseboxExtension.init = function () {
     window.BOARD = 'sensebox';
   }
 
-
+  if (urlParams.has('svg')) {
+    var button = urlParams.get('svg');
+    var buttons_screenshot = document.getElementById('button_screenshot');
+    if (button === 'true') {
+      buttons_screenshot.classList.remove('hidden');
+    }
+  } else
+    buttons_screenshot.classList.add('hidden');
 
   if (location.hostname !== 'localhost') {
     //TODO hide all features of running ardublockly locally
