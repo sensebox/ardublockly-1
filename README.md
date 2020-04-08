@@ -30,6 +30,9 @@ Blockly original source is [Copyright of Google Inc.](https://developers.google.
 For the nice loading Animations:
 [Loading.io](https://loading.io/button/)
 
+Export Blocks to SVG:
+For the Blocks to SVG feature code by [Program-AR](https://github.com/Program-AR) was used. See the specific [Repository](https://github.com/Program-AR/blockly-to-svg). 
+Code is released under MIT License
 
 ## License
 

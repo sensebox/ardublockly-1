@@ -519,6 +519,11 @@ Ardublockly.getBBox_ = function (element) {
   };
 };
 
+
+/**
+ * Export the Blocks to SVG
+ * see original code at: https://github.com/Program-AR/blockly-to-svg
+ */
 Ardublockly.exportBlockSVG = function (canvas) {
   canvas = Blockly.mainWorkspace.svgBlockCanvas_.cloneNode(true);
 
@@ -540,7 +545,7 @@ Ardublockly.exportBlockSVG = function (canvas) {
     let element = document.createElement('a')
     var blow = new Blob([xml], { type: 'image/svg+xml;base64' });
     element.href = URL.createObjectURL(blow);
-    element.download = 'bloques.svg';
+    element.download = 'block_export.svg';
     element.click();
   };
 };
