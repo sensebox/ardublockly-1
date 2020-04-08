@@ -653,7 +653,7 @@
 	"senseBox_bme_iaq_accuracy": "Kalibrierungswert",
 	"senseBox_bme_iaq": "Innenraumluftqualität (IAQ)",
 	"senseBox_bme_co2": "CO2 Äquivalent",
-	"senseBox_bme_breatheVocEquivalent": "Atemluft VOC ",
+	"senseBox_bme_breatheVocEquivalent": "Atemluft VOC Äquivalent",
 	"senseBox_bme_tip": "Gibt Messwerte des BME680 zurück",
 	"senseBox_gas": "Gas (VOC)",
 	"sensebox_soil_smt50": "Bodenfeuchte/-temperatur (SMT50)",

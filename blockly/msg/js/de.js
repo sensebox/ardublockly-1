@@ -760,7 +760,7 @@ Blockly.Msg.senseBox_bme680 = "Umweltsensor (BME680)";
 Blockly.Msg.senseBox_bme_iaq = "Innenraumluftqualität (IAQ)";
 Blockly.Msg.senseBox_bme_iaq_accuracy = "Kalibrierungswert";
 Blockly.Msg.senseBox_bme_co2 = "CO2 Äquivalent";
-Blockly.Msg.senseBox_bme_breatheVocEquivalent = "Atemluft VOC ";
+Blockly.Msg.senseBox_bme_breatheVocEquivalent = "Atemluft VOC Äquivalent";
 Blockly.Msg.senseBox_bme_tip = "Gibt Messwerte des BME680 zurück";
 
 Blockly.Msg.senseBox_gas = "Gas (VOC)";
