@@ -32,13 +32,14 @@ SenseboxExtension.init = function () {
 
   if (urlParams.has('svg')) {
     var button = urlParams.get('svg');
-    var buttons_screenshot = document.getElementById('button_screenshot');
+    var button_screenshot = document.getElementById('button_screenshot');
     if (button === 'true') {
-      buttons_screenshot.classList.remove('hidden');
+      button_screenshot.classList.remove('hidden');
     }
-  } else
-    buttons_screenshot.classList.add('hidden');
-
+    else {
+      button_screenshot.classList.add('hidden');
+    }
+  }
   if (location.hostname !== 'localhost') {
     //TODO hide all features of running ardublockly locally
     var buttons_offline = document.getElementById('buttons_offline');
