@@ -16,6 +16,7 @@ Ardublockly.LOCALISED_TEXT = {
   Display_print: "Displayausgabe",
   GPS: "GPS + Display",
   send_osem: "Sende an oSeM",
+  translatable_screenshot: "Screenshot",
   /* Settings */
   compilerLocation: "Compiler Verzeichnis",
   compilerLocationDefault: "Compiler Verzeichnis unbekannt",
