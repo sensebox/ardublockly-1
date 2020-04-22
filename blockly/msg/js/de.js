@@ -756,9 +756,13 @@ Blockly.Msg.senseBox_LoRa_init_abp_tip = "Initialisiere die LoRa übertragung. K
 Blockly.Msg.senseBox_LoRa_init_otaa_tip = "Initialisiere die LoRa übertragung. Kopiere die ID's im lsb Format";
 
 //BME680
-Blockly.Msg.senseBox_bme680  = "Umweltsensor (BME680)";
-Blockly.Msg.senseBox_bme680_tip = "Gibt Messwerte des BME680 zurück";
-Blockly.Msg.senseBox_bme680_warning = "Achtung. Gas (VOC) kann nicht gleichzeitig mit anderen Parametern gemessen werden"
+Blockly.Msg.senseBox_bme680 = "Umweltsensor (BME680)";
+Blockly.Msg.senseBox_bme_iaq = "Innenraumluftqualität (IAQ)";
+Blockly.Msg.senseBox_bme_iaq_accuracy = "Kalibrierungswert";
+Blockly.Msg.senseBox_bme_co2 = "CO2 Äquivalent";
+Blockly.Msg.senseBox_bme_breatheVocEquivalent = "Atemluft VOC Äquivalent";
+Blockly.Msg.senseBox_bme_tip = "Gibt Messwerte des BME680 zurück";
+
 Blockly.Msg.senseBox_gas = "Gas (VOC)";
 Blockly.Msg.sensebox_soil_stm50 = "Bodenfeuchte/-temperatur (SMT50)";
 //Telegram
