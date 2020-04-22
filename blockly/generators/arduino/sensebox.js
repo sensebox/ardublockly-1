@@ -1359,7 +1359,7 @@ Blockly.Arduino.sensebox_lora_cayenne_luminosity = function (block) {
 Blockly.Arduino.sensebox_lora_cayenne_sensor = function (block) {
   var sensorValue = Blockly.Arduino.valueToCode(this, 'Value', Blockly.Arduino.ORDER_ATOMIC) || 0
   var channel = this.getFieldValue('CHANNEL');
-  var code = `lpp.addAnalogOutput(${channel}, ${sensorValue});\n`;
+  var code = `lpp.addAnalogInput(${channel}, ${sensorValue});\n`;
   return code;
 }
 
