@@ -74,7 +74,8 @@ Ardublockly.LOCALISED_TEXT = {
   copy_paste_mcu: "Kopiere die .BIN Datei auf deine senseBox MCU. <br> Wird die senseBox MCU im Explorer nicht angezeigt mache eine Doppelklick auf den Roten Reset Button.<br>" +
     "<img class='animated-gif' src=\"img/copy_to_mcu.gif\"> <br>" +
     "Benötigst du mehr Information und Hilfe schau ins <a href=\"https://sensebox.github.io/books-v2/blockly/de/\" target=\"_blank\">Blockly für senseBox Buch</a>",
-
+  copy_paste_mcu_mac: "Kopiere die .BIN Datei auf deine senseBox MCU. <br> Du verwendest MacOS als Betriebssystem, bitte kopiere deine Datei mit Hilfe: <ul><li><a href=\"https://sensebox.de/docs/senseBox_Sketch_Uploader_DE.zip\">Kopiertool<a/></li><li><a href=\"https://www.mucommander.com/\">MuCommander</a></li></ul><br>" +
+    "Das kopiere über den normalen Finder funktioniert leider nicht",
   /* Alerts */
   loadNewBlocksTitle: "Neue Blöcke laden?",
   loadNewBlocksBody: "Das Laden der neuen XML-Datei ersetzt die aktuellen Blöcke.<br>" +
