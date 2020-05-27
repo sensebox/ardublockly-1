@@ -74,8 +74,7 @@ Ardublockly.LOCALISED_TEXT = {
   copy_paste_mcu: "Copy the .BIN Datei to your senseBox MCU. <br> If your senseBox MCU is not shown do a fast double push to the reset button.<br>" +
     "<img class='animated-gif'src=\"img/copy_to_mcu.gif\"> <br>" +
     "You need more help? See here <a href=\"https://sensebox.github.io/books-v2/blockly/en/\" target=\"_blank\">Blockly for senseBox Book</a>",
-  copy_paste_mcu_mac: "Copy the .BIN File to your senseBox MCU. <br> You are using MacOS as your operating system, please copy the file using  <ul><li style=\"list-style: square;\"><a href=\"https://sensebox.de/docs/senseBox_Sketch_Uploader_DE.zip\">Copy Tool<a/></li><li style=\"list-style: square;\"><a href=\"https://www.mucommander.com/\">MuCommander</a></li></ul><br>" +
-    "Copying the file with the normal Finder won't work",
+  copy_paste_mcu_mac: "Copy the .BIN File to your senseBox MCU. <br> You are using MacOS as your operating system. Copying the file with the normal Finder won't work, please copy the file using one of the following tools:  <ul><li style=\"list-style: square;\"><a href=\"https://sensebox.de/docs/senseBox_Sketch_Uploader_DE.zip\">Copy Tool<a/></li><li style=\"list-style: square;\"><a href=\"https://www.mucommander.com/\">MuCommander</a></li></ul><br>",
   /* Alerts */
   loadNewBlocksTitle: "Load new blocks?",
   loadNewBlocksBody: "Loading a new XML file will replace the current blocks from the workspace.<br>" +
