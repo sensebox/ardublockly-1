@@ -113,12 +113,27 @@ SenseboxExtension.init = function () {
                 window.open(compilerOnline + '/download?id=' + response.data.id + '&board=' + window.BOARD + '&filename=' + filename, '_self');
               }
               var no_thanks = sessionStorage.getItem('no_thanks');
+              var Name = "Not known";
+              if (navigator.appVersion.indexOf("Win") != -1) Name =
+                "Windows OS";
+              if (navigator.appVersion.indexOf("Mac") != -1) Name =
+                "MacOS";
+              if (navigator.appVersion.indexOf("X11") != -1) Name =
+                "UNIX OS";
+              if (navigator.appVersion.indexOf("Linux") != -1) Name =
+                "Linux OS";
+              console.log(navigator.platform);
               // If no cookie with our chosen name (e.g. no_thanks)...
               if (no_thanks == "false") {
-
-                window.setTimeout(Ardublockly.alertMessage(
-                  Ardublockly.getLocalStr('sketch_compiled'),
-                  Ardublockly.getLocalStr('copy_paste_mcu')), 1000);
+                if (navigator.platform == "MacIntel") {
+                  window.setTimeout(Ardublockly.alertMessage(
+                    Ardublockly.getLocalStr('sketch_compiled'),
+                    Ardublockly.getLocalStr('copy_paste_mcu_mac')), 1000);
+                }
+                else
+                  window.setTimeout(Ardublockly.alertMessage(
+                    Ardublockly.getLocalStr('sketch_compiled'),
+                    Ardublockly.getLocalStr('copy_paste_mcu')), 1000);
               }
               window.setTimeout(download, 1000);
 
