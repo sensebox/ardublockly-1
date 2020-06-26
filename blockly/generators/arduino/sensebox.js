@@ -327,6 +327,8 @@ Blockly.Arduino.sensebox_osem_connection = function (block) {
   var branch = Blockly.Arduino.statementToCode(block, 'DO');
   var blocks = Blockly.Blocks.sensebox.getDescendants;
   var type = this.getFieldValue('type');
+  var ssl = this.getFieldValue('SSL');
+  var port = 0;
   var count = 0;
   for (var i = 0; i < blocks.length; i++) {
     if (blocks[i].type === 'sensebox_send_to_osem') {
@@ -339,7 +341,14 @@ Blockly.Arduino.sensebox_osem_connection = function (block) {
   Blockly.Arduino.definitions_['num_sensors'] = 'static const uint8_t NUM_SENSORS = ' + num_sensors + ';'
   Blockly.Arduino.definitions_['SenseBoxID'] = 'const char SENSEBOX_ID [] PROGMEM = "' + box_id + '";';
   Blockly.Arduino.definitions_['host'] = 'const char server [] PROGMEM =' + host + ';';
-  Blockly.Arduino.definitions_['WiFiSSLClient'] = 'WiFiSSLClient client;';
+  if (ssl == 'TRUE') {
+    Blockly.Arduino.definitions_['WiFiSSLClient'] = 'WiFiSSLClient client;';
+    port = 443;
+  } else if (ssl == 'FALSE') {
+    Blockly.Arduino.definitions_['WiFiClient'] = 'WiFiClient client;';
+    port = 80;
+  }
+
   Blockly.Arduino.definitions_['measurement'] = `typedef struct measurement {
     const char *sensorId;
     float value;
@@ -378,7 +387,7 @@ char _server[strlen_P(server)];
 strcpy_P(_server, server);
 for (uint8_t timeout = 2; timeout != 0; timeout--) {
   Serial.println(F("connecting..."));
-  connected = client.connect(_server, 443);
+  connected = client.connect(_server, `+ port + `);
   if (connected == true) {
     // construct the HTTP POST request:
     sprintf_P(buffer,
@@ -438,7 +447,7 @@ for (uint8_t timeout = 2; timeout != 0; timeout--) {
   strcpy_P(_server, server);
   for (uint8_t timeout = 2; timeout != 0; timeout--) {
     Serial.println(F("connecting..."));
-    connected = client.connect(_server, 443);
+    connected = client.connect(_server, `+ port + `);
     if (connected == true) {
       // construct the HTTP POST request:
       sprintf_P(buffer,
