@@ -147,7 +147,7 @@ Ardublockly.TOOLBOX_XML =
     '   </category>' +
     '  <sep></sep>' +
     '   <category id="catSenseBox_Led" name="LED" colour="120">' +
-    '       <block type="sensebox_led"></block>' +
+    '       <block type="sensebox_led" disabled="false"></block>' +
     '      <block type="sensebox_rgb_led">' +
     '        <value name="RED">' +
     '          <block type="math_number">' +
