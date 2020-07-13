@@ -696,5 +696,6 @@
 	"senseBox_LoRa_message_tip": "Sende eine Nachricht über LoRa",
 	"senseBox_LoRa_sensor_tip": "Sende eine Sensorwert mit einer bestimmten Anzahl an Bytes",
 	"senseBox_LoRa_init_abp_tip": "Initialisiere die LoRa übertragung. Kopiere die ID's im lsb Format",
-	"senseBox_LoRa_init_otaa_tip": "Initialisiere die LoRa übertragung. Kopiere die ID's im lsb Format"
+	"senseBox_LoRa_init_otaa_tip": "Initialisiere die LoRa übertragung. Kopiere die ID's im lsb Format",
+	"senseBox_windspeed": "Windgeschwindigkeitssensor"
 }
