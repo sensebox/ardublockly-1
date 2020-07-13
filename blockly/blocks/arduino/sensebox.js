@@ -1872,3 +1872,22 @@ Blockly.Blocks['sensebox_windspeed'] = {
   },
 };
 
+/**
+ * dfRobot Soundsensor
+ * 
+ */
+
+Blockly.Blocks['sensebox_soundsensor_dfrobot'] = {
+  init: function () {
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.senseBox_soundsensor_dfrobot)
+      .appendField("Pin:")
+      .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.analogPins), "PIN")
+    this.setOutput(true, Blockly.Types.DECIMAL.output);
+  },
+  getBlockType: function () {
+    return Blockly.Types.DECIMAL;
+  },
+};
+

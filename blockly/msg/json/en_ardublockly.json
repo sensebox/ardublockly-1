@@ -365,5 +365,6 @@
 	"senseBox_LoRa_sensor_tip": "Send a value with a specific number of bytes",
 	"senseBox_LoRa_init_abp_tip": "Initialise the LoRa tranismission. Copy ID's as lsb",
 	"senseBox_LoRa_init_otaa_tip": "Initialise the LoRa tranismission. Copy ID's as lsb",
-	"senseBox_windspeed": "Windspeed"
+	"senseBox_windspeed": "Windspeed",
+	"senseBox_soundsensor_dfrobot": "Soundsensor"
 }

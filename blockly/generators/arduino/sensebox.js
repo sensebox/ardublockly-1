@@ -1475,3 +1475,20 @@ float getWindspeed(){
   var code = 'getWindspeed()';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
+/**
+ * 
+ * 
+ */
+
+Blockly.Arduino.sensebox_soundsensor_dfrobot = function () {
+  var dropdown_pin = this.getFieldValue('PIN');
+  Blockly.Arduino.userFunctions_['soundsensor'] = `    
+float getSoundValue(){
+  float v = analogRead(`+ dropdown_pin + `) * (3.3 / 1024.0);
+  float decibel = v * 50;
+  return decibel;
+}`
+  var code = 'getSoundValue()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
