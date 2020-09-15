@@ -1446,3 +1446,49 @@ Blockly.Arduino.sensebox_telegram_send = function (block) {
   var code = `bot.sendMessage(chat_id, String(${textToSend}), "");\n`;
   return code;
 };
+
+
+/**
+ * Windspeed
+ * 
+ */
+
+
+Blockly.Arduino.sensebox_windspeed = function () {
+  var dropdown_pin = this.getFieldValue('PIN');
+  Blockly.Arduino.userFunctions_['windspeed'] = `    
+float getWindspeed(){
+  float voltageWind = analogRead(`+ dropdown_pin + `) * (3.3 / 1024.0);
+  float windspeed = 0.0;
+  if (voltageWind >= 0.018){
+    float poly1 = pow(voltageWind, 3);
+    poly1 = 17.0359801998299 * poly1;
+    float poly2 = pow(voltageWind, 2);
+    poly2 = 47.9908168343362 * poly2;
+    float poly3 = 122.899677524413 * voltageWind;
+    float poly4 = 0.657504127272728;
+    windspeed = poly1 - poly2 + poly3 - poly4;
+    windspeed = windspeed * 0.2777777777777778; //conversion in m/s
+  }
+    return windspeed;
+}`
+  var code = 'getWindspeed()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+/**
+ * 
+ * 
+ */
+
+Blockly.Arduino.sensebox_soundsensor_dfrobot = function () {
+  var dropdown_pin = this.getFieldValue('PIN');
+  Blockly.Arduino.userFunctions_['soundsensor'] = `    
+float getSoundValue(){
+  float v = analogRead(`+ dropdown_pin + `) * (3.3 / 1024.0);
+  float decibel = v * 50;
+  return decibel;
+}`
+  var code = 'getSoundValue()';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};

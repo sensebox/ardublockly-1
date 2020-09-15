@@ -766,10 +766,13 @@ Blockly.Msg.senseBox_bme_tip = "Gibt Messwerte des BME680 zurück";
 Blockly.Msg.senseBox_gas = "Gas (VOC)";
 Blockly.Msg.sensebox_soil_stm50 = "Bodenfeuchte/-temperatur (SMT50)";
 //Telegram
-Blockly.Msg.senseBox_telegram_init = "Telegram Bot initialisieren"
-Blockly.Msg.senseBox_telegram_token = "Token"
-Blockly.Msg.senseBox_telegram_do = "Telegram mache"
-Blockly.Msg.senseBox_telegram_do_on_message = "bei Nachricht"
-Blockly.Msg.senseBox_telegram_message = "Nachricht"
-Blockly.Msg.senseBox_telegram_send = "Sende Nachricht"
+Blockly.Msg.senseBox_telegram_init = "Telegram Bot initialisieren";
+Blockly.Msg.senseBox_telegram_token = "Token";
+Blockly.Msg.senseBox_telegram_do = "Telegram mache";
+Blockly.Msg.senseBox_telegram_do_on_message = "bei Nachricht";
+Blockly.Msg.senseBox_telegram_message = "Nachricht";
+Blockly.Msg.senseBox_telegram_send = "Sende Nachricht";
+
+Blockly.Msg.senseBox_windspeed = "Windgeschwindigkeitssensor";
+Blockly.Msg.senseBox_soundsensor_dfrobot = "Lautstärkesensor";
 

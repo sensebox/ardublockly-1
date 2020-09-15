@@ -1852,3 +1852,42 @@ Blockly.Blocks["sensebox_telegram_send"] = {
   },
   LOOP_TYPES: ["sensebox_telegram_do_on_message"]
 };
+
+/**
+ * Windspeed
+ * 
+ */
+
+Blockly.Blocks['sensebox_windspeed'] = {
+  init: function () {
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.senseBox_windspeed)
+      .appendField("Pin:")
+      .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.analogPins), "PIN")
+    this.setOutput(true, Blockly.Types.DECIMAL.output);
+  },
+  getBlockType: function () {
+    return Blockly.Types.DECIMAL;
+  },
+};
+
+/**
+ * dfRobot Soundsensor
+ * 
+ */
+
+Blockly.Blocks['sensebox_soundsensor_dfrobot'] = {
+  init: function () {
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.senseBox_soundsensor_dfrobot)
+      .appendField("Pin:")
+      .appendField(new Blockly.FieldDropdown(Blockly.Arduino.Boards.selected.analogPins), "PIN")
+    this.setOutput(true, Blockly.Types.DECIMAL.output);
+  },
+  getBlockType: function () {
+    return Blockly.Types.DECIMAL;
+  },
+};
+
