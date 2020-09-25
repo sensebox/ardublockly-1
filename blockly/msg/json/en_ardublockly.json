@@ -366,5 +366,6 @@
 	"senseBox_LoRa_init_abp_tip": "Initialise the LoRa tranismission. Copy ID's as lsb",
 	"senseBox_LoRa_init_otaa_tip": "Initialise the LoRa tranismission. Copy ID's as lsb",
 	"senseBox_windspeed": "Windspeed",
-	"senseBox_soundsensor_dfrobot": "Soundsensor"
+	"senseBox_soundsensor_dfrobot": "Soundsensor",
+	"senseBox_scd30": "CO2 Sensor (Sensirion SCD30)"
 }

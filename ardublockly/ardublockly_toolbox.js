@@ -34,6 +34,7 @@ Ardublockly.TOOLBOX_XML =
     '      <block type="sensebox_gps_getValues"></block>' +
     '      <block type="sensebox_windspeed"></block>' +
     '      <block type="sensebox_soundsensor_dfrobot"></block>' +
+    '      <block type="sensebox_scd30"></block>' +
     '      </category>' +
     '      <sep></sep>' +
     '      <category id="catSenseBox_Display" name="Display" colour="120">' +
