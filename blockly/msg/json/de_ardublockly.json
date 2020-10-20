@@ -699,5 +699,7 @@
 	"senseBox_LoRa_init_otaa_tip": "Initialisiere die LoRa übertragung. Kopiere die ID's im lsb Format",
 	"senseBox_windspeed": "Windgeschwindigkeitssensor",
 	"senseBox_soundsensor_dfrobot": "Lautstärkesensor",
-	"senseBox_scd30": "CO2 Sensor (Sensirion SCD30)"
+	"senseBox_scd30": "CO2 Sensor (Sensirion SCD30)",
+	"senseBox_scd_tip": "Gibt den Wert des CO2 Sensors",
+	"senseBox_scd_co2": "CO2 in ppm"
 }

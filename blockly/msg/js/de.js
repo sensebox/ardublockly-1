@@ -776,3 +776,5 @@ Blockly.Msg.senseBox_telegram_send = "Sende Nachricht";
 Blockly.Msg.senseBox_windspeed = "Windgeschwindigkeitssensor";
 Blockly.Msg.senseBox_soundsensor_dfrobot = "Lautstärkesensor";
 Blockly.Msg.senseBox_scd30 = "CO2 Sensor (Sensirion SCD30)";
+Blockly.Msg.senseBox_scd_tip = "Gibt den Wert des CO2 Sensors";
+Blockly.Msg.senseBox_scd_co2 = "CO2 in ppm";

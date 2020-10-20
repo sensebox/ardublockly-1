@@ -1894,7 +1894,7 @@ Blockly.Blocks['sensebox_soundsensor_dfrobot'] = {
 
 Blockly.Blocks['sensebox_scd30'] = {
   init: function () {
-    var dropdownOptions = [[Blockly.Msg.senseBox_temp, "temperature"], [Blockly.Msg.senseBox_hum, "humidity"], [Blockly.Msg.senseBox_bme_co2, "CO2"]];
+    var dropdownOptions = [[Blockly.Msg.senseBox_bme_co2, "CO2"], [Blockly.Msg.senseBox_temp, "temperature"], [Blockly.Msg.senseBox_hum, "humidity"]];
     this.appendDummyInput()
       .appendField(Blockly.Msg.senseBox_scd30);
     this.appendDummyInput()
@@ -1903,7 +1903,7 @@ Blockly.Blocks['sensebox_scd30'] = {
       .appendField(new Blockly.FieldDropdown(dropdownOptions), "dropdown")
     this.setOutput(true, Blockly.Types.NUMBER.output);
     this.setColour(Blockly.Blocks.sensebox.HUE);
-    this.setTooltip(Blockly.Msg.senseBox_bme_tip);
+    this.setTooltip(Blockly.Msg.senseBox_scd_tip);
   },
   getBlockType: function () {
     return Blockly.Types.DECIMAL;
