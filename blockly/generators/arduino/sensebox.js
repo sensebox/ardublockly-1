@@ -324,6 +324,7 @@ Blockly.Arduino.sensebox_startap = function (block) {
 Blockly.Arduino.sensebox_osem_connection = function (block) {
   var box_id = this.getFieldValue('BoxID');
   var host = this.getFieldValue('host');
+  var access_token = this.getFieldValue('access_token');
   var branch = Blockly.Arduino.statementToCode(block, 'DO');
   var blocks = Blockly.Blocks.sensebox.getDescendants;
   var type = this.getFieldValue('type');
@@ -391,7 +392,7 @@ for (uint8_t timeout = 2; timeout != 0; timeout--) {
   if (connected == true) {
     // construct the HTTP POST request:
     sprintf_P(buffer,
-              PSTR("POST /boxes/%s/data HTTP/1.1\\nHost: %s\\nContent-Type: "
+              PSTR("POST /boxes/%s/data HTTP/1.1\\nAuthorization: ${access_token}\\nHost: %s\\nContent-Type: "
                    "text/csv\\nConnection: close\\nContent-Length: %i\\n\\n"),
               SENSEBOX_ID, server, num_measurements * lengthMultiplikator);
     // send the HTTP POST request:

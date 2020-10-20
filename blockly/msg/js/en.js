@@ -677,6 +677,7 @@ Blockly.Msg.senseBox_osem_host = "opensensemap.org";
 Blockly.Msg.senseBox_osem_host_workshop = "workshop.opensensemap.org";
 Blockly.Msg.senseBox_osem_mobile = "Mobile";
 Blockly.Msg.senseBox_osem_stationary = "Stationary";
+Blockly.Msg.senseBox_osem_access_token = "API Key";
 Blockly.Msg.senseBox_output_filename  = "filename";
 Blockly.Msg.senseBox_output_format  = "format:";
 Blockly.Msg.senseBox_output_linebreak  = "linebreak";

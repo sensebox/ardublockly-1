@@ -556,6 +556,7 @@
 	"senseBox_osem_exposure": "Typ",
 	"senseBox_osem_stationary": "Stationär",
 	"senseBox_osem_mobile": "Mobil",
+	"senseBox_osem_access_token": "API Schlüssel",
 	"senseBox_send_to_osem_tip ": "Sende Messwert an die openSenseMap",
 	"senseBox_send_to_osem ": "Sende Messwert an die openSenseMap",
 	"senseBox_sds011_dimension": "in µg/m³ an",

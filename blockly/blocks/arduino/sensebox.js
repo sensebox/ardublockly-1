@@ -528,6 +528,10 @@ Blockly.Blocks['sensebox_osem_connection'] = {
       .setAlign(Blockly.ALIGN_LEFT)
       .appendField("senseBox ID")
       .appendField(new Blockly.FieldTextInput("senseBox ID"), "BoxID");
+    this.appendDummyInput()
+      .setAlign(Blockly.ALIGN_LEFT)
+      .appendField(Blockly.Msg.senseBox_osem_access_token)
+      .appendField(new Blockly.FieldTextInput("access_token"), "access_token");
     this.appendStatementInput('DO')
       .appendField(Blockly.Msg.senseBox_sensor)
       .setCheck(null);

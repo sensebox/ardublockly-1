@@ -611,6 +611,7 @@ Blockly.Msg.senseBox_osem_connection = "Verbinde mit openSenseMap";
 Blockly.Msg.senseBox_osem_exposure = "Typ";
 Blockly.Msg.senseBox_osem_stationary = "Stationär";
 Blockly.Msg.senseBox_osem_mobile = "Mobil";
+Blockly.Msg.senseBox_osem_access_token = "API Schlüssel";
 Blockly.Msg.senseBox_sds011 = "Feinstaubsensor";
 Blockly.Msg.senseBox_sds011_dimension = "in µg/m³ an";
 Blockly.Msg.senseBox_sds011_pm25 = "PM2.5";
