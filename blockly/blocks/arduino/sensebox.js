@@ -980,7 +980,7 @@ Blockly.Blocks['sensebox_ws2818_led'] = {
   init: function () {
 
     var dropdownOptions = [[Blockly.Msg.senseBox_ultrasonic_port_A, '1'],
-    [Blockly.Msg.senseBox_ultrasonic_port_B, '3'], [Blockly.Msg.senseBox_ultrasonic_port_C, '4']];
+    [Blockly.Msg.senseBox_ultrasonic_port_B, '3'], [Blockly.Msg.senseBox_ultrasonic_port_C, '5']];
 
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendDummyInput()
