@@ -550,6 +550,7 @@
 	"senseBox_wifi_startap": "Initialisiere WLAN Access Point",
 	"senseBox_osem_connection ": "Verbinde mit openSenseMap",
 	"senseBox_osem_connection_tip ": "stellt eine WLAN verbindung her",
+	"senseBox_osem_access_token": "API Schlüssel",
 	"senseBox_osem_host": "opensensemap.org",
 	"senseBox_osem_host_workshop": "workshop.opensensemap.org",
 	"senseBox_osem_connection": "Verbinde mit openSenseMap",

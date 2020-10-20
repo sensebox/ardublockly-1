@@ -528,6 +528,10 @@ Blockly.Blocks['sensebox_osem_connection'] = {
       .setAlign(Blockly.ALIGN_LEFT)
       .appendField("senseBox ID")
       .appendField(new Blockly.FieldTextInput("senseBox ID"), "BoxID");
+    this.appendDummyInput()
+      .setAlign(Blockly.ALIGN_LEFT)
+      .appendField(Blockly.Msg.senseBox_osem_access_token)
+      .appendField(new Blockly.FieldTextInput("access_token"), "access_token");
     this.appendStatementInput('DO')
       .appendField(Blockly.Msg.senseBox_sensor)
       .setCheck(null);
@@ -1894,7 +1898,7 @@ Blockly.Blocks['sensebox_soundsensor_dfrobot'] = {
 
 Blockly.Blocks['sensebox_scd30'] = {
   init: function () {
-    var dropdownOptions = [[Blockly.Msg.senseBox_bme_co2, "CO2"], [Blockly.Msg.senseBox_temp, "temperature"], [Blockly.Msg.senseBox_hum, "humidity"]];
+    var dropdownOptions = [[Blockly.Msg.senseBox_scd_co2, "CO2"], [Blockly.Msg.senseBox_temp, "temperature"], [Blockly.Msg.senseBox_hum, "humidity"]];
     this.appendDummyInput()
       .appendField(Blockly.Msg.senseBox_scd30);
     this.appendDummyInput()

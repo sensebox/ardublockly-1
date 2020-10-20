@@ -603,6 +603,7 @@ Blockly.Msg.senseBox_wifi_tip = "stellt eine WLAN verbindung her";
 Blockly.Msg.senseBox_wifi_startap = "Initialisiere WLAN Access Point";
 Blockly.Msg.senseBox_osem_connection_tip = "stellt eine WLAN verbindung her";
 Blockly.Msg.senseBox_send_to_osem_tip = "sende Messwert an";
+Blockly.Msg.senseBox_osem_access_token = "API Schlüssel";
 Blockly.Msg.senseBox_send_to_osem = "Sende Messwert an die openSenseMap";
 Blockly.Msg.senseBox_osem_connection = "Verbinde mit openSenseMap:";
 Blockly.Msg.senseBox_osem_host = "opensensemap.org";
