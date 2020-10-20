@@ -670,6 +670,7 @@ Blockly.Msg.senseBox_measurement = "Measurement";  // untranslated
 Blockly.Msg.senseBox_measurements = "Measurements";  // untranslated
 Blockly.Msg.senseBox_off  = "off";  // untranslated
 Blockly.Msg.senseBox_on  = "on";  // untranslated
+Blockly.Msg.senseBox_osem_access_token = "API Key";  // untranslated
 Blockly.Msg.senseBox_osem_connection  = "Connect to openSenseMap";  // untranslated
 Blockly.Msg.senseBox_osem_connection_tip  = "";  // untranslated
 Blockly.Msg.senseBox_osem_exposure = "Type";  // untranslated
