@@ -696,6 +696,7 @@ Blockly.Msg.senseBox_pressure_sensor  = "Airpressure/Temperature Sensor (BMP280)
 Blockly.Msg.senseBox_pressure_tip  = "airpressure sensor can measure the airpressure in Pa";  // untranslated
 Blockly.Msg.senseBox_rgb_led  = "RGB-LED";  // untranslated
 Blockly.Msg.senseBox_rgb_led_tip  = "RGB-LED";  // untranslated
+Blockly.Msg.senseBox_scd30 = "CO2 Sensor (Sensirion SCD30)";  // untranslated
 Blockly.Msg.senseBox_sd_create_file  = "Create file on SD-Card";  // untranslated
 Blockly.Msg.senseBox_sd_decimals = "decimals";  // untranslated
 Blockly.Msg.senseBox_sd_open_file  = "Open a file from SD-Card";  // untranslated
