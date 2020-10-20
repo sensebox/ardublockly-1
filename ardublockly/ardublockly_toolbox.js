@@ -170,7 +170,7 @@ Ardublockly.TOOLBOX_XML =
     '      <block type="sensebox_ws2818_led">' +
     '          <value name="POSITION">' +
     '          <block type="math_number">' +
-    '            <field name="NUM">1</field>' +
+    '            <field name="NUM">0</field>' +
     '          </block>' +
     '        </value>' +
     '        <value name="RED">' +
