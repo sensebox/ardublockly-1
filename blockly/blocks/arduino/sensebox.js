@@ -987,6 +987,8 @@ Blockly.Blocks['sensebox_ws2818_led'] = {
       .appendField(Blockly.Msg.senseBox_ws2818_rgb_led)
       .appendField("Pin:")
       .appendField(new Blockly.FieldDropdown(dropdownOptions), "Port")
+    this.appendValueInput("BRIGHTNESS", "brightness")
+      .appendField((Blockly.Msg.senseBox_ws2818_rgb_led_brightness));
     this.appendValueInput("POSITION", "position")
       .appendField((Blockly.Msg.senseBox_ws2818_rgb_led_position));
     this.appendValueInput("RED", 'Number')

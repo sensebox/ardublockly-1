@@ -650,12 +650,14 @@ Blockly.Arduino.sensebox_ws2818_led = function () {
     }
   }
   var numPixel = count;
+  var brightness = Blockly.Arduino.valueToCode(this, 'BRIGHTNESS', Blockly.Arduino.ORDER_ATOMIC) || '50'
   var position = Blockly.Arduino.valueToCode(this, 'POSITION', Blockly.Arduino.ORDER_ATOMIC) || '0';
   var red = Blockly.Arduino.valueToCode(this, 'RED', Blockly.Arduino.ORDER_ATOMIC) || '0'
   var green = Blockly.Arduino.valueToCode(this, 'GREEN', Blockly.Arduino.ORDER_ATOMIC) || '0'
   var blue = Blockly.Arduino.valueToCode(this, 'BLUE', Blockly.Arduino.ORDER_ATOMIC) || '0'
   Blockly.Arduino.definitions_['define_rgb_led' + dropdown_pin] = `#include <Adafruit_NeoPixel.h>\n Adafruit_NeoPixel rgb_led_${dropdown_pin}= Adafruit_NeoPixel(${numPixel}, ${dropdown_pin},NEO_GRB + NEO_KHZ800);\n`;
   Blockly.Arduino.setups_['setup_rgb_led' + dropdown_pin] = 'rgb_led_' + dropdown_pin + '.begin();';
+  Blockly.Arduino.setups_['setup_rgb_led_brightness' + dropdown_pin] = `rgb_led_${dropdown_pin}.setBrightness(${brightness});`;
   var code = `rgb_led_${dropdown_pin}.setPixelColor(${position},rgb_led_${dropdown_pin}.Color(${red},${green},${blue}));\nrgb_led_${dropdown_pin}.show();\n`;
   return code;
 };
@@ -1524,7 +1526,7 @@ Blockly.Arduino.sensebox_scd30 = function () {
   Blockly.Arduino.includes_['scd30_library'] = '#include "SparkFun_SCD30_Arduino_Library.h"'
   Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
   Blockly.Arduino.definitions_['SCD30'] = 'SCD30 airSensor;';
-  Blockly.Arduino.variables_['scd30_temp'] = 'float scd30_temp;';
+  Blockly.Arduino.variables_['scd30_temp'] = 'uint16_t scd30_temp;';
   Blockly.Arduino.variables_['scd30_humi'] = 'float scd30_humi;';
   Blockly.Arduino.variables_['scd30_co2'] = 'float scd30_co2;';
   Blockly.Arduino.setups_['init_scd30'] = ` Wire.begin();

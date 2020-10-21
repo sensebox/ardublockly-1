@@ -172,6 +172,7 @@
 	"senseBox_rgb_led_tip ": "RGB-LED",
 	"senseBox_ws2818_rgb_led": "senseBox WS2812 - RGB LED",
 	"senseBox_ws2818_rgb_led_position": "Position",
+	"senseBox_ws2818_rgb_led_brightness": "Helligkeit",
 	"senseBox_led_tip ": "simple LED. Don't forget the resistor",
 	"senseBox_temp ": "Temperature in °C",
 	"senseBox_temp_hum ": "Temperature/Humidity Sensor (HDC1080)",

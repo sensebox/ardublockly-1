@@ -568,6 +568,7 @@ Blockly.Msg.senseBox_rgb_led = "RGB-LED"
 Blockly.Msg.senseBox_rgb_led_tip = "RGB-LED benötigt einen digitalen Pin und eine Stromkreis ";
 Blockly.Msg.senseBox_ws2818_rgb_led = "senseBox WS2812 - RGB LED";
 Blockly.Msg.senseBox_ws2818_rgb_led_position = "Position";
+Blockly.Msg.senseBox_ws2818_rgb_led_brightness = "Helligkeit";
 Blockly.Msg.senseBox_temp = "Temperatur in °C";
 Blockly.Msg.senseBox_temp_hum = "Temperatur-/Luftfeuchtigkeitssensor (HDC1080)";
 Blockly.Msg.senseBox_temp_hum_tip = "Sensor misst Temperatur und Luftfeuchtigkeit";

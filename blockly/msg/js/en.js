@@ -751,6 +751,7 @@ Blockly.Msg.senseBox_wifi_startap = "Initialize Wifi Access Point";
 Blockly.Msg.senseBox_wifi_tip  = "Establishes a wifi connection";
 Blockly.Msg.senseBox_windspeed = "Windspeed";
 Blockly.Msg.senseBox_ws2818_rgb_led = "senseBox WS2812 - RGB LED";
+Blockly.Msg.senseBox_ws2818_rgb_led_brightness = "Helligkeit";
 Blockly.Msg.senseBox_ws2818_rgb_led_position = "Position";
 Blockly.Msg.sensebox_display_drawRectangle = "Draw Rectangle";
 Blockly.Msg.sensebox_display_drawRectangle_height = "height";

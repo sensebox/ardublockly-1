@@ -751,6 +751,7 @@ Blockly.Msg.senseBox_wifi_startap = "Initialize Wifi Access Point";  // untransl
 Blockly.Msg.senseBox_wifi_tip  = "Establishes a wifi connection";  // untranslated
 Blockly.Msg.senseBox_windspeed = "Windspeed";  // untranslated
 Blockly.Msg.senseBox_ws2818_rgb_led = "senseBox WS2812 - RGB LED";  // untranslated
+Blockly.Msg.senseBox_ws2818_rgb_led_brightness = "Helligkeit";  // untranslated
 Blockly.Msg.senseBox_ws2818_rgb_led_position = "Position";  // untranslated
 Blockly.Msg.sensebox_display_drawRectangle = "Draw Rectangle";  // untranslated
 Blockly.Msg.sensebox_display_drawRectangle_height = "height";  // untranslated
