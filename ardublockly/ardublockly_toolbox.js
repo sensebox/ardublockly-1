@@ -34,6 +34,7 @@ Ardublockly.TOOLBOX_XML =
     '      <block type="sensebox_gps_getValues"></block>' +
     '      <block type="sensebox_windspeed"></block>' +
     '      <block type="sensebox_soundsensor_dfrobot"></block>' +
+    '      <block type="sensebox_scd30"></block>' +
     '      </category>' +
     '      <sep></sep>' +
     '      <category id="catSenseBox_Display" name="Display" colour="120">' +
@@ -150,6 +151,33 @@ Ardublockly.TOOLBOX_XML =
     '   <category id="catSenseBox_Led" name="LED" colour="120">' +
     '       <block type="sensebox_led"></block>' +
     '      <block type="sensebox_rgb_led">' +
+    '        <value name="RED">' +
+    '          <block type="math_number">' +
+    '            <field name="NUM">0</field>' +
+    '          </block>' +
+    '        </value>' +
+    '        <value name="GREEN">' +
+    '          <block type="math_number">' +
+    '            <field name="NUM">0</field>' +
+    '          </block>' +
+    '        </value>' +
+    '        <value name="BLUE">' +
+    '          <block type="math_number">' +
+    '            <field name="NUM">0</field>' +
+    '          </block>' +
+    '        </value>' +
+    '      </block>' +
+    '      <block type="sensebox_ws2818_led">' +
+    '          <value name="POSITION">' +
+    '          <block type="math_number">' +
+    '            <field name="NUM">0</field>' +
+    '          </block>' +
+    '        </value>' +
+    '   <value name="BRIGHTNESS">' +
+    '          <block type="math_number">' +
+    '            <field name="NUM">30</field>' +
+    '          </block>' +
+    '        </value>' +
     '        <value name="RED">' +
     '          <block type="math_number">' +
     '            <field name="NUM">0</field>' +

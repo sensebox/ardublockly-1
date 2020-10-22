@@ -29,7 +29,7 @@ Blockly.Type = function(args) {
                     '               identify the translatable Type name.\n' +
                     '  compatibleTypes: [Blockly.Type,]\n}');
   }
-  if (!goog.isArray(args.compatibleTypes)) {
+  if (!Array.isArray(args.compatibleTypes)) {
     throw new Error('The compatible types for a Blockly Types needs to be an ' +
                     'array of Blockly.Type items.');
   }
@@ -124,7 +124,7 @@ Blockly.Type.prototype.addCompatibleType = function(compatibleType) {
  *     compatibility list.
  */
 Blockly.Type.prototype.addCompatibleTypes = function(compatibleTypeArray) {
-  if (!goog.isArray(compatibleTypeArray)) {
+  if (!Array.isArray(compatibleTypeArray)) {
     throw new Error('To add compatible types to the Blockly Type ' +
                     this.typeId +' provide an array of Blockly.Type items.');
   }

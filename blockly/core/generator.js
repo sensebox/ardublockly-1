@@ -86,7 +86,7 @@ Blockly.Generator.prototype.workspaceToCode = function(workspace) {
   var blocks = workspace.getTopBlocks(true);
   for (var x = 0, block; block = blocks[x]; x++) {
     var line = this.blockToCode(block);
-    if (goog.isArray(line)) {
+    if (Array.isArray(line)) {
       // Value blocks return tuples of code and operator order.
       // Top-level blocks don't care about operator order.
       line = line[0];
@@ -168,7 +168,7 @@ Blockly.Generator.prototype.blockToCode = function(block) {
   // The current prefered method of accessing the block is through the second
   // argument to func.call, which becomes the first parameter to the generator.
   var code = func.call(block, block);
-  if (goog.isArray(code)) {
+  if (Array.isArray(code)) {
     // Value blocks return tuples of code and operator order.
     goog.asserts.assert(block.outputConnection,
         'Expecting string from statement block "%s".', block.type);

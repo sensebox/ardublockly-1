@@ -566,6 +566,9 @@ Blockly.Msg.senseBox_sound = "Mikrofon";
 Blockly.Msg.senseBox_sound_tip = "Gibt den Messwert des Mikrofons in Volt zurück";
 Blockly.Msg.senseBox_rgb_led = "RGB-LED"
 Blockly.Msg.senseBox_rgb_led_tip = "RGB-LED benötigt einen digitalen Pin und eine Stromkreis ";
+Blockly.Msg.senseBox_ws2818_rgb_led = "senseBox WS2812 - RGB LED";
+Blockly.Msg.senseBox_ws2818_rgb_led_position = "Position";
+Blockly.Msg.senseBox_ws2818_rgb_led_brightness = "Helligkeit";
 Blockly.Msg.senseBox_temp = "Temperatur in °C";
 Blockly.Msg.senseBox_temp_hum = "Temperatur-/Luftfeuchtigkeitssensor (HDC1080)";
 Blockly.Msg.senseBox_temp_hum_tip = "Sensor misst Temperatur und Luftfeuchtigkeit";
@@ -603,6 +606,7 @@ Blockly.Msg.senseBox_wifi_tip = "stellt eine WLAN verbindung her";
 Blockly.Msg.senseBox_wifi_startap = "Initialisiere WLAN Access Point";
 Blockly.Msg.senseBox_osem_connection_tip = "stellt eine WLAN verbindung her";
 Blockly.Msg.senseBox_send_to_osem_tip = "sende Messwert an";
+Blockly.Msg.senseBox_osem_access_token = "API Schlüssel";
 Blockly.Msg.senseBox_send_to_osem = "Sende Messwert an die openSenseMap";
 Blockly.Msg.senseBox_osem_connection = "Verbinde mit openSenseMap:";
 Blockly.Msg.senseBox_osem_host = "opensensemap.org";
@@ -775,4 +779,6 @@ Blockly.Msg.senseBox_telegram_send = "Sende Nachricht";
 
 Blockly.Msg.senseBox_windspeed = "Windgeschwindigkeitssensor";
 Blockly.Msg.senseBox_soundsensor_dfrobot = "Lautstärkesensor";
-
+Blockly.Msg.senseBox_scd30 = "CO2 Sensor (Sensirion SCD30)";
+Blockly.Msg.senseBox_scd_tip = "Gibt den Wert des CO2 Sensors";
+Blockly.Msg.senseBox_scd_co2 = "CO2 in ppm";

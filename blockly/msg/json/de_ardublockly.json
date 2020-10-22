@@ -511,6 +511,9 @@
 	"senseBox_sound_tip ": "Gibt den Messwert des Mikrofons in Volt zurück",
 	"senseBox_rgb_led ": "RGB-LED",
 	"senseBox_rgb_led_tip ": "RGB-LED benötigt einen digitalen Pin und eine Stromkreis ",
+	"senseBox_ws2818_rgb_led": "senseBox WS2812 - RGB LED",
+	"senseBox_ws2818_rgb_led_position": "Position",
+	"senseBox_ws2818_rgb_led_brightness": "Brightness",
 	"senseBox_temp ": "Temperatur in °C",
 	"senseBox_temp_hum ": "Temperatur-/Luftfeuchtigkeitssensor (HDC1080)",
 	"senseBox_temp_hum_tip ": "Sensor misst Temperatur und Luftfeuchtigkeit",
@@ -550,6 +553,7 @@
 	"senseBox_wifi_startap": "Initialisiere WLAN Access Point",
 	"senseBox_osem_connection ": "Verbinde mit openSenseMap",
 	"senseBox_osem_connection_tip ": "stellt eine WLAN verbindung her",
+	"senseBox_osem_access_token": "API Schlüssel",
 	"senseBox_osem_host": "opensensemap.org",
 	"senseBox_osem_host_workshop": "workshop.opensensemap.org",
 	"senseBox_osem_connection": "Verbinde mit openSenseMap",
@@ -698,5 +702,8 @@
 	"senseBox_LoRa_init_abp_tip": "Initialisiere die LoRa übertragung. Kopiere die ID's im lsb Format",
 	"senseBox_LoRa_init_otaa_tip": "Initialisiere die LoRa übertragung. Kopiere die ID's im lsb Format",
 	"senseBox_windspeed": "Windgeschwindigkeitssensor",
-	"senseBox_soundsensor_dfrobot": "Lautstärkesensor"
+	"senseBox_soundsensor_dfrobot": "Lautstärkesensor",
+	"senseBox_scd30": "CO2 Sensor (Sensirion SCD30)",
+	"senseBox_scd_tip": "Gibt den Wert des CO2 Sensors",
+	"senseBox_scd_co2": "CO2 in ppm"
 }

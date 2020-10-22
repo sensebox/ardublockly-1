@@ -170,6 +170,9 @@
 	"senseBox_serial_tip ": "prints the values to the serial monitor in the arduino IDE. Good way to have a fast and easy feedback for your programm",
 	"senseBox_rgb_led ": "RGB-LED",
 	"senseBox_rgb_led_tip ": "RGB-LED",
+	"senseBox_ws2818_rgb_led": "senseBox WS2812 - RGB LED",
+	"senseBox_ws2818_rgb_led_position": "Position",
+	"senseBox_ws2818_rgb_led_brightness": "Helligkeit",
 	"senseBox_led_tip ": "simple LED. Don't forget the resistor",
 	"senseBox_temp ": "Temperature in °C",
 	"senseBox_temp_hum ": "Temperature/Humidity Sensor (HDC1080)",
@@ -211,6 +214,7 @@
 	"senseBox_wifi_startap": "Initialize Wifi Access Point",
 	"senseBox_osem_connection ": "Connect to openSenseMap",
 	"senseBox_osem_connection_tip ": "",
+	"senseBox_osem_access_token": "API Key",
 	"senseBox_send_to_osem_tip ": "sends the measurement to openSenseMap. Make shure to enter the correct BoxID and SensorID",
 	"senseBox_send_to_osem ": "Send measurement to openSenseMap",
 	"senseBox_osem_host": "opensensemap.org",
@@ -366,5 +370,8 @@
 	"senseBox_LoRa_init_abp_tip": "Initialise the LoRa tranismission. Copy ID's as lsb",
 	"senseBox_LoRa_init_otaa_tip": "Initialise the LoRa tranismission. Copy ID's as lsb",
 	"senseBox_windspeed": "Windspeed",
-	"senseBox_soundsensor_dfrobot": "Soundsensor"
+	"senseBox_soundsensor_dfrobot": "Soundsensor",
+	"senseBox_scd30": "CO2 Sensor (Sensirion SCD30)",
+	"senseBox_scd_tip": "Returns value of the CO2 Sensor",
+	"senseBox_scd_co2": "CO2 in ppm"
 }

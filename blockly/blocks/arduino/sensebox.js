@@ -528,6 +528,10 @@ Blockly.Blocks['sensebox_osem_connection'] = {
       .setAlign(Blockly.ALIGN_LEFT)
       .appendField("senseBox ID")
       .appendField(new Blockly.FieldTextInput("senseBox ID"), "BoxID");
+    this.appendDummyInput()
+      .setAlign(Blockly.ALIGN_LEFT)
+      .appendField(Blockly.Msg.senseBox_osem_access_token)
+      .appendField(new Blockly.FieldTextInput("access_token"), "access_token");
     this.appendStatementInput('DO')
       .appendField(Blockly.Msg.senseBox_sensor)
       .setCheck(null);
@@ -970,6 +974,36 @@ Blockly.Blocks['sensebox_rgb_led'] = {
     this.setHelpUrl('https://sensebox.de/books');
   }
 };
+
+
+Blockly.Blocks['sensebox_ws2818_led'] = {
+  init: function () {
+
+    var dropdownOptions = [[Blockly.Msg.senseBox_ultrasonic_port_A, '1'],
+    [Blockly.Msg.senseBox_ultrasonic_port_B, '3'], [Blockly.Msg.senseBox_ultrasonic_port_C, '5']];
+
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.senseBox_ws2818_rgb_led)
+      .appendField("Pin:")
+      .appendField(new Blockly.FieldDropdown(dropdownOptions), "Port")
+    this.appendValueInput("BRIGHTNESS", "brightness")
+      .appendField((Blockly.Msg.senseBox_ws2818_rgb_led_brightness));
+    this.appendValueInput("POSITION", "position")
+      .appendField((Blockly.Msg.senseBox_ws2818_rgb_led_position));
+    this.appendValueInput("RED", 'Number')
+      .appendField(Blockly.Msg.COLOUR_RGB_RED);//Blockly.Msg.senseBox_basic_red
+    this.appendValueInput("GREEN", 'Number')
+      .appendField(Blockly.Msg.COLOUR_RGB_GREEN);//Blockly.Msg.senseBox_basic_green
+    this.appendValueInput("BLUE", 'Number')
+      .appendField(Blockly.Msg.COLOUR_RGB_BLUE);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.Msg.senseBox_rgb_led_tip);
+    this.setHelpUrl('https://sensebox.de/books');
+  }
+};
+
 
 Blockly.Blocks['sensebox_led'] = {
   init: function () {
@@ -1891,3 +1925,21 @@ Blockly.Blocks['sensebox_soundsensor_dfrobot'] = {
   },
 };
 
+
+Blockly.Blocks['sensebox_scd30'] = {
+  init: function () {
+    var dropdownOptions = [[Blockly.Msg.senseBox_scd_co2, "CO2"], [Blockly.Msg.senseBox_temp, "temperature"], [Blockly.Msg.senseBox_hum, "humidity"]];
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.senseBox_scd30);
+    this.appendDummyInput()
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.senseBox_value)
+      .appendField(new Blockly.FieldDropdown(dropdownOptions), "dropdown")
+    this.setOutput(true, Blockly.Types.NUMBER.output);
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.setTooltip(Blockly.Msg.senseBox_scd_tip);
+  },
+  getBlockType: function () {
+    return Blockly.Types.DECIMAL;
+  },
+};
