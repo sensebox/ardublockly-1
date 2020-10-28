@@ -1526,36 +1526,70 @@ Blockly.Arduino.sensebox_scd30 = function () {
   Blockly.Arduino.includes_['scd30_library'] = '#include "SparkFun_SCD30_Arduino_Library.h"'
   Blockly.Arduino.includes_['library_senseBoxMCU'] = '#include "SenseBoxMCU.h"';
   Blockly.Arduino.definitions_['SCD30'] = 'SCD30 airSensor;';
-  Blockly.Arduino.variables_['scd30_temp'] = 'uint16_t scd30_temp;';
-  Blockly.Arduino.variables_['scd30_humi'] = 'float scd30_humi;';
-  Blockly.Arduino.variables_['scd30_co2'] = 'float scd30_co2;';
+  // Blockly.Arduino.variables_['scd30_temp'] = 'uint16_t scd30_temp;';
+  // Blockly.Arduino.variables_['scd30_humi'] = 'float scd30_humi;';
+  // Blockly.Arduino.variables_['scd30_co2'] = 'float scd30_co2;';
   Blockly.Arduino.setups_['init_scd30'] = ` Wire.begin();
   if (airSensor.begin() == false)
   {
-    Serial.println("Air sensor not detected. Please check wiring. Freezing...");
     while (1)
       ;
   }`;
-  Blockly.Arduino.loops_['scd30_getData'] = `if (airSensor.dataAvailable())
-  {
-   scd30_co2 = airSensor.getCO2();
-   scd30_temp = airSensor.getTemperature();
-   scd30_humi = airSensor.getHumidity();
-  }`
+  // Blockly.Arduino.loops_['scd30_getData'] = `if (airSensor.dataAvailable())
+  // {
+  //  scd30_co2 = airSensor.getCO2();
+  //  scd30_temp = airSensor.getTemperature();
+  //  scd30_humi = airSensor.getHumidity();
+  // }`
   var code = '';
   switch (dropdown) {
     case 'temperature':
-      code = 'scd30_temp';
+      code = 'airSensor.getTemperature()';
       break;
     case 'humidity':
-      code = 'scd30_humi';
+      code = 'airSensor.getHumidity()';
       break;
     case 'CO2':
-      code = 'scd30_co2';
+      code = 'airSensor.getCO2()';
       break;
     default:
       code = ''
   }
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 
-}
+};
+
+Blockly.Arduino.sensebox_display_fastPrint = function () {
+  var title1 = Blockly.Arduino.valueToCode(this, 'Title1', Blockly.Arduino.ORDER_ATOMIC) || '0'
+  var value1 = Blockly.Arduino.valueToCode(this, 'Value1', Blockly.Arduino.ORDER_ATOMIC);
+  var dimension1 = Blockly.Arduino.valueToCode(this, 'Dimension1', Blockly.Arduino.ORDER_ATOMIC) || '0'
+  var title2 = Blockly.Arduino.valueToCode(this, 'Title2', Blockly.Arduino.ORDER_ATOMIC) || '0'
+  var value2 = Blockly.Arduino.valueToCode(this, 'Value2', Blockly.Arduino.ORDER_ATOMIC);
+  var dimension2 = Blockly.Arduino.valueToCode(this, 'Dimension2', Blockly.Arduino.ORDER_ATOMIC) || '0'
+  Blockly.Arduino.userFunctions_['sensebox_fastPrint'] = `
+  void printOnDisplay(String title1, String measurement1, String unit1, String title2, String measurement2, String unit2) {
+   
+    display.setCursor(0, 0);
+    display.setTextSize(1);
+    display.setTextColor(WHITE, BLACK);
+    display.println(title1);
+    display.setCursor(0, 10);
+    display.setTextSize(2);
+    display.print(measurement1);
+    display.print(" ");
+    display.setTextSize(1);
+    display.println(unit1);
+    display.setCursor(0, 30);
+    display.setTextSize(1);
+    display.println(title2);
+    display.setCursor(0, 40);
+    display.setTextSize(2);
+    display.print(measurement2);
+    display.print(" ");
+    display.setTextSize(1);
+    display.println(unit2);
+  }
+  `
+  var code = ` printOnDisplay(${title1}, String(${value1}), ${dimension1}, ${title2}, String(${value2}), ${dimension2});\n`;
+  return code;
+};
