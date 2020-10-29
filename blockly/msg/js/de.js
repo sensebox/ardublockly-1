@@ -655,7 +655,11 @@ Blockly.Msg.sensebox_display_fillCircle_radius = "Radius";
 Blockly.Msg.sensebox_display_drawRectangle = "Zeichne Rechteck";
 Blockly.Msg.sensebox_display_drawRectangle_width = "Breite";
 Blockly.Msg.sensebox_display_drawRectangle_height = "Höhe";
-Blockly.Msg.senseBox_display_filled = "Ausgefüllt"
+Blockly.Msg.senseBox_display_filled = "Ausgefüllt";
+Blockly.Msg.senseBox_display_fastPrint_show = "Zeige Messwerte";
+Blockly.Msg.senseBox_display_fastPrint_title = "Titel";
+Blockly.Msg.senseBox_display_fastPrint_value = "Messwert";
+Blockly.Msg.senseBox_display_fastPrint_dimension = "Einheit";
 // GPS
 Blockly.Msg.senseBox_gps_getValues = "GPS Modul";
 Blockly.Msg.senseBox_gps_getValues_tip = "ruft das GPS Signal ab";

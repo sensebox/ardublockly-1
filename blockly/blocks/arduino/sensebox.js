@@ -1943,3 +1943,53 @@ Blockly.Blocks['sensebox_scd30'] = {
     return Blockly.Types.DECIMAL;
   },
 };
+
+
+
+Blockly.Blocks['sensebox_display_fastPrint'] = {
+  init: function (block) {
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.senseBox_display_fastPrint_show);
+    this.appendValueInput("Title1", 'Title1')
+      .appendField(Blockly.Msg.senseBox_display_fastPrint_title);
+    this.appendValueInput("Value1", 'Value1')
+      .appendField(Blockly.Msg.senseBox_display_fastPrint_value + '1');
+    this.appendValueInput("Dimension1", 'Dimension1')
+      .appendField(Blockly.Msg.senseBox_display_fastPrint_dimension);
+    this.appendValueInput("Title2", 'Title2')
+      .appendField(Blockly.Msg.senseBox_display_fastPrint_title);
+    this.appendValueInput("Value2", 'Value2')
+      .appendField(Blockly.Msg.senseBox_display_fastPrint_value + '2');
+    this.appendValueInput("Dimension2", 'Dimension2')
+      .appendField(Blockly.Msg.senseBox_display_fastPrint_dimension);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.Msg.sensebox_display_fastPrint_tip);
+    this.setHelpUrl('https://sensebox.de/books');
+  },
+  /**
+ * Called whenever anything on the workspace changes.
+ * Add warning if block is not nested inside a the correct loop.
+ * @param {!Blockly.Events.Abstract} e Change event.
+ * @this Blockly.Block
+ */
+  onchange: function (e) {
+    var legal = false;
+    // Is the block nested in a loop?
+    var block = this;
+    do {
+      if (this.LOOP_TYPES.indexOf(block.type) != -1) {
+        legal = true;
+        break;
+      }
+      block = block.getSurroundParent();
+    } while (block);
+    if (legal) {
+      this.setWarningText(null);
+    } else {
+      this.setWarningText(Blockly.Msg.CONTROLS_FLOW_STATEMENTS_WARNING);
+    }
+  },
+  LOOP_TYPES: ['sensebox_display_show'],
+};

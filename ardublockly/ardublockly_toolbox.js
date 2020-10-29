@@ -58,6 +58,28 @@ Ardublockly.TOOLBOX_XML =
     '          </block>' +
     '       </value>' +
     '      </block>' +
+    '       <block type="sensebox_display_fastPrint"> ' +
+    '               <value name="Title1">' +
+    '          <block type="text">' +
+    '            <field name="TEXT">Title</field>' +
+    '          </block>' +
+    '        </value>' +
+    '      <value name="Dimension1">' +
+    '          <block type="text">' +
+    '            <field name="TEXT">Unit</field>' +
+    '          </block>' +
+    '        </value>' +
+    '           <value name="Title2">' +
+    '          <block type="text">' +
+    '            <field name="TEXT">Title</field>' +
+    '          </block>' +
+    '        </value>' +
+    '      <value name="Dimension2">' +
+    '          <block type="text">' +
+    '            <field name="TEXT">Unit</field>' +
+    '          </block>' +
+    '        </value>' +
+    '           </block > ' +
     '      <block type="sensebox_display_fillCircle">' +
     '       <value name="X">' +
     '          <block type="math_number">' +
