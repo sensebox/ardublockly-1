@@ -222,6 +222,7 @@
 	"senseBox_osem_stationary": "Stationary",
 	"senseBox_osem_mobile": "Mobile",
 	"senseBox_osem_exposure": "Type",
+	"senseBox_osem_restart": "Restart if device was disconnected?",
 	"senseBox_sds011 ": "Fine Particular Sensor",
 	"senseBox_sds011_dimension ": "in µg/m³ at",
 	"senseBox_sds011_pm25 ": "PM2.5",

@@ -682,6 +682,7 @@ Blockly.Msg.senseBox_osem_exposure = "Type";  // untranslated
 Blockly.Msg.senseBox_osem_host = "opensensemap.org";  // untranslated
 Blockly.Msg.senseBox_osem_host_workshop = "workshop.opensensemap.org";  // untranslated
 Blockly.Msg.senseBox_osem_mobile = "Mobile";  // untranslated
+Blockly.Msg.senseBox_osem_restart = "Restart if device was disconnected?";  // untranslated
 Blockly.Msg.senseBox_osem_stationary = "Stationary";  // untranslated
 Blockly.Msg.senseBox_output_filename  = "filename";  // untranslated
 Blockly.Msg.senseBox_output_format  = "format:";  // untranslated

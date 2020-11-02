@@ -682,6 +682,7 @@ Blockly.Msg.senseBox_osem_exposure = "Type";
 Blockly.Msg.senseBox_osem_host = "opensensemap.org";
 Blockly.Msg.senseBox_osem_host_workshop = "workshop.opensensemap.org";
 Blockly.Msg.senseBox_osem_mobile = "Mobile";
+Blockly.Msg.senseBox_osem_restart = "Restart if device was disconnected?";
 Blockly.Msg.senseBox_osem_stationary = "Stationary";
 Blockly.Msg.senseBox_output_filename  = "filename";
 Blockly.Msg.senseBox_output_format  = "format:";
