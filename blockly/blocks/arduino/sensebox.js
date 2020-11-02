@@ -521,6 +521,9 @@ Blockly.Blocks['sensebox_osem_connection'] = {
       .appendField('SSL')
       .appendField(new Blockly.FieldCheckbox("TRUE"), "SSL");
     this.appendDummyInput()
+      .appendField(Blockly.Msg.senseBox_osem_restart)
+      .appendField(new Blockly.FieldCheckbox("TRUE"), "Restart");
+    this.appendDummyInput()
       .setAlign(Blockly.ALIGN_LEFT)
       .appendField(Blockly.Msg.senseBox_osem_exposure)
       .appendField(new Blockly.FieldDropdown([[Blockly.Msg.senseBox_osem_stationary, 'Stationary'], [Blockly.Msg.senseBox_osem_mobile, 'Mobile']]), "type");
@@ -1940,7 +1943,12 @@ Blockly.Blocks['sensebox_scd30'] = {
     this.setTooltip(Blockly.Msg.senseBox_scd_tip);
   },
   getBlockType: function () {
-    return Blockly.Types.DECIMAL;
+    var input = this.getFieldValue('dropdown');
+    if (input == 'temperature' || input == 'humdity') {
+      return Blockly.Types.DECIMAL;
+    }
+    else if (input == 'CO2')
+      return Blockly.Types.LARGE_NUMBER;
   },
 };
 
