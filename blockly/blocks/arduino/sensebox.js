@@ -1948,7 +1948,7 @@ Blockly.Blocks['sensebox_scd30'] = {
       return Blockly.Types.DECIMAL;
     }
     else if (input == 'CO2')
-      return Blockly.Types.LARGE_NUMBER;
+      return Blockly.Types.NUMBER;
   },
 };
 
