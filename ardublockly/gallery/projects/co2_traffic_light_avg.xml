@@ -1,0 +1,372 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="5KebY,-ltvxB7K^El}1(" x="77" y="-117">
+    <statement name="SETUP_FUNC">
+      <block type="variables_set" id="{!+6J(@=?~YH/JdlX,m^">
+        <field name="VAR">stepsPerMinute</field>
+        <value name="VALUE">
+          <block type="math_number" id="S5vNAo=RGbl9wo?e=qO3">
+            <field name="NUM">6</field>
+          </block>
+        </value>
+        <next>
+          <block type="sensebox_display_beginDisplay" id="v:X;c0vytHnp64A2s~SS">
+            <next>
+              <block type="time_delay" id="(AZs47RTKAJCFed93!:2">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="H5t{vn#s,]aYRa-m?U`+">
+                    <field name="NUM">2000</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="sensebox_display_show" id="9MNWWjl2x=/I@Kgg~yUR">
+                    <statement name="SHOW">
+                      <block type="sensebox_display_printDisplay" id="TI1nJSn#_~ehWF]qnF:U">
+                        <field name="COLOR">WHITE,BLACK</field>
+                        <value name="SIZE">
+                          <block type="math_number" id="4cAC*OBRCr`r|dzm0a5`">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                        <value name="X">
+                          <block type="math_number" id="}}z(fco`^jSsJsYYzsw7">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="Y">
+                          <block type="math_number" id="8qAxJWfG0/Eu|kq~cm#1">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <value name="printDisplay">
+                          <block type="text" id="n^JX(Xn}hX@Mvqzp7q]G">
+                            <field name="TEXT">Wait 1 min for first value...</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="variables_set" id="w*USzT=sJVBZ%YJh@hTA">
+        <field name="VAR">co2Sum</field>
+        <value name="VALUE">
+          <block type="math_number" id="(8WfNRfOZG?B~:m+t0X(">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_repeat_ext" id="(/C.Qokf;mH;xwlk4_Sq">
+            <value name="TIMES">
+              <block type="math_number" id="5K{jx}Xskl;;CRJ3`{(1">
+                <field name="NUM">6</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="variables_set" id="q9T-P=8Zw=.fN+DRR;-a">
+                <field name="VAR">co2Sample</field>
+                <value name="VALUE">
+                  <block type="sensebox_scd30" id="i^+Xf:ML]~i^+UNyjC#,">
+                    <field name="dropdown">CO2</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="aof[)SrRT*x|SKn?HVoC">
+                    <field name="VAR">co2Sum</field>
+                    <value name="VALUE">
+                      <block type="math_arithmetic" id="OA4EzRPZKRD.HtZYa8,z">
+                        <field name="OP">ADD</field>
+                        <value name="A">
+                          <block type="variables_get" id="jj0E]0NfBbBZkmM:*xuX">
+                            <field name="VAR">co2Sum</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="EywgZzRT-/?^m*.{Hw7%">
+                            <field name="VAR">co2Sample</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="time_delay" id="2ws9Ee*9}e8_blUr~R0`">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="variables_set_type" id=";U*,WGuZ-QE6R02T0?rz">
+                            <field name="VARIABLE_SETTYPE_TYPE">NUMBER</field>
+                            <value name="VARIABLE_SETTYPE_INPUT">
+                              <block type="math_arithmetic" id="qeU?Na/Gv2bL~i_2Rw~(">
+                                <field name="OP">DIVIDE</field>
+                                <value name="A">
+                                  <block type="math_number" id="ZmSdG#PIk7!Co(nS[rD{">
+                                    <field name="NUM">60000</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="variables_get" id="-(!EdqO?=Op491:*RnXJ">
+                                    <field name="VAR">stepsPerMinute</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="variables_set" id="F-/QfZ{[tOlLXz)%|E[1">
+                <field name="VAR">co2Average</field>
+                <value name="VALUE">
+                  <block type="math_arithmetic" id="mEectfp;-Z_%+M^/an1C">
+                    <field name="OP">DIVIDE</field>
+                    <value name="A">
+                      <block type="variables_get" id="X{7yFexQ)uKlE{66S:w9">
+                        <field name="VAR">co2Sum</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="variables_get" id="MzCK^ttKTE,{S|Px.]_g">
+                        <field name="VAR">stepsPerMinute</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="sensebox_display_clearDisplay" id="eo3lr8pOyM!i.`+9vTr1">
+                    <next>
+                      <block type="sensebox_display_show" id="5.ENz8[0#_d*+!_cRAOR">
+                        <statement name="SHOW">
+                          <block type="sensebox_display_printDisplay" id="NlFm*bY[cHFU-ql{5R!L">
+                            <field name="COLOR">WHITE,BLACK</field>
+                            <value name="SIZE">
+                              <block type="math_number" id="(:nA!syJph/@o8f6a1Sc">
+                                <field name="NUM">4</field>
+                              </block>
+                            </value>
+                            <value name="X">
+                              <block type="math_number" id=".x.}Ve]%q5?u(p#]o%8]">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="Y">
+                              <block type="math_number" id="r3r~X}%n~lA=mRbn#R_a">
+                                <field name="NUM">16</field>
+                              </block>
+                            </value>
+                            <value name="printDisplay">
+                              <block type="variables_set_type" id="Yu#Z]c6bM[o|bvNaPB%q">
+                                <field name="VARIABLE_SETTYPE_TYPE">NUMBER</field>
+                                <value name="VARIABLE_SETTYPE_INPUT">
+                                  <block type="variables_get" id="-^omZm|W-X7t3~H4XhDQ">
+                                    <field name="VAR">co2Average</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="sensebox_display_printDisplay" id="HN}DIC!5kPN.3:l8jwA5">
+                                <field name="COLOR">WHITE,BLACK</field>
+                                <value name="SIZE">
+                                  <block type="math_number" id="g(v0HSZb2/Qn.r#}t~Yr">
+                                    <field name="NUM">2</field>
+                                  </block>
+                                </value>
+                                <value name="X">
+                                  <block type="math_number" id="qsP}!N|m.L3vzO~C|7:G">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="Y">
+                                  <block type="math_number" id="aYo{uuw9pawRi5)u?_^m">
+                                    <field name="NUM">45</field>
+                                  </block>
+                                </value>
+                                <value name="printDisplay">
+                                  <block type="text" id="rE9K9tFsrDSpw=_.Yfzg">
+                                    <field name="TEXT">ppm</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="controls_if" id="uG?HPa)DL]xF?/L2DSW=">
+                            <mutation elseif="2"></mutation>
+                            <value name="IF0">
+                              <block type="logic_compare" id="MDij63A0{[RyCqzZADv^">
+                                <field name="OP">LT</field>
+                                <value name="A">
+                                  <block type="variables_get" id="3Uz%#tody]P6iJ`bj)6D">
+                                    <field name="VAR">co2Average</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="r1:5mr#;vH~pu*6EQORg">
+                                    <field name="NUM">1000</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="sensebox_ws2818_led" id="EYQ~i_FLIu6GyqJpnht4">
+                                <field name="Port">1</field>
+                                <value name="BRIGHTNESS">
+                                  <block type="math_number" id="_.6a:]XivP@_Vv9RWRm1">
+                                    <field name="NUM">200</field>
+                                  </block>
+                                </value>
+                                <value name="POSITION">
+                                  <block type="math_number" id="rU1gCL6Bta7!=bZ=KwQ7">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="RED">
+                                  <block type="math_number" id="H4M=T[y_{Iwt(h|uZ{j]">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="GREEN">
+                                  <block type="math_number" id=")TaKk;Yk6.Fg8Qt18U?B">
+                                    <field name="NUM">255</field>
+                                  </block>
+                                </value>
+                                <value name="BLUE">
+                                  <block type="math_number" id="9rM7)7%t4{1|q4}b9F~l">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <value name="IF1">
+                              <block type="logic_operation" id="kiOFHEy2V+HzBD5BNX^t">
+                                <field name="OP">AND</field>
+                                <value name="A">
+                                  <block type="logic_compare" id="CPnCW[/|bq;D,^*d5EG+">
+                                    <field name="OP">GTE</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="Bz]BHQ,!jB2e[qijQ*bN">
+                                        <field name="VAR">co2Average</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="=Z;r`HZknv[Xr:{hCyPy">
+                                        <field name="NUM">1000</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="logic_compare" id="(=cT/]l+Ap?8:24G/3fj">
+                                    <field name="OP">LT</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="3_d`(#]7H][M1~eewtIx">
+                                        <field name="VAR">co2Average</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="M42}0BMehc394#qw/(P!">
+                                        <field name="NUM">1500</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO1">
+                              <block type="sensebox_ws2818_led" id="#^@f(@fj7lORlr3opy5U">
+                                <field name="Port">1</field>
+                                <value name="BRIGHTNESS">
+                                  <block type="math_number" id="r%a8)LJ^=jKZ=4Y7;wjm">
+                                    <field name="NUM">200</field>
+                                  </block>
+                                </value>
+                                <value name="POSITION">
+                                  <block type="math_number" id="8?}W:v=(|zR2_Wl{%hYR">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="RED">
+                                  <block type="math_number" id="[zxzdi;E?N=VY7+y~EBi">
+                                    <field name="NUM">255</field>
+                                  </block>
+                                </value>
+                                <value name="GREEN">
+                                  <block type="math_number" id="8Vl46Ne=dO!wad_YUA}.">
+                                    <field name="NUM">150</field>
+                                  </block>
+                                </value>
+                                <value name="BLUE">
+                                  <block type="math_number" id="mz1wPGJ`!9((sn@.`}|d">
+                                    <field name="NUM">20</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <value name="IF2">
+                              <block type="logic_compare" id="RPca[O*d!3Dx?7lrNa6N">
+                                <field name="OP">GTE</field>
+                                <value name="A">
+                                  <block type="variables_get" id="^Fd{FTzj8cvbCe*T_`2;">
+                                    <field name="VAR">co2Average</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="k1|WLGTgu=rNF9Kj53A]">
+                                    <field name="NUM">1500</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO2">
+                              <block type="sensebox_ws2818_led" id="~a/QiK}dQ!VZnEM!rYhx">
+                                <field name="Port">1</field>
+                                <value name="BRIGHTNESS">
+                                  <block type="math_number" id="xKYV/]y`Exv~pal7Ho8~">
+                                    <field name="NUM">200</field>
+                                  </block>
+                                </value>
+                                <value name="POSITION">
+                                  <block type="math_number" id="0nSv``Z,(,(#GFBPLY|P">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="RED">
+                                  <block type="math_number" id="eKztFL/=*.lpHCzMAy`n">
+                                    <field name="NUM">250</field>
+                                  </block>
+                                </value>
+                                <value name="GREEN">
+                                  <block type="math_number" id="VR2ehdJbs6,9lg=i_.f@">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="BLUE">
+                                  <block type="math_number" id="pB#/(d},|~H]QgKdglX@">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
