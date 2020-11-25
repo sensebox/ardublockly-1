@@ -979,7 +979,7 @@ Blockly.Blocks['sensebox_rgb_led'] = {
 };
 
 
-Blockly.Blocks['sensebox_ws2818_led'] = {
+Blockly.Blocks['sensebox_ws2818_led_init'] = {
   init: function () {
 
     var dropdownOptions = [[Blockly.Msg.senseBox_ultrasonic_port_A, '1'],
@@ -987,13 +987,38 @@ Blockly.Blocks['sensebox_ws2818_led'] = {
 
     this.setColour(Blockly.Blocks.sensebox.HUE);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.senseBox_ws2818_rgb_led)
-      .appendField("Pin:")
-      .appendField(new Blockly.FieldDropdown(dropdownOptions), "Port")
+      .appendField(Blockly.Msg.senseBox_ws2818_rgb_led_init)
+      .appendField(
+        new Blockly.FieldInstance('RGB_NAME',
+          "RGBLED",
+          true, true, false),
+        'RGB_NAME')
+      .appendField(Blockly.Msg.senseBox_ws2818_rgb_led_pin)
+      .appendField(new Blockly.FieldDropdown(dropdownOptions), "Port");
+    this.appendValueInput("NumPixel", "NumPixel")
+      .appendField(Blockly.Msg.senseBox_ws2818_rgb_led_number);
     this.appendValueInput("BRIGHTNESS", "brightness")
       .appendField((Blockly.Msg.senseBox_ws2818_rgb_led_brightness));
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip(Blockly.Msg.senseBox_rgb_led_tip);
+    this.setHelpUrl('https://sensebox.de/books');
+  }
+};
+
+Blockly.Blocks['sensebox_ws2818_led'] = {
+  init: function () {
+    this.setColour(Blockly.Blocks.sensebox.HUE);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.senseBox_ws2818_rgb_led)
+      .appendField(
+        new Blockly.FieldInstance('RGB_NAME',
+          "RGBLED",
+          false, true, false),
+        'RGB_NAME')
+      .appendField(Blockly.Msg.senseBox_ws2818_rgb_led_color);
     this.appendValueInput("POSITION", "position")
-      .appendField((Blockly.Msg.senseBox_ws2818_rgb_led_position));
+      .appendField(Blockly.Msg.senseBox_ws2818_rgb_led_position);
     this.appendValueInput("RED", 'Number')
       .appendField(Blockly.Msg.COLOUR_RGB_RED);//Blockly.Msg.senseBox_basic_red
     this.appendValueInput("GREEN", 'Number')
@@ -2001,3 +2026,4 @@ Blockly.Blocks['sensebox_display_fastPrint'] = {
   },
   LOOP_TYPES: ['sensebox_display_show'],
 };
+
