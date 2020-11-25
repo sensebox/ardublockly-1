@@ -594,26 +594,25 @@ Blockly.Arduino.sensebox_rgb_led = function () {
 };
 
 
-Blockly.Arduino.sensebox_ws2818_led = function () {
+Blockly.Arduino.sensebox_ws2818_led_init = function (block) {
   var dropdown_pin = this.getFieldValue('Port');
-  var blocks = Ardublockly.workspace.getAllBlocks();
-  var count = 0;
-  for (var i = 0; i < blocks.length; i++) {
-    if (blocks[i].type === 'sensebox_ws2818_led' && blocks[i].getFieldValue('Port') === dropdown_pin) {
-      count++;
-
-    }
-  }
-  var numPixel = count;
+  var numPixel = Blockly.Arduino.valueToCode(this, 'NumPixel', Blockly.Arduino.ORDER_ATOMIC) || '1'
+  var instance = block.getFieldValue('RGB_NAME');
   var brightness = Blockly.Arduino.valueToCode(this, 'BRIGHTNESS', Blockly.Arduino.ORDER_ATOMIC) || '50'
+  Blockly.Arduino.definitions_['define_rgb_led' + dropdown_pin] = `#include <Adafruit_NeoPixel.h>\n Adafruit_NeoPixel ${instance}= Adafruit_NeoPixel(${numPixel}, ${dropdown_pin},NEO_GRB + NEO_KHZ800);\n`;
+  Blockly.Arduino.setups_[`${instance}_begin`] = `${instance}.begin();`;
+  Blockly.Arduino.setups_[`${instance}_brightness`] = `${instance}.setBrightness(${brightness});`;
+
+  return '';
+}
+
+Blockly.Arduino.sensebox_ws2818_led = function () {
+  var instance = this.getFieldValue('RGB_NAME');
   var position = Blockly.Arduino.valueToCode(this, 'POSITION', Blockly.Arduino.ORDER_ATOMIC) || '0';
   var red = Blockly.Arduino.valueToCode(this, 'RED', Blockly.Arduino.ORDER_ATOMIC) || '0'
   var green = Blockly.Arduino.valueToCode(this, 'GREEN', Blockly.Arduino.ORDER_ATOMIC) || '0'
   var blue = Blockly.Arduino.valueToCode(this, 'BLUE', Blockly.Arduino.ORDER_ATOMIC) || '0'
-  Blockly.Arduino.definitions_['define_rgb_led' + dropdown_pin] = `#include <Adafruit_NeoPixel.h>\n Adafruit_NeoPixel rgb_led_${dropdown_pin}= Adafruit_NeoPixel(${numPixel}, ${dropdown_pin},NEO_GRB + NEO_KHZ800);\n`;
-  Blockly.Arduino.setups_['setup_rgb_led' + dropdown_pin] = 'rgb_led_' + dropdown_pin + '.begin();';
-  Blockly.Arduino.setups_['setup_rgb_led_brightness' + dropdown_pin] = `rgb_led_${dropdown_pin}.setBrightness(${brightness});`;
-  var code = `rgb_led_${dropdown_pin}.setPixelColor(${position},rgb_led_${dropdown_pin}.Color(${red},${green},${blue}));\nrgb_led_${dropdown_pin}.show();\n`;
+  var code = `${instance}.setPixelColor(${position},${instance}.Color(${red},${green},${blue}));\n${instance}.show();\n`;
   return code;
 };
 

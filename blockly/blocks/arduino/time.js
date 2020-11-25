@@ -24,14 +24,14 @@ Blockly.Blocks['time_delay'] = {
    * Delay block definition
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.setHelpUrl('http://arduino.cc/en/Reference/Delay');
     this.setColour(Blockly.Blocks.time.HUE);
     this.appendValueInput('DELAY_TIME_MILI')
-        .setCheck(Blockly.Types.NUMBER.checkList)
-        .appendField(Blockly.Msg.ARD_TIME_DELAY);
+      .setCheck(Blockly.Types.NUMBER.checkList)
+      .appendField(Blockly.Msg.ARD_TIME_DELAY);
     this.appendDummyInput()
-        .appendField(Blockly.Msg.ARD_TIME_MS);
+      .appendField(Blockly.Msg.ARD_TIME_MS);
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -44,14 +44,14 @@ Blockly.Blocks['time_delaymicros'] = {
    * delayMicroseconds block definition
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.setHelpUrl('http://arduino.cc/en/Reference/DelayMicroseconds');
     this.setColour(Blockly.Blocks.time.HUE);
     this.appendValueInput('DELAY_TIME_MICRO')
-        .setCheck(Blockly.Types.NUMBER.checkList)
-        .appendField(Blockly.Msg.ARD_TIME_DELAY);
+      .setCheck(Blockly.Types.NUMBER.checkList)
+      .appendField(Blockly.Msg.ARD_TIME_DELAY);
     this.appendDummyInput()
-        .appendField(Blockly.Msg.ARD_TIME_DELAY_MICROS);
+      .appendField(Blockly.Msg.ARD_TIME_DELAY_MICROS);
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -64,16 +64,16 @@ Blockly.Blocks['time_millis'] = {
    * Elapsed time in milliseconds block definition
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.setHelpUrl('http://arduino.cc/en/Reference/Millis');
     this.setColour(Blockly.Blocks.time.HUE);
     this.appendDummyInput()
-        .appendField(Blockly.Msg.ARD_TIME_MILLIS);
+      .appendField(Blockly.Msg.ARD_TIME_MILLIS);
     this.setOutput(true, Blockly.Types.LARGE_NUMBER.output);
     this.setTooltip(Blockly.Msg.ARD_TIME_MILLIS_TIP);
   },
   /** @return {string} The type of return value for the block, an integer. */
-  getBlockType: function() {
+  getBlockType: function () {
     return Blockly.Types.LARGE_NUMBER;
   }
 };
@@ -83,11 +83,11 @@ Blockly.Blocks['time_micros'] = {
    * Elapsed time in microseconds block definition
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.setHelpUrl('http://arduino.cc/en/Reference/Micros');
     this.setColour(Blockly.Blocks.time.HUE);
     this.appendDummyInput()
-        .appendField(Blockly.Msg.ARD_TIME_MICROS);
+      .appendField(Blockly.Msg.ARD_TIME_MICROS);
     this.setOutput(true, Blockly.Types.LARGE_NUMBER.output);
     this.setTooltip(Blockly.Msg.ARD_TIME_MICROS_TIP);
   },
@@ -95,7 +95,7 @@ Blockly.Blocks['time_micros'] = {
    * Should be a long (32bit), but  for for now an int.
    * @return {string} The type of return value for the block, an integer.
    */
-  getBlockType: function() {
+  getBlockType: function () {
     return Blockly.Types.LARGE_NUMBER;
   }
 };
@@ -105,11 +105,11 @@ Blockly.Blocks['infinite_loop'] = {
    * Waits forever, end of program.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.setHelpUrl('');
     this.setColour(Blockly.Blocks.time.HUE);
     this.appendDummyInput()
-        .appendField(Blockly.Msg.ARD_TIME_INF);
+      .appendField(Blockly.Msg.ARD_TIME_INF);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setTooltip(Blockly.Msg.ARD_TIME_INF_TIP);
@@ -117,20 +117,20 @@ Blockly.Blocks['infinite_loop'] = {
 };
 
 Blockly.Blocks['sensebox_interval_timer'] = {
-  init: function() {
+  init: function () {
     this.setTooltip(Blockly.Msg.senseBox_interval_timer_tip);
     this.setInputsInline(true);
     this.setHelpUrl('');
     this.setColour(Blockly.Blocks.time.HUE);
     this.appendDummyInput()
-        .appendField(Blockly.Msg.senseBox_interval_timer);
+      .appendField(Blockly.Msg.senseBox_interval_timer);
     this.appendDummyInput()
-        .setAlign(Blockly.ALIGN_LEFT)
-        .appendField(new Blockly.FieldTextInput("10000"), "interval")
-        .appendField(Blockly.Msg.senseBox_interval);
+      .setAlign(Blockly.ALIGN_LEFT)
+      .appendField(new Blockly.FieldTextInput("10000"), "interval")
+      .appendField(Blockly.Msg.senseBox_interval);
     this.appendStatementInput('DO')
-        .setCheck(null);
+      .setCheck(null);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-        }
-  };
+  }
+};
