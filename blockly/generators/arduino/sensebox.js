@@ -170,11 +170,17 @@ Blockly.Arduino.sensebox_sensor_uv_light = function () {
     Blockly.Arduino.setups_['sensebox_sensor_uv_light'] = 'veml.begin();'
     var code = 'veml.get' + dropdown_name + '()';
   }
+  // if (dropdown_name == 'Illuminance') {
+  //   Blockly.Arduino.definitions_['define_tsl'] = 'TSL45315 tsl;'
+  //   Blockly.Arduino.setups_['sensebox_sensor_illuminance'] = 'tsl.begin();'
+  //   var code = 'tsl.get' + dropdown_name + '()';
+  // }
   if (dropdown_name == 'Illuminance') {
-    Blockly.Arduino.definitions_['define_tsl'] = 'TSL45315 tsl;'
-    Blockly.Arduino.setups_['sensebox_sensor_illuminance'] = 'tsl.begin();'
-    var code = 'tsl.get' + dropdown_name + '()';
+    Blockly.Arduino.definitions_['define_lightsensor'] = 'Lightsensor lightsensor;'
+    Blockly.Arduino.setups_['sensebox_sensor_illuminance'] = 'lightsensor.begin();'
+    var code = 'lightsensor.get' + dropdown_name + '()';
   }
+
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
